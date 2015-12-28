@@ -33,6 +33,21 @@ public class Kitchen: NSObject {
 
 extension Kitchen {
 
+    public static func serve(xmlFile xmlFile: String) {
+        openTVMLTemplateFromXMLFile(xmlFile)
+    }
+
+    public static func serve(rawXML rawXML: String) {
+        openTVMLTemplateFromRawXMLString(rawXML)
+    }
+
+    public static func serve(jsFile jsFile: String) {
+        openTVMLTemplateFromJSFile(jsFile)
+    }
+}
+
+extension Kitchen {
+
     public static var window: UIWindow {
         return sharedKitchen.window
     }
