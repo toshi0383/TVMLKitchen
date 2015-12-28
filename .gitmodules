@@ -1,3 +1,6 @@
 [submodule "library/DebugLog"]
 	path = library/DebugLog
 	url = git@github.com:inamiy/DebugLog.git
+[submodule "config/xcconfigs"]
+	path = config/xcconfigs
+	url = git@github.com:jspahrsummers/xcconfigs.git

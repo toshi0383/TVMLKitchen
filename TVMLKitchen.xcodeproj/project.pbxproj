@@ -14,6 +14,18 @@
 		1F3065BE1C30D8BD001E5DF0 /* Catalog.xml.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */; };
 		1F3065C01C30E8D0001E5DF0 /* RawXMLString.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */; };
 		1F3065C21C30E912001E5DF0 /* SampleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3065C11C30E912001E5DF0 /* SampleResource.swift */; };
+		1F3065E71C30EE1A001E5DF0 /* Common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065C61C30EE19001E5DF0 /* Common.xcconfig */; };
+		1F3065E81C30EE1A001E5DF0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065C81C30EE19001E5DF0 /* Debug.xcconfig */; };
+		1F3065E91C30EE1A001E5DF0 /* Profile.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065C91C30EE19001E5DF0 /* Profile.xcconfig */; };
+		1F3065EA1C30EE1A001E5DF0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CA1C30EE19001E5DF0 /* Release.xcconfig */; };
+		1F3065EB1C30EE1A001E5DF0 /* Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CB1C30EE19001E5DF0 /* Test.xcconfig */; };
+		1F3065EC1C30EE1A001E5DF0 /* Application.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CD1C30EE19001E5DF0 /* Application.xcconfig */; };
+		1F3065ED1C30EE1A001E5DF0 /* Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CE1C30EE19001E5DF0 /* Framework.xcconfig */; };
+		1F3065EE1C30EE1A001E5DF0 /* StaticLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CF1C30EE19001E5DF0 /* StaticLibrary.xcconfig */; };
+		1F3065F91C30EE1A001E5DF0 /* tvOS-Application.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065DD1C30EE1A001E5DF0 /* tvOS-Application.xcconfig */; };
+		1F3065FA1C30EE1A001E5DF0 /* tvOS-Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065DE1C30EE1A001E5DF0 /* tvOS-Base.xcconfig */; };
+		1F3065FB1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065DF1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig */; };
+		1F3065FC1C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065E01C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig */; };
 		1F32E4141C30B6EF00F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E4191C30B6EF00F62E88 /* TVMLKitchenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */; };
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
@@ -43,6 +55,18 @@
 		1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Catalog.xml.js; sourceTree = "<group>"; };
 		1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RawXMLString.txt; sourceTree = "<group>"; };
 		1F3065C11C30E912001E5DF0 /* SampleResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleResource.swift; sourceTree = "<group>"; };
+		1F3065C61C30EE19001E5DF0 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		1F3065C81C30EE19001E5DF0 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		1F3065C91C30EE19001E5DF0 /* Profile.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Profile.xcconfig; sourceTree = "<group>"; };
+		1F3065CA1C30EE19001E5DF0 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		1F3065CB1C30EE19001E5DF0 /* Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
+		1F3065CD1C30EE19001E5DF0 /* Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Application.xcconfig; sourceTree = "<group>"; };
+		1F3065CE1C30EE19001E5DF0 /* Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Framework.xcconfig; sourceTree = "<group>"; };
+		1F3065CF1C30EE19001E5DF0 /* StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = StaticLibrary.xcconfig; sourceTree = "<group>"; };
+		1F3065DD1C30EE1A001E5DF0 /* tvOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Application.xcconfig"; sourceTree = "<group>"; };
+		1F3065DE1C30EE1A001E5DF0 /* tvOS-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Base.xcconfig"; sourceTree = "<group>"; };
+		1F3065DF1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Framework.xcconfig"; sourceTree = "<group>"; };
+		1F3065E01C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TVMLKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4131C30B6EF00F62E88 /* TVMLKitchenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMLKitchenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMLKitchenTests.swift; sourceTree = "<group>"; };
@@ -94,6 +118,57 @@
 				1F3065B71C30D634001E5DF0 /* ResourceLoader.js */,
 			);
 			path = js;
+			sourceTree = "<group>";
+		};
+		1F3065C31C30EE19001E5DF0 /* xcconfigs */ = {
+			isa = PBXGroup;
+			children = (
+				1F3065C51C30EE19001E5DF0 /* Base */,
+				1F3065DC1C30EE1A001E5DF0 /* tvOS */,
+			);
+			path = xcconfigs;
+			sourceTree = "<group>";
+		};
+		1F3065C51C30EE19001E5DF0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1F3065C61C30EE19001E5DF0 /* Common.xcconfig */,
+				1F3065C71C30EE19001E5DF0 /* Configurations */,
+				1F3065CC1C30EE19001E5DF0 /* Targets */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1F3065C71C30EE19001E5DF0 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				1F3065C81C30EE19001E5DF0 /* Debug.xcconfig */,
+				1F3065C91C30EE19001E5DF0 /* Profile.xcconfig */,
+				1F3065CA1C30EE19001E5DF0 /* Release.xcconfig */,
+				1F3065CB1C30EE19001E5DF0 /* Test.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		1F3065CC1C30EE19001E5DF0 /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				1F3065CD1C30EE19001E5DF0 /* Application.xcconfig */,
+				1F3065CE1C30EE19001E5DF0 /* Framework.xcconfig */,
+				1F3065CF1C30EE19001E5DF0 /* StaticLibrary.xcconfig */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		1F3065DC1C30EE1A001E5DF0 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				1F3065DD1C30EE1A001E5DF0 /* tvOS-Application.xcconfig */,
+				1F3065DE1C30EE1A001E5DF0 /* tvOS-Base.xcconfig */,
+				1F3065DF1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig */,
+				1F3065E01C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig */,
+			);
+			path = tvOS;
 			sourceTree = "<group>";
 		};
 		1F32E3FF1C30B6EF00F62E88 = {
@@ -156,6 +231,7 @@
 		1F32E6881C30B9B900F62E88 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				1F3065C31C30EE19001E5DF0 /* xcconfigs */,
 				1F32E68B1C30B9D100F62E88 /* Kitchen.xcconfig */,
 			);
 			path = config;
@@ -308,9 +384,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3065EA1C30EE1A001E5DF0 /* Release.xcconfig in Resources */,
+				1F3065EC1C30EE1A001E5DF0 /* Application.xcconfig in Resources */,
+				1F3065ED1C30EE1A001E5DF0 /* Framework.xcconfig in Resources */,
+				1F3065FC1C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig in Resources */,
+				1F3065E71C30EE1A001E5DF0 /* Common.xcconfig in Resources */,
+				1F3065E91C30EE1A001E5DF0 /* Profile.xcconfig in Resources */,
+				1F3065E81C30EE1A001E5DF0 /* Debug.xcconfig in Resources */,
 				1F3065C01C30E8D0001E5DF0 /* RawXMLString.txt in Resources */,
+				1F3065FB1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig in Resources */,
+				1F3065F91C30EE1A001E5DF0 /* tvOS-Application.xcconfig in Resources */,
 				1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */,
 				1F3065BE1C30D8BD001E5DF0 /* Catalog.xml.js in Resources */,
+				1F3065EE1C30EE1A001E5DF0 /* StaticLibrary.xcconfig in Resources */,
+				1F3065FA1C30EE1A001E5DF0 /* tvOS-Base.xcconfig in Resources */,
+				1F3065EB1C30EE1A001E5DF0 /* Test.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +463,7 @@
 /* Begin XCBuildConfiguration section */
 		1F32E41B1C30B6EF00F62E88 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F3065C81C30EE19001E5DF0 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -422,6 +511,7 @@
 		};
 		1F32E41C1C30B6EF00F62E88 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F3065CA1C30EE19001E5DF0 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -481,6 +571,7 @@
 		};
 		1F32E41F1C30B6EF00F62E88 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F32E68B1C30B9D100F62E88 /* Kitchen.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
