@@ -61,7 +61,7 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 
         // - SeeAlso: http://nshipster.com/javascriptcore/
         let consoleLog: @convention(block) String -> Void = { message in
-            NSLog("%@", message)
+            LOG(message)
         }
         jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
             forKeyedSubscript: "debug")
