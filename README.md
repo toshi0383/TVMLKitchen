@@ -108,7 +108,7 @@ We don't know when to inject additional data. Well, even if we could know the ti
 So for now, if you need 100% dynamic behavior, I suppose you should go ahead and use UIKit.
 
 # References
-For implementation details, my slide is available.
+For implementation details, my slide is available.  
 [TVML + Native = Hybrid](https://speakerdeck.com/toshi0383/tvml-plus-native-equals-hybrid)
 
 # Contribution
