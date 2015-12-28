@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         _ = prepareMyKitchen(launchOptions)
-        openTVMLTemplateFromXMLFile("Catalog.xml.js")
+        openTVMLTemplateFromJSFile("Catalog.xml.js")
         return true
     }
 

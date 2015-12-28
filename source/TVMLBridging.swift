@@ -25,9 +25,8 @@ public func openTVMLTemplateFromRawXMLString(xmlString: String) {
     evaluateInTVMLContext(js)
 }
 
-public func openTVMLTemplateFromJSFile(preDefinedJsName: String) {
-    let jsfile = "\(preDefinedJsName).xml.js"
-    let js = "openTemplateFromJSFileName('\(jsfile)');"
+public func openTVMLTemplateFromJSFile(jsfile: String) {
+    let js = "openTemplateFromJSFile('\(jsfile)');"
     evaluateInTVMLContext(js)
 }
 

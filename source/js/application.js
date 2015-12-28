@@ -25,21 +25,29 @@ var options;
 function openTemplateFromJSFile(jsFileName) {
     debug("openTemplate:");
     options = App.options
+    mainBundleUrl = options.MAIN_BUNDLE_URL
+    debug(mainBundleUrl);
     var javascriptFiles = [
         `${options.BASEURL}/ResourceLoader.js`,
         `${options.BASEURL}/Presenter.js`
     ];
     evaluateScripts(javascriptFiles, function(success) {
-        if (success) {
-            resourceLoader = new ResourceLoader(options.BASEURL);
-            var index = resourceLoader.loadResource(`${options.BASEURL}${jsFileName}`,
-                function(resource) {
-                    var doc = Presenter.makeDocument(resource);
-                    doc.addEventListener("select", Presenter.load.bind(Presenter));
-                    navigationDocument.pushDocument(doc);
-                }
-            );
+        if (!success) {
+            debug("Javascript load failed.");
+            return;
         }
+        debug("Javascript loaded successfully.");
+        debug(mainBundleUrl);
+        debug(jsFileName);
+        resourceLoader = new ResourceLoader(mainBundleUrl);
+        var index = resourceLoader.loadResource(`${mainBundleUrl}${jsFileName}`,
+            function(resource) {
+                debug("Resource loaded successfully.");
+                var doc = Presenter.makeDocument(resource);
+                doc.addEventListener("select", Presenter.load.bind(Presenter));
+                navigationDocument.pushDocument(doc);
+            }
+        );
     });
 }
 

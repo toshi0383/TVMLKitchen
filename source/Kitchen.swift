@@ -77,6 +77,9 @@ extension Kitchen {
         let bundleid = info[String(kCFBundleIdentifierKey)]!
         appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
 
+        let mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
+        appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
+
         if let launchOptions = launchOptions as? [String: AnyObject] {
             for (kind, value) in launchOptions {
                 appControllerContext.launchOptions[kind] = value
