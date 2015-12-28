@@ -122,7 +122,7 @@ extension Kitchen: TVApplicationControllerDelegate {
     public func appController(appController: TVApplicationController,
         didStopWithOptions options: [String: AnyObject]?)
     {
-            LOG("\(__FUNCTION__) invoked with options: \(options)")
+        LOG("\(__FUNCTION__) invoked with options: \(options)")
     }
 
     public func appController(appController: TVApplicationController,

@@ -15,7 +15,6 @@ internal func openTVMLTemplateFromXMLFile(xmlFileName: String) {
 
 internal func openTVMLTemplateFromRawXMLString(xmlString: String) {
     let js = "openTemplateFromRawXMLString(`\(xmlString)`);"
-    LOG()
     evaluateInTVMLContext(js)
 }
 
@@ -24,7 +23,7 @@ internal func openTVMLTemplateFromJSFile(jsfile: String) {
     evaluateInTVMLContext(js)
 }
 
-private func evaluateInTVMLContext(js: String, completion: dispatch_block_t? = nil) {
+private func evaluateInTVMLContext(js: String, completion: (Void->Void)? = nil) {
     Kitchen.appController.evaluateInJavaScriptContext({context in
         context.evaluateScript(js)
     }, completion: {_ in completion?()})
