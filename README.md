@@ -1,6 +1,5 @@
 # TVMLKitchen😋🍴
-# What's this for ?
-TVMLKitchen provides Native UI using TVMLKit without additional client-server.  
+TVMLKitchen provides Native UI using TVMLKit **without additional client-server**.  
 With TVMLKitchen, you can load and show your TVML Templates much easier than you think.  
 Views are pushed to the navigationController, so user can pop to previous viewcontroller with 'Menu' button of the **AppleTV Remote**.  
 Templates are loaded from your app's Main Bundle.
