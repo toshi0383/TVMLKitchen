@@ -50,33 +50,28 @@ extension Kitchen {
         onLaunchError kitchenLaunchErrorHandler: KitchenLaunchErrorHandler? = nil) -> Bool
     {
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
+        sharedKitchen.kitchenLaunchErrorHandler = kitchenLaunchErrorHandler
 
         /*
-        Create the TVApplicationControllerContext for this application
-        and set the properties that will be passed to the `App.onLaunch` function
-        in JavaScript.
+        Create the TVApplicationControllerContext
         */
         let appControllerContext = TVApplicationControllerContext()
 
-        /*
-        The JavaScript URL is used to create the JavaScript context for your
-        TVMLKit application. Although it is possible to separate your JavaScript
-        into separate files, to help reduce the launch time of your application
-        we recommend creating minified and compressed version of this resource.
-        This will allow for the resource to be retrieved and UI presented to
-        the user quickly.
-        */
         let javaScriptURL = NSBundle(forClass: self).URLForResource("application", withExtension: "js")!
         appControllerContext.javaScriptApplicationURL = javaScriptURL
         appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
 
+        /// Cutting `application.js` off
         let TVBaseURL = javaScriptURL.URLByDeletingLastPathComponent
 
+        /// Define framework bundle URL
         appControllerContext.launchOptions["BASEURL"] = TVBaseURL!.absoluteString
         let info = NSBundle(forClass: self).infoDictionary!
         let bundleid = info[String(kCFBundleIdentifierKey)]!
         appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
 
+        /// Define mainBundle URL
         let mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
         appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
 
@@ -85,9 +80,6 @@ extension Kitchen {
                 appControllerContext.launchOptions[kind] = value
             }
         }
-
-        sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
-        sharedKitchen.kitchenLaunchErrorHandler = kitchenLaunchErrorHandler
 
         sharedKitchen.appController = TVApplicationController(context: appControllerContext,
             window: sharedKitchen.window, delegate: sharedKitchen)
