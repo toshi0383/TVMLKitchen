@@ -6,4 +6,5 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 OTHER_SWIFT_FLAGS = -DDEBUG
+TVOS_DEPLOYMENT_TARGET=9.0
 
