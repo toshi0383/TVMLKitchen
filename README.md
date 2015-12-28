@@ -74,7 +74,7 @@ Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
 })
 ```
 
-## Using Kitchen Recipes for a little bit more dynamizm.
+## Using Kitchen Recipes for a little bit more dynamizm. (beta)
 
 ```
 let banner = "Movie"
@@ -85,6 +85,8 @@ let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
 let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section1})
 Kitchen.serve(recipe: catalog)
 ```
+
+**Note**: This feature is still in beta. APIs are subject to change.
 
 ## Available Kitchen Recipes
 
