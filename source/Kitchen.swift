@@ -111,7 +111,6 @@ extension Kitchen: TVApplicationControllerDelegate {
             LOG("\(__FUNCTION__) invoked with options: \(options)")
     }
 
-
     public func appController(appController: TVApplicationController,
         evaluateAppJavaScriptInContext jsContext: JSContext)
     {

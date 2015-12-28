@@ -56,7 +56,7 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         jsContext.exceptionHandler = {context, value in
             LOG(context)
             LOG(value)
-            assertionFailure("Fucking JS error !!")
+            assertionFailure("You got JS error. Check your javascript code.")
         }
 
         // - SeeAlso: http://nshipster.com/javascriptcore/
@@ -74,13 +74,4 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
             Kitchen.navigationController.presentViewController(alertController, animated: true) { }
     })
     return true
-}
-
-private func asObjCBlock(f: Void->Void) -> AnyObject! {
-    let function: @convention(block) Void -> Void = f
-    return unsafeBitCast(function, AnyObject.self)
-}
-
-private func setFunction(name name: String, to jsContext: JSContext, function: AnyObject!) {
-    jsContext.setObject(function, forKeyedSubscript: name)
 }
