@@ -13,37 +13,15 @@ import JavaScriptCore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    var window: UIWindow? = Kitchen.window
 
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    func application(application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext: {appController, jsContext in
-            /// set Exception handler
-            /// called on JS error
-            jsContext.exceptionHandler = {context, value in
-                LOG(context)
-                LOG(value)
-                assertionFailure("Fucking JS error !!")
-            }
-
-            // - SeeAlso: http://nshipster.com/javascriptcore/
-            let consoleLog: @convention(block) String -> Void = { message in
-                NSLog("%@", message)
-            }
-            jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
-                forKeyedSubscript: "debug")
-
-        }, onLaunchError: { error in
-            let title = "Error Launching Application"
-            let message = error.localizedDescription
-            let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
-
-            Kitchen.navigationController.presentViewController(alertController, animated: true) { }
-        })
-        return true
+        return prepareMyKitchen(launchOptions)
     }
 
+    // swiftlint:disable line_length
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -65,8 +43,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    // swiftlint:enable line_length
 
 
+}
+
+private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
+{
+    Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext: {appController, jsContext in
+        /// set Exception handler
+        /// called on JS error
+        jsContext.exceptionHandler = {context, value in
+            LOG(context)
+            LOG(value)
+            assertionFailure("Fucking JS error !!")
+        }
+
+        // - SeeAlso: http://nshipster.com/javascriptcore/
+        let consoleLog: @convention(block) String -> Void = { message in
+            NSLog("%@", message)
+        }
+        jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
+            forKeyedSubscript: "debug")
+
+        }, onLaunchError: { error in
+            let title = "Error Launching Application"
+            let message = error.localizedDescription
+            let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
+
+            Kitchen.navigationController.presentViewController(alertController, animated: true) { }
+    })
+    return true
 }
 
 private func asObjCBlock(f: Void->Void) -> AnyObject! {

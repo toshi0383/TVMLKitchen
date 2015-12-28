@@ -9,32 +9,41 @@
 import Foundation
 import TVMLKit
 
-public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext)->Void
-public typealias KitchenLaunchErrorHandler = (NSError)->Void
+public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
+public typealias KitchenLaunchErrorHandler = NSError -> Void
 
 public class Kitchen: NSObject {
     /// singleton instance
     private static let sharedKitchen = Kitchen()
 
-    private var evaluateAppJavaScriptInContext:JavaScriptEvaluationHandler?
+    private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
-    private var kitchenLaunchErrorHandler:KitchenLaunchErrorHandler?
+    private var kitchenLaunchErrorHandler: KitchenLaunchErrorHandler?
 
-    private var window: UIWindow?
+    private var window: UIWindow
 
     private var appController: TVApplicationController!
+
+    override init() {
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        super.init()
+    }
 
 }
 
 extension Kitchen {
 
-    public static var navigationController:UINavigationController {
+    public static var window: UIWindow {
+        return sharedKitchen.window
+    }
+
+    public static var navigationController: UINavigationController {
         return sharedKitchen.appController.navigationController
     }
 
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
-        evaluateAppJavaScriptInContext:JavaScriptEvaluationHandler? = nil,
-        onLaunchError kitchenLaunchErrorHandler:KitchenLaunchErrorHandler? = nil) -> Bool
+        evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
+        onLaunchError kitchenLaunchErrorHandler: KitchenLaunchErrorHandler? = nil) -> Bool
     {
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
@@ -70,7 +79,8 @@ extension Kitchen {
             }
         }
 
-        sharedKitchen.appController = TVApplicationController(context: appControllerContext, window: sharedKitchen.window, delegate: sharedKitchen)
+        sharedKitchen.appController = TVApplicationController(context: appControllerContext,
+            window: sharedKitchen.window, delegate: sharedKitchen)
 
         sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
         sharedKitchen.kitchenLaunchErrorHandler = kitchenLaunchErrorHandler
