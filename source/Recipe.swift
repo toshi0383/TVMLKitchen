@@ -32,6 +32,7 @@ extension Section: CustomStringConvertible {
 
     public var description: String {
         var xml = ""
+        xml += "<listItemLockup>"
         xml += "<title>\(title)</title>"
         xml += "<decorationLabel>\(contents.count)</decorationLabel>"
         xml += "<relatedContent>"
@@ -49,6 +50,7 @@ extension Section: CustomStringConvertible {
         xml += "</section>"
         xml += "</grid>"
         xml += "</relatedContent>"
+        xml += "</listItemLockup>"
         return xml
     }
 }
@@ -59,7 +61,7 @@ public struct Catalog {
 }
 
 public enum Recipe {
-    case Catalog(banner:String, sectionsList: [[Section]])
+    case Catalog(banner:String, sections: [Section])
 }
 
 extension Recipe: CustomStringConvertible {
@@ -70,7 +72,7 @@ extension Recipe: CustomStringConvertible {
 //        xml += "<style> title { color: rgb(255, 255, 255); } </style>"
         xml += "</head>"
         switch self {
-        case .Catalog(let banner, let sectionsList):
+        case .Catalog(let banner, let sections):
             xml += "<catalogTemplate>"
 
             /// Top Banner
@@ -84,13 +86,7 @@ extension Recipe: CustomStringConvertible {
             xml += "<header>"
             xml += "<title></title>"
             xml += "</header>"
-            xml += sectionsList.map{ sections in
-                var xml = ""
-                xml += "<listItemLockup>"
-                xml += sections.map{"\($0)"}.joinWithSeparator("")
-                xml += "</listItemLockup>"
-                return xml
-            }.joinWithSeparator("")
+            xml += sections.map{"\($0)"}.joinWithSeparator("")
         }
         xml += "</section>"
         xml += "</list>"
