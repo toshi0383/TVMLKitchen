@@ -46,13 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     // swiftlint:enable line_length
-
-
 }
 
 private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 {
-    Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext: {appController, jsContext in
+    Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
+    {appController, jsContext in
         /// set Exception handler
         /// called on JS error
         jsContext.exceptionHandler = {context, value in
@@ -68,13 +67,14 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
             forKeyedSubscript: "debug")
 
-        }, onLaunchError: { error in
-            let title = "Error Launching Application"
-            let message = error.localizedDescription
-            let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
+    }, onLaunchError: { error in
+        let title = "Error Launching Application"
+        let message = error.localizedDescription
+        let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
 
-            Kitchen.navigationController.presentViewController(alertController, animated: true) { }
-        }
-    )
+        Kitchen.navigationController.presentViewController(alertController, animated: true) { }
+
+    })
+
     return true
 }
