@@ -37,6 +37,10 @@ extension Kitchen {
         return sharedKitchen.window
     }
 
+    public static var appController: TVApplicationController {
+        return sharedKitchen.appController
+    }
+
     public static var navigationController: UINavigationController {
         return sharedKitchen.appController.navigationController
     }
@@ -62,14 +66,14 @@ extension Kitchen {
         This will allow for the resource to be retrieved and UI presented to
         the user quickly.
         */
-        let javaScriptURL = NSBundle.mainBundle().URLForResource("application", withExtension: "js")!
+        let javaScriptURL = NSBundle(forClass: self).URLForResource("application", withExtension: "js")!
         appControllerContext.javaScriptApplicationURL = javaScriptURL
         appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
 
         let TVBaseURL = javaScriptURL.URLByDeletingLastPathComponent
 
         appControllerContext.launchOptions["BASEURL"] = TVBaseURL!.absoluteString
-        let info = NSBundle.mainBundle().infoDictionary!
+        let info = NSBundle(forClass: self).infoDictionary!
         let bundleid = info[String(kCFBundleIdentifierKey)]!
         appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
 
@@ -79,11 +83,11 @@ extension Kitchen {
             }
         }
 
-        sharedKitchen.appController = TVApplicationController(context: appControllerContext,
-            window: sharedKitchen.window, delegate: sharedKitchen)
-
         sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
         sharedKitchen.kitchenLaunchErrorHandler = kitchenLaunchErrorHandler
+
+        sharedKitchen.appController = TVApplicationController(context: appControllerContext,
+            window: sharedKitchen.window, delegate: sharedKitchen)
         return true
     }
 

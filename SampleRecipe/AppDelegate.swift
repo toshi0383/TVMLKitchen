@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        return prepareMyKitchen(launchOptions)
+        _ = prepareMyKitchen(launchOptions)
+        openTVMLTemplateFromXMLFile("Catalog.xml.js")
+        return true
     }
 
     // swiftlint:disable line_length
@@ -72,6 +74,7 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
             let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
 
             Kitchen.navigationController.presentViewController(alertController, animated: true) { }
-    })
+        }
+    )
     return true
 }

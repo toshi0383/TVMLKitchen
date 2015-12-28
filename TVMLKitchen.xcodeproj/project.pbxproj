@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3065B81C30D634001E5DF0 /* application.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B51C30D634001E5DF0 /* application.js */; };
+		1F3065B91C30D634001E5DF0 /* Presenter.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B61C30D634001E5DF0 /* Presenter.js */; };
+		1F3065BA1C30D634001E5DF0 /* ResourceLoader.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B71C30D634001E5DF0 /* ResourceLoader.js */; };
+		1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */; };
+		1F3065BE1C30D8BD001E5DF0 /* Catalog.xml.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */; };
 		1F32E4141C30B6EF00F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E4191C30B6EF00F62E88 /* TVMLKitchenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */; };
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
 		1F32E5511C30B79600F62E88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E5501C30B79600F62E88 /* ViewController.swift */; };
-		1F32E5541C30B79600F62E88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F32E5521C30B79600F62E88 /* Main.storyboard */; };
 		1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32E5551C30B79600F62E88 /* Assets.xcassets */; };
 		1F32E55B1C30B7D300F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E6851C30B81200F62E88 /* TVMLKitchen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +34,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F3065B51C30D634001E5DF0 /* application.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = application.js; sourceTree = "<group>"; };
+		1F3065B61C30D634001E5DF0 /* Presenter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Presenter.js; sourceTree = "<group>"; };
+		1F3065B71C30D634001E5DF0 /* ResourceLoader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ResourceLoader.js; sourceTree = "<group>"; };
+		1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVMLBridging.swift; sourceTree = "<group>"; };
+		1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Catalog.xml.js; sourceTree = "<group>"; };
 		1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TVMLKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4131C30B6EF00F62E88 /* TVMLKitchenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMLKitchenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMLKitchenTests.swift; sourceTree = "<group>"; };
@@ -37,7 +46,6 @@
 		1F32E54C1C30B79600F62E88 /* SampleRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E54E1C30B79600F62E88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F32E5501C30B79600F62E88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1F32E5531C30B79600F62E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F32E5551C30B79600F62E88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F32E5571C30B79600F62E88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F32E5F61C30B81200F62E88 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,10 +82,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F3065B41C30D634001E5DF0 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				1F3065B51C30D634001E5DF0 /* application.js */,
+				1F3065B61C30D634001E5DF0 /* Presenter.js */,
+				1F3065B71C30D634001E5DF0 /* ResourceLoader.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
 		1F32E3FF1C30B6EF00F62E88 = {
 			isa = PBXGroup;
 			children = (
 				1F32E68C1C30BC3000F62E88 /* library */,
+				1F32E6881C30B9B900F62E88 /* config */,
 				1F32E55C1C30B81200F62E88 /* source */,
 				1F32E4171C30B6EF00F62E88 /* TVMLKitchenTests */,
 				1F32E54D1C30B79600F62E88 /* SampleRecipe */,
@@ -109,7 +128,7 @@
 			children = (
 				1F32E54E1C30B79600F62E88 /* AppDelegate.swift */,
 				1F32E5501C30B79600F62E88 /* ViewController.swift */,
-				1F32E5521C30B79600F62E88 /* Main.storyboard */,
+				1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */,
 				1F32E5551C30B79600F62E88 /* Assets.xcassets */,
 				1F32E5571C30B79600F62E88 /* Info.plist */,
 			);
@@ -119,10 +138,11 @@
 		1F32E55C1C30B81200F62E88 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				1F32E6881C30B9B900F62E88 /* config */,
+				1F3065B41C30D634001E5DF0 /* js */,
 				1F32E5F61C30B81200F62E88 /* Info.plist */,
 				1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */,
 				1F32E6861C30B81E00F62E88 /* Kitchen.swift */,
+				1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -265,6 +285,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3065BA1C30D634001E5DF0 /* ResourceLoader.js in Resources */,
+				1F3065B81C30D634001E5DF0 /* application.js in Resources */,
+				1F3065B91C30D634001E5DF0 /* Presenter.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */,
-				1F32E5541C30B79600F62E88 /* Main.storyboard in Resources */,
+				1F3065BE1C30D8BD001E5DF0 /* Catalog.xml.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */,
 				1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */,
 				1F32E6AD1C30BC3000F62E88 /* DebugLog.all.swift in Sources */,
 			);
@@ -339,17 +363,6 @@
 			targetProxy = 1F32E4151C30B6EF00F62E88 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1F32E5521C30B79600F62E88 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F32E5531C30B79600F62E88 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1F32E41B1C30B6EF00F62E88 /* Debug */ = {
