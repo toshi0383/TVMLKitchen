@@ -23,26 +23,26 @@ var resourceLoader;
  */
 var options;
 function openTemplateFromJSFile(jsFileName) {
-    debug("openTemplate:");
+    kitchenDebug("openTemplate:");
     options = App.options
     mainBundleUrl = options.MAIN_BUNDLE_URL
-    debug(mainBundleUrl);
+    kitchenDebug(mainBundleUrl);
     var javascriptFiles = [
         `${options.BASEURL}/ResourceLoader.js`,
         `${options.BASEURL}/Presenter.js`
     ];
     evaluateScripts(javascriptFiles, function(success) {
         if (!success) {
-            debug("Javascript load failed.");
+            kitchenDebug("Javascript load failed.");
             return;
         }
-        debug("Javascript loaded successfully.");
-        debug(mainBundleUrl);
-        debug(jsFileName);
+        kitchenDebug("Javascript loaded successfully.");
+        kitchenDebug(mainBundleUrl);
+        kitchenDebug(jsFileName);
         resourceLoader = new ResourceLoader(mainBundleUrl);
         var index = resourceLoader.loadResource(`${mainBundleUrl}${jsFileName}`,
             function(resource) {
-                debug("Resource loaded successfully.");
+                kitchenDebug("Resource loaded successfully.");
                 var doc = Presenter.makeDocument(resource);
                 doc.addEventListener("select", Presenter.load.bind(Presenter));
                 navigationDocument.pushDocument(doc);
@@ -165,7 +165,7 @@ var buildResults = function(doc, searchText) {
 
     //Apply filter to titles array using matchesText helper function
     titles = (searchText) ? titles.filter(matchesText) : titles;
-    debug("searchText: " + searchText);
+    kitchenDebug("searchText: " + searchText);
     //overwrite stringData for new input element if search results exist by dynamically constructing shelf template fragment
     if (titles.length > 0) {
         lsInput.stringData = `<shelf><header><title>Results</title></header><section id="Results">`;

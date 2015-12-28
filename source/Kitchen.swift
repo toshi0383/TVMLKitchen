@@ -121,6 +121,13 @@ extension Kitchen: TVApplicationControllerDelegate {
     public func appController(appController: TVApplicationController,
         evaluateAppJavaScriptInContext jsContext: JSContext)
     {
+        /// inject Debug logger for TVMLKitchen
+        let consoleLog: @convention(block) String -> Void = { message in
+            LOG(message)
+        }
+        jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
+            forKeyedSubscript: "kitchenDebug")
+
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
     }
 }

@@ -61,11 +61,6 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         }
 
         // - SeeAlso: http://nshipster.com/javascriptcore/
-        let consoleLog: @convention(block) String -> Void = { message in
-            LOG(message)
-        }
-        jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
-            forKeyedSubscript: "debug")
 
     }, onLaunchError: { error in
         let title = "Error Launching Application"
