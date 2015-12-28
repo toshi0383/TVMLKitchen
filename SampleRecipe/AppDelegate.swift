@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let banner = "Movie"
         let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
             withExtension: "jpg")!.absoluteString
-        let a = ("Star Wars", thumbnailUrl)
+        let content = ("Star Wars", thumbnailUrl)
         let range = (0...100)
-        let sections1 = [Section(title: "Section 1", args: range.map{_ in a})]
+        let sections1 = [Section(title: "Section 1", args: range.map{_ in content})]
         let catalog = Recipe.Catalog(banner: banner, sectionsList: (0...10).map{_ in sections1})
         Kitchen.serve(recipe: catalog)
         return true
