@@ -6,9 +6,6 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
-import Foundation
-
-
 public struct Section {
 
     struct Content {

@@ -6,8 +6,6 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
-import UIKit
-
 internal func openTVMLTemplateFromXMLFile(xmlFileName: String) {
     let js = "openTemplateFromXMLFile('\(xmlFileName)');"
     evaluateInTVMLContext(js)
