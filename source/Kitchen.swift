@@ -31,6 +31,8 @@ public class Kitchen: NSObject {
 
 }
 
+// MARK: Public API (serve)
+/// load
 extension Kitchen {
 
     public static func serve(xmlFile xmlFile: String) {
@@ -43,6 +45,10 @@ extension Kitchen {
 
     public static func serve(jsFile jsFile: String) {
         openTVMLTemplateFromJSFile(jsFile)
+    }
+
+    public static func serve(recipe recipe: Recipe) {
+        openTVMLTemplateFromRawXMLString(recipe.description)
     }
 }
 
@@ -60,6 +66,18 @@ extension Kitchen {
         return sharedKitchen.appController.navigationController
     }
 
+    /**
+     create TVApplicationControllerContext using launchOptions
+
+     Supposed to be called in application:didFinishedLaunchingWithOptions:
+     in UIApplicationDelegate of your @UIApplicationMain .
+
+     - parameter launchOptions: launchOptions
+     - parameter evaluateAppJavaScriptInContext:
+                 the closure to inject functions or a exceptionHandler into JSContext
+     - parameter onLaunchError: the Error handler that gets called in appController's delegate
+     - returns: If launch process was successfully or not.
+     */
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
         evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
         onLaunchError kitchenLaunchErrorHandler: KitchenLaunchErrorHandler? = nil) -> Bool
@@ -99,6 +117,11 @@ extension Kitchen {
         sharedKitchen.appController = TVApplicationController(context: appControllerContext,
             window: sharedKitchen.window, delegate: sharedKitchen)
         return true
+    }
+
+    /// Calls TVApplicationController.stop()
+    public static func stop() {
+        sharedKitchen.appController.stop()
     }
 
 }

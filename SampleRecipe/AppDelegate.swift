@@ -13,15 +13,21 @@ import JavaScriptCore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow? = Kitchen.window
-
     func application(application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         _ = prepareMyKitchen(launchOptions)
 //        Kitchen.serve(jsFile:"Catalog.xml.js")
 //        Kitchen.serve(xmlFile:"Catalog.xml")
-        Kitchen.serve(rawXML:RawXMLString.Catalog.description)
+//        Kitchen.serve(rawXML:RawXMLString.Catalog.description)
+        let banner = "movie"
+        let thumbnailUrl = NSBundle.mainBundle().URLForResource("images",
+            withExtension: "jpeg")!.absoluteString
+        let a = ("hello", thumbnailUrl)
+        let range = (0...100)
+        let sections1 = [Section(title: "section 1", args: range.map{_ in a})]
+        let catalog = Recipe.Catalog(banner: banner, sectionsList: (0...10).map{_ in sections1})
+        Kitchen.serve(recipe: catalog)
         return true
     }
 
