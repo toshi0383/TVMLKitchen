@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Kitchen.serve(jsFile:"Catalog.xml.js")
 //        Kitchen.serve(xmlFile:"Catalog.xml")
 //        Kitchen.serve(rawXML:RawXMLString.Catalog.description)
-        let banner = "movie"
-        let thumbnailUrl = NSBundle.mainBundle().URLForResource("images",
-            withExtension: "jpeg")!.absoluteString
-        let a = ("hello", thumbnailUrl)
+        let banner = "Movie"
+        let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
+            withExtension: "jpg")!.absoluteString
+        let a = ("Star Wars", thumbnailUrl)
         let range = (0...100)
-        let sections1 = [Section(title: "section 1", args: range.map{_ in a})]
+        let sections1 = [Section(title: "Section 1", args: range.map{_ in a})]
         let catalog = Recipe.Catalog(banner: banner, sectionsList: (0...10).map{_ in sections1})
         Kitchen.serve(recipe: catalog)
         return true

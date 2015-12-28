@@ -27,7 +27,7 @@
 		1F3065FB1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065DF1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig */; };
 		1F3065FC1C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065E01C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig */; };
 		1F3066031C31179A001E5DF0 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3066011C311110001E5DF0 /* Recipe.swift */; };
-		1F3066051C31221D001E5DF0 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1F3066041C31221D001E5DF0 /* images.jpeg */; };
+		1F3066071C312CB8001E5DF0 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F3066061C312CB8001E5DF0 /* img.jpg */; };
 		1F32E4141C30B6EF00F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E4191C30B6EF00F62E88 /* TVMLKitchenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */; };
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
@@ -70,7 +70,7 @@
 		1F3065DF1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Framework.xcconfig"; sourceTree = "<group>"; };
 		1F3065E01C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		1F3066011C311110001E5DF0 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		1F3066041C31221D001E5DF0 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
+		1F3066061C312CB8001E5DF0 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TVMLKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4131C30B6EF00F62E88 /* TVMLKitchenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMLKitchenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMLKitchenTests.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 				1F32E5501C30B79600F62E88 /* ViewController.swift */,
 				1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */,
 				1F32E5551C30B79600F62E88 /* Assets.xcassets */,
-				1F3066041C31221D001E5DF0 /* images.jpeg */,
+				1F3066061C312CB8001E5DF0 /* img.jpg */,
 				1F32E5571C30B79600F62E88 /* Info.plist */,
 				1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */,
 			);
@@ -395,9 +395,9 @@
 				1F3065ED1C30EE1A001E5DF0 /* Framework.xcconfig in Resources */,
 				1F3065FC1C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig in Resources */,
 				1F3065E71C30EE1A001E5DF0 /* Common.xcconfig in Resources */,
-				1F3066051C31221D001E5DF0 /* images.jpeg in Resources */,
 				1F3065E91C30EE1A001E5DF0 /* Profile.xcconfig in Resources */,
 				1F3065E81C30EE1A001E5DF0 /* Debug.xcconfig in Resources */,
+				1F3066071C312CB8001E5DF0 /* img.jpg in Resources */,
 				1F3065C01C30E8D0001E5DF0 /* RawXMLString.txt in Resources */,
 				1F3065FB1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig in Resources */,
 				1F3065F91C30EE1A001E5DF0 /* tvOS-Application.xcconfig in Resources */,
