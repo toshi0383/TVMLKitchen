@@ -35,7 +35,7 @@ Kitchen.prepare(launchOptions)
 Launch your Alert template anywhere and anytime.
 
 ```
-Kitchen.serve(jsFile:"Catalog.xml.js")
+Kitchen.serve(jsFile:"Alert.xml.js")
 ```
 
 Kitchen automatically looks for the jsFile in your main bundle, and pushes it to navigationController.
