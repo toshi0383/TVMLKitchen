@@ -1,0 +1,3 @@
+[submodule "library/DebugLog"]
+	path = library/DebugLog
+	url = git@github.com:inamiy/DebugLog.git
