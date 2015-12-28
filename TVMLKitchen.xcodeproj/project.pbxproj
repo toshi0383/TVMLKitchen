@@ -12,6 +12,8 @@
 		1F3065BA1C30D634001E5DF0 /* ResourceLoader.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B71C30D634001E5DF0 /* ResourceLoader.js */; };
 		1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */; };
 		1F3065BE1C30D8BD001E5DF0 /* Catalog.xml.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */; };
+		1F3065C01C30E8D0001E5DF0 /* RawXMLString.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */; };
+		1F3065C21C30E912001E5DF0 /* SampleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3065C11C30E912001E5DF0 /* SampleResource.swift */; };
 		1F32E4141C30B6EF00F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E4191C30B6EF00F62E88 /* TVMLKitchenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */; };
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
@@ -39,6 +41,8 @@
 		1F3065B71C30D634001E5DF0 /* ResourceLoader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ResourceLoader.js; sourceTree = "<group>"; };
 		1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVMLBridging.swift; sourceTree = "<group>"; };
 		1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Catalog.xml.js; sourceTree = "<group>"; };
+		1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RawXMLString.txt; sourceTree = "<group>"; };
+		1F3065C11C30E912001E5DF0 /* SampleResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleResource.swift; sourceTree = "<group>"; };
 		1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TVMLKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4131C30B6EF00F62E88 /* TVMLKitchenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMLKitchenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMLKitchenTests.swift; sourceTree = "<group>"; };
@@ -127,10 +131,12 @@
 			isa = PBXGroup;
 			children = (
 				1F32E54E1C30B79600F62E88 /* AppDelegate.swift */,
+				1F3065C11C30E912001E5DF0 /* SampleResource.swift */,
 				1F32E5501C30B79600F62E88 /* ViewController.swift */,
 				1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */,
 				1F32E5551C30B79600F62E88 /* Assets.xcassets */,
 				1F32E5571C30B79600F62E88 /* Info.plist */,
+				1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */,
 			);
 			path = SampleRecipe;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3065C01C30E8D0001E5DF0 /* RawXMLString.txt in Resources */,
 				1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */,
 				1F3065BE1C30D8BD001E5DF0 /* Catalog.xml.js in Resources */,
 			);
@@ -351,6 +358,7 @@
 			files = (
 				1F32E5511C30B79600F62E88 /* ViewController.swift in Sources */,
 				1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */,
+				1F3065C21C30E912001E5DF0 /* SampleResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
