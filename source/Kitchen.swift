@@ -24,6 +24,8 @@ public class Kitchen: NSObject {
 
     private var appController: TVApplicationController!
 
+    private var actionIDHandler: (String -> Void)?
+
     override init() {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         super.init()
@@ -47,7 +49,8 @@ extension Kitchen {
         openTVMLTemplateFromJSFile(jsFile)
     }
 
-    public static func serve(recipe recipe: Recipe) {
+    public static func serve(recipe recipe: Recipe, actionIDHandler: (String -> Void)? = nil) {
+        sharedKitchen.actionIDHandler = actionIDHandler
         openTVMLTemplateFromRawXMLString(recipe.description)
     }
 }
@@ -157,6 +160,13 @@ extension Kitchen: TVApplicationControllerDelegate {
         }
         jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
             forKeyedSubscript: "kitchenDebug")
+
+        let actionIDHandler: @convention(block) String -> Void = {[weak self] actionID in
+            LOG("actionIDHandler")
+            self?.actionIDHandler?(actionID)
+        }
+        jsContext.setObject(unsafeBitCast(actionIDHandler, AnyObject.self),
+            forKeyedSubscript: "actionIDHandler")
 
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
     }

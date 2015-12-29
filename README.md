@@ -90,7 +90,7 @@ Kitchen.serve(recipe: catalog)
 ## Available Kitchen Recipes
 
 - [x] Catalog
-- [ ] Catalog with select action handler
+- [x] Catalog with select action handler
 - [ ] Alert with button handler
 - [ ] Rating with handler
 - [ ] Compilation with select action handler

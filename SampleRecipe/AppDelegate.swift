@@ -23,11 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let banner = "Movie"
         let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
             withExtension: "jpg")!.absoluteString
-        let content = ("Star Wars", thumbnailUrl)
+        let content = ("Star Wars", thumbnailUrl, "/title?titleId=1234")
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
         let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section1})
-        Kitchen.serve(recipe: catalog)
+        Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
+            LOG(actionID)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.openViewController()
+            }
+        })
         return true
+    }
+
+    func openViewController() {
+        LOG()
+        let vc = ViewController()
+        Kitchen.navigationController.pushViewController(vc, animated: true)
     }
 
     // swiftlint:disable line_length

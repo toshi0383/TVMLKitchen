@@ -11,18 +11,22 @@ public struct Section {
     struct Content {
         let title: String
         let thumbnailURL: String
+        let actionID: String
     }
+
+    public typealias ContentTuple = (title: String, thumbnailURL: String, actionID: String)
 
     let title: String
 
     let contents: [Content]
 
-    public init(title: String, args: [(title: String, thumbnailURL: String)]){
+
+    public init(title: String, args: [ContentTuple]) {
         self.title = title
         self.contents = args.map(Content.init)
     }
 
-    public init(title: String, args: (title: String, thumbnailURL: String)...) {
+    public init(title: String, args: ContentTuple...) {
         self.title = title
         self.contents = args.map(Content.init)
     }
@@ -40,7 +44,7 @@ extension Section: CustomStringConvertible {
         xml += "<section>"
         xml += contents.map{ content in
             var xml = ""
-            xml += "<lockup>"
+            xml += "<lockup actionID=\"\(content.actionID)\">"
             xml += "<img src=\"\(content.thumbnailURL)\" "
             xml += "width=\"250\" height=\"376\" />"
             xml += "<title>\(content.title)</title>"

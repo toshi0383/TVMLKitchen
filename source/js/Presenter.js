@@ -140,20 +140,12 @@ var Presenter = {
             ele = event.target,
             templateURL = ele.getAttribute("template"),
             presentation = ele.getAttribute("presentation");
-            action = ele.getAttribute("action");
-            titleId = ele.getAttribute("title-id");
+            actionID = ele.getAttribute("actionID");
             tagName = ele.tagName;
-        var actions = {
-            "playContent":function(){ playContent(titleId) },
-            "openPageViewController":function(){ openPageViewController() },
-            "openZappingViewController":function(){ openZappingViewController() },
-            "openCatalog":function(){ openCatalog() },
-            "showMenu":function(){showMenu()}
+
+        if(actionID){
+            actionIDHandler(actionID);
         }
-       if(action){
-           debug(action)
-           actions[action]();
-       }
 
 
         /*
