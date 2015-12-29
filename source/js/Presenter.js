@@ -127,13 +127,13 @@ var Presenter = {
      * @param {Event} event - The select event
      */
     play: function(event) {
-        debug("Presenter.js: play")
+        kitchenDebug("Presenter.js: play")
     },
     holdselect: function(event) {
-        debug("Presenter.js: holdselect")
+        kitchenDebug("Presenter.js: holdselect")
     },
     highlight: function(event) {
-        debug("Presenter.js: highlight")
+        kitchenDebug("Presenter.js: highlight")
     },
     load: function(event) {
         var self = this,

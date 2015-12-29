@@ -45,10 +45,14 @@ function openTemplateFromRawXMLString(xmlString) {
        `${options.BASEURL}/Presenter.js`
     ];
     evaluateScripts(javascriptFiles, function(success) {
+        Presenter.showLoadingIndicator();
         kitchenDebug("xmlString:" + xmlString);
         var doc = Presenter.makeDocument(xmlString);
         doc.addEventListener("select", Presenter.load.bind(Presenter));
-        navigationDocument.pushDocument(doc);
+        doc.addEventListener("highlight", Presenter.highlight.bind(Presenter));
+        doc.addEventListener("holdselect", Presenter.holdselect.bind(Presenter));
+        doc.addEventListener("play", Presenter.play.bind(Presenter));
+        Presenter.defaultPresenter.call(Presenter, doc);
     });
 }
 
