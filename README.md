@@ -1,6 +1,5 @@
-[![Build Status](https://www.bitrise.io/app/de994b854e5c425f.svg?token=GZp-KU8RDjmewA2Hdj27fQ)](https://www.bitrise.io/app/de994b854e5c425f)
+# TVMLKitchen😋🍴 [![Build Status](https://www.bitrise.io/app/de994b854e5c425f.svg?token=GZp-KU8RDjmewA2Hdj27fQ)](https://www.bitrise.io/app/de994b854e5c425f)
 
-# TVMLKitchen😋🍴
 TVMLKitchen provides Native UI using TVMLKit **without additional client-server**.  
 With TVMLKitchen, you can load and show your TVML Templates much easier than you think.  
 Views are pushed to the navigationController, so user can pop to previous viewcontroller with 'Menu' button of the **AppleTV Remote**.  
