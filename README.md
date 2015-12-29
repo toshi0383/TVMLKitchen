@@ -85,6 +85,8 @@ let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section
 Kitchen.serve(recipe: catalog)
 ```
 
+![Catalog Recipe looks like this](image/ss.png)
+
 **Note**: This feature is still in beta. APIs are subject to change.
 
 ## Available Kitchen Recipes
