@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         _ = prepareMyKitchen(launchOptions)
-//        Kitchen.serve(jsFile:"Catalog.xml.js")
 //        Kitchen.serve(xmlFile:"Catalog.xml")
-//        Kitchen.serve(rawXML:RawXMLString.Catalog.description)
         let banner = "Movie"
         let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
             withExtension: "jpg")!.absoluteString
@@ -28,16 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section1})
         Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
             LOG(actionID)
+            let identifier = actionID // parse action ID here
             dispatch_async(dispatch_get_main_queue()) {
-                self.openViewController()
+                self.openViewController(identifier)
             }
         })
         return true
     }
 
-    func openViewController() {
+    func openViewController(identifier: String) {
         LOG()
-        let vc = ViewController()
+        let sb = UIStoryboard(name: "ViewController", bundle: NSBundle.mainBundle())
+        let vc = sb.instantiateInitialViewController()!
         Kitchen.navigationController.pushViewController(vc, animated: true)
     }
 

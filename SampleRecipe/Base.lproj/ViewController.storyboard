@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="SDq-1u-6R3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Ffw-j3-4K9">
+            <objects>
+                <viewController id="SDq-1u-6R3" customClass="ViewController" customModule="SampleRecipe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="evB-pX-a0j"/>
+                        <viewControllerLayoutGuide type="bottom" id="KyJ-cV-FDh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vhI-78-4Yk">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="6SD-mQ-3RS">
+                                <rect key="frame" x="632" y="497" width="657" height="86"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iY0-bH-jNU">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="86"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Catalog.xml.js"/>
+                                        <connections>
+                                            <action selector="openCatalogTemplate" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="3yS-JO-Aqm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qn-b4-3Km">
+                                        <rect key="frame" x="373" y="0.0" width="284" height="86"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Catalog.xml"/>
+                                        <connections>
+                                            <action selector="openRawXMLFile:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="gql-8j-oaV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6SD-mQ-3RS" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="nTr-hV-7Lb"/>
+                            <constraint firstItem="6SD-mQ-3RS" firstAttribute="centerY" secondItem="vhI-78-4Yk" secondAttribute="centerY" id="wfU-QZ-eNA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P0u-dd-QiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="349"/>
+        </scene>
+    </scenes>
+</document>

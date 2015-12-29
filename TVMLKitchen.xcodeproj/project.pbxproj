@@ -37,6 +37,7 @@
 		1F32E6851C30B81200F62E88 /* TVMLKitchen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E6861C30B81E00F62E88 /* Kitchen.swift */; };
 		1F32E6AD1C30BC3000F62E88 /* DebugLog.all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E6951C30BC3000F62E88 /* DebugLog.all.swift */; };
+		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		1F32E6861C30B81E00F62E88 /* Kitchen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 		1F32E68B1C30B9D100F62E88 /* Kitchen.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Kitchen.xcconfig; sourceTree = "<group>"; };
 		1F32E6951C30BC3000F62E88 /* DebugLog.all.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLog.all.swift; sourceTree = "<group>"; };
+		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				1F32E54E1C30B79600F62E88 /* AppDelegate.swift */,
 				1F3065C11C30E912001E5DF0 /* SampleResource.swift */,
 				1F32E5501C30B79600F62E88 /* ViewController.swift */,
+				1FB543481C32DA6C0015CC66 /* ViewController.storyboard */,
 				1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */,
 				1F32E5551C30B79600F62E88 /* Assets.xcassets */,
 				1F3066061C312CB8001E5DF0 /* img.jpg */,
@@ -406,6 +409,7 @@
 				1F3065EE1C30EE1A001E5DF0 /* StaticLibrary.xcconfig in Resources */,
 				1F3065FA1C30EE1A001E5DF0 /* tvOS-Base.xcconfig in Resources */,
 				1F3065EB1C30EE1A001E5DF0 /* Test.xcconfig in Resources */,
+				1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +471,17 @@
 			targetProxy = 1F32E4151C30B6EF00F62E88 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1FB543481C32DA6C0015CC66 /* ViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FB543491C32DA6C0015CC66 /* Base */,
+			);
+			name = ViewController.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1F32E41B1C30B6EF00F62E88 /* Debug */ = {

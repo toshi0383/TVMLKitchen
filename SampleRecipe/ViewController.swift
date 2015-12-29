@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import TVMLKitchen
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.orangeColor()
+    }
+
+    @IBAction func openCatalogTemplate() {
+        LOG()
+        Kitchen.serve(jsFile:"Catalog.xml.js")
+    }
+
+    @IBAction func openRawXMLFile(sender: AnyObject!) {
+        LOG()
+        Kitchen.serve(rawXML:RawXMLString.Catalog.description)
     }
 
 }
