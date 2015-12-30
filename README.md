@@ -8,19 +8,6 @@ Templates are loaded from your app's Main Bundle.
 Without the need of configuring UIKit for complex UI, TVMLKit is a good choice for displaying data in simple UI.  
 TVMLKitchen makes the process even much easier, especially when you don't want to deal with the client-server.
 
-# Installation
-
-## Carthage
-Put this to your Cartfile,
-```
-github "toshi0383/TVMLKitchen"
-```
-
-follow the instruction in [carthage's Getting Started section](https://github.com/Carthage/Carthage#getting-started).
-
-## CocoaPods
-Coming soon...? Contribution or any advice is welcomed and would be appreciated.
-
 # Getting Started
 
 ## Showing the Alert Template
@@ -116,6 +103,19 @@ TVMLKit cannot detect the scroll event, which means we have no chance to know if
 This is why Kitchen cannot load additional data after the template is loaded onto the navigationController.  
 We don't know when to inject additional data. Well, even if we could know the timing, I don't know how to reload the collectionView or tableView on the template after it's loaded.  
 So for now, if you need 100% dynamic behavior, I suppose you should go ahead and use UIKit.
+
+# Installation
+
+## Carthage
+Put this to your Cartfile,
+```
+github "toshi0383/TVMLKitchen"
+```
+
+follow the instruction in [carthage's Getting Started section](https://github.com/Carthage/Carthage#getting-started).
+
+## CocoaPods
+Coming soon...? Contribution or any advice is welcomed and would be appreciated.
 
 # References
 For implementation details, my slide is available.  
