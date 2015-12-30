@@ -135,20 +135,17 @@ extension Kitchen: TVApplicationControllerDelegate {
     public func appController(appController: TVApplicationController,
         didFinishLaunchingWithOptions options: [String: AnyObject]?)
     {
-        debugPrint("\(__FUNCTION__) invoked with options: \(options)")
     }
 
     public func appController(appController: TVApplicationController,
         didFailWithError error: NSError)
     {
-        debugPrint("\(__FUNCTION__) invoked with error: \(error)")
         self.kitchenLaunchErrorHandler?(error)
     }
 
     public func appController(appController: TVApplicationController,
         didStopWithOptions options: [String: AnyObject]?)
     {
-        debugPrint("\(__FUNCTION__) invoked with options: \(options)")
     }
 
     public func appController(appController: TVApplicationController,
@@ -156,13 +153,14 @@ extension Kitchen: TVApplicationControllerDelegate {
     {
         /// inject Debug logger for TVMLKitchen
         let consoleLog: @convention(block) String -> Void = { message in
+            #if DEBUG
             debugPrint(message)
+            #endif
         }
         jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
-            forKeyedSubscript: "kitchenDebug")
+            forKeyedSubscript: "__kitchenDebug")
 
         let actionIDHandler: @convention(block) String -> Void = {[weak self] actionID in
-            debugPrint("actionIDHandler")
             self?.actionIDHandler?(actionID)
         }
         jsContext.setObject(unsafeBitCast(actionIDHandler, AnyObject.self),

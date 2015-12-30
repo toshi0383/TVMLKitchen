@@ -53,7 +53,7 @@ var Presenter = {
 
         keyboard.onTextChange = function() {
             var searchText = keyboard.text;
-            console.log('search text changed: ' + searchText);
+            __kitchenDebug('search text changed: ' + searchText);
             buildResults(doc, searchText);
         }
     },
@@ -127,13 +127,13 @@ var Presenter = {
      * @param {Event} event - The select event
      */
     play: function(event) {
-        kitchenDebug("Presenter.js: play")
+        __kitchenDebug("Presenter.js: play")
     },
     holdselect: function(event) {
-        kitchenDebug("Presenter.js: holdselect")
+        __kitchenDebug("Presenter.js: holdselect")
     },
     highlight: function(event) {
-        kitchenDebug("Presenter.js: highlight")
+        __kitchenDebug("Presenter.js: highlight")
     },
     load: function(event) {
         var self = this,

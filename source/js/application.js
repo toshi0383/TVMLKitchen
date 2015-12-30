@@ -7,26 +7,26 @@ var resourceLoader;
 
 var options;
 function openTemplateFromJSFile(jsFileName) {
-    kitchenDebug("openTemplate:");
+    __kitchenDebug("openTemplate:");
     options = App.options
     mainBundleUrl = options.MAIN_BUNDLE_URL
-    kitchenDebug(mainBundleUrl);
+    __kitchenDebug(mainBundleUrl);
     var javascriptFiles = [
         `${options.BASEURL}/ResourceLoader.js`,
         `${options.BASEURL}/Presenter.js`
     ];
     evaluateScripts(javascriptFiles, function(success) {
         if (!success) {
-            kitchenDebug("Javascript load failed.");
+            __kitchenDebug("Javascript load failed.");
             return;
         }
-        kitchenDebug("Javascript loaded successfully.");
-        kitchenDebug("mainBundleUrl:" + mainBundleUrl);
-        kitchenDebug("jsFileName:" + jsFileName);
+        __kitchenDebug("Javascript loaded successfully.");
+        __kitchenDebug("mainBundleUrl:" + mainBundleUrl);
+        __kitchenDebug("jsFileName:" + jsFileName);
         resourceLoader = new ResourceLoader(mainBundleUrl);
         var index = resourceLoader.loadResource(`${mainBundleUrl}${jsFileName}`,
             function(resource) {
-                kitchenDebug("Resource loaded successfully.");
+                __kitchenDebug("Resource loaded successfully.");
                 openTemplateFromRawXMLString(resource);
             }
         );
@@ -38,7 +38,7 @@ function openTemplateFromXMLFile(xmlFileName) {
 }
 
 function openTemplateFromRawXMLString(xmlString) {
-    kitchenDebug("openTemplateFromRawXMLString");
+    __kitchenDebug("openTemplateFromRawXMLString");
     options = App.options
     var javascriptFiles = [
        `${options.BASEURL}/ResourceLoader.js`,
@@ -46,7 +46,7 @@ function openTemplateFromRawXMLString(xmlString) {
     ];
     evaluateScripts(javascriptFiles, function(success) {
         Presenter.showLoadingIndicator();
-        kitchenDebug("xmlString:" + xmlString);
+        __kitchenDebug("xmlString:" + xmlString);
         var doc = Presenter.makeDocument(xmlString);
         doc.addEventListener("select", Presenter.load.bind(Presenter));
         doc.addEventListener("highlight", Presenter.highlight.bind(Presenter));

@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
         let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section1})
         Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
-            debugPrint(actionID)
+            print(actionID)
             let identifier = actionID // parse action ID here
             dispatch_async(dispatch_get_main_queue()) {
                 self.openViewController(identifier)
@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func openViewController(identifier: String) {
-        debugPrint(__FUNCTION__)
+        print(__FUNCTION__)
         let sb = UIStoryboard(name: "ViewController", bundle: NSBundle.mainBundle())
         let vc = sb.instantiateInitialViewController()!
         Kitchen.navigationController.pushViewController(vc, animated: true)
@@ -74,8 +74,10 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         /// set Exception handler
         /// called on JS error
         jsContext.exceptionHandler = {context, value in
+            #if DEBUG
             debugPrint(context)
             debugPrint(value)
+            #endif
             assertionFailure("You got JS error. Check your javascript code.")
         }
 
