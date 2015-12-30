@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openCatalogTemplate() {
-        LOG()
+        debugPrint(__FUNCTION__)
         Kitchen.serve(jsFile:"Catalog.xml.js")
     }
 
     @IBAction func openRawXMLFile(sender: AnyObject!) {
-        LOG()
+        debugPrint(__FUNCTION__)
         Kitchen.serve(rawXML:RawXMLString.Catalog.description)
     }
 

@@ -36,7 +36,6 @@
 		1F32E55B1C30B7D300F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E6851C30B81200F62E88 /* TVMLKitchen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E6861C30B81E00F62E88 /* Kitchen.swift */; };
-		1F32E6AD1C30BC3000F62E88 /* DebugLog.all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E6951C30BC3000F62E88 /* DebugLog.all.swift */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +84,6 @@
 		1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVMLKitchen.h; sourceTree = "<group>"; };
 		1F32E6861C30B81E00F62E88 /* Kitchen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 		1F32E68B1C30B9D100F62E88 /* Kitchen.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Kitchen.xcconfig; sourceTree = "<group>"; };
-		1F32E6951C30BC3000F62E88 /* DebugLog.all.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLog.all.swift; sourceTree = "<group>"; };
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,17 +247,8 @@
 		1F32E68C1C30BC3000F62E88 /* library */ = {
 			isa = PBXGroup;
 			children = (
-				1F32E68D1C30BC3000F62E88 /* DebugLog */,
 			);
 			path = library;
-			sourceTree = "<group>";
-		};
-		1F32E68D1C30BC3000F62E88 /* DebugLog */ = {
-			isa = PBXGroup;
-			children = (
-				1F32E6951C30BC3000F62E88 /* DebugLog.all.swift */,
-			);
-			path = DebugLog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,7 +428,6 @@
 			files = (
 				1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */,
 				1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */,
-				1F32E6AD1C30BC3000F62E88 /* DebugLog.all.swift in Sources */,
 				1F3066031C31179A001E5DF0 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
