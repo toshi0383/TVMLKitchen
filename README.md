@@ -114,9 +114,6 @@ github "toshi0383/TVMLKitchen"
 
 follow the instruction in [carthage's Getting Started section](https://github.com/Carthage/Carthage#getting-started).
 
-## CocoaPods
-Coming soon...? Contribution or any advice is welcomed and would be appreciated.
-
 # References
 For implementation details, my slide is available.  
 [TVML + Native = Hybrid](https://speakerdeck.com/toshi0383/tvml-plus-native-equals-hybrid)
