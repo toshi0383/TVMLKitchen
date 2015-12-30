@@ -1,12 +1,14 @@
 # TVMLKitchen😋🍴  [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Build Status](https://www.bitrise.io/app/de994b854e5c425f.svg?token=GZp-KU8RDjmewA2Hdj27fQ)](https://www.bitrise.io/app/de994b854e5c425f)
 
-TVMLKitchen provides Native UI using TVMLKit **without additional client-server**.  
-With TVMLKitchen, you can load and show your TVML Templates much easier than you think.  
-Views are pushed to the navigationController, so user can pop to previous viewcontroller with 'Menu' button of the **AppleTV Remote**.  
-Templates are loaded from your app's Main Bundle.
+[TVML](https://developer.apple.com/library/tvos/documentation/LanguagesUtilities/Conceptual/ATV_Template_Guide/) is a good choice, when you prefer simplicity over dynamic UIKit implementation. TVMLKitchen helps to manage your TVML **without additional client-server**.  You put the TVML templates to your Main Bundle, then you're ready to go.
 
-Without the need of configuring UIKit for complex UI, TVMLKit is a good choice for displaying data in simple UI.  
-TVMLKitchen makes the process even much easier, especially when you don't want to deal with the client-server.
+You can load your TVML view in this short.
+
+```
+Kitchen.serve(jsFile:"Catalog.xml.js")
+```
+
+The view is pushed to the navigationController. User can pop to previous viewcontroller with AppleTV(Remote)'s **'Menu' button**.
 
 # Getting Started
 
@@ -14,18 +16,18 @@ TVMLKitchen makes the process even much easier, especially when you don't want t
 
 First, put your Alert.xml.js to your app's main bundle.
 
-Next, in your AppDelegate's `didFinishLaunchingWithOptions:`, prepare your Kitchen.
+Next, prepare your Kitchen in AppDelegate's `didFinishLaunchingWithOptions:`.
 ```
 Kitchen.prepare(launchOptions)
 ```
 
-Launch your Alert template anywhere and anytime.
+Launch the template from anywhere and anytime.
 
 ```
 Kitchen.serve(jsFile:"Alert.xml.js")
 ```
 
-Kitchen automatically looks for the jsFile in your main bundle, and pushes it to navigationController.
+Kitchen automatically looks for the jsFile in your Main Bundle, and pushes it to navigationController.
 
 ## Advanced setup
 
@@ -61,7 +63,8 @@ Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
 })
 ```
 
-## Using Kitchen Recipes for a little bit more dynamizm. (beta)
+## Kitchen Recipes
+Though TVML view cannot be modified programatically after loaded, we can at least generate TVML dynamically.
 
 ```
 let banner = "Movie"
@@ -83,7 +86,7 @@ Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
 
 **Note**: This feature is still in beta. APIs are subject to change.
 
-## Available Kitchen Recipes
+### Available Recipes
 
 - [x] Catalog
 - [x] Catalog with select action handler
@@ -99,10 +102,8 @@ Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
 and more...
 
 ## Note
-TVMLKit cannot detect the scroll event, which means we have no chance to know if a user has scrolled to the end.  
-This is why Kitchen cannot load additional data after the template is loaded onto the navigationController.  
-We don't know when to inject additional data. Well, even if we could know the timing, I don't know how to reload the collectionView or tableView on the template after it's loaded.  
-So for now, if you need 100% dynamic behavior, I suppose you should go ahead and use UIKit.
+We don't know when or how to inject additional data onto already presented TVML view.
+For now, if you need 100% dynamic behavior, go ahead and use UIKit.
 
 # Installation
 
@@ -112,7 +113,7 @@ Put this to your Cartfile,
 github "toshi0383/TVMLKitchen"
 ```
 
-follow the instruction in [carthage's Getting Started section](https://github.com/Carthage/Carthage#getting-started).
+Follow the instruction in [carthage's Getting Started section](https://github.com/Carthage/Carthage#getting-started).
 
 # References
 For implementation details, my slide is available.  
