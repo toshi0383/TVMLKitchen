@@ -2,7 +2,7 @@
 
 [TVML](https://developer.apple.com/library/tvos/documentation/LanguagesUtilities/Conceptual/ATV_Template_Guide/) is a good choice, when you prefer simplicity over dynamic UIKit implementation. TVMLKitchen helps to manage your TVML **without additional client-server**.  You put the TVML templates to your Main Bundle, then you're ready to go.
 
-You can load your TVML view in this short.
+Loading a TVML view is in this short.
 
 ```
 Kitchen.serve(jsFile:"Catalog.xml.js")
