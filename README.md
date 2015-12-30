@@ -64,7 +64,7 @@ Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
 ```
 
 ## Kitchen Recipes
-Though TVML view cannot be modified programatically after loaded, we can at least generate TVML dynamically.
+Though TVML view cannot be modified programatically after presented(or is there a way?), we can at least generate TVML dynamically by defining **Recipe** for it.
 
 ```
 let banner = "Movie"
