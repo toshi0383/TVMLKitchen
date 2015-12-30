@@ -14,20 +14,20 @@ The view is pushed to the navigationController. User can pop to previous viewcon
 
 ## Showing the Alert Template
 
-First, put your Alert.xml.js to your app's main bundle.
+1. Put your Alert.xml.js to your app's main bundle.
 
-Next, prepare your Kitchen in AppDelegate's `didFinishLaunchingWithOptions:`.
-```
-Kitchen.prepare(launchOptions)
-```
+2. Prepare your Kitchen in AppDelegate's `didFinishLaunchingWithOptions:`.
+    ```
+    Kitchen.prepare(launchOptions)
+    ```
 
-Launch the template from anywhere and anytime.
+3. Launch the template from anywhere and anytime.
 
-```
-Kitchen.serve(jsFile:"Alert.xml.js")
-```
+    ```
+    Kitchen.serve(jsFile:"Alert.xml.js")
+    ```
 
-Kitchen automatically looks for the jsFile in your Main Bundle, and pushes it to navigationController.
+Kitchen automatically looks for the jsFile in your Main Bundle, parse and load it, then finally pushes it to navigationController.
 
 ## Advanced setup
 
@@ -36,7 +36,7 @@ Kitchen automatically looks for the jsFile in your Main Bundle, and pushes it to
 
 ```
 Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
-{appController, jsContext in
+{ appController, jsContext in
     /// set Exception handler
     /// called on JS error
     jsContext.exceptionHandler = {context, value in
