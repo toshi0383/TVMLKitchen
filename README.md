@@ -83,6 +83,7 @@ Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
 ```
 
 ![Catalog Recipe looks like this](image/ss.png)
+![Catalog Recipe looks like this](image/ss-black.png)
 
 **Note**: This feature is still in beta. APIs are subject to change.
 
