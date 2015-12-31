@@ -46,9 +46,11 @@ extension Kitchen {
         openTVMLTemplateFromJSFile(jsFile)
     }
 
-    public static func serve(recipe recipe: Recipe, actionIDHandler: (String -> Void)? = nil) {
+    public static func serve<R: RecipeType>
+        (recipe recipe: R, actionIDHandler: (String -> Void)? = nil)
+    {
         sharedKitchen.actionIDHandler = actionIDHandler
-        openTVMLTemplateFromXMLString(recipe.description)
+        openTVMLTemplateFromXMLString(recipe.xmlString)
     }
 }
 

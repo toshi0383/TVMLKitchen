@@ -6,6 +6,7 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
+// MARK: Content and Section
 public struct Section {
 
     struct Content {
@@ -23,7 +24,6 @@ public struct Section {
     let title: String
 
     let contents: [Content]
-
 
     public init(title: String, args: [ContentTuple]) {
         self.title = title
@@ -67,100 +67,112 @@ extension Section: CustomStringConvertible {
     }
 }
 
-public struct Catalog {
-    let banner: String
-    let sections: [Section]
+
+// MARK: ThemeType
+public protocol ThemeType {
+    var backgroundColor: String {get}
+    var color: String {get}
+    var highlightBackgroundColor: String {get}
+    var highlightTextColor: String {get}
+    init()
 }
 
-struct StyleConfig {
-    let backgroundColor: String
-    let color: String
-    let highlightBackgroundColor: String
-    let highlightTextColor: String
-    init(backgroundColor: String,
-        color: String, highlightBackgroundColor: String,
-        highlightTextColor: String)
-    {
-        self.backgroundColor = backgroundColor
-        self.color = color
-        self.highlightBackgroundColor = highlightBackgroundColor
-        self.highlightTextColor = highlightTextColor
+extension ThemeType {
+
+    public var backgroundColor: String {
+        return "transparent"
     }
+
+    public var color: String {
+        return "rgb(0, 0, 0)"
+    }
+
+    public var highlightBackgroundColor: String {
+        return "rgb(255, 255, 255)"
+    }
+
+    public var highlightTextColor: String {
+        return "rgb(0, 0, 0)"
+    }
+
 }
 
-public enum Recipe {
-
-    public enum Theme {
-
-        case Default, Black
-
-        var styleConfig: StyleConfig {
-            switch self {
-            case .Default:
-                 return StyleConfig(
-                    backgroundColor: "transparent",
-                    color: "rgb(0, 0, 0)",
-                    highlightBackgroundColor: "rgb(255, 255, 255)",
-                    highlightTextColor: "rgb(0, 0, 0)")
-            case .Black:
-                 return StyleConfig(
-                    backgroundColor: "rgb(0, 0, 0)",
-                    color: "rgb(255, 255, 255)",
-                    highlightBackgroundColor: "rgb(255, 255, 255)",
-                    highlightTextColor: "rgb(0, 0, 0)")
-            }
-        }
-    }
-
-
-    public static var theme: Theme = .Black {
-        didSet {
-            styleConfig = theme.styleConfig
-        }
-    }
-
-    private static var styleConfig: StyleConfig = theme.styleConfig
-
-    case Catalog(banner:String, sections: [Section])
+public struct DefaultTheme: ThemeType {
+    public init() {}
 }
 
-extension Recipe: CustomStringConvertible {
-    public var description: String {
+public struct BlackTheme: ThemeType {
+    public let backgroundColor: String = "rgb(0, 0, 0)"
+    public let color: String = "rgb(255, 255, 255)"
+    public init() {}
+}
+
+// MARK: RecipeType
+public protocol XMLStringConvertible {
+    var xmlString: String {get}
+}
+
+public protocol RecipeType: XMLStringConvertible {
+    typealias Theme
+    var theme: Theme {get}
+    /// template part of TVML which is used to format full page xmlString
+    /// - SeeAlso: RecipeType.xmlString
+    var template: String {get}
+}
+
+extension RecipeType where Self.Theme: ThemeType {
+    public var xmlString: String {
         var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
         xml += "<document>"
         xml += "<head>"
         xml += "<style>"
-        xml += "* { background-color: \(Recipe.styleConfig.backgroundColor);"
-        xml += "color: \(Recipe.styleConfig.color);"
-        xml += "tv-highlight-color:\(Recipe.styleConfig.highlightBackgroundColor);"
+        xml += "* { background-color: \(theme.backgroundColor);"
+        xml += "color: \(theme.color);"
+        xml += "tv-highlight-color:\(theme.highlightBackgroundColor);"
         xml += "}"
         xml += ".kitchen_highlight_bg { background-color:transparent;"
-        xml += "tv-highlight-color:\(Recipe.styleConfig.highlightTextColor); }"
+        xml += "tv-highlight-color:\(theme.highlightTextColor); }"
         xml += ".kitchen_no_highlight_bg { background-color:transparent;"
-        xml += "tv-highlight-color:\(Recipe.styleConfig.highlightBackgroundColor); }"
+        xml += "tv-highlight-color:\(theme.highlightBackgroundColor); }"
         xml += "</style>"
         xml += "</head>"
-        switch self {
-        case .Catalog(let banner, let sections):
-            xml += "<catalogTemplate>"
+        xml += template
+        xml += "</document>"
+        return xml
+    }
+}
 
-            /// Top Banner
-            xml += "<banner>"
-            xml += "<title>\(banner)</title>"
-            xml += "</banner>"
-            xml += "<list>"
-            xml += "<section>"
+public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
 
-            /// Section and Contents
-            xml += "<header>"
-            xml += "<title></title>"
-            xml += "</header>"
-            xml += sections.map{"\($0)"}.joinWithSeparator("")
-        }
+    public let banner: String
+    public let sections: [Section]
+    public let theme: Theme
+
+    public init(banner: String, sections: [Section], theme: Theme = Theme()) {
+        self.banner = banner
+        self.sections = sections
+        self.theme = theme
+    }
+
+    public var template: String {
+        var xml = ""
+        xml += "<catalogTemplate>"
+
+        /// Top Banner
+        xml += "<banner>"
+        xml += "<title>\(banner)</title>"
+        xml += "</banner>"
+        xml += "<list>"
+        xml += "<section>"
+
+        /// Section and Contents
+        xml += "<header>"
+        xml += "<title></title>"
+        xml += "</header>"
+        xml += sections.map{"\($0)"}.joinWithSeparator("")
         xml += "</section>"
         xml += "</list>"
         xml += "</catalogTemplate>"
-        xml += "</document>"
         return xml
     }
 }

@@ -23,13 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             withExtension: "jpg")!.absoluteString
         let actionID = "/title?titleId=1234"
         let (width, height) = (250, 376)
-        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, nil, width, height)
+        let templateURL: String? = nil
+        // let templateURL = Kitchen.mainBundlePath + "Catalog.xml.js"
+        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
 //        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, nil,
-//                Kitchen.mainBundlePath + "Catalog.xml.js", width, height)
+//                templateURL, width, height)
 
-        Recipe.theme = .Black
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
-        let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section1})
+        let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
         Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
             print(actionID)
             let identifier = actionID // parse action ID here
