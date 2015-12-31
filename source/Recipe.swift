@@ -161,10 +161,10 @@ public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
         xml += "<banner>"
         xml += "<title>\(banner)</title>"
         xml += "</banner>"
-        xml += "<list>"
-        xml += "<section>"
 
         /// Section and Contents
+        xml += "<list>"
+        xml += "<section>"
         xml += "<header>"
         xml += "<title></title>"
         xml += "</header>"
