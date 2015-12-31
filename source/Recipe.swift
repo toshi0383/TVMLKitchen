@@ -72,36 +72,38 @@ public struct Catalog {
     let sections: [Section]
 }
 
+struct StyleConfig {
+    let backgroundColor: String
+    let color: String
+    let highlightBackgroundColor: String
+    let highlightTextColor: String
+    init(backgroundColor: String,
+        color: String, highlightBackgroundColor: String,
+        highlightTextColor: String)
+    {
+        self.backgroundColor = backgroundColor
+        self.color = color
+        self.highlightBackgroundColor = highlightBackgroundColor
+        self.highlightTextColor = highlightTextColor
+    }
+}
+
 public enum Recipe {
 
-    public struct StyleSet {
-        let backgroundColor: String
-        let color: String
-        let highlightBackgroundColor: String
-        let highlightTextColor: String
-        public init(backgroundColor: String,
-            color: String, highlightBackgroundColor: String,
-            highlightTextColor: String)
-        {
-            self.backgroundColor = backgroundColor
-            self.color = color
-            self.highlightBackgroundColor = highlightBackgroundColor
-            self.highlightTextColor = highlightTextColor
-        }
-    }
-
     public enum Theme {
+
         case Default, Black
-        var styleSet: StyleSet {
+
+        var styleConfig: StyleConfig {
             switch self {
             case .Default:
-                 return Recipe.StyleSet(
+                 return StyleConfig(
                     backgroundColor: "transparent",
                     color: "rgb(0, 0, 0)",
                     highlightBackgroundColor: "rgb(255, 255, 255)",
                     highlightTextColor: "rgb(0, 0, 0)")
             case .Black:
-                 return Recipe.StyleSet(
+                 return StyleConfig(
                     backgroundColor: "rgb(0, 0, 0)",
                     color: "rgb(255, 255, 255)",
                     highlightBackgroundColor: "rgb(255, 255, 255)",
@@ -113,10 +115,12 @@ public enum Recipe {
 
     public static var theme: Theme = .Black {
         didSet {
-            styleSet = theme.styleSet
+            styleConfig = theme.styleConfig
         }
     }
-    public static var styleSet: StyleSet = theme.styleSet
+
+    private static var styleConfig: StyleConfig = theme.styleConfig
+
     case Catalog(banner:String, sections: [Section])
 }
 
@@ -126,14 +130,14 @@ extension Recipe: CustomStringConvertible {
         xml += "<document>"
         xml += "<head>"
         xml += "<style>"
-        xml += "* { background-color: \(Recipe.styleSet.backgroundColor);"
-        xml += "color: \(Recipe.styleSet.color);"
-        xml += "tv-highlight-color:\(Recipe.styleSet.highlightBackgroundColor);"
+        xml += "* { background-color: \(Recipe.styleConfig.backgroundColor);"
+        xml += "color: \(Recipe.styleConfig.color);"
+        xml += "tv-highlight-color:\(Recipe.styleConfig.highlightBackgroundColor);"
         xml += "}"
         xml += ".kitchen_highlight_bg { background-color:transparent;"
-        xml += "tv-highlight-color:\(Recipe.styleSet.highlightTextColor); }"
+        xml += "tv-highlight-color:\(Recipe.styleConfig.highlightTextColor); }"
         xml += ".kitchen_no_highlight_bg { background-color:transparent;"
-        xml += "tv-highlight-color:\(Recipe.styleSet.highlightBackgroundColor); }"
+        xml += "tv-highlight-color:\(Recipe.styleConfig.highlightBackgroundColor); }"
         xml += "</style>"
         xml += "</head>"
         switch self {
