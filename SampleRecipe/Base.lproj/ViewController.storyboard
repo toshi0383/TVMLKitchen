@@ -17,20 +17,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="6SD-mQ-3RS">
-                                <rect key="frame" x="632" y="497" width="657" height="86"/>
+                                <rect key="frame" x="646" y="497" width="629" height="86"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iY0-bH-jNU">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="86"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="349" height="86"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                        <state key="normal" title="Catalog.xml.js"/>
+                                        <state key="normal" title="Template.xml.js"/>
                                         <connections>
                                             <action selector="openCatalogTemplate" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="3yS-JO-Aqm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qn-b4-3Km">
-                                        <rect key="frame" x="373" y="0.0" width="284" height="86"/>
+                                        <rect key="frame" x="399" y="0.0" width="230" height="86"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                        <state key="normal" title="Catalog.xml"/>
+                                        <state key="normal" title="RawXML"/>
                                         <connections>
                                             <action selector="openRawXMLFile:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="gql-8j-oaV"/>
                                         </connections>

@@ -1,156 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <document>
-<head>
-<style>
-.whiteText {
-color: rgb(255, 255, 255);
-}
-</style>
-</head>
-<catalogTemplate>
-<banner>
-<title>Title</title>
-</banner>
-<list>
-<section>
-<header>
-<title>Section Header</title>
-</header>
-<listItemLockup>
-<title>Title 1</title>
-<decorationLabel>6</decorationLabel>
-<relatedContent>
-<grid>
-<section>
-<lockup action="playContent" titleId="1234">
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_1.lcr" width="308" height="308" />
-<title class="whiteText">Title 1</title>
-</lockup>
-<lockup action="openZappingViewController">
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_2.lcr" width="308" height="308" />
-<title class="whiteText">Title 2</title>
-</lockup>
-<lockup action="showMenu">
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_3.lcr" width="308" height="308" />
-<title class="whiteText">Title 3</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_4.lcr" width="308" height="308" />
-<title class="whiteText">Title 4</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_5.lcr" width="308" height="308" />
-<title class="whiteText">Title 5</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_6.lcr" width="308" height="308" />
-<title class="whiteText">Title 6</title>
-</lockup>
-</section>
-</grid>
-</relatedContent>
-</listItemLockup>
-<listItemLockup>
-<title>Title 2</title>
-<decorationLabel>8</decorationLabel>
-<relatedContent>
-<grid>
+<oneupTemplate mode="oneup caption" allowsZooming="true" style="tv-transition:magicMove;">
 <section>
 <lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_1.lcr" width="308" height="308" />
-<title class="whiteText">Title 1</title>
+<img src="http://www.mrwallpaper.com/wallpapers/man-of-steel-2013-movie-1920x1080.jpg" />
+<title>WWDC Roadtrip</title>
+<row>
+<subtitle>San Francisco</subtitle>
+<subtitle>June 8, 2015</subtitle>
+</row>
 </lockup>
 <lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_2.lcr" width="308" height="308" />
-<title class="whiteText">Title 2</title>
+<img src="http://www.mrwallpaper.com/wallpapers/2013-pacific-rim-movie-1920x1080.jpg" />
+<title>Beach time</title>
+<row>
+<subtitle>Santa Cruz</subtitle>
+<subtitle>May 1, 2015</subtitle>
+</row>
 </lockup>
 <lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_3.lcr" width="308" height="308" />
-<title class="whiteText">Title 3</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_4.lcr" width="308" height="308" />
-<title class="whiteText">Title 4</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_5.lcr" width="308" height="308" />
-<title class="whiteText">Title 5</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_6.lcr" width="308" height="308" />
-<title class="whiteText">Title 6</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_7.lcr" width="308" height="308" />
-<title class="whiteText">Title 7</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_1.lcr" width="308" height="308" />
-<title class="whiteText">Title 8</title>
+<img src="http://wallpoper.com/images/00/44/97/95/green-lantern-movie-2011_00449795.jpg" />
+<title>Spaced out</title>
+<row>
+<subtitle>Space station</subtitle>
+<subtitle>July 15, 2015</subtitle>
+</row>
 </lockup>
 </section>
-</grid>
-</relatedContent>
-</listItemLockup>
-<listItemLockup>
-<title>Title 3</title>
-<decorationLabel>12</decorationLabel>
-<relatedContent>
-<grid>
-<section>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_1.lcr" width="308" height="308" />
-<title class="whiteText">Title 1</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_2.lcr" width="308" height="308" />
-<title class="whiteText">Title 2</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_3.lcr" width="308" height="308" />
-<title class="whiteText">Title 3</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_4.lcr" width="308" height="308" />
-<title class="whiteText">Title 4</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_5.lcr" width="308" height="308" />
-<title class="whiteText">Title 5</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_6.lcr" width="308" height="308" />
-<title class="whiteText">Title 6</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_7.lcr" width="308" height="308" />
-<title class="whiteText">Title 7</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_1.lcr" width="308" height="308" />
-<title class="whiteText">Title 8</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_2.lcr" width="308" height="308" />
-<title class="whiteText">Title 9</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_3.lcr" width="308" height="308" />
-<title class="whiteText">Title 10</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_4.lcr" width="308" height="308" />
-<title class="whiteText">Title 11</title>
-</lockup>
-<lockup>
-<img src="file:///Users/toshi0383/Library/Developer/CoreSimulator/Devices/55AA00E8-95FB-4827-85EA-10467674226F/data/Containers/Bundle/Application/DBB355BB-37AA-44E8-9483-DFC9ADA32605/SampleRecipe.app/music_5.lcr" width="308" height="308" />
-<title class="whiteText">Title 12</title>
-</lockup>
-</section>
-</grid>
-</relatedContent>
-</listItemLockup>
-</section>
-</list>
-</catalogTemplate>
+</oneupTemplate>
 </document>
