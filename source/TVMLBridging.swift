@@ -6,11 +6,6 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
-internal func openTVMLTemplateFromXMLFile(xmlFileName: String) {
-    let js = "openTemplateFromXMLFile('\(xmlFileName)');"
-    evaluateInTVMLContext(js)
-}
-
 internal func openTVMLTemplateFromRawXMLString(xmlString: String) {
     let js = "openTemplateFromRawXMLString(`\(xmlString)`);"
     evaluateInTVMLContext(js)

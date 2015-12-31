@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F3065B81C30D634001E5DF0 /* application.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B51C30D634001E5DF0 /* application.js */; };
-		1F3065B91C30D634001E5DF0 /* Presenter.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B61C30D634001E5DF0 /* Presenter.js */; };
-		1F3065BA1C30D634001E5DF0 /* ResourceLoader.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B71C30D634001E5DF0 /* ResourceLoader.js */; };
+		1F3065B81C30D634001E5DF0 /* kitchen.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B51C30D634001E5DF0 /* kitchen.js */; };
 		1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */; };
 		1F3065BE1C30D8BD001E5DF0 /* Catalog.xml.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */; };
 		1F3065C01C30E8D0001E5DF0 /* RawXMLString.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */; };
@@ -50,9 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F3065B51C30D634001E5DF0 /* application.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = application.js; sourceTree = "<group>"; };
-		1F3065B61C30D634001E5DF0 /* Presenter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Presenter.js; sourceTree = "<group>"; };
-		1F3065B71C30D634001E5DF0 /* ResourceLoader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ResourceLoader.js; sourceTree = "<group>"; };
+		1F3065B51C30D634001E5DF0 /* kitchen.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kitchen.js; sourceTree = "<group>"; };
 		1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVMLBridging.swift; sourceTree = "<group>"; };
 		1F3065BD1C30D8BD001E5DF0 /* Catalog.xml.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Catalog.xml.js; sourceTree = "<group>"; };
 		1F3065BF1C30E8D0001E5DF0 /* RawXMLString.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RawXMLString.txt; sourceTree = "<group>"; };
@@ -117,9 +113,7 @@
 		1F3065B41C30D634001E5DF0 /* js */ = {
 			isa = PBXGroup;
 			children = (
-				1F3065B51C30D634001E5DF0 /* application.js */,
-				1F3065B61C30D634001E5DF0 /* Presenter.js */,
-				1F3065B71C30D634001E5DF0 /* ResourceLoader.js */,
+				1F3065B51C30D634001E5DF0 /* kitchen.js */,
 			);
 			path = js;
 			sourceTree = "<group>";
@@ -365,9 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F3065BA1C30D634001E5DF0 /* ResourceLoader.js in Resources */,
-				1F3065B81C30D634001E5DF0 /* application.js in Resources */,
-				1F3065B91C30D634001E5DF0 /* Presenter.js in Resources */,
+				1F3065B81C30D634001E5DF0 /* kitchen.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

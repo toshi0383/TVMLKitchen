@@ -48,6 +48,7 @@ extension Section: CustomStringConvertible {
         xml += contents.map{ content in
             var xml = ""
             xml += "<lockup actionID=\"\(content.actionID)\" >"
+//            xml += "<lockup template=\"Catalog.xml.js\" >"
             xml += "<img src=\"\(content.thumbnailURL)\" "
             xml += "width=\"\(content.width)\" height=\"\(content.height)\" />"
             xml += "<title class=\"kitchen_no_highlight_bg\">\(content.title)</title>"

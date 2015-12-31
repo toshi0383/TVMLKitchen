@@ -37,10 +37,6 @@ public class Kitchen: NSObject {
 /// load
 extension Kitchen {
 
-    public static func serve(xmlFile xmlFile: String) {
-        openTVMLTemplateFromXMLFile(xmlFile)
-    }
-
     public static func serve(rawXML rawXML: String) {
         openTVMLTemplateFromRawXMLString(rawXML)
     }
@@ -94,7 +90,7 @@ extension Kitchen {
         */
         let appControllerContext = TVApplicationControllerContext()
 
-        let javaScriptURL = NSBundle(forClass: self).URLForResource("application", withExtension: "js")!
+        let javaScriptURL = NSBundle(forClass: self).URLForResource("kitchen", withExtension: "js")!
         appControllerContext.javaScriptApplicationURL = javaScriptURL
         appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
 
