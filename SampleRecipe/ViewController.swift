@@ -25,4 +25,25 @@ class ViewController: UIViewController {
         Kitchen.serve(xmlString:XMLString.Catalog.description)
     }
 
+    struct MyTheme: ThemeType {
+        let backgroundColor: String = "rgb(0, 20, 70)"
+        let color: String = "rgb(237, 237, 255)"
+        init() {}
+    }
+
+    @IBAction func openCustomTheme() {
+        let banner = "Music"
+        let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
+            withExtension: "jpg")!.absoluteString
+        let actionID = "/title?titleId=1234"
+        let (width, height) = (250, 376)
+        let templateURL: String? = nil
+        let content: Section.ContentTuple = ("Mission Impossible Ghost Protocol", thumbnailUrl, actionID,
+            templateURL, width, height)
+
+        let section1 = Section(title: "Hello", args: (0..<10).map{_ in content})
+        let catalog = CatalogRecipe<MyTheme>(banner: banner, sections: (0..<10).map{_ in section1})
+        Kitchen.serve(recipe: catalog)
+    }
+
 }
