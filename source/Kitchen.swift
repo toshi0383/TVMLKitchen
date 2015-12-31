@@ -106,7 +106,7 @@ extension Kitchen {
         appControllerContext.javaScriptApplicationURL = javaScriptURL
         appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
 
-        /// Cutting `application.js` off
+        /// Cutting `kitchen.js` off
         let TVBaseURL = javaScriptURL.URLByDeletingLastPathComponent
 
         /// Define framework bundle URL
