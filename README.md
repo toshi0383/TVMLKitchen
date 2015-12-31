@@ -69,7 +69,8 @@ let banner = "Movie"
 let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
     withExtension: "jpg")!.absoluteString
 let actionID = "/title?titleId=1234"
-let content = ("Star Wars", thumbnailUrl, actionID)
+let (width, height) = (250, 376)
+let content = ("Star Wars", thumbnailUrl, actionID, width, height)
 let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
 let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section1})
 Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
