@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         _ = prepareMyKitchen(launchOptions)
-//        Kitchen.serve(xmlFile:"Catalog.xml")
+
         let banner = "Movie"
         let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
             withExtension: "jpg")!.absoluteString
