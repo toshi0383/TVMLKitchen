@@ -26,6 +26,8 @@ public class Kitchen: NSObject {
 
     private var actionIDHandler: (String -> Void)?
 
+    public static var mainBundlePath: String!
+
     override init() {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         super.init()
@@ -104,7 +106,7 @@ extension Kitchen {
         appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
 
         /// Define mainBundle URL
-        let mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
+        mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
         appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
 
         if let launchOptions = launchOptions as? [String: AnyObject] {

@@ -130,7 +130,7 @@ function loadingTemplate() {
 function loadTemplateFromURL(templateURL, callback) {
     var self = this;
 
-    evaluateScripts([`${App.options.MAIN_BUNDLE_URL}${templateURL}`], function(success) {
+    evaluateScripts([templateURL], function(success) {
         if (success) {
             var resource = Template.call(self);
             callback.call(self, resource);

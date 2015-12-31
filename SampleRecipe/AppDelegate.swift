@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             withExtension: "jpg")!.absoluteString
         let actionID = "/title?titleId=1234"
         let (width, height) = (250, 376)
-        let content = ("Star Wars", thumbnailUrl, actionID, width, height)
+        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, nil, width, height)
+//        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, nil,
+//                Kitchen.mainBundlePath + "Catalog.xml.js", width, height)
 
         Recipe.theme = .Black
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})

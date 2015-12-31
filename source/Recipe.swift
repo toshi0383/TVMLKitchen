@@ -11,13 +11,14 @@ public struct Section {
     struct Content {
         let title: String
         let thumbnailURL: String
-        let actionID: String
+        let actionID: String?
+        let templateFileName: String?
         let width: Int
         let height: Int
     }
 
     public typealias ContentTuple = (title: String, thumbnailURL: String,
-                                     actionID: String, width: Int, height: Int)
+        actionID: String?, templateFileName: String?, width: Int, height: Int)
 
     let title: String
 
@@ -47,8 +48,11 @@ extension Section: CustomStringConvertible {
         xml += "<section>"
         xml += contents.map{ content in
             var xml = ""
-            xml += "<lockup actionID=\"\(content.actionID)\" >"
-//            xml += "<lockup template=\"Catalog.xml.js\" >"
+            if let actionID = content.actionID {
+                xml += "<lockup actionID=\"\(actionID)\" >"
+            } else if let templateFileName = content.templateFileName {
+                xml += "<lockup template=\"\(templateFileName)\" >"
+            }
             xml += "<img src=\"\(content.thumbnailURL)\" "
             xml += "width=\"\(content.width)\" height=\"\(content.height)\" />"
             xml += "<title class=\"kitchen_no_highlight_bg\">\(content.title)</title>"
