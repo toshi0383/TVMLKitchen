@@ -31,9 +31,10 @@
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
 		1F32E5511C30B79600F62E88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E5501C30B79600F62E88 /* ViewController.swift */; };
 		1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32E5551C30B79600F62E88 /* Assets.xcassets */; };
-		1F32E55B1C30B7D300F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E6851C30B81200F62E88 /* TVMLKitchen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E6861C30B81E00F62E88 /* Kitchen.swift */; };
+		1F5ABB981C356B3100785DEB /* TVMLKitchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +46,35 @@
 			remoteGlobalIDString = 1F32E4081C30B6EF00F62E88;
 			remoteInfo = TVMLKitchen;
 		};
+		1F5ABB991C356B3100785DEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32E4001C30B6EF00F62E88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32E4081C30B6EF00F62E88;
+			remoteInfo = TVMLKitchen;
+		};
+		1F8B437A1C35676400C716A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32E4001C30B6EF00F62E88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32E54B1C30B79600F62E88;
+			remoteInfo = SampleRecipe;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1F5ABB9B1C356B3100785DEB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1F5ABB981C356B3100785DEB /* TVMLKitchen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F3065B51C30D634001E5DF0 /* kitchen.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kitchen.js; sourceTree = "<group>"; };
@@ -80,6 +109,9 @@
 		1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVMLKitchen.h; sourceTree = "<group>"; };
 		1F32E6861C30B81E00F62E88 /* Kitchen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 		1F32E68B1C30B9D100F62E88 /* Kitchen.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Kitchen.xcconfig; sourceTree = "<group>"; };
+		1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleRecipeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRecipeUITests.swift; sourceTree = "<group>"; };
+		1F8B43791C35676400C716A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +135,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F32E55B1C30B7D300F62E88 /* TVMLKitchen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F8B43721C35676400C716A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +215,7 @@
 				1F32E55C1C30B81200F62E88 /* source */,
 				1F32E4171C30B6EF00F62E88 /* TVMLKitchenTests */,
 				1F32E54D1C30B79600F62E88 /* SampleRecipe */,
+				1F8B43761C35676400C716A7 /* SampleRecipeUITests */,
 				1F32E40A1C30B6EF00F62E88 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -187,6 +226,7 @@
 				1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */,
 				1F32E4131C30B6EF00F62E88 /* TVMLKitchenTests.xctest */,
 				1F32E54C1C30B79600F62E88 /* SampleRecipe.app */,
+				1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,6 +283,15 @@
 			children = (
 			);
 			path = library;
+			sourceTree = "<group>";
+		};
+		1F8B43761C35676400C716A7 /* SampleRecipeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */,
+				1F8B43791C35676400C716A7 /* Info.plist */,
+			);
+			path = SampleRecipeUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,15 +352,35 @@
 				1F32E5481C30B79600F62E88 /* Sources */,
 				1F32E5491C30B79600F62E88 /* Frameworks */,
 				1F32E54A1C30B79600F62E88 /* Resources */,
+				1F5ABB9B1C356B3100785DEB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1F5ABB9A1C356B3100785DEB /* PBXTargetDependency */,
 			);
 			name = SampleRecipe;
 			productName = SampleRecipe;
 			productReference = 1F32E54C1C30B79600F62E88 /* SampleRecipe.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1F8B43741C35676400C716A7 /* SampleRecipeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F8B437E1C35676400C716A7 /* Build configuration list for PBXNativeTarget "SampleRecipeUITests" */;
+			buildPhases = (
+				1F8B43711C35676400C716A7 /* Sources */,
+				1F8B43721C35676400C716A7 /* Frameworks */,
+				1F8B43731C35676400C716A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F8B437B1C35676400C716A7 /* PBXTargetDependency */,
+			);
+			name = SampleRecipeUITests;
+			productName = SampleRecipeUITests;
+			productReference = 1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -332,6 +401,10 @@
 					1F32E54B1C30B79600F62E88 = {
 						CreatedOnToolsVersion = 7.2;
 					};
+					1F8B43741C35676400C716A7 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 1F32E54B1C30B79600F62E88;
+					};
 				};
 			};
 			buildConfigurationList = 1F32E4031C30B6EF00F62E88 /* Build configuration list for PBXProject "TVMLKitchen" */;
@@ -350,6 +423,7 @@
 				1F32E4081C30B6EF00F62E88 /* TVMLKitchen */,
 				1F32E4121C30B6EF00F62E88 /* TVMLKitchenTests */,
 				1F32E54B1C30B79600F62E88 /* SampleRecipe */,
+				1F8B43741C35676400C716A7 /* SampleRecipeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -391,6 +465,13 @@
 				1F3065FA1C30EE1A001E5DF0 /* tvOS-Base.xcconfig in Resources */,
 				1F3065EB1C30EE1A001E5DF0 /* Test.xcconfig in Resources */,
 				1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F8B43731C35676400C716A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +523,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F8B43711C35676400C716A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -449,6 +538,16 @@
 			isa = PBXTargetDependency;
 			target = 1F32E4081C30B6EF00F62E88 /* TVMLKitchen */;
 			targetProxy = 1F32E4151C30B6EF00F62E88 /* PBXContainerItemProxy */;
+		};
+		1F5ABB9A1C356B3100785DEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32E4081C30B6EF00F62E88 /* TVMLKitchen */;
+			targetProxy = 1F5ABB991C356B3100785DEB /* PBXContainerItemProxy */;
+		};
+		1F8B437B1C35676400C716A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32E54B1C30B79600F62E88 /* SampleRecipe */;
+			targetProxy = 1F8B437A1C35676400C716A7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -615,6 +714,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SampleRecipe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipe;
@@ -627,10 +727,36 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SampleRecipe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1F8B437C1C35676400C716A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F3065CB1C30EE19001E5DF0 /* Test.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = SampleRecipeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SampleRecipe;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		1F8B437D1C35676400C716A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SampleRecipeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SampleRecipe;
+				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -669,6 +795,15 @@
 			buildConfigurations = (
 				1F32E5591C30B79600F62E88 /* Debug */,
 				1F32E55A1C30B79600F62E88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F8B437E1C35676400C716A7 /* Build configuration list for PBXNativeTarget "SampleRecipeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F8B437C1C35676400C716A7 /* Debug */,
+				1F8B437D1C35676400C716A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
