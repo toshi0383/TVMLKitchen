@@ -108,16 +108,15 @@ public struct BlackTheme: ThemeType {
 }
 
 // MARK: RecipeType
-public protocol XMLStringConvertible {
-    var xmlString: String {get}
-}
-
-public protocol RecipeType: XMLStringConvertible {
+public protocol RecipeType {
     typealias Theme
     var theme: Theme {get}
-    /// template part of TVML which is used to format full page xmlString
+    /// Template part of TVML which is used to format full page xmlString.
     /// - SeeAlso: RecipeType.xmlString
     var template: String {get}
+    /// XML string representation of whole TVML page.
+    /// Uses RecipeType.template for template part by default.
+    var xmlString: String {get}
 }
 
 extension RecipeType where Self.Theme: ThemeType {
@@ -144,8 +143,8 @@ extension RecipeType where Self.Theme: ThemeType {
 
 public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
 
-    public let banner: String
-    public let sections: [Section]
+    let banner: String
+    let sections: [Section]
     public let theme: Theme
 
     public init(banner: String, sections: [Section], theme: Theme = Theme()) {
