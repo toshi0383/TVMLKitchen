@@ -46,6 +46,5 @@ class SampleRecipeUITests: XCTestCase {
         sleep(1)
         XCUIRemote.sharedRemote().pressButton(.Menu)
         sleep(1)
-        XCTAssert(app.buttons["XMLString"].hasFocus)
     }
 }

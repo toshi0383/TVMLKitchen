@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         _ = prepareMyKitchen(launchOptions)
+        openRecipe()
+        return true
+    }
+
+    private func openRecipe() {
 
         let banner = "Movie"
         let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
@@ -38,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.openViewController(identifier)
             }
         })
-        return true
     }
 
     func openViewController(identifier: String) {
