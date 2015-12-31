@@ -6,7 +6,6 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
-import Foundation
 import TVMLKit
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
