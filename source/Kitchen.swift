@@ -36,11 +36,10 @@ public class Kitchen: NSObject {
 }
 
 // MARK: Public API (serve)
-/// load
 extension Kitchen {
 
-    public static func serve(rawXML rawXML: String) {
-        openTVMLTemplateFromRawXMLString(rawXML)
+    public static func serve(xmlString xmlString: String) {
+        openTVMLTemplateFromXMLString(xmlString)
     }
 
     public static func serve(jsFile jsFile: String) {
@@ -49,15 +48,21 @@ extension Kitchen {
 
     public static func serve(recipe recipe: Recipe, actionIDHandler: (String -> Void)? = nil) {
         sharedKitchen.actionIDHandler = actionIDHandler
-        openTVMLTemplateFromRawXMLString(recipe.description)
+        openTVMLTemplateFromXMLString(recipe.description)
     }
 }
 
+// MARK: window
 extension Kitchen {
 
     public static var window: UIWindow {
         return sharedKitchen.window
     }
+
+}
+
+// MARK: TVApplicationControllerDelegate
+extension Kitchen {
 
     public static var appController: TVApplicationController {
         return sharedKitchen.appController
@@ -66,6 +71,9 @@ extension Kitchen {
     public static var navigationController: UINavigationController {
         return sharedKitchen.appController.navigationController
     }
+}
+
+extension Kitchen {
 
     /**
      create TVApplicationControllerContext using launchOptions

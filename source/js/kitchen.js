@@ -149,11 +149,11 @@ function loadTemplateFromURL(templateURL, callback) {
 /// load template from Main Bundle URL
 function openTemplateFromJSFile(jsFileName) {
     mainBundleUrl = App.options.MAIN_BUNDLE_URL
-    loadTemplateFromURL(`${mainBundleUrl}${jsFileName}`, openTemplateFromRawXMLString);
+    loadTemplateFromURL(`${mainBundleUrl}${jsFileName}`, openTemplateFromXMLString);
 }
 
-function openTemplateFromRawXMLString(xmlString) {
-    __kitchenDebug("openTemplateFromRawXMLString");
+function openTemplateFromXMLString(xmlString) {
+    __kitchenDebug("openTemplateFromXMLString");
     showLoadingIndicator();
     var doc = makeDocument(xmlString);
     doc.addEventListener("select", load.bind(this));

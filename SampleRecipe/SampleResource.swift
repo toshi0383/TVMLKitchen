@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum RawXMLString: String {
+enum XMLString: String {
     case Catalog
 }
 
-extension RawXMLString: CustomStringConvertible {
+extension XMLString: CustomStringConvertible {
     var description: String {
         switch self {
         case .Catalog:
-            let path = NSBundle.mainBundle().pathForResource("RawXMLString", ofType: "txt")!
+            let path = NSBundle.mainBundle().pathForResource("Oneup", ofType: "xml")!
             // swiftlint:disable force_try
             return try! NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
             // swiftlint:enable force_try

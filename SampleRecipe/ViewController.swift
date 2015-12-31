@@ -20,9 +20,9 @@ class ViewController: UIViewController {
         Kitchen.serve(jsFile:"Catalog.xml.js")
     }
 
-    @IBAction func openRawXMLFile(sender: AnyObject!) {
+    @IBAction func openXMLString(sender: AnyObject!) {
         print(__FUNCTION__)
-        Kitchen.serve(rawXML:RawXMLString.Catalog.description)
+        Kitchen.serve(xmlString:XMLString.Catalog.description)
     }
 
 }
