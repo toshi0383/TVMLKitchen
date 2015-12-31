@@ -16,7 +16,8 @@ public struct Section {
         let height: Int
     }
 
-    public typealias ContentTuple = (title: String, thumbnailURL: String, actionID: String, width: Int, height: Int)
+    public typealias ContentTuple = (title: String, thumbnailURL: String,
+                                     actionID: String, width: Int, height: Int)
 
     let title: String
 
