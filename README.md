@@ -62,7 +62,7 @@ Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
 ```
 
 ## Kitchen Recipes
-Though TVML view cannot be modified programatically after presented(or is there a way?), we can at least generate TVML dynamically by defining **Recipe** for it.
+Though TVML view cannot be modified programatically after presented(or is there a way?), we can at least generate TVML dynamically by defining **Recipe**. Theme is customizable.
 
 ```
 let banner = "Movie"
@@ -82,7 +82,11 @@ Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
 })
 ```
 
+### Default Theme
 ![Catalog Recipe looks like this](image/ss.png)
+
+### Black Theme
+![Catalog Recipe looks like this](image/ss-black.png)
 
 **Note**: This feature is still in beta. APIs are subject to change.
 
