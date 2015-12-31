@@ -12,6 +12,8 @@ public struct Section {
         let title: String
         let thumbnailURL: String
         let actionID: String
+        let width: Int = 250
+        let height: Int = 376
     }
 
     public typealias ContentTuple = (title: String, thumbnailURL: String, actionID: String)
@@ -37,16 +39,16 @@ extension Section: CustomStringConvertible {
     public var description: String {
         var xml = ""
         xml += "<listItemLockup>"
-        xml += "<title>\(title)</title>"
-        xml += "<decorationLabel>\(contents.count)</decorationLabel>"
+        xml += "<title class=\"kitchen_transparent\" >\(title)</title>"
+        xml += "<decorationLabel class=\"kitchen_transparent\" >\(contents.count)</decorationLabel>"
         xml += "<relatedContent>"
         xml += "<grid>"
         xml += "<section>"
         xml += contents.map{ content in
             var xml = ""
-            xml += "<lockup actionID=\"\(content.actionID)\">"
+            xml += "<lockup actionID=\"\(content.actionID)\" >"
             xml += "<img src=\"\(content.thumbnailURL)\" "
-            xml += "width=\"250\" height=\"376\" />"
+            xml += "width=\"\(content.width)\" height=\"\(content.height)\" />"
             xml += "<title>\(content.title)</title>"
             xml += "</lockup>"
             return xml
@@ -64,7 +66,15 @@ public struct Catalog {
     let sections: [Section]
 }
 
+struct Style {
+    let backgroundColor: String
+    let color: String
+    let highlightColor: String
+}
+
 public enum Recipe {
+    static var style: Style = Style(backgroundColor: "rgb(0, 0, 0)",
+        color: "rgb(255, 255, 255)", highlightColor: "rgb(255, 255, 255)")
     case Catalog(banner:String, sections: [Section])
 }
 
@@ -73,7 +83,13 @@ extension Recipe: CustomStringConvertible {
         var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
         xml += "<document>"
         xml += "<head>"
-//        xml += "<style> title { color: rgb(255, 255, 255); } </style>"
+        xml += "<style>"
+        xml += "* { background-color: \(Recipe.style.backgroundColor);"
+        xml += "color: \(Recipe.style.color);tv-highlight-color:\(Recipe.style.highlightColor);"
+        xml += "}"
+        xml += ".kitchen_transparent { background-color:transparent;"
+        xml += "tv-highlight-color:\(Recipe.style.backgroundColor); }"
+        xml += "</style>"
         xml += "</head>"
         switch self {
         case .Catalog(let banner, let sections):
