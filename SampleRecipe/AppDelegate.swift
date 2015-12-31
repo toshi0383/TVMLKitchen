@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let (width, height) = (250, 376)
         let content = ("Star Wars", thumbnailUrl, actionID, width, height)
 
+        Recipe.theme = .Black
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
         let catalog = Recipe.Catalog(banner: banner, sections: (0...10).map{_ in section1})
         Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in

@@ -40,8 +40,8 @@ extension Section: CustomStringConvertible {
     public var description: String {
         var xml = ""
         xml += "<listItemLockup>"
-        xml += "<title class=\"kitchen_transparent\" >\(title)</title>"
-        xml += "<decorationLabel class=\"kitchen_transparent\" >\(contents.count)</decorationLabel>"
+        xml += "<title class=\"kitchen_highlight_bg\" >\(title)</title>"
+        xml += "<decorationLabel class=\"kitchen_highlight_bg\" >\(contents.count)</decorationLabel>"
         xml += "<relatedContent>"
         xml += "<grid>"
         xml += "<section>"
@@ -50,7 +50,7 @@ extension Section: CustomStringConvertible {
             xml += "<lockup actionID=\"\(content.actionID)\" >"
             xml += "<img src=\"\(content.thumbnailURL)\" "
             xml += "width=\"\(content.width)\" height=\"\(content.height)\" />"
-            xml += "<title>\(content.title)</title>"
+            xml += "<title class=\"kitchen_no_highlight_bg\">\(content.title)</title>"
             xml += "</lockup>"
             return xml
         }.joinWithSeparator("")
@@ -67,15 +67,51 @@ public struct Catalog {
     let sections: [Section]
 }
 
-struct Style {
-    let backgroundColor: String
-    let color: String
-    let highlightColor: String
-}
-
 public enum Recipe {
-    static var style: Style = Style(backgroundColor: "rgb(0, 0, 0)",
-        color: "rgb(255, 255, 255)", highlightColor: "rgb(255, 255, 255)")
+
+    public struct StyleSet {
+        let backgroundColor: String
+        let color: String
+        let highlightBackgroundColor: String
+        let highlightTextColor: String
+        public init(backgroundColor: String,
+            color: String, highlightBackgroundColor: String,
+            highlightTextColor: String)
+        {
+            self.backgroundColor = backgroundColor
+            self.color = color
+            self.highlightBackgroundColor = highlightBackgroundColor
+            self.highlightTextColor = highlightTextColor
+        }
+    }
+
+    public enum Theme {
+        case Default, Black
+        var styleSet: StyleSet {
+            switch self {
+            case .Default:
+                 return Recipe.StyleSet(
+                    backgroundColor: "transparent",
+                    color: "rgb(0, 0, 0)",
+                    highlightBackgroundColor: "rgb(255, 255, 255)",
+                    highlightTextColor: "rgb(0, 0, 0)")
+            case .Black:
+                 return Recipe.StyleSet(
+                    backgroundColor: "rgb(0, 0, 0)",
+                    color: "rgb(255, 255, 255)",
+                    highlightBackgroundColor: "rgb(255, 255, 255)",
+                    highlightTextColor: "rgb(0, 0, 0)")
+            }
+        }
+    }
+
+
+    public static var theme: Theme = .Black {
+        didSet {
+            styleSet = theme.styleSet
+        }
+    }
+    public static var styleSet: StyleSet = theme.styleSet
     case Catalog(banner:String, sections: [Section])
 }
 
@@ -85,11 +121,14 @@ extension Recipe: CustomStringConvertible {
         xml += "<document>"
         xml += "<head>"
         xml += "<style>"
-        xml += "* { background-color: \(Recipe.style.backgroundColor);"
-        xml += "color: \(Recipe.style.color);tv-highlight-color:\(Recipe.style.highlightColor);"
+        xml += "* { background-color: \(Recipe.styleSet.backgroundColor);"
+        xml += "color: \(Recipe.styleSet.color);"
+        xml += "tv-highlight-color:\(Recipe.styleSet.highlightBackgroundColor);"
         xml += "}"
-        xml += ".kitchen_transparent { background-color:transparent;"
-        xml += "tv-highlight-color:\(Recipe.style.backgroundColor); }"
+        xml += ".kitchen_highlight_bg { background-color:transparent;"
+        xml += "tv-highlight-color:\(Recipe.styleSet.highlightTextColor); }"
+        xml += ".kitchen_no_highlight_bg { background-color:transparent;"
+        xml += "tv-highlight-color:\(Recipe.styleSet.highlightBackgroundColor); }"
         xml += "</style>"
         xml += "</head>"
         switch self {
