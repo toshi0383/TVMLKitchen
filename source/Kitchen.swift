@@ -48,6 +48,14 @@ extension Kitchen {
         openTVMLTemplateFromXMLString(xmlString)
     }
 
+    public static func serve(xmlFile xmlFile: String) {
+        do {
+            try openTVMLTemplateFromXMLFile(xmlFile)
+        } catch let error as NSError {
+            sharedKitchen.kitchenErrorHandler?(error)
+        }
+    }
+
     public static func serve(jsFile jsFile: String) {
         openTVMLTemplateFromJSFile(jsFile)
     }
