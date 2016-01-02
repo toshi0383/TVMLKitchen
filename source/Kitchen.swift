@@ -23,6 +23,8 @@ public class Kitchen: NSObject {
         let alert = UIAlertController(title: "Error occured.",
             message: "Oops, something's wrong.:\(error.localizedDescription)",
             preferredStyle: UIAlertControllerStyle.Alert)
+        let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alert.addAction(ok)
         main {
             Kitchen.navigationController.presentViewController(alert, animated: true, completion: nil)
         }
