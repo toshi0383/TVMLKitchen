@@ -9,7 +9,7 @@
 import TVMLKit
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
-public typealias KitchenLaunchErrorHandler = NSError -> Void
+public typealias KitchenErrorHandler = NSError -> Void
 
 public class Kitchen: NSObject {
     /// singleton instance
@@ -17,7 +17,14 @@ public class Kitchen: NSObject {
 
     private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
-    private var kitchenLaunchErrorHandler: KitchenLaunchErrorHandler?
+    private var kitchenErrorHandler: KitchenErrorHandler?
+
+    private static let defaultErrorHandler: KitchenErrorHandler = { error in
+        let alert = UIAlertController(title: "Error occured.",
+            message: "Oops, something's wrong.:\(error.localizedDescription)",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        Kitchen.navigationController.presentViewController(alert, animated: true, completion: nil)
+    }
 
     private var window: UIWindow
 
@@ -85,20 +92,19 @@ extension Kitchen {
      - parameter launchOptions: launchOptions
      - parameter evaluateAppJavaScriptInContext:
                  the closure to inject functions or a exceptionHandler into JSContext
-     - parameter onLaunchError: the Error handler that gets called in appController's delegate
-     - returns: If launch process was successfully or not.
+     - parameter onError: the Error handler that gets called when any errors occured
+                 in Kitchen(both JS and Swift context)
+     - returns:  If launch process was successfully or not.
      */
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
         evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
-        onLaunchError kitchenLaunchErrorHandler: KitchenLaunchErrorHandler? = nil) -> Bool
+        onError kitchenErrorHandler: KitchenErrorHandler? = defaultErrorHandler) -> Bool
     {
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
-        sharedKitchen.kitchenLaunchErrorHandler = kitchenLaunchErrorHandler
+        sharedKitchen.kitchenErrorHandler = kitchenErrorHandler
 
-        /*
-        Create the TVApplicationControllerContext
-        */
+        /// Create the TVApplicationControllerContext
         let appControllerContext = TVApplicationControllerContext()
 
         let javaScriptURL = NSBundle(forClass: self).URLForResource("kitchen", withExtension: "js")!
@@ -147,7 +153,7 @@ extension Kitchen: TVApplicationControllerDelegate {
     public func appController(appController: TVApplicationController,
         didFailWithError error: NSError)
     {
-        self.kitchenLaunchErrorHandler?(error)
+        self.kitchenErrorHandler?(error)
     }
 
     public func appController(appController: TVApplicationController,
