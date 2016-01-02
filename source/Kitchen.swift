@@ -11,17 +11,32 @@ import TVMLKit
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
 public typealias KitchenErrorHandler = NSError -> Void
 
+let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
+
 public class Kitchen: NSObject {
     /// singleton instance
     private static let sharedKitchen = Kitchen()
 
     private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
-    private var kitchenErrorHandler: KitchenErrorHandler?
+    private var kitchenErrorHandler: KitchenErrorHandler? {
+        didSet {
+            Kitchen.appController.evaluateInJavaScriptContext({jsContext in
+                let errorHandler: @convention(block) String -> Void =
+                { [unowned self] (message: String) in
+                    let error = NSError(domain: kitchenErrorDomain,
+                        code: 1, userInfo: [NSLocalizedDescriptionKey:message])
+                    self.kitchenErrorHandler?(error)
+                }
+                jsContext.setObject(unsafeBitCast(errorHandler, AnyObject.self),
+                    forKeyedSubscript: "kitchenErrorHandler")
+            }, completion: nil)
+        }
+    }
 
     private static let defaultErrorHandler: KitchenErrorHandler = { error in
-        let alert = UIAlertController(title: "Error occured.",
-            message: "Oops, something's wrong.:\(error.localizedDescription)",
+        let alert = UIAlertController(title: "Oops, something's wrong.",
+            message: "\(error.localizedDescription)",
             preferredStyle: UIAlertControllerStyle.Alert)
         let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
         alert.addAction(ok)
@@ -114,7 +129,6 @@ extension Kitchen {
     {
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
-        sharedKitchen.kitchenErrorHandler = kitchenErrorHandler
 
         /// Create the TVApplicationControllerContext
         let appControllerContext = TVApplicationControllerContext()
@@ -144,6 +158,10 @@ extension Kitchen {
 
         sharedKitchen.appController = TVApplicationController(context: appControllerContext,
             window: sharedKitchen.window, delegate: sharedKitchen)
+
+        /// Must be place this statement after appController is initialized
+        sharedKitchen.kitchenErrorHandler = kitchenErrorHandler
+
         return true
     }
 

@@ -135,13 +135,12 @@ function loadTemplateFromURL(templateURL, callback) {
             var resource = Template.call(self);
             callback.call(self, resource);
         } else {
-            var title = "Template Load Error from URL:" + templateURL,
-                description = `There was an error attempting to load the resource '${resource}'. \n\n Please try again later.`,
-                alert = createAlert(title, description);
+            var message = `There was an error attempting to load the resource '${resource}' with URL: '${templateURL}'. \n\n Please try again later.`
 
             removeLoadingIndicator();
-
-            navigationDocument.presentModal(alert);
+            if (kitchenErrorHandler !== undefined) {
+                kitchenErrorHandler(message);
+            }
         }
     });
 }
@@ -161,21 +160,6 @@ function openTemplateFromXMLString(xmlString) {
     doc.addEventListener("holdselect", holdselect.bind(this));
     doc.addEventListener("play", play.bind(this));
     defaultPresenter.call(this, doc);
-}
-
-var createAlert = function(title, description) {
-
-    var alertString = `<?xml version="1.0" encoding="UTF-8" ?>
-        <document>
-          <alertTemplate>
-            <title>${title}</title>
-            <description>${description}</description>
-          </alertTemplate>
-        </document>`
-
-    var alertDoc = parser.parseFromString(alertString, "application/xml");
-
-    return alertDoc
 }
 
 App.onLaunch = function(options) {
