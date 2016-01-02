@@ -51,7 +51,7 @@ Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
     jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
         forKeyedSubscript: "debug")
 
-}, onLaunchError: { error in
+}, onError: { error in
     let title = "Error Launching Application"
     let message = error.localizedDescription
     let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
