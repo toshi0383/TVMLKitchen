@@ -65,11 +65,11 @@ function load(event) {
     }
     self.showLoadingIndicator(presentation);
     loadTemplateFromURL(templateURL, function(resource) {
-        present(resource, presentation);
+        present(resource, presentation, ele);
     });
 }
 
-function present(resource, presentation) {
+function present(resource, presentation, ele) {
     if (!resource) {
         return;
     }
