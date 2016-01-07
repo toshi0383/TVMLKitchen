@@ -93,13 +93,6 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 
         // - SeeAlso: http://nshipster.com/javascriptcore/
 
-    }, onLaunchError: { error in
-        let title = "Error Launching Application"
-        let message = error.localizedDescription
-        let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
-
-        Kitchen.navigationController.presentViewController(alertController, animated: true) { }
-
     })
 
     return true

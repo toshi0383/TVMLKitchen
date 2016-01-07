@@ -9,7 +9,9 @@
 import TVMLKit
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
-public typealias KitchenLaunchErrorHandler = NSError -> Void
+public typealias KitchenErrorHandler = NSError -> Void
+
+let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
 
 public class Kitchen: NSObject {
     /// singleton instance
@@ -17,7 +19,31 @@ public class Kitchen: NSObject {
 
     private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
-    private var kitchenLaunchErrorHandler: KitchenLaunchErrorHandler?
+    private var kitchenErrorHandler: KitchenErrorHandler? {
+        didSet {
+            Kitchen.appController.evaluateInJavaScriptContext({jsContext in
+                let errorHandler: @convention(block) String -> Void =
+                { [unowned self] (message: String) in
+                    let error = NSError(domain: kitchenErrorDomain,
+                        code: 1, userInfo: [NSLocalizedDescriptionKey:message])
+                    self.kitchenErrorHandler?(error)
+                }
+                jsContext.setObject(unsafeBitCast(errorHandler, AnyObject.self),
+                    forKeyedSubscript: "kitchenErrorHandler")
+            }, completion: nil)
+        }
+    }
+
+    private static let defaultErrorHandler: KitchenErrorHandler = { error in
+        let alert = UIAlertController(title: "Oops, something's wrong.",
+            message: "\(error.localizedDescription)",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alert.addAction(ok)
+        main {
+            Kitchen.navigationController.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
 
     private var window: UIWindow
 
@@ -39,6 +65,14 @@ extension Kitchen {
 
     public static func serve(xmlString xmlString: String) {
         openTVMLTemplateFromXMLString(xmlString)
+    }
+
+    public static func serve(xmlFile xmlFile: String) {
+        do {
+            try openTVMLTemplateFromXMLFile(xmlFile)
+        } catch let error as NSError {
+            sharedKitchen.kitchenErrorHandler?(error)
+        }
     }
 
     public static func serve(jsFile jsFile: String) {
@@ -85,20 +119,18 @@ extension Kitchen {
      - parameter launchOptions: launchOptions
      - parameter evaluateAppJavaScriptInContext:
                  the closure to inject functions or a exceptionHandler into JSContext
-     - parameter onLaunchError: the Error handler that gets called in appController's delegate
-     - returns: If launch process was successfully or not.
+     - parameter onError: the Error handler that gets called when any errors occured
+                 in Kitchen(both JS and Swift context)
+     - returns:  If launch process was successfully or not.
      */
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
         evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
-        onLaunchError kitchenLaunchErrorHandler: KitchenLaunchErrorHandler? = nil) -> Bool
+        onError kitchenErrorHandler: KitchenErrorHandler? = defaultErrorHandler) -> Bool
     {
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
-        sharedKitchen.kitchenLaunchErrorHandler = kitchenLaunchErrorHandler
 
-        /*
-        Create the TVApplicationControllerContext
-        */
+        /// Create the TVApplicationControllerContext
         let appControllerContext = TVApplicationControllerContext()
 
         let javaScriptURL = NSBundle(forClass: self).URLForResource("kitchen", withExtension: "js")!
@@ -126,6 +158,10 @@ extension Kitchen {
 
         sharedKitchen.appController = TVApplicationController(context: appControllerContext,
             window: sharedKitchen.window, delegate: sharedKitchen)
+
+        /// Must be place this statement after appController is initialized
+        sharedKitchen.kitchenErrorHandler = kitchenErrorHandler
+
         return true
     }
 
@@ -147,7 +183,7 @@ extension Kitchen: TVApplicationControllerDelegate {
     public func appController(appController: TVApplicationController,
         didFailWithError error: NSError)
     {
-        self.kitchenLaunchErrorHandler?(error)
+        self.kitchenErrorHandler?(error)
     }
 
     public func appController(appController: TVApplicationController,
