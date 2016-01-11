@@ -23,6 +23,11 @@ internal func openTVMLTemplateFromJSFile(jsfile: String) {
     evaluateInTVMLContext(js)
 }
 
+internal func openTVMLTemplateFromURL(url: String) {
+    let js = "openTemplateFromURL('\(url)');"
+    evaluateInTVMLContext(js)
+}
+
 private func evaluateInTVMLContext(js: String, completion: (Void->Void)? = nil) {
     Kitchen.appController.evaluateInJavaScriptContext({context in
         context.evaluateScript(js)

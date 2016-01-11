@@ -21,10 +21,14 @@ Kitchen automatically looks for the jsFile in your Main Bundle, parse and load i
     Kitchen.prepare(launchOptions)
     ```
 
-3. Launch the template from anywhere and anytime.
-
+3-a. Launch the template from anywhere.
     ```
-    Kitchen.serve(jsFile:"Alert.xml.js")
+    Kitchen.serve(jsFile: "Alert.xml.js")
+    ```
+
+3-b. Got your TVML server ? Awesome. Just pass the URL String and you're good to go.
+    ```
+    Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Catalog.xml.js")
     ```
 
 ## Advanced setup

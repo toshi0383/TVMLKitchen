@@ -25,6 +25,11 @@ class ViewController: UIViewController {
         Kitchen.serve(xmlString:XMLString.Catalog.description)
     }
 
+    @IBAction func openTemplateFromURL(sender: AnyObject!) {
+        print(__FUNCTION__)
+        Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Catalog.xml.js")
+    }
+
     struct MyTheme: ThemeType {
         let backgroundColor: String = "rgb(0, 20, 70)"
         let color: String = "rgb(237, 237, 255)"
