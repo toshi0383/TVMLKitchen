@@ -27,7 +27,8 @@ class ViewController: UIViewController {
 
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
         print(__FUNCTION__)
-        Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Catalog.xml.js")
+        Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen"
+            + "/master/SampleRecipe/Catalog.xml.js")
     }
 
     struct MyTheme: ThemeType {
