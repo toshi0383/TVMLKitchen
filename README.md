@@ -12,20 +12,27 @@ Kitchen automatically looks for the jsFile in your Main Bundle, parse and load i
 
 # Getting Started
 
-## Showing the Alert Template
+## Showing a Template from main bundle
 
-1. Put your Alert.xml.js to your app's main bundle.
+1. Put your Sample.xml.js to your app's main bundle.
 
 2. Prepare your Kitchen in AppDelegate's `didFinishLaunchingWithOptions:`.
     ```
     Kitchen.prepare(launchOptions)
     ```
 
-3. Launch the template from anywhere and anytime.
+3. Launch the template from anywhere.
+    ```
+    Kitchen.serve(jsFile: "Sample.xml.js")
+    ```
 
-    ```
-    Kitchen.serve(jsFile:"Alert.xml.js")
-    ```
+## Showing a Template from client-server
+
+<ol start="4">
+<li><p>Got TVML server ? Just pass the URL String and you're good to go.</p>
+    <pre><code>Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Catalog.xml.js")</code></pre>
+
+</li></ol>
 
 ## Advanced setup
 

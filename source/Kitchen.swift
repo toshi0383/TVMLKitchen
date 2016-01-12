@@ -79,6 +79,10 @@ extension Kitchen {
         openTVMLTemplateFromJSFile(jsFile)
     }
 
+    public static func serve(urlString urlString: String) {
+        openTVMLTemplateFromURL(urlString)
+    }
+
     public static func serve<R: RecipeType>
         (recipe recipe: R, actionIDHandler: (String -> Void)? = nil)
     {

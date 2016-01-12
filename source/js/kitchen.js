@@ -151,6 +151,10 @@ function openTemplateFromJSFile(jsFileName) {
     loadTemplateFromURL(`${mainBundleUrl}${jsFileName}`, openTemplateFromXMLString);
 }
 
+function openTemplateFromURL(url) {
+    loadTemplateFromURL(`${url}`, openTemplateFromXMLString);
+}
+
 function openTemplateFromXMLString(xmlString) {
     __kitchenDebug("openTemplateFromXMLString");
     showLoadingIndicator();

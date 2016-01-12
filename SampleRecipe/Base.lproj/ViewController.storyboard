@@ -45,6 +45,14 @@
                                     <action selector="openCustomTheme" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="Iip-LK-B7v"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxr-n0-cic">
+                                <rect key="frame" x="681" y="717" width="152" height="86"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="URL"/>
+                                <connections>
+                                    <action selector="openTemplateFromURL:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="SsY-Uz-mhY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="WKM-yi-Gm5" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="AR3-oL-pqG"/>
