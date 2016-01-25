@@ -36,21 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
         let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
-        Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
-            print(actionID)
-            let identifier = actionID // parse action ID here
-            dispatch_async(dispatch_get_main_queue()) {
-                self.openViewController(identifier)
-            }
-        })
+        Kitchen.serve(recipe: catalog)
     }
 
-    func openViewController(identifier: String) {
-        print(__FUNCTION__)
-        let sb = UIStoryboard(name: "ViewController", bundle: NSBundle.mainBundle())
-        let vc = sb.instantiateInitialViewController()!
-        Kitchen.navigationController.pushViewController(vc, animated: true)
-    }
 
     // swiftlint:disable line_length
     func applicationWillResignActive(application: UIApplication) {
@@ -93,7 +81,20 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 
         // - SeeAlso: http://nshipster.com/javascriptcore/
 
+    }, actionIDHandler: { actionID in
+        let identifier = actionID // parse action ID here
+        dispatch_async(dispatch_get_main_queue()) {
+            openViewController(identifier)
+        }
     })
 
     return true
+}
+
+private func openViewController(identifier: String) {
+    print(__FUNCTION__)
+    print(identifier)
+    let sb = UIStoryboard(name: "ViewController", bundle: NSBundle.mainBundle())
+    let vc = sb.instantiateInitialViewController()!
+    Kitchen.navigationController.pushViewController(vc, animated: true)
 }

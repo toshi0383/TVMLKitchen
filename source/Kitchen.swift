@@ -49,7 +49,8 @@ public class Kitchen: NSObject {
 
     private var appController: TVApplicationController!
 
-    private var actionIDHandler: (String -> Void)?
+    public typealias KitchenActionIDHandler = (String -> Void)
+    private var actionIDHandler: KitchenActionIDHandler?
 
     public static var mainBundlePath: String!
 
@@ -84,9 +85,8 @@ extension Kitchen {
     }
 
     public static func serve<R: RecipeType>
-        (recipe recipe: R, actionIDHandler: (String -> Void)? = nil)
+        (recipe recipe: R)
     {
-        sharedKitchen.actionIDHandler = actionIDHandler
         openTVMLTemplateFromXMLString(recipe.xmlString)
     }
 }
@@ -123,12 +123,15 @@ extension Kitchen {
      - parameter launchOptions: launchOptions
      - parameter evaluateAppJavaScriptInContext:
                  the closure to inject functions or a exceptionHandler into JSContext
+     - parameter actionIDHandler: the action ID handler that gets called when any action is invoked
+                 in Kitchen(both JS and Swift context)
      - parameter onError: the Error handler that gets called when any errors occured
                  in Kitchen(both JS and Swift context)
      - returns:  If launch process was successfully or not.
      */
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
         evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
+        actionIDHandler: KitchenActionIDHandler? = nil,
         onError kitchenErrorHandler: KitchenErrorHandler? = defaultErrorHandler) -> Bool
     {
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -165,6 +168,7 @@ extension Kitchen {
 
         /// Must be place this statement after appController is initialized
         sharedKitchen.kitchenErrorHandler = kitchenErrorHandler
+        sharedKitchen.actionIDHandler = actionIDHandler
 
         return true
     }
@@ -207,11 +211,13 @@ extension Kitchen: TVApplicationControllerDelegate {
         jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
             forKeyedSubscript: "__kitchenDebug")
 
-        let actionIDHandler: @convention(block) String -> Void = {[weak self] actionID in
-            self?.actionIDHandler?(actionID)
+        if let actionIDHandler = actionIDHandler {
+            let actionIDHandler: @convention(block) String -> Void = { actionID in
+                actionIDHandler(actionID)
+            }
+            jsContext.setObject(unsafeBitCast(actionIDHandler, AnyObject.self),
+                forKeyedSubscript: "actionIDHandler")
         }
-        jsContext.setObject(unsafeBitCast(actionIDHandler, AnyObject.self),
-            forKeyedSubscript: "actionIDHandler")
 
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
     }
