@@ -1,4 +1,4 @@
-## Master
+## 0.2.0
 ##### Enhancements
 * Open template from URL String [#8](https://github.com/toshi0383/TVMLKitchen/pull/8)
 
