@@ -2,6 +2,9 @@
 ##### Enhancements
 * Open template from URL String [#8](https://github.com/toshi0383/TVMLKitchen/pull/8)
 
+##### Bugfix
+* actionID had been overwritten everytime `Kitchen.serve()` with actionIDHandler. [#9](https://github.com/toshi0383/TVMLKitchen/issues/9)
+
 ## 0.1.2
 ##### Breaking Change
 * Improve error handling: [#4](https://github.com/toshi0383/TVMLKitchen/issues/4)

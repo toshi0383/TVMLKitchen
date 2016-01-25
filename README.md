@@ -81,12 +81,7 @@ let templateURL: String? = nil
 let content = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
 let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
 let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
-Kitchen.serve(recipe: catalog, actionIDHandler: {[unowned self] actionID in
-    let identifier = actionID // Parse your action ID appropriately
-    dispatch_async(dispatch_get_main_queue()) {
-        self.openViewController(identifier)
-    }
-})
+Kitchen.serve(recipe: catalog)
 ```
 
 ### Default Theme
