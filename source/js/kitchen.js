@@ -55,7 +55,7 @@ function load(event) {
         actionID = ele.getAttribute("actionID");
         tagName = ele.tagName;
 
-    if(actionID){
+    if(actionID && typeof actionIDHandler !== 'undefined'){
         actionIDHandler(actionID);
         return;
     }
