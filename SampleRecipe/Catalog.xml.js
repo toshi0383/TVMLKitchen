@@ -29,15 +29,15 @@ var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
             <relatedContent>
               <grid>
                 <section>
-                  <lockup action="playContent" titleId="1234">
+                  <lockup actionID="hello action A" titleId="1234">
                     <img src="${this.BASEURL}music_1.lcr" width="308" height="308" />
                     <title class="whiteText">Title 1</title>
                   </lockup>
-                  <lockup action="openZappingViewController">
+                  <lockup actionID="hello action B">
                     <img src="${this.BASEURL}music_2.lcr" width="308" height="308" />
                     <title class="whiteText">Title 2</title>
                   </lockup>
-                  <lockup action="showMenu">
+                  <lockup actionID="hello action C">
                     <img src="${this.BASEURL}music_3.lcr" width="308" height="308" />
                     <title class="whiteText">Title 3</title>
                   </lockup>
