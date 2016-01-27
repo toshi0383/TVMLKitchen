@@ -38,10 +38,7 @@ xcuserdata
 # Pods/
 
 # Carthage
-Carthage/*
-!Carthage/Build/
-Carthage/Build/*
-!Carthage/Build/tvOS/
+Carthage/
 
 
 **/.DS_Store
