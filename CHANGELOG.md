@@ -1,3 +1,7 @@
+## 0.2.1
+##### Bugfix
+* Fix SwiftLint Error on `carthage update` #12
+
 ## 0.2.0
 ##### Enhancements
 * Open template from URL String [#8](https://github.com/toshi0383/TVMLKitchen/pull/8)
