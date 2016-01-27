@@ -4,14 +4,13 @@ excluded: # paths to ignore during linting. overridden by `included`.
 disabled_rules:
   - opening_brace
   - statement_position
-  - variable_name_min_length
 line_length: 110
 type_body_length:
-  - 300 # warning
-  - 400 # error
-variable_name_max_length:
-  - 40 # warning
-  - 60 # error
-variable_name_min_length:
-  - 3 # warning
-  - 2 # error
+  warning: 300
+  error: 400
+variable_name:
+  min_length: 0
+  max_length: 30
+  excluded:
+    - id
+    - URL
