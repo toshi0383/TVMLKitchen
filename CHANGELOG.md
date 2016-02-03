@@ -1,3 +1,7 @@
+## 0.2.2
+##### Bugfix
+* Fix unwanted SwiftLint Error on `carthage update` #12
+
 ## 0.2.1
 ##### Bugfix
 * Fix SwiftLint Error on `carthage update` #12
