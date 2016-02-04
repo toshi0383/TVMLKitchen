@@ -24,7 +24,6 @@ function searchPresenter(xml) {
 
     keyboard.onTextChange = function() {
         var searchText = keyboard.text;
-        __kitchenDebug('search text changed: ' + searchText);
         buildResults(doc, searchText);
     }
 }
@@ -36,15 +35,12 @@ function modalDialogPresenter(xml) {
 }
 
 function play(event) {
-    __kitchenDebug("play")
 }
 
 function holdselect(event) {
-    __kitchenDebug("holdselect")
 }
 
 function highlight(event) {
-    __kitchenDebug("highlight")
 }
 
 function load(event) {
@@ -89,7 +85,6 @@ function present(resource, presentation, ele) {
 }
 
 function makeDocument(resource) {
-    __kitchenDebug("makeDocument");
     var doc = parser.parseFromString(resource, "application/xml");
     return doc;
 }
@@ -156,7 +151,6 @@ function openTemplateFromURL(url) {
 }
 
 function openTemplateFromXMLString(xmlString) {
-    __kitchenDebug("openTemplateFromXMLString");
     showLoadingIndicator();
     var doc = makeDocument(xmlString);
     doc.addEventListener("select", load.bind(this));
