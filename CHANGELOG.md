@@ -1,3 +1,7 @@
+## master
+##### Enhancements
+* Remove debug function injection #3
+
 ## 0.2.2
 ##### Bugfix
 * Fix unwanted SwiftLint Error on `carthage update` #12
