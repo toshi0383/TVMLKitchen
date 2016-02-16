@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         Kitchen.serve(jsFile:"Catalog.xml.js")
     }
 
+    @IBAction func openSpecialXMLString(sender: AnyObject!) {
+        print(__FUNCTION__)
+        Kitchen.serve(xmlString:XMLString.SpecialCharacters.description)
+    }
+
     @IBAction func openXMLString(sender: AnyObject!) {
         print(__FUNCTION__)
         Kitchen.serve(xmlString:XMLString.Catalog.description)

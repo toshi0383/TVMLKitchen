@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="SDq-1u-6R3">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="SDq-1u-6R3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -53,10 +53,20 @@
                                     <action selector="openTemplateFromURL:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="SsY-Uz-mhY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01u-1x-nOf">
+                                <rect key="frame" x="1329" y="497" width="327" height="86"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="SpecialStrings"/>
+                                <connections>
+                                    <action selector="openSpecialXMLString:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="WQZ-Ni-f63"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="WKM-yi-Gm5" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="AR3-oL-pqG"/>
                             <constraint firstItem="WKM-yi-Gm5" firstAttribute="top" secondItem="6SD-mQ-3RS" secondAttribute="bottom" constant="24" id="OqD-OM-OvA"/>
+                            <constraint firstItem="01u-1x-nOf" firstAttribute="leading" secondItem="6qn-b4-3Km" secondAttribute="trailing" constant="38" id="eXy-Mj-NfY"/>
+                            <constraint firstItem="01u-1x-nOf" firstAttribute="centerY" secondItem="6qn-b4-3Km" secondAttribute="centerY" id="f3i-bg-VoD"/>
                             <constraint firstItem="6SD-mQ-3RS" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="nTr-hV-7Lb"/>
                             <constraint firstItem="6SD-mQ-3RS" firstAttribute="centerY" secondItem="vhI-78-4Yk" secondAttribute="centerY" id="wfU-QZ-eNA"/>
                         </constraints>
