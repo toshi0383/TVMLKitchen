@@ -9,7 +9,7 @@
 import Foundation
 
 enum XMLString: String {
-    case Catalog
+    case Catalog, SpecialCharacters
 }
 
 extension XMLString: CustomStringConvertible {
@@ -20,6 +20,8 @@ extension XMLString: CustomStringConvertible {
             // swiftlint:disable force_try
             return try! NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
             // swiftlint:enable force_try
+        case .SpecialCharacters:
+            return "👨‍👩‍👧‍👧@x,.(9]})[{,./?><&%$$#!\'|~~\'"
         }
     }
 }
