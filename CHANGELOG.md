@@ -1,6 +1,7 @@
-## master
+## 0.3.0
 ##### Enhancements
 * Remove debug function injection #3
+* Introduce playActionIDHandler #23
 
 ## 0.2.2
 ##### Bugfix
