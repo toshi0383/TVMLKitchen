@@ -1,14 +1,15 @@
-## master
+## 0.3.0
 ##### Enhancements
-* Remove debug function injection #3
+* Remove debug function injection [#3](https://github.com/toshi0383/TVMLKitchen/issues/3)
+* Introduce playActionIDHandler [#23](https://github.com/toshi0383/TVMLKitchen/issues/23)
 
 ## 0.2.2
 ##### Bugfix
-* Fix unwanted SwiftLint Error on `carthage update` #12
+* Fix unwanted SwiftLint Error on `carthage update` [#16](https://github.com/toshi0383/TVMLKitchen/pull/16)
 
 ## 0.2.1
 ##### Bugfix
-* Fix SwiftLint Error on `carthage update` #12
+* Fix SwiftLint Error on `carthage update` [#12](https://github.com/toshi0383/TVMLKitchen/issues/12)
 
 ## 0.2.0
 ##### Enhancements
