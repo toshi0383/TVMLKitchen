@@ -51,6 +51,7 @@ public class Kitchen: NSObject {
 
     public typealias KitchenActionIDHandler = (String -> Void)
     private var actionIDHandler: KitchenActionIDHandler?
+    private var playActionIDHandler: KitchenActionIDHandler?
 
     public static var mainBundlePath: String!
 
@@ -132,6 +133,7 @@ extension Kitchen {
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
         evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
         actionIDHandler: KitchenActionIDHandler? = nil,
+        playActionIDHandler: KitchenActionIDHandler? = nil,
         onError kitchenErrorHandler: KitchenErrorHandler? = defaultErrorHandler) -> Bool
     {
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -169,6 +171,7 @@ extension Kitchen {
         /// Must be place this statement after appController is initialized
         sharedKitchen.kitchenErrorHandler = kitchenErrorHandler
         sharedKitchen.actionIDHandler = actionIDHandler
+        sharedKitchen.playActionIDHandler = playActionIDHandler
 
         return true
     }
@@ -202,6 +205,14 @@ extension Kitchen: TVApplicationControllerDelegate {
     public func appController(appController: TVApplicationController,
         evaluateAppJavaScriptInContext jsContext: JSContext)
     {
+        if let playActionIDHandler = playActionIDHandler {
+            let playActionIDHandler: @convention(block) String -> Void = { actionID in
+                playActionIDHandler(actionID)
+            }
+            jsContext.setObject(unsafeBitCast(playActionIDHandler, AnyObject.self),
+                forKeyedSubscript: "playActionIDHandler")
+        }
+
         if let actionIDHandler = actionIDHandler {
             let actionIDHandler: @convention(block) String -> Void = { actionID in
                 actionIDHandler(actionID)
