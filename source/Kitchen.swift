@@ -124,8 +124,8 @@ extension Kitchen {
      - parameter launchOptions: launchOptions
      - parameter evaluateAppJavaScriptInContext:
                  the closure to inject functions or a exceptionHandler into JSContext
-     - parameter actionIDHandler: the action ID handler that gets called when any action is invoked
-                 in Kitchen(both JS and Swift context)
+     - parameter actionIDHandler: a handler for "select" event
+     - parameter playActionIDHandler: a handler fo "play" event
      - parameter onError: the Error handler that gets called when any errors occured
                  in Kitchen(both JS and Swift context)
      - returns:  If launch process was successfully or not.
