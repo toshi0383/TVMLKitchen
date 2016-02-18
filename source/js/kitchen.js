@@ -36,7 +36,7 @@ function modalDialogPresenter(xml) {
 
 function play(event) {
     var ele = event.target,
-        actionID = ele.getAttribute("playActionID")
+        actionID = ele.getAttribute('playActionID');
     if(actionID && typeof playActionIDHandler !== 'undefined'){
         playActionIDHandler(actionID);
         return;
