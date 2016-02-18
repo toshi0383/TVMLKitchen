@@ -86,6 +86,8 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         dispatch_async(dispatch_get_main_queue()) {
             openViewController(identifier)
         }
+    }, playActionIDHandler: {actionID in
+        print(actionID)
     })
 
     return true

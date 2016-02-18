@@ -29,7 +29,7 @@ var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
             <relatedContent>
               <grid>
                 <section>
-                  <lockup actionID="hello action A" titleId="1234">
+                  <lockup actionID="hello action A" playActionID="playActionIDhello">
                     <img src="${this.BASEURL}music_1.lcr" width="308" height="308" />
                     <title class="whiteText">Title 1</title>
                   </lockup>
