@@ -37,6 +37,8 @@
 		1F5ABB981C356B3100785DEB /* TVMLKitchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
+		286DEBED1C97670300512A11 /* AlertRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DEBEC1C97670300512A11 /* AlertRecipe.swift */; };
+		286DEBF01C97675F00512A11 /* AlertRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 286DEBEF1C97675F00512A11 /* AlertRecipe.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRecipeUITests.swift; sourceTree = "<group>"; };
 		1F8B43791C35676400C716A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
+		286DEBEC1C97670300512A11 /* AlertRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRecipe.swift; sourceTree = "<group>"; };
+		286DEBEF1C97675F00512A11 /* AlertRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AlertRecipe.xml; path = templates/AlertRecipe.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,11 +154,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F3065B41C30D634001E5DF0 /* js */ = {
+		1F3065B41C30D634001E5DF0 /* JS */ = {
 			isa = PBXGroup;
 			children = (
 				1F3065B51C30D634001E5DF0 /* kitchen.js */,
 			);
+			name = JS;
 			path = js;
 			sourceTree = "<group>";
 		};
@@ -261,7 +266,9 @@
 		1F32E55C1C30B81200F62E88 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				1F3065B41C30D634001E5DF0 /* js */,
+				286DEBEB1C9766F100512A11 /* Recipes */,
+				286DEBEE1C97673F00512A11 /* Templates */,
+				1F3065B41C30D634001E5DF0 /* JS */,
 				1F32E5F61C30B81200F62E88 /* Info.plist */,
 				1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */,
 				1F32E6861C30B81E00F62E88 /* Kitchen.swift */,
@@ -295,6 +302,22 @@
 				1F8B43791C35676400C716A7 /* Info.plist */,
 			);
 			path = SampleRecipeUITests;
+			sourceTree = "<group>";
+		};
+		286DEBEB1C9766F100512A11 /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				286DEBEC1C97670300512A11 /* AlertRecipe.swift */,
+			);
+			name = Recipes;
+			sourceTree = "<group>";
+		};
+		286DEBEE1C97673F00512A11 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				286DEBEF1C97675F00512A11 /* AlertRecipe.xml */,
+			);
+			name = Templates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286DEBF01C97675F00512A11 /* AlertRecipe.xml in Resources */,
 				1F3065B81C30D634001E5DF0 /* kitchen.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +512,7 @@
 				1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */,
 				1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */,
 				1F3066031C31179A001E5DF0 /* Recipe.swift in Sources */,
+				286DEBED1C97670300512A11 /* AlertRecipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

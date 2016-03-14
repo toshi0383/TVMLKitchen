@@ -1,0 +1,5 @@
+<alertTemplate>
+    <title>{{TITLE}}</title>
+    <description>{{DESCRIPTION}}</description>
+    {{BUTTONS}}
+</alertTemplate>
