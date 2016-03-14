@@ -111,6 +111,8 @@ public struct BlackTheme: ThemeType {
 public protocol RecipeType {
     typealias Theme
     var theme: Theme {get}
+    /// Presentation type is defined in the recipe to keep things consistent.
+    var presentationType: PresentationType {get}
     /// Template part of TVML which is used to format full page xmlString.
     /// - SeeAlso: RecipeType.xmlString
     var template: String {get}
@@ -146,6 +148,7 @@ public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
     let banner: String
     let sections: [Section]
     public let theme: Theme
+    public let presentationType: PresentationType = .Default
 
     public init(banner: String, sections: [Section], theme: Theme = Theme()) {
         self.banner = banner

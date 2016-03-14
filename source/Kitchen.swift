@@ -86,8 +86,8 @@ extension Kitchen {
         openTVMLTemplateFromURL(urlString, type: type)
     }
 
-    public static func serve<R: RecipeType>(recipe recipe: R, type: PresentationType = .Default) {
-        openTVMLTemplateFromXMLString(recipe.xmlString, type: type)
+    public static func serve<R: RecipeType>(recipe recipe: R) {
+        openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
 }
