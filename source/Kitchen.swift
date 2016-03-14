@@ -89,7 +89,7 @@ extension Kitchen {
     public static func serve<R: RecipeType>(recipe recipe: R, type: PresentationType = .Default) {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: type)
     }
-    
+
 }
 
 // MARK: window

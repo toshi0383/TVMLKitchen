@@ -11,7 +11,8 @@ internal func openTVMLTemplateFromXMLString(xmlString: String, type: Presentatio
     evaluateInTVMLContext(js)
 }
 
-internal func openTVMLTemplateFromXMLFile(xmlFile: String, type: PresentationType = .Default) throws {
+internal func openTVMLTemplateFromXMLFile(xmlFile: String,
+    type: PresentationType = .Default) throws {
     let path = NSBundle.mainBundle().pathForResource(xmlFile, ofType: nil)!
     let xmlString = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
     let js = "openTemplateFromXMLString(`\(xmlString)`, \(type.rawValue));"
