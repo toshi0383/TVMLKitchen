@@ -34,6 +34,16 @@ Kitchen automatically looks for the jsFile in your Main Bundle, parse and load i
 
 </li></ol>
 
+## Presentation Styles
+
+There are currently two presentation styles that can be used when serving views: Default and Modal. The default style acts as a "Push" and will replace the current view. Modal will overlay the new view atop the existing view and is commonly used for alerts.
+
+````swift
+Kitchen.serve(jsFile: "Sample.xml.js")
+Kitchen.serve(jsFile: "Sample.xml.js", type: .Default)
+Kitchen.serve(jsFile: "Sample.xml.js", type: .Modal)
+````
+
 ## Advanced setup
 
 - [x] Inject native code into TVML(javascript) context
@@ -155,4 +165,3 @@ For implementation details, my slide is available.
 
 # Contribution
 Any contribution is welcomed🎉
-
