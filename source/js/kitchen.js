@@ -156,14 +156,18 @@ function openTemplateFromURL(url) {
     loadTemplateFromURL(`${url}`, openTemplateFromXMLString);
 }
 
-function openTemplateFromXMLString(xmlString) {
+function openTemplateFromXMLString(xmlString, modal) {
     showLoadingIndicator();
     var doc = makeDocument(xmlString);
     doc.addEventListener("select", load.bind(this));
     doc.addEventListener("highlight", highlight.bind(this));
     doc.addEventListener("holdselect", holdselect.bind(this));
     doc.addEventListener("play", play.bind(this));
-    defaultPresenter.call(this, doc);
+    if(modal) {
+        modalDialogPresenter.call(this, doc);
+    } else {
+        defaultPresenter.call(this, doc);
+    }
 }
 
 App.onLaunch = function(options) {

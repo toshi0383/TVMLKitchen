@@ -6,8 +6,8 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
-internal func openTVMLTemplateFromXMLString(xmlString: String) {
-    let js = "openTemplateFromXMLString(`\(xmlString)`);"
+internal func openTVMLTemplateFromXMLString(xmlString: String, modal: Bool = false) {
+    let js = "openTemplateFromXMLString(`\(xmlString)`, \(modal));"
     evaluateInTVMLContext(js)
 }
 

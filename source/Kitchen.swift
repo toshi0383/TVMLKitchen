@@ -90,6 +90,11 @@ extension Kitchen {
     {
         openTVMLTemplateFromXMLString(recipe.xmlString)
     }
+    
+    public static func serveModal<R: RecipeType>(recipe recipe: R) {
+        openTVMLTemplateFromXMLString(recipe.xmlString, modal: true)
+    }
+    
 }
 
 // MARK: window
