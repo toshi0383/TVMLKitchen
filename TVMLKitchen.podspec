@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.platform     = :tvos, '9.0'
   s.requires_arc = true
 
-  s.source_files = 'source/**/*'
+  s.source_files = 'source/**/*', 'library/**/*'
 end
