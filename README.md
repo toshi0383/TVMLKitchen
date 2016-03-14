@@ -68,6 +68,34 @@ Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
 })
 ```
 
+## Handling Actions
+In TVML, you can set `actionID` and `playActionID` attributes in your focusable elements. (e.g. `lockup` or `button` SeeAlso: https://forums.developer.apple.com/thread/17704 ) Kitchen receives Select or Play events, then fires `actionIDHandler` or `playActionHandler` if exists.
+
+```
+<lockup actionID="showDescription" playActionID="playContent">
+```
+
+```
+Kitchen.prepare ...
+...
+}, actionIDHandler: { actionID in
+    print(actionID) // "showDescription"
+}, playActionIDHandler: {actionID in
+    print(actionID) // "playContent"
+})
+```
+
+Handlers are currently globally shared. This is just an idea, but we can pass parameters via actions like this,
+
+```
+actionID="showHogeView,12345678,hogehoge"
+```
+
+then parse it in Swift side.
+```
+actionID.componentsSeparatedByString(",")
+```
+
 ## Kitchen Recipes
 Though TVML view cannot be modified programatically after presented(or is there a way?), we can at least generate TVML dynamically by defining **Recipe**. Theme is customizable.
 
