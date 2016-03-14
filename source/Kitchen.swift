@@ -62,37 +62,32 @@ public class Kitchen: NSObject {
 
 }
 
+
 // MARK: Public API (serve)
 extension Kitchen {
 
-    public static func serve(xmlString xmlString: String) {
-        openTVMLTemplateFromXMLString(xmlString)
+    public static func serve(xmlString xmlString: String, type: PresentationType = .Default) {
+        openTVMLTemplateFromXMLString(xmlString, type: type)
     }
 
-    public static func serve(xmlFile xmlFile: String) {
+    public static func serve(xmlFile xmlFile: String, type: PresentationType = .Default) {
         do {
-            try openTVMLTemplateFromXMLFile(xmlFile)
+            try openTVMLTemplateFromXMLFile(xmlFile, type: type)
         } catch let error as NSError {
             sharedKitchen.kitchenErrorHandler?(error)
         }
     }
 
-    public static func serve(jsFile jsFile: String) {
-        openTVMLTemplateFromJSFile(jsFile)
+    public static func serve(jsFile jsFile: String, type: PresentationType = .Default) {
+        openTVMLTemplateFromJSFile(jsFile, type: type)
     }
 
-    public static func serve(urlString urlString: String) {
-        openTVMLTemplateFromURL(urlString)
+    public static func serve(urlString urlString: String, type: PresentationType = .Default) {
+        openTVMLTemplateFromURL(urlString, type: type)
     }
 
-    public static func serve<R: RecipeType>
-        (recipe recipe: R)
-    {
-        openTVMLTemplateFromXMLString(recipe.xmlString)
-    }
-    
-    public static func serveModal<R: RecipeType>(recipe recipe: R) {
-        openTVMLTemplateFromXMLString(recipe.xmlString, modal: true)
+    public static func serve<R: RecipeType>(recipe recipe: R, type: PresentationType = .Default) {
+        openTVMLTemplateFromXMLString(recipe.xmlString, type: type)
     }
     
 }

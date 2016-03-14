@@ -6,24 +6,24 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
-internal func openTVMLTemplateFromXMLString(xmlString: String, modal: Bool = false) {
-    let js = "openTemplateFromXMLString(`\(xmlString)`, \(modal));"
+internal func openTVMLTemplateFromXMLString(xmlString: String, type: PresentationType = .Default) {
+    let js = "openTemplateFromXMLString(`\(xmlString)`, \(type.rawValue));"
     evaluateInTVMLContext(js)
 }
 
-internal func openTVMLTemplateFromXMLFile(xmlFile: String) throws {
+internal func openTVMLTemplateFromXMLFile(xmlFile: String, type: PresentationType = .Default) throws {
     let path = NSBundle.mainBundle().pathForResource(xmlFile, ofType: nil)!
     let xmlString = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
-    let js = "openTemplateFromXMLString(`\(xmlString)`);"
+    let js = "openTemplateFromXMLString(`\(xmlString)`, \(type.rawValue));"
     evaluateInTVMLContext(js)
 }
 
-internal func openTVMLTemplateFromJSFile(jsfile: String) {
+internal func openTVMLTemplateFromJSFile(jsfile: String, type: PresentationType = .Default) {
     let js = "openTemplateFromJSFile('\(jsfile)');"
     evaluateInTVMLContext(js)
 }
 
-internal func openTVMLTemplateFromURL(url: String) {
+internal func openTVMLTemplateFromURL(url: String, type: PresentationType = .Default) {
     let js = "openTemplateFromURL('\(url)');"
     evaluateInTVMLContext(js)
 }
