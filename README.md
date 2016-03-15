@@ -159,6 +159,12 @@ github "toshi0383/TVMLKitchen"
 
 Follow the instruction in [carthage's Getting Started section](https://github.com/Carthage/Carthage#getting-started).
 
+## Cocoapods
+Add the following to your Podfile
+```
+pod 'TVMLKitchen', :git => 'git@github.com:steve228uk/TVMLKitchen.git'
+```
+
 # References
 For implementation details, my slide is available.  
 [TVML + Native = Hybrid](https://speakerdeck.com/toshi0383/tvml-plus-native-equals-hybrid)
