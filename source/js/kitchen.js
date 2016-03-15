@@ -116,11 +116,11 @@ function showLoadingIndicatorForType(presentationType) {
     if (presentationType == 1 || this.loadingIndicatorVisible) {
         return;
     }
-    
+
     if (!this.loadingIndicator) {
         this.loadingIndicator = this.makeDocument(loadingTemplate());
     }
-    
+
     navigationDocument.pushDocument(this.loadingIndicator);
     this.loadingIndicatorVisible = true;
 }
@@ -163,7 +163,6 @@ function loadTemplateFromURL(templateURL, callback, presentationType) {
 }
 
 function presenterForType(type) {
-    console.log(type);
     switch(type) {
         case 1:
             return modalDialogPresenter;
@@ -189,7 +188,7 @@ function openTemplateFromXMLString(xmlString, presentationType) {
     doc.addEventListener("highlight", highlight.bind(this));
     doc.addEventListener("holdselect", holdselect.bind(this));
     doc.addEventListener("play", play.bind(this));
-    
+
     presenterForType(presentationType).call(this, doc);
 }
 
