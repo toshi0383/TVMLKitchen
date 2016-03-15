@@ -1,0 +1,7 @@
+<descriptiveAlertTemplate>
+    <title>{{TITLE}}</title>
+    <description>{{DESCRIPTION}}</description>
+    <row>
+        {{BUTTONS}}
+    </row>
+</descriptiveAlertTemplate>

@@ -34,6 +34,11 @@ function modalDialogPresenter(xml) {
     navigationDocument.presentModal(xml);
 }
 
+/// Dismisses the current modal window
+function dismissModal() {
+    navigationDocument.dismissModal();
+}
+
 function play(event) {
     var ele = event.target,
         actionID = ele.getAttribute('playActionID');
