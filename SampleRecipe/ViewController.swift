@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 
     @IBAction func openXMLString(sender: AnyObject!) {
         print(__FUNCTION__)
-        Kitchen.serve(xmlString:XMLString.Catalog.description)
+        Kitchen.serve(xmlString:XMLString.Catalog.description, type: .Modal)
     }
 
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
