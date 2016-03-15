@@ -37,8 +37,9 @@
 		1F5ABB981C356B3100785DEB /* TVMLKitchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
-		286DEBED1C97670300512A11 /* AlertRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DEBEC1C97670300512A11 /* AlertRecipe.swift */; };
-		286DEBF01C97675F00512A11 /* AlertRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 286DEBEF1C97675F00512A11 /* AlertRecipe.xml */; };
+		284E164A1C980C5700D56469 /* AlertRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 284E16491C980C5700D56469 /* AlertRecipe.xml */; };
+		284E164C1C980C7600D56469 /* AlertRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E164B1C980C7600D56469 /* AlertRecipe.swift */; };
+		28D4EC281C97400C00E1F005 /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D4EC271C97400C00E1F005 /* PresentationType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,8 +118,9 @@
 		1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRecipeUITests.swift; sourceTree = "<group>"; };
 		1F8B43791C35676400C716A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
-		286DEBEC1C97670300512A11 /* AlertRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRecipe.swift; sourceTree = "<group>"; };
-		286DEBEF1C97675F00512A11 /* AlertRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AlertRecipe.xml; path = templates/AlertRecipe.xml; sourceTree = "<group>"; };
+		284E16491C980C5700D56469 /* AlertRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AlertRecipe.xml; path = templates/AlertRecipe.xml; sourceTree = "<group>"; };
+		284E164B1C980C7600D56469 /* AlertRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertRecipe.swift; path = recipes/AlertRecipe.swift; sourceTree = "<group>"; };
+		28D4EC271C97400C00E1F005 /* PresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,14 +268,15 @@
 		1F32E55C1C30B81200F62E88 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				286DEBEB1C9766F100512A11 /* Recipes */,
-				286DEBEE1C97673F00512A11 /* Templates */,
+				284E16481C980C4A00D56469 /* Templates */,
+				284E16471C980C3500D56469 /* Recipes */,
 				1F3065B41C30D634001E5DF0 /* JS */,
 				1F32E5F61C30B81200F62E88 /* Info.plist */,
 				1F32E5F71C30B81200F62E88 /* TVMLKitchen.h */,
 				1F32E6861C30B81E00F62E88 /* Kitchen.swift */,
 				1F3066011C311110001E5DF0 /* Recipe.swift */,
 				1F3065BB1C30D65B001E5DF0 /* TVMLBridging.swift */,
+				28D4EC271C97400C00E1F005 /* PresentationType.swift */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -304,18 +307,18 @@
 			path = SampleRecipeUITests;
 			sourceTree = "<group>";
 		};
-		286DEBEB1C9766F100512A11 /* Recipes */ = {
+		284E16471C980C3500D56469 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				286DEBEC1C97670300512A11 /* AlertRecipe.swift */,
+				284E164B1C980C7600D56469 /* AlertRecipe.swift */,
 			);
 			name = Recipes;
 			sourceTree = "<group>";
 		};
-		286DEBEE1C97673F00512A11 /* Templates */ = {
+		284E16481C980C4A00D56469 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				286DEBEF1C97675F00512A11 /* AlertRecipe.xml */,
+				284E16491C980C5700D56469 /* AlertRecipe.xml */,
 			);
 			name = Templates;
 			sourceTree = "<group>";
@@ -458,7 +461,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286DEBF01C97675F00512A11 /* AlertRecipe.xml in Resources */,
+				284E164A1C980C5700D56469 /* AlertRecipe.xml in Resources */,
 				1F3065B81C30D634001E5DF0 /* kitchen.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,11 +511,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284E164C1C980C7600D56469 /* AlertRecipe.swift in Sources */,
 				1F21D5D51C37A60900E8FEA9 /* Async.swift in Sources */,
 				1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */,
 				1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */,
 				1F3066031C31179A001E5DF0 /* Recipe.swift in Sources */,
-				286DEBED1C97670300512A11 /* AlertRecipe.swift in Sources */,
+				28D4EC281C97400C00E1F005 /* PresentationType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

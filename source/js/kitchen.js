@@ -34,6 +34,11 @@ function modalDialogPresenter(xml) {
     navigationDocument.presentModal(xml);
 }
 
+/// Dismisses the current modal window
+function dismissModal() {
+    navigationDocument.dismissModal();
+}
+
 function play(event) {
     var ele = event.target,
         actionID = ele.getAttribute('playActionID');
@@ -109,6 +114,22 @@ function showLoadingIndicator(presentation) {
     }
 }
 
+/**
+ Show the loading indicator for the presentation type passed from UIKit
+ */
+function showLoadingIndicatorForType(presentationType) {
+    if (presentationType == 1 || this.loadingIndicatorVisible) {
+        return;
+    }
+
+    if (!this.loadingIndicator) {
+        this.loadingIndicator = this.makeDocument(loadingTemplate());
+    }
+
+    navigationDocument.pushDocument(this.loadingIndicator);
+    this.loadingIndicatorVisible = true;
+}
+
 function removeLoadingIndicator() {
     if (this.loadingIndicatorVisible) {
         navigationDocument.removeDocument(this.loadingIndicator);
@@ -128,13 +149,13 @@ function loadingTemplate() {
 }
 
 /// load template from absolute URL
-function loadTemplateFromURL(templateURL, callback) {
+function loadTemplateFromURL(templateURL, callback, presentationType) {
     var self = this;
 
     evaluateScripts([templateURL], function(success) {
         if (success) {
             var resource = Template.call(self);
-            callback.call(self, resource);
+            callback.call(self, resource, presentationType);
         } else {
             var message = `There was an error attempting to load the resource '${resource}' with URL: '${templateURL}'. \n\n Please try again later.`
 
@@ -146,24 +167,34 @@ function loadTemplateFromURL(templateURL, callback) {
     });
 }
 
+function presenterForType(type) {
+    switch(type) {
+        case 1:
+            return modalDialogPresenter;
+        default:
+            return defaultPresenter;
+    }
+}
+
 /// load template from Main Bundle URL
-function openTemplateFromJSFile(jsFileName) {
+function openTemplateFromJSFile(jsFileName, presentationType) {
     mainBundleUrl = App.options.MAIN_BUNDLE_URL
-    loadTemplateFromURL(`${mainBundleUrl}${jsFileName}`, openTemplateFromXMLString);
+    loadTemplateFromURL(`${mainBundleUrl}${jsFileName}`, openTemplateFromXMLString, presentationType);
 }
 
-function openTemplateFromURL(url) {
-    loadTemplateFromURL(`${url}`, openTemplateFromXMLString);
+function openTemplateFromURL(url, presentationType) {
+    loadTemplateFromURL(`${url}`, openTemplateFromXMLString, presentationType);
 }
 
-function openTemplateFromXMLString(xmlString) {
-    showLoadingIndicator();
+function openTemplateFromXMLString(xmlString, presentationType) {
+    showLoadingIndicatorForType(presentationType);
     var doc = makeDocument(xmlString);
     doc.addEventListener("select", load.bind(this));
     doc.addEventListener("highlight", highlight.bind(this));
     doc.addEventListener("holdselect", holdselect.bind(this));
     doc.addEventListener("play", play.bind(this));
-    defaultPresenter.call(this, doc);
+
+    presenterForType(presentationType).call(this, doc);
 }
 
 App.onLaunch = function(options) {

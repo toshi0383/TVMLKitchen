@@ -9,11 +9,11 @@
 public struct AlertButton {
     
     let title: String
-    let actionId: String?
+    let actionID: String?
     
-    public init(title: String, actionId: String? = nil) {
+    public init(title: String, actionID: String? = nil) {
         self.title = title
-        self.actionId = actionId
+        self.actionID = actionID
     }
     
 }
@@ -21,6 +21,7 @@ public struct AlertButton {
 public struct AlertRecipe: RecipeType {
     
     public let theme = DefaultTheme()
+    public let presentationType = PresentationType.Modal
     public let title: String
     public let description: String
     public let buttons: [AlertButton]
@@ -39,13 +40,23 @@ public struct AlertRecipe: RecipeType {
         return xml
     }
     
+    private var buttonString: String {
+        let mapped: [String] = buttons.map {
+            var string = ($0.actionID != nil) ? "<button actionID=\"\($0.actionID!)\">" : "<button>"
+            string += "<title>\($0.title)</title>"
+            string += "</button>"
+            return string
+        }
+        return mapped.joinWithSeparator("")
+    }
+    
     public var template: String {
         var xml = ""
         if let url = NSBundle.mainBundle().URLForResource("AlertRecipe", withExtension: "xml") {
             xml = try! String(contentsOfURL: url)
             xml = xml.stringByReplacingOccurrencesOfString("{{TITLE}}", withString: title)
             xml = xml.stringByReplacingOccurrencesOfString("{{DESCRIPTION}}", withString: description)
-            xml = xml.stringByReplacingOccurrencesOfString("{{BUTTONS}}", withString: "")
+            xml = xml.stringByReplacingOccurrencesOfString("{{BUTTONS}}", withString: buttonString)
         }
         return xml
     }
