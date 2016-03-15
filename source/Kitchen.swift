@@ -220,6 +220,13 @@ extension Kitchen: TVApplicationControllerDelegate {
             jsContext.setObject(unsafeBitCast(actionIDHandler, AnyObject.self),
                 forKeyedSubscript: "actionIDHandler")
         }
+        
+        let tabBarHandler: @convention(block) String -> Void = { index in
+            KitchenTabBar.sharedBar.tabChanged(index)
+        }
+        
+        jsContext.setObject(unsafeBitCast(tabBarHandler, AnyObject.self),
+            forKeyedSubscript: "tabBarHandler")
 
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
     }
