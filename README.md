@@ -134,7 +134,8 @@ Kitchen.serve(recipe: catalog)
 
 - [x] Catalog
 - [x] Catalog with select action handler
-- [ ] Alert with button handler
+- [x] Alert with button handler
+- [x] Descriptive Alert with button handler
 - [ ] Rating with handler
 - [ ] Compilation with select action handler
 - [ ] Product with select action handler
