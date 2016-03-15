@@ -7,19 +7,19 @@
 //
 
 public struct AlertButton {
-    
+
     let title: String
     let actionID: String?
-    
+
     public init(title: String, actionID: String? = nil) {
         self.title = title
         self.actionID = actionID
     }
-    
+
 }
 
 public class AlertRecipe: RecipeType {
-    
+
     public let theme = DefaultTheme()
     public let presentationType = PresentationType.Modal
     public let title: String
@@ -28,13 +28,13 @@ public class AlertRecipe: RecipeType {
     var templateFile: String {
         return "AlertRecipe"
     }
-    
+
     public init(title: String, description: String, buttons: [AlertButton] = []) {
         self.title = title
         self.description = description
         self.buttons = buttons
     }
-    
+
     public var xmlString: String {
         var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
         xml += "<document>"
@@ -42,7 +42,7 @@ public class AlertRecipe: RecipeType {
         xml += "</document>"
         return xml
     }
-    
+
     private var buttonString: String {
         let mapped: [String] = buttons.map {
             var string = ($0.actionID != nil) ? "<button actionID=\"\($0.actionID!)\">" : "<button>"
@@ -52,14 +52,18 @@ public class AlertRecipe: RecipeType {
         }
         return mapped.joinWithSeparator("")
     }
-    
+
     public var template: String {
         var xml = ""
         if let url = NSBundle.mainBundle().URLForResource(templateFile, withExtension: "xml") {
-            xml = try! String(contentsOfURL: url)
-            xml = xml.stringByReplacingOccurrencesOfString("{{TITLE}}", withString: title)
-            xml = xml.stringByReplacingOccurrencesOfString("{{DESCRIPTION}}", withString: description)
-            xml = xml.stringByReplacingOccurrencesOfString("{{BUTTONS}}", withString: buttonString)
+            do {
+                xml = try String(contentsOfURL: url)
+                xml = xml.stringByReplacingOccurrencesOfString("{{TITLE}}", withString: title)
+                xml = xml.stringByReplacingOccurrencesOfString("{{DESCRIPTION}}", withString: description)
+                xml = xml.stringByReplacingOccurrencesOfString("{{BUTTONS}}", withString: buttonString)
+            } catch {
+                print("Could not open \(templateFile).xml")
+            }
         }
         return xml
     }

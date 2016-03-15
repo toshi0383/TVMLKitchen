@@ -89,7 +89,7 @@ extension Kitchen {
     public static func serve<R: RecipeType>(recipe recipe: R) {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
-    
+
     public static func dismissModal() {
         dismissTVMLModal()
     }
