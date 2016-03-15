@@ -1,6 +1,19 @@
+## master
+##### New Feature
+* Add Modal Support  
+  [Stephen Radford](https://github.com/steve228uk)  
+  [#26](https://github.com/toshi0383/TVMLKitchen/pull/26)
+
+##### Enhancements
+* Add Cocoapods Podspec  
+  [Stephen Radford](https://github.com/steve228uk)  
+  [#29](https://github.com/toshi0383/TVMLKitchen/pull/29)
+
 ## 0.3.0
 ##### Enhancements
 * Remove debug function injection [#3](https://github.com/toshi0383/TVMLKitchen/issues/3)
+
+##### New Feature
 * Introduce playActionIDHandler [#23](https://github.com/toshi0383/TVMLKitchen/issues/23)
 
 ## 0.2.2
