@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'source/**/*', 'library/**/*'
-  s.resources = 'source/**/*.js'
+  s.resources    = 'source/**/*.{js,xml}'
 end

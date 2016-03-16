@@ -30,6 +30,11 @@ internal func openTVMLTemplateFromURL(url: String, type: PresentationType = .Def
     evaluateInTVMLContext(js)
 }
 
+internal func dismissTVMLModal() {
+    let js = "dismissModal()"
+    evaluateInTVMLContext(js)
+}
+
 private func evaluateInTVMLContext(js: String, completion: (Void->Void)? = nil) {
     Kitchen.appController.evaluateInJavaScriptContext({context in
         context.evaluateScript(js)

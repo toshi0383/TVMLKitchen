@@ -90,6 +90,10 @@ extension Kitchen {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
+    public static func dismissModal() {
+        dismissTVMLModal()
+    }
+
 }
 
 // MARK: window

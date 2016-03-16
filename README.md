@@ -1,4 +1,4 @@
-# TVMLKitchen😋🍴  [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Build Status](https://www.bitrise.io/app/de994b854e5c425f.svg?token=GZp-KU8RDjmewA2Hdj27fQ)](https://www.bitrise.io/app/de994b854e5c425f)
+# TVMLKitchen😋🍴  [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CocoaPods](https://img.shields.io/cocoapods/v/TVMLKitchen.svg)]() [![CocoaPods](https://img.shields.io/cocoapods/p/TVMLKitchen.svg)]() [![Build Status](https://www.bitrise.io/app/de994b854e5c425f.svg?token=GZp-KU8RDjmewA2Hdj27fQ)](https://www.bitrise.io/app/de994b854e5c425f)
 
 [TVML](https://developer.apple.com/library/tvos/documentation/LanguagesUtilities/Conceptual/ATV_Template_Guide/) is a good choice, when you prefer simplicity over dynamic UIKit implementation. TVMLKitchen helps to manage your TVML **with or without additional client-server**.  Put TVML templates in Main Bundle, then you're ready to go.
 
@@ -134,7 +134,8 @@ Kitchen.serve(recipe: catalog)
 
 - [x] Catalog
 - [x] Catalog with select action handler
-- [ ] Alert with button handler
+- [x] Alert with button handler
+- [x] Descriptive Alert with button handler
 - [ ] Rating with handler
 - [ ] Compilation with select action handler
 - [ ] Product with select action handler
@@ -158,6 +159,12 @@ github "toshi0383/TVMLKitchen"
 ```
 
 Follow the instruction in [carthage's Getting Started section](https://github.com/Carthage/Carthage#getting-started).
+
+## Cocoapods
+Add the following to your Podfile
+```
+pod 'TVMLKitchen'
+```
 
 # References
 For implementation details, my slide is available.  
