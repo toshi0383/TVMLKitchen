@@ -29,6 +29,14 @@ function searchPresenter(xml) {
     }
 }
 
+/**
+ *  Displays an XML string as a "document" within a tab.
+ *  A new document will be created for the tab if it doesn't exist.
+ *
+ *  @param xml The XML string to be presented
+ *
+ *  @return void
+ */
 function menuBarItemPresenter(xml) {
     var feature = currentTab.parentNode.getFeature("MenuBarDocument");
     if (feature) {

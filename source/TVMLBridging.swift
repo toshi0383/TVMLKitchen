@@ -7,7 +7,6 @@
 //
 
 internal func openTVMLTemplateFromXMLString(xmlString: String, type: PresentationType = .Default) {
-    print(type.rawValue)
     let js = "openTemplateFromXMLString(`\(xmlString)`, \(type.rawValue));"
     evaluateInTVMLContext(js)
 }

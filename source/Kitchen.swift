@@ -225,6 +225,9 @@ extension Kitchen: TVApplicationControllerDelegate {
                 forKeyedSubscript: "actionIDHandler")
         }
         
+        
+        // Add the tab bar handler for the shared instance.
+        
         let tabBarHandler: @convention(block) String -> Void = { index in
             KitchenTabBar.sharedBar.tabChanged(index)
         }
