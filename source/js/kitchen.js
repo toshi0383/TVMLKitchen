@@ -145,7 +145,9 @@ function showLoadingIndicator(presentation) {
  Show the loading indicator for the presentation type passed from UIKit
  */
 function showLoadingIndicatorForType(presentationType) {
-    if (presentationType == 1 || presentationType == 2 || this.loadingIndicatorVisible) {
+    if (presentationType == 1
+        || presentationType == 2
+        || this.loadingIndicatorVisible) {
         return;
     }
 
