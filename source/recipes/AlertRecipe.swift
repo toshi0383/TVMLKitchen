@@ -29,7 +29,9 @@ public class AlertRecipe: RecipeType {
         return "AlertRecipe"
     }
 
-    public init(title: String, description: String, buttons: [AlertButton] = [], presentationType: PresentationType = .Modal) {
+    public init(title: String, description: String,
+        buttons: [AlertButton] = [],
+        presentationType: PresentationType = .Modal) {
         self.title = title
         self.description = description
         self.buttons = buttons

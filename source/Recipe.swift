@@ -150,7 +150,8 @@ public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
     public let theme: Theme = Theme()
     public let presentationType: PresentationType
 
-    public init(banner: String, sections: [Section], presentationType: PresentationType = .Default) {
+    public init(banner: String, sections: [Section],
+        presentationType: PresentationType = .Default) {
         self.banner = banner
         self.sections = sections
         self.presentationType = presentationType
