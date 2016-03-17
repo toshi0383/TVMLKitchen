@@ -180,13 +180,10 @@ function loadingTemplate() {
 /// load template from absolute URL
 function loadTemplateFromURL(templateURL, callback, presentationType) {
     var self = this;
-
-    console.log("CALL 1: "+presentationType);
     
     evaluateScripts([templateURL], function(success) {
         if (success) {
             var resource = Template.call(self);
-                    console.log("CALL 2: "+presentationType);
             callback.call(self, resource, presentationType);
         } else {
             var message = `There was an error attempting to load the resource '${resource}' with URL: '${templateURL}'. \n\n Please try again later.`
@@ -217,7 +214,6 @@ function openTemplateFromJSFile(jsFileName, presentationType) {
 }
 
 function openTemplateFromURL(url, presentationType) {
-    console.log("CALL 0:" + presentationType);
     loadTemplateFromURL(`${url}`, openTemplateFromXMLString, presentationType);
 }
 
