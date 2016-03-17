@@ -1,6 +1,10 @@
 ## master
 ##### New Feature
 
+* Add Tab Bar Support  
+  [Stephen Radford](https://github.com/steve228uk)
+  [#31](https://github.com/toshi0383/TVMLKitchen/pull/31)
+
 * Add Modal Support  
   [Stephen Radford](https://github.com/steve228uk)
   [#26](https://github.com/toshi0383/TVMLKitchen/pull/26)
