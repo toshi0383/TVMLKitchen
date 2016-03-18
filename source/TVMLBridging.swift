@@ -20,12 +20,12 @@ internal func openTVMLTemplateFromXMLFile(xmlFile: String,
 }
 
 internal func openTVMLTemplateFromJSFile(jsfile: String, type: PresentationType = .Default) {
-    let js = "openTemplateFromJSFile('\(jsfile)');"
+    let js = "openTemplateFromJSFile('\(jsfile)', \(type.rawValue));"
     evaluateInTVMLContext(js)
 }
 
 internal func openTVMLTemplateFromURL(url: String, type: PresentationType = .Default) {
-    let js = "openTemplateFromURL('\(url)');"
+    let js = "openTemplateFromURL('\(url)', \(type.rawValue));"
     evaluateInTVMLContext(js)
 }
 

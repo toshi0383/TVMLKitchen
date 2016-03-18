@@ -21,7 +21,7 @@ public struct AlertButton {
 public class AlertRecipe: RecipeType {
 
     public let theme = DefaultTheme()
-    public let presentationType = PresentationType.Modal
+    public let presentationType: PresentationType
     public let title: String
     public let description: String
     public let buttons: [AlertButton]
@@ -29,10 +29,13 @@ public class AlertRecipe: RecipeType {
         return "AlertRecipe"
     }
 
-    public init(title: String, description: String, buttons: [AlertButton] = []) {
+    public init(title: String, description: String,
+        buttons: [AlertButton] = [],
+        presentationType: PresentationType = .Modal) {
         self.title = title
         self.description = description
         self.buttons = buttons
+        self.presentationType = presentationType
     }
 
     public var xmlString: String {

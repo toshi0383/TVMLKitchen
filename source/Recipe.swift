@@ -147,13 +147,14 @@ public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
 
     let banner: String
     let sections: [Section]
-    public let theme: Theme
-    public let presentationType: PresentationType = .Default
+    public let theme: Theme = Theme()
+    public let presentationType: PresentationType
 
-    public init(banner: String, sections: [Section], theme: Theme = Theme()) {
+    public init(banner: String, sections: [Section],
+        presentationType: PresentationType = .Default) {
         self.banner = banner
         self.sections = sections
-        self.theme = theme
+        self.presentationType = presentationType
     }
 
     public var template: String {

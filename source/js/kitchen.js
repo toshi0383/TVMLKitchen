@@ -4,6 +4,7 @@
 */
 
 var parser;
+var currentTab;
 
 function defaultPresenter(xml) {
     if(this.loadingIndicatorVisible) {
@@ -25,6 +26,24 @@ function searchPresenter(xml) {
     keyboard.onTextChange = function() {
         var searchText = keyboard.text;
         buildResults(doc, searchText);
+    }
+}
+
+/**
+ *  Displays an XML string as a "document" within a tab.
+ *  A new document will be created for the tab if it doesn't exist.
+ *
+ *  @param xml The XML string to be presented
+ *
+ *  @return void
+ */
+function menuBarItemPresenter(xml) {
+    var feature = currentTab.parentNode.getFeature("MenuBarDocument");
+    if (feature) {
+        var currentDoc = feature.getDocument(currentTab);
+        if (!currentDoc) {
+            feature.setDocument(xml, currentTab);
+        }
     }
 }
 
@@ -58,10 +77,18 @@ function load(event) {
     var self = this,
         ele = event.target,
         templateURL = ele.getAttribute("template"),
-        presentation = ele.getAttribute("presentation");
-        actionID = ele.getAttribute("actionID");
+        presentation = ele.getAttribute("presentation"),
+        actionID = ele.getAttribute("actionID"),
+        menuIndex = ele.getAttribute("menuIndex"),
         tagName = ele.tagName;
-
+    
+    
+    // If this is a menu item then trigger the relevent handler
+    if(menuIndex){
+        currentTab = ele;
+        tabBarHandler(menuIndex);
+    }
+    
     if(actionID && typeof actionIDHandler !== 'undefined'){
         actionIDHandler(actionID);
         return;
@@ -118,7 +145,9 @@ function showLoadingIndicator(presentation) {
  Show the loading indicator for the presentation type passed from UIKit
  */
 function showLoadingIndicatorForType(presentationType) {
-    if (presentationType == 1 || this.loadingIndicatorVisible) {
+    if (presentationType == 1 ||
+        presentationType == 2 ||
+        this.loadingIndicatorVisible) {
         return;
     }
 
@@ -151,7 +180,7 @@ function loadingTemplate() {
 /// load template from absolute URL
 function loadTemplateFromURL(templateURL, callback, presentationType) {
     var self = this;
-
+    
     evaluateScripts([templateURL], function(success) {
         if (success) {
             var resource = Template.call(self);
@@ -171,6 +200,8 @@ function presenterForType(type) {
     switch(type) {
         case 1:
             return modalDialogPresenter;
+        case 2:
+            return menuBarItemPresenter;
         default:
             return defaultPresenter;
     }
@@ -193,7 +224,7 @@ function openTemplateFromXMLString(xmlString, presentationType) {
     doc.addEventListener("highlight", highlight.bind(this));
     doc.addEventListener("holdselect", holdselect.bind(this));
     doc.addEventListener("play", play.bind(this));
-
+    
     presenterForType(presentationType).call(this, doc);
 }
 

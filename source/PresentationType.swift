@@ -9,4 +9,5 @@
 public enum PresentationType: Int {
     case Default = 0
     case Modal = 1
+    case Tab = 2
 }

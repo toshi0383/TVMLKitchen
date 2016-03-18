@@ -41,6 +41,8 @@
 		284E164C1C980C7600D56469 /* AlertRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E164B1C980C7600D56469 /* AlertRecipe.swift */; };
 		284E16501C9818F500D56469 /* DescriptiveAlertRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 284E164F1C9818F500D56469 /* DescriptiveAlertRecipe.xml */; };
 		284E16541C98193200D56469 /* DescriptiveAlertRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E16531C98193200D56469 /* DescriptiveAlertRecipe.swift */; };
+		287B85681C999D7F00EEF5C8 /* KitchenTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85661C999D7F00EEF5C8 /* KitchenTabBar.swift */; };
+		287B85691C999D7F00EEF5C8 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85671C999D7F00EEF5C8 /* TabItem.swift */; };
 		28D4EC281C97400C00E1F005 /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D4EC271C97400C00E1F005 /* PresentationType.swift */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,8 @@
 		284E164B1C980C7600D56469 /* AlertRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertRecipe.swift; path = recipes/AlertRecipe.swift; sourceTree = "<group>"; };
 		284E164F1C9818F500D56469 /* DescriptiveAlertRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DescriptiveAlertRecipe.xml; sourceTree = "<group>"; };
 		284E16531C98193200D56469 /* DescriptiveAlertRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptiveAlertRecipe.swift; path = recipes/DescriptiveAlertRecipe.swift; sourceTree = "<group>"; };
+		287B85661C999D7F00EEF5C8 /* KitchenTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenTabBar.swift; sourceTree = "<group>"; };
+		287B85671C999D7F00EEF5C8 /* TabItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		28D4EC271C97400C00E1F005 /* PresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +276,7 @@
 		1F32E55C1C30B81200F62E88 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				287B85651C999D6900EEF5C8 /* Tab Bar */,
 				284E16481C980C4A00D56469 /* Templates */,
 				284E16471C980C3500D56469 /* Recipes */,
 				1F3065B41C30D634001E5DF0 /* JS */,
@@ -327,6 +332,15 @@
 				284E164F1C9818F500D56469 /* DescriptiveAlertRecipe.xml */,
 			);
 			name = Templates;
+			sourceTree = "<group>";
+		};
+		287B85651C999D6900EEF5C8 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				287B85661C999D7F00EEF5C8 /* KitchenTabBar.swift */,
+				287B85671C999D7F00EEF5C8 /* TabItem.swift */,
+			);
+			name = "Tab Bar";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287B85681C999D7F00EEF5C8 /* KitchenTabBar.swift in Sources */,
 				284E164C1C980C7600D56469 /* AlertRecipe.swift in Sources */,
 				1F21D5D51C37A60900E8FEA9 /* Async.swift in Sources */,
 				1F3065BC1C30D65B001E5DF0 /* TVMLBridging.swift in Sources */,
@@ -525,6 +540,7 @@
 				1F3066031C31179A001E5DF0 /* Recipe.swift in Sources */,
 				28D4EC281C97400C00E1F005 /* PresentationType.swift in Sources */,
 				284E16541C98193200D56469 /* DescriptiveAlertRecipe.swift in Sources */,
+				287B85691C999D7F00EEF5C8 /* TabItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

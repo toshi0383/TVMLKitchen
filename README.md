@@ -36,12 +36,39 @@ Kitchen automatically looks for the jsFile in your Main Bundle, parse and load i
 
 ## Presentation Styles
 
-There are currently two presentation styles that can be used when serving views: Default and Modal. The default style acts as a "Push" and will replace the current view. Modal will overlay the new view atop the existing view and is commonly used for alerts.
+There are currently three presentation styles that can be used when serving views: Default, Modal and Tab. The default style acts as a "Push" and will change the current view. Modal will overlay the new view atop the existing view and is commonly used for alerts. Tab is only to be used when defining the first view in a tabcontroller.
 
 ````swift
 Kitchen.serve(jsFile: "Sample.xml.js")
 Kitchen.serve(jsFile: "Sample.xml.js", type: .Default)
 Kitchen.serve(jsFile: "Sample.xml.js", type: .Modal)
+Kitchen.serve(jsFile: "Sample.xml.js", type: .Tab)
+````
+
+## Tab Controller
+
+Should you wish to use tabs within your application you can use `KitchenTabBar`. First, create a `TabItem` struct with a title and a `handler` method. The `handler` method will be called every time the tab becomes active.
+
+**Note:** The `PresentationType` for initial view should always be set to `.Tab`.
+
+````swift
+struct Moviestab: TabItem {
+
+    let title = "Movies"
+
+    func handler() {
+        Kitchen.serve(jsFile: "Sample.xml.js", type: .Tab)
+    }
+
+}
+````
+
+The following should then be included in your `AppDelegate` directly below the `Kitchen.prepare()` method.
+
+````swift
+KitchenTabBar.sharedBar.items = [
+    MoviesTab()
+]
 ````
 
 ## Advanced setup
