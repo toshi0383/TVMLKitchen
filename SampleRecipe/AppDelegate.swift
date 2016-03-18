@@ -67,8 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 {
-    Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
-    {appController, jsContext in
+    let cookbook = Cookbook(launchOptions: launchOptions)
+    cookbook.evaluateAppJavaScriptInContext = {appController, jsContext in
         /// set Exception handler
         /// called on JS error
         jsContext.exceptionHandler = {context, value in
@@ -81,14 +81,17 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 
         // - SeeAlso: http://nshipster.com/javascriptcore/
 
-    }, actionIDHandler: { actionID in
+    }
+    cookbook.actionIDHandler = { actionID in
         let identifier = actionID // parse action ID here
         dispatch_async(dispatch_get_main_queue()) {
             openViewController(identifier)
         }
-    }, playActionIDHandler: {actionID in
+    }
+    cookbook.playActionIDHandler = {actionID in
         print(actionID)
-    })
+    }
+    Kitchen.prepare(cookbook)
 
     return true
 }
