@@ -1,4 +1,4 @@
-## master
+## 0.4.0
 ##### New Feature
 
 * Add Tab Bar Support  
