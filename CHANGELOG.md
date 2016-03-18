@@ -1,3 +1,9 @@
+## 0.4.1
+##### Enhancements
+* @exported import TVMLKit  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#39](https://github.com/toshi0383/TVMLKitchen/pull/39)
+
 ## 0.4.0
 ##### New Feature
 
