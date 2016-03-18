@@ -7,6 +7,7 @@ var parser;
 var currentTab;
 
 function defaultPresenter(xml) {
+    dismissModal();
     if(this.loadingIndicatorVisible) {
         navigationDocument.replaceDocument(xml, this.loadingIndicator);
         this.loadingIndicatorVisible = false;
