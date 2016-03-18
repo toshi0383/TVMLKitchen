@@ -118,11 +118,20 @@ extension Kitchen {
 }
 
 public class Cookbook {
-    public var launchOptions: [NSObject: AnyObject]?
+
+    /// launchOptions
+    private var launchOptions: [NSObject: AnyObject]?
+    /// inject functions or a exceptionHandler into JSContext
     public var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
+    /// handles "select" event
     public var actionIDHandler: KitchenActionIDHandler?
+    /// handles "play" event
     public var playActionIDHandler: KitchenActionIDHandler?
+    /// error handler that gets called when any errors occured
+    /// in Kitchen(both JS and Swift context)
     public var onError: KitchenErrorHandler?
+
+    /// - parameter launchOptions: launchOptions
     public init(launchOptions: [NSObject: AnyObject]?) {
         self.launchOptions = launchOptions
     }
