@@ -10,6 +10,7 @@
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
 public typealias KitchenErrorHandler = NSError -> Void
+public typealias KitchenActionIDHandler = (String -> Void)
 
 let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
 
@@ -49,7 +50,6 @@ public class Kitchen: NSObject {
 
     private var appController: TVApplicationController!
 
-    public typealias KitchenActionIDHandler = (String -> Void)
     private var actionIDHandler: KitchenActionIDHandler?
     private var playActionIDHandler: KitchenActionIDHandler?
 
@@ -117,7 +117,26 @@ extension Kitchen {
     }
 }
 
+public class Cookbook {
+    public var launchOptions: [NSObject: AnyObject]?
+    public var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
+    public var actionIDHandler: KitchenActionIDHandler?
+    public var playActionIDHandler: KitchenActionIDHandler?
+    public var onError: KitchenErrorHandler?
+    public init(launchOptions: [NSObject: AnyObject]?) {
+        self.launchOptions = launchOptions
+    }
+}
+
 extension Kitchen {
+
+    public static func prepare(cookbook: Cookbook) {
+        Kitchen.prepare(cookbook.launchOptions,
+            evaluateAppJavaScriptInContext: cookbook.evaluateAppJavaScriptInContext,
+            actionIDHandler: cookbook.actionIDHandler,
+            playActionIDHandler: cookbook.playActionIDHandler,
+            onError: cookbook.onError)
+    }
 
     /**
      create TVApplicationControllerContext using launchOptions
