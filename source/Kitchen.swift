@@ -162,6 +162,7 @@ extension Kitchen {
                  in Kitchen(both JS and Swift context)
      - returns:  If launch process was successfully or not.
      */
+    @available(*, deprecated, message="Use prepare(cookbook:) instead")
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
         evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
         actionIDHandler: KitchenActionIDHandler? = nil,
