@@ -46,29 +46,6 @@ Set URL to `template` attributes of focusable element. Kitchen will send asynchr
 >
 ```
 
-## Customize URL Request
-You can set `httpHeaders` and `responseObjectHandler` to `Cookbook` configuration object. So for example you can manage custom Cookies.
-
-```
-cookbook.httpHeaders = [
-    "Cookie": "Hello;"
-]
-
-cookbook.responseObjectHandler = { response in
-    /// Save cookies
-    if let fields = response.allHeaderFields as? [String: String],
-        let url = response.URL
-    {
-        let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: url)
-        for c in cookies {
-            NSHTTPCookieStorage.sharedCookieStorageForGroupContainerIdentifier(
-                "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
-        }
-    }
-    return true
-}
-```
-
 ## Presentation Styles
 
 There are currently three presentation styles that can be used when serving views: Default, Modal and Tab. The default style acts as a "Push" and will change the current view. Modal will overlay the new view atop the existing view and is commonly used for alerts. Tab is only to be used when defining the first view in a tabcontroller.
@@ -106,38 +83,38 @@ KitchenTabBar.sharedBar.items = [
 ]
 ````
 
-## Advanced setup
+# Advanced setup
 
-- [x] Inject native code into TVML(javascript) context
-- [x] Add error handlers
-
+## Add error handlers
 ```
-Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
-{ appController, jsContext in
+cookbook.onError = { error in
+    let title = "Error Launching Application"
+    let message = error.localizedDescription
+    let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
+
+    Kitchen.navigationController.presentViewController(alertController, animated: true) { }
+}
+```
+
+## Inject native code into TVML(javascript) context
+```
+cookbook.evaluateAppJavaScriptInContext = {appController, jsContext in
     /// set Exception handler
     /// called on JS error
     jsContext.exceptionHandler = {context, value in
-        LOG(context)
-        LOG(value)
+        debugPrint(context)
+        debugPrint(value)
         assertionFailure("You got JS error. Check your javascript code.")
     }
 
-    /// SeeAlso: http://nshipster.com/javascriptcore/
+    /// - SeeAlso: http://nshipster.com/javascriptcore/
     /// Inject native code block named 'debug'.
     let consoleLog: @convention(block) String -> Void = { message in
         print(message)
     }
     jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
         forKeyedSubscript: "debug")
-
-}, onError: { error in
-    let title = "Error Launching Application"
-    let message = error.localizedDescription
-    let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
-
-    Kitchen.navigationController.presentViewController(alertController, animated: true) { }
-
-})
+}
 ```
 
 ## Handling Actions
@@ -167,8 +144,31 @@ then parse it in Swift side.
 actionID.componentsSeparatedByString(",")
 ```
 
-## Kitchen Recipes
-Though TVML view cannot be modified programatically after presented(or is there a way?), we can at least generate TVML dynamically by defining **Recipe**. Theme is customizable.
+## Customize URL Request
+You can set `httpHeaders` and `responseObjectHandler` to `Cookbook` configuration object. So for example you can manage custom Cookies.
+
+```
+cookbook.httpHeaders = [
+    "Cookie": "Hello;"
+]
+
+cookbook.responseObjectHandler = { response in
+    /// Save cookies
+    if let fields = response.allHeaderFields as? [String: String],
+        let url = response.URL
+    {
+        let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: url)
+        for c in cookies {
+            NSHTTPCookieStorage.sharedCookieStorageForGroupContainerIdentifier(
+                "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
+        }
+    }
+    return true
+}
+```
+
+# Kitchen Recipes
+Though TVML is static xmls, we can generate TVML dynamically by defining **Recipe**. Theme is customizable.
 
 ```
 let banner = "Movie"
@@ -179,6 +179,9 @@ let (width, height) = (250, 376)
 let templateURL: String? = nil
 let content = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
 let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
+
+/// Create Recipe with dynamically generated data,
+/// passing theme as generic parameter.
 let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
 Kitchen.serve(recipe: catalog)
 ```
@@ -191,7 +194,7 @@ Kitchen.serve(recipe: catalog)
 
 **Note**: This feature is still in beta. APIs are subject to change.
 
-### Available Recipes
+## Available Recipes
 
 - [x] Catalog
 - [x] Catalog with select action handler
