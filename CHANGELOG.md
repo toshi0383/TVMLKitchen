@@ -1,3 +1,24 @@
+## Master
+##### Breaking
+* Remove Kitchen.serve(jsFile:) API  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#46](https://github.com/toshi0383/TVMLKitchen/issues/46)
+
+##### New Feature
+* Custom HTTP Header  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#44](https://github.com/toshi0383/TVMLKitchen/pull/44)
+
+##### Enhancements
+* Cookbook Configuration Object  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#42](https://github.com/toshi0383/TVMLKitchen/pull/42)
+
+##### Bugfix
+* Dismiss modal before new presentation  
+  [Stephen Radford](https://github.com/steve228uk)
+  [#43](https://github.com/toshi0383/TVMLKitchen/pull/43)
+
 ## 0.4.1
 ##### Enhancements
 * @exported import TVMLKit  
