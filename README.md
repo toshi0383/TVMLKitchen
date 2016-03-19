@@ -83,38 +83,38 @@ KitchenTabBar.sharedBar.items = [
 ]
 ````
 
-## Advanced setup
+# Advanced setup
 
-- [x] Inject native code into TVML(javascript) context
-- [x] Add error handlers
-
+## Add error handlers
 ```
-Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
-{ appController, jsContext in
+cookbook.onError = { error in
+    let title = "Error Launching Application"
+    let message = error.localizedDescription
+    let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
+
+    Kitchen.navigationController.presentViewController(alertController, animated: true) { }
+}
+```
+
+## Inject native code into TVML(javascript) context
+```
+cookbook.evaluateAppJavaScriptInContext = {appController, jsContext in
     /// set Exception handler
     /// called on JS error
     jsContext.exceptionHandler = {context, value in
-        LOG(context)
-        LOG(value)
+        debugPrint(context)
+        debugPrint(value)
         assertionFailure("You got JS error. Check your javascript code.")
     }
 
-    /// SeeAlso: http://nshipster.com/javascriptcore/
+    /// - SeeAlso: http://nshipster.com/javascriptcore/
     /// Inject native code block named 'debug'.
     let consoleLog: @convention(block) String -> Void = { message in
         print(message)
     }
     jsContext.setObject(unsafeBitCast(consoleLog, AnyObject.self),
         forKeyedSubscript: "debug")
-
-}, onError: { error in
-    let title = "Error Launching Application"
-    let message = error.localizedDescription
-    let alertController = UIAlertController(title: title, message: message, preferredStyle:.Alert )
-
-    Kitchen.navigationController.presentViewController(alertController, animated: true) { }
-
-})
+}
 ```
 
 ## Handling Actions
