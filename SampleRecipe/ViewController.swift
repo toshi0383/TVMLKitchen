@@ -30,6 +30,14 @@ class ViewController: UIViewController {
         Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen"
             + "/master/SampleRecipe/Oneup.xml")
     }
+
+    @IBAction func descriptiveAlertRecipe(sender: AnyObject) {
+        Kitchen.serve(recipe: DescriptiveAlertRecipe(
+            title: "hello",
+            description: "Swift is a high-performance system programming language. It has a clean and modern syntax, offers seamless access to existing C and Objective-C code and frameworks, and is memory safe by default.")
+        )
+    }
+
     @IBAction func alertRecipe(sender: AnyObject) {
         Kitchen.serve(recipe: AlertRecipe(
             title: "hello",
