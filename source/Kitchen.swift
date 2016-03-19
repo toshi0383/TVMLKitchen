@@ -364,7 +364,10 @@ extension Kitchen: TVApplicationControllerDelegate {
             self.sendRequest(url) {[unowned self] result in
                 switch result {
                 case .Success(let xmlString):
-                    openTVMLTemplateFromXMLString(xmlString, type: PresentationType(string: presentationType) ?? .Default)
+                    openTVMLTemplateFromXMLString(
+                        xmlString,
+                        type: PresentationType(string: presentationType) ?? .Default
+                    )
                 case .Failure(let error):
                     self.cookbook.onError?(error)
                 }
