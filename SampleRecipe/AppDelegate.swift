@@ -91,6 +91,14 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
     cookbook.playActionIDHandler = {actionID in
         print(actionID)
     }
+    cookbook.httpHeaders = [
+        "hello": "world"
+    ]
+
+    cookbook.responseObjectHandler = { res in
+        print(res)
+        return true
+    }
     Kitchen.prepare(cookbook)
 
     return true

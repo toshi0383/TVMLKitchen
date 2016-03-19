@@ -24,11 +24,6 @@ internal func openTVMLTemplateFromJSFile(jsfile: String, type: PresentationType 
     evaluateInTVMLContext(js)
 }
 
-internal func openTVMLTemplateFromURL(url: String, type: PresentationType = .Default) {
-    let js = "openTemplateFromURL('\(url)', \(type.rawValue));"
-    evaluateInTVMLContext(js)
-}
-
 internal func dismissTVMLModal() {
     let js = "dismissModal()"
     evaluateInTVMLContext(js)

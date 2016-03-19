@@ -52,6 +52,7 @@ public class Kitchen: NSObject {
 
     private var actionIDHandler: KitchenActionIDHandler?
     private var playActionIDHandler: KitchenActionIDHandler?
+    private var cookbook: Cookbook!
 
     public static var mainBundlePath: String!
 
@@ -83,7 +84,14 @@ extension Kitchen {
     }
 
     public static func serve(urlString urlString: String, type: PresentationType = .Default) {
-        openTVMLTemplateFromURL(urlString, type: type)
+        sharedKitchen.sendRequest(urlString) { result in
+            switch result {
+            case .Success(let xmlString):
+                openTVMLTemplateFromXMLString(xmlString, type: type)
+            case .Failure(let error):
+                sharedKitchen.kitchenErrorHandler?(error)
+            }
+        }
     }
 
     public static func serve<R: RecipeType>(recipe recipe: R) {
@@ -93,7 +101,61 @@ extension Kitchen {
     public static func dismissModal() {
         dismissTVMLModal()
     }
+}
 
+
+// MARK: Network Request
+
+internal enum Result<T, E> {
+    case Success(T)
+    case Failure(E)
+}
+
+extension Kitchen {
+    internal func sendRequest(urlString: String, responseHandler: Result<String, NSError> -> ()) {
+        guard let url = NSURL(string: urlString) else {
+            print("Invalid URL")
+            responseHandler(.Failure(
+                NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
+            ))
+            return
+        }
+
+        /// Create Request
+        let req = NSMutableURLRequest(URL: url)
+
+        /// Custom Headers
+        for (k, v) in cookbook.httpHeaders {
+            req.setValue(v, forHTTPHeaderField: k)
+        }
+
+        /// Session Handler
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let task = session.dataTaskWithRequest(req) {[unowned self] data, res, error in
+            if let error = error {
+                responseHandler(.Failure(error))
+            }
+
+            /// Call user-defined responseObjectHander if no errors.
+            if let res = res as? NSHTTPURLResponse,
+                let resume = self.cookbook.responseObjectHandler?(res)
+                where resume == false
+            {
+                return
+            }
+
+            if let data = data,
+                let xml = NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+            {
+                responseHandler(Result.Success(xml))
+            } else {
+                responseHandler(Result.Failure(
+                    NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
+                ))
+            }
+        }
+        task.resume()
+    }
 }
 
 // MARK: window
@@ -117,6 +179,8 @@ extension Kitchen {
     }
 }
 
+public typealias ResponseObjectHandler = NSHTTPURLResponse -> Bool
+
 public class Cookbook {
 
     /// launchOptions
@@ -130,6 +194,8 @@ public class Cookbook {
     /// error handler that gets called when any errors occured
     /// in Kitchen(both JS and Swift context)
     public var onError: KitchenErrorHandler?
+    public var httpHeaders: [String: String] = [:]
+    public var responseObjectHandler: ResponseObjectHandler?
 
     /// - parameter launchOptions: launchOptions
     public init(launchOptions: [NSObject: AnyObject]?) {
@@ -148,6 +214,7 @@ extension Kitchen {
      - returns:  If launch process was successfully or not.
     */
     public static func prepare(cookbook: Cookbook) -> Bool {
+        sharedKitchen.cookbook = cookbook
         sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         sharedKitchen.evaluateAppJavaScriptInContext = cookbook.evaluateAppJavaScriptInContext
 
