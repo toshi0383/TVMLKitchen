@@ -53,6 +53,14 @@
                                     <action selector="openTemplateFromURL:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="SsY-Uz-mhY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dt-p4-38t">
+                                <rect key="frame" x="681" y="827" width="280" height="86"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="AlertRecipe"/>
+                                <connections>
+                                    <action selector="alertRecipe:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="WcH-kw-NXl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="WKM-yi-Gm5" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="AR3-oL-pqG"/>

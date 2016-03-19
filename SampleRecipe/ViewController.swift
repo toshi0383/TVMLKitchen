@@ -30,6 +30,12 @@ class ViewController: UIViewController {
         Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen"
             + "/master/SampleRecipe/Oneup.xml")
     }
+    @IBAction func alertRecipe(sender: AnyObject) {
+        Kitchen.serve(recipe: AlertRecipe(
+            title: "hello",
+            description: "Swift is a high-performance system programming language. It has a clean and modern syntax, offers seamless access to existing C and Objective-C code and frameworks, and is memory safe by default.")
+        )
+    }
 
     struct MyTheme: ThemeType {
         let backgroundColor: String = "rgb(0, 20, 70)"
