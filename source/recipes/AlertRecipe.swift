@@ -57,17 +57,12 @@ public class AlertRecipe: RecipeType {
     }
 
     public var template: String {
-        var xml = ""
-        if let url = NSBundle.mainBundle().URLForResource(templateFile, withExtension: "xml") {
-            do {
-                xml = try String(contentsOfURL: url)
-                xml = xml.stringByReplacingOccurrencesOfString("{{TITLE}}", withString: title)
-                xml = xml.stringByReplacingOccurrencesOfString("{{DESCRIPTION}}", withString: description)
-                xml = xml.stringByReplacingOccurrencesOfString("{{BUTTONS}}", withString: buttonString)
-            } catch {
-                print("Could not open \(templateFile).xml")
-            }
-        }
+        let url = Kitchen.bundle().URLForResource(templateFile, withExtension: "xml")!
+        // swiftlint:disable:next force_try
+        var xml = try! String(contentsOfURL: url)
+        xml = xml.stringByReplacingOccurrencesOfString("{{TITLE}}", withString: title)
+        xml = xml.stringByReplacingOccurrencesOfString("{{DESCRIPTION}}", withString: description)
+        xml = xml.stringByReplacingOccurrencesOfString("{{BUTTONS}}", withString: buttonString)
         return xml
     }
 }

@@ -6,6 +6,14 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
+// swiftlint:disable line_length
+struct Sample {
+    static let title = "TVMLKitchen"
+    static let description = "Swift is a high-performance system programming language. It has a clean and modern syntax, offers seamless access to existing C and Objective-C code and frameworks, and is memory safe by default."
+    static let tvmlUrl = "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Oneup.xml"
+}
+// swiftlint:enable line_length
+
 import UIKit
 import TVMLKitchen
 
@@ -27,8 +35,21 @@ class ViewController: UIViewController {
 
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
         print(__FUNCTION__)
-        Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen"
-            + "/master/SampleRecipe/Oneup.xml")
+        Kitchen.serve(urlString: Sample.tvmlUrl)
+    }
+
+    @IBAction func descriptiveAlertRecipe(sender: AnyObject) {
+        Kitchen.serve(recipe: DescriptiveAlertRecipe(
+            title: Sample.title,
+            description: Sample.description)
+        )
+    }
+
+    @IBAction func alertRecipe(sender: AnyObject) {
+        Kitchen.serve(recipe: AlertRecipe(
+            title: Sample.title,
+            description: Sample.description)
+        )
     }
 
     struct MyTheme: ThemeType {

@@ -19,6 +19,10 @@
   [Stephen Radford](https://github.com/steve228uk)
   [#43](https://github.com/toshi0383/TVMLKitchen/pull/43)
 
+* Fix AlertRecipe  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#52](https://github.com/toshi0383/TVMLKitchen/pull/52)
+
 ## 0.4.1
 ##### Enhancements
 * @exported import TVMLKit  
