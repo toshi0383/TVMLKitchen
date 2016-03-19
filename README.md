@@ -58,6 +58,16 @@ cookbook.responseObjectHandler = { response in
 }
 ```
 
+## Open Other TVML from TVML
+Specify URL to `template` attributes in focusable element. Kitchen will send asynchronous request and present TVML. You can specify preferred `presentationType` too.
+
+```
+<lockup
+    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Oneup.xml"
+    presentationType="Modal"
+>
+```
+
 ## Presentation Styles
 
 There are currently three presentation styles that can be used when serving views: Default, Modal and Tab. The default style acts as a "Push" and will change the current view. Modal will overlay the new view atop the existing view and is commonly used for alerts. Tab is only to be used when defining the first view in a tabcontroller.

@@ -36,6 +36,7 @@
                   </lockup>
                   <lockup
                     template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Oneup.xml"
+                    presentationType="Modal"
                   >
                     <img src="${this.BASEURL}music_4.lcr" width="308" height="308" />
                     <title class="whiteText">Title 4</title>
