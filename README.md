@@ -46,29 +46,6 @@ Set URL to `template` attributes of focusable element. Kitchen will send asynchr
 >
 ```
 
-## Customize URL Request
-You can set `httpHeaders` and `responseObjectHandler` to `Cookbook` configuration object. So for example you can manage custom Cookies.
-
-```
-cookbook.httpHeaders = [
-    "Cookie": "Hello;"
-]
-
-cookbook.responseObjectHandler = { response in
-    /// Save cookies
-    if let fields = response.allHeaderFields as? [String: String],
-        let url = response.URL
-    {
-        let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: url)
-        for c in cookies {
-            NSHTTPCookieStorage.sharedCookieStorageForGroupContainerIdentifier(
-                "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
-        }
-    }
-    return true
-}
-```
-
 ## Presentation Styles
 
 There are currently three presentation styles that can be used when serving views: Default, Modal and Tab. The default style acts as a "Push" and will change the current view. Modal will overlay the new view atop the existing view and is commonly used for alerts. Tab is only to be used when defining the first view in a tabcontroller.
@@ -165,6 +142,29 @@ actionID="showHogeView,12345678,hogehoge"
 then parse it in Swift side.
 ```
 actionID.componentsSeparatedByString(",")
+```
+
+## Customize URL Request
+You can set `httpHeaders` and `responseObjectHandler` to `Cookbook` configuration object. So for example you can manage custom Cookies.
+
+```
+cookbook.httpHeaders = [
+    "Cookie": "Hello;"
+]
+
+cookbook.responseObjectHandler = { response in
+    /// Save cookies
+    if let fields = response.allHeaderFields as? [String: String],
+        let url = response.URL
+    {
+        let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: url)
+        for c in cookies {
+            NSHTTPCookieStorage.sharedCookieStorageForGroupContainerIdentifier(
+                "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
+        }
+    }
+    return true
+}
 ```
 
 ## Kitchen Recipes
