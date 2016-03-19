@@ -17,7 +17,6 @@ class ViewController: UIViewController {
 
     @IBAction func openCatalogTemplate() {
         print(__FUNCTION__)
-        Kitchen.serve(jsFile:"Catalog.xml.js")
     }
 
     @IBAction func openXMLString(sender: AnyObject!) {

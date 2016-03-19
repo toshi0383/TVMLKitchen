@@ -79,10 +79,6 @@ extension Kitchen {
         }
     }
 
-    public static func serve(jsFile jsFile: String, type: PresentationType = .Default) {
-        openTVMLTemplateFromJSFile(jsFile, type: type)
-    }
-
     public static func serve(urlString urlString: String, type: PresentationType = .Default) {
         sharedKitchen.sendRequest(urlString) { result in
             switch result {
@@ -362,6 +358,20 @@ extension Kitchen: TVApplicationControllerDelegate {
                 forKeyedSubscript: "actionIDHandler")
         }
 
+        // Add loadTemplateFromURL
+        let loadTemplateFromURL: @convention(block) (String, String) -> Void =
+        { (url, presentationType) -> () in
+            self.sendRequest(url) {[unowned self] result in
+                switch result {
+                case .Success(let xmlString):
+                    openTVMLTemplateFromXMLString(xmlString, type: PresentationType(string: presentationType) ?? .Default)
+                case .Failure(let error):
+                    self.cookbook.onError?(error)
+                }
+            }
+        }
+        jsContext.setObject(unsafeBitCast(loadTemplateFromURL, AnyObject.self),
+            forKeyedSubscript: "loadTemplateFromURL")
 
         // Add the tab bar handler for the shared instance.
 
