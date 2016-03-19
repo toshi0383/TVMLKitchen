@@ -35,6 +35,17 @@ Kitchen automatically looks for the xmlFile in your Main Bundle, parse it, then 
 
 </li></ol>
 
+## Open Other TVML from TVML
+
+Set URL to `template` attributes of focusable element. Kitchen will send asynchronous request and present TVML. You can specify preferred `presentationType` too. Note that if `actionID` present, these attributes are ignored.
+
+```
+<lockup
+    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Oneup.xml"
+    presentationType="Modal"
+>
+```
+
 ## Customize URL Request
 You can set `httpHeaders` and `responseObjectHandler` to `Cookbook` configuration object. So for example you can manage custom Cookies.
 

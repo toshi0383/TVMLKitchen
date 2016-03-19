@@ -11,9 +11,13 @@ public enum PresentationType: Int {
     case Modal = 1
     case Tab = 2
     init?(string: String) {
-        guard let type = Int(string) else {
-            return nil
+        switch string {
+        case "Modal":
+            self = .Modal
+        case "Tab":
+            self = .Tab
+        default:
+            self = .Default
         }
-        self.init(rawValue: type)
     }
 }
