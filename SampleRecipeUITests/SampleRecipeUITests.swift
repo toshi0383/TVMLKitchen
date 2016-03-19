@@ -16,11 +16,15 @@ class SampleRecipeUITests: XCTestCase {
         XCUIApplication().launch()
     }
 
-    func testUI() {
-        let app = XCUIApplication()
+    func gotoSampleScreen() {
         XCUIRemote.sharedRemote().pressButton(.Right)
         XCUIRemote.sharedRemote().pressButton(.Right)
         XCUIRemote.sharedRemote().pressButton(.Select)
+    }
+
+    func testUI() {
+        gotoSampleScreen()
+        let app = XCUIApplication()
         let catalog = app.buttons["Catalog.xml"]
         XCTAssert(catalog.hasFocus)
         XCUIRemote.sharedRemote().pressButton(.Select)
@@ -41,11 +45,29 @@ class SampleRecipeUITests: XCTestCase {
         XCUIRemote.sharedRemote().pressButton(.Menu)
         sleep(1)
         XCUIRemote.sharedRemote().pressButton(.Down)
-        XCUIRemote.sharedRemote().pressButton(.Down)
         XCTAssert(app.buttons["URL"].hasFocus)
+    }
+
+    func testUI2() {
+        let app = XCUIApplication()
+        gotoSampleScreen()
+        XCUIRemote.sharedRemote().pressButton(.Down)
+        XCUIRemote.sharedRemote().pressButton(.Down)
+        XCUIRemote.sharedRemote().pressButton(.Down)
+        XCUIRemote.sharedRemote().pressButton(.Down)
+        XCUIRemote.sharedRemote().pressButton(.Down)
+        XCTAssert(app.buttons["AlertRecipe"].hasFocus)
         XCUIRemote.sharedRemote().pressButton(.Select)
         sleep(1)
         XCUIRemote.sharedRemote().pressButton(.Menu)
+        sleep(1)
+        XCUIRemote.sharedRemote().pressButton(.Down)
+        XCTAssert(app.buttons["DescriptiveAlertRecipe"].hasFocus)
+        XCUIRemote.sharedRemote().pressButton(.Select)
+        sleep(1)
+        XCUIRemote.sharedRemote().pressButton(.Menu)
+        sleep(1)
+        XCTAssert(app.buttons["DescriptiveAlertRecipe"].hasFocus)
 
     }
 }
