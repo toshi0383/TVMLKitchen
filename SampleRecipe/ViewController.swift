@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     @IBAction func openCatalogTemplate() {
         print(__FUNCTION__)
-        Kitchen.serve(jsFile:"Catalog.xml.js")
+        Kitchen.serve(xmlFile: "Catalog.xml", type: .Modal)
     }
 
     @IBAction func openXMLString(sender: AnyObject!) {
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
         print(__FUNCTION__)
         Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen"
-            + "/master/SampleRecipe/Catalog.xml.js")
+            + "/master/SampleRecipe/Oneup.xml")
     }
 
     struct MyTheme: ThemeType {

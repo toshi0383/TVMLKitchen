@@ -52,6 +52,7 @@ public class Kitchen: NSObject {
 
     private var actionIDHandler: KitchenActionIDHandler?
     private var playActionIDHandler: KitchenActionIDHandler?
+    private var cookbook: Cookbook!
 
     public static var mainBundlePath: String!
 
@@ -78,12 +79,15 @@ extension Kitchen {
         }
     }
 
-    public static func serve(jsFile jsFile: String, type: PresentationType = .Default) {
-        openTVMLTemplateFromJSFile(jsFile, type: type)
-    }
-
     public static func serve(urlString urlString: String, type: PresentationType = .Default) {
-        openTVMLTemplateFromURL(urlString, type: type)
+        sharedKitchen.sendRequest(urlString) { result in
+            switch result {
+            case .Success(let xmlString):
+                openTVMLTemplateFromXMLString(xmlString, type: type)
+            case .Failure(let error):
+                sharedKitchen.kitchenErrorHandler?(error)
+            }
+        }
     }
 
     public static func serve<R: RecipeType>(recipe recipe: R) {
@@ -93,7 +97,61 @@ extension Kitchen {
     public static func dismissModal() {
         dismissTVMLModal()
     }
+}
 
+
+// MARK: Network Request
+
+internal enum Result<T, E> {
+    case Success(T)
+    case Failure(E)
+}
+
+extension Kitchen {
+    internal func sendRequest(urlString: String, responseHandler: Result<String, NSError> -> ()) {
+        guard let url = NSURL(string: urlString) else {
+            print("Invalid URL")
+            responseHandler(.Failure(
+                NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
+            ))
+            return
+        }
+
+        /// Create Request
+        let req = NSMutableURLRequest(URL: url)
+
+        /// Custom Headers
+        for (k, v) in cookbook.httpHeaders {
+            req.setValue(v, forHTTPHeaderField: k)
+        }
+
+        /// Session Handler
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let task = session.dataTaskWithRequest(req) {[unowned self] data, res, error in
+            if let error = error {
+                responseHandler(.Failure(error))
+            }
+
+            /// Call user-defined responseObjectHander if no errors.
+            if let res = res as? NSHTTPURLResponse,
+                let resume = self.cookbook.responseObjectHandler?(res)
+                where resume == false
+            {
+                return
+            }
+
+            if let data = data,
+                let xml = NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+            {
+                responseHandler(Result.Success(xml))
+            } else {
+                responseHandler(Result.Failure(
+                    NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
+                ))
+            }
+        }
+        task.resume()
+    }
 }
 
 // MARK: window
@@ -117,6 +175,8 @@ extension Kitchen {
     }
 }
 
+public typealias ResponseObjectHandler = NSHTTPURLResponse -> Bool
+
 public class Cookbook {
 
     /// launchOptions
@@ -130,6 +190,8 @@ public class Cookbook {
     /// error handler that gets called when any errors occured
     /// in Kitchen(both JS and Swift context)
     public var onError: KitchenErrorHandler?
+    public var httpHeaders: [String: String] = [:]
+    public var responseObjectHandler: ResponseObjectHandler?
 
     /// - parameter launchOptions: launchOptions
     public init(launchOptions: [NSObject: AnyObject]?) {
@@ -139,12 +201,54 @@ public class Cookbook {
 
 extension Kitchen {
 
-    public static func prepare(cookbook: Cookbook) {
-        Kitchen.prepare(cookbook.launchOptions,
-            evaluateAppJavaScriptInContext: cookbook.evaluateAppJavaScriptInContext,
-            actionIDHandler: cookbook.actionIDHandler,
-            playActionIDHandler: cookbook.playActionIDHandler,
-            onError: cookbook.onError)
+    /**
+     create TVApplicationControllerContext using launchOptions
+
+     Supposed to be called in application:didFinishedLaunchingWithOptions:
+     in UIApplicationDelegate of your @UIApplicationMain .
+     - parameter cookbook: a Cookbook configuration object
+     - returns:  If launch process was successfully or not.
+    */
+    public static func prepare(cookbook: Cookbook) -> Bool {
+        sharedKitchen.cookbook = cookbook
+        sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        sharedKitchen.evaluateAppJavaScriptInContext = cookbook.evaluateAppJavaScriptInContext
+
+        /// Create the TVApplicationControllerContext
+        let appControllerContext = TVApplicationControllerContext()
+
+        let javaScriptURL = NSBundle(forClass: self).URLForResource("kitchen", withExtension: "js")!
+        appControllerContext.javaScriptApplicationURL = javaScriptURL
+        appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
+
+        /// Cutting `kitchen.js` off
+        let TVBaseURL = javaScriptURL.URLByDeletingLastPathComponent
+
+        /// Define framework bundle URL
+        appControllerContext.launchOptions["BASEURL"] = TVBaseURL!.absoluteString
+        let info = NSBundle(forClass: self).infoDictionary!
+        let bundleid = info[String(kCFBundleIdentifierKey)]!
+        appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
+
+        /// Define mainBundle URL
+        mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
+        appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
+
+        if let launchOptions = cookbook.launchOptions as? [String: AnyObject] {
+            for (kind, value) in launchOptions {
+                appControllerContext.launchOptions[kind] = value
+            }
+        }
+
+        sharedKitchen.appController = TVApplicationController(context: appControllerContext,
+            window: sharedKitchen.window, delegate: sharedKitchen)
+
+        /// Must be place this statement after appController is initialized
+        sharedKitchen.kitchenErrorHandler = cookbook.onError
+        sharedKitchen.actionIDHandler = cookbook.actionIDHandler
+        sharedKitchen.playActionIDHandler = cookbook.playActionIDHandler
+
+        return true
     }
 
     /**
@@ -254,6 +358,23 @@ extension Kitchen: TVApplicationControllerDelegate {
                 forKeyedSubscript: "actionIDHandler")
         }
 
+        // Add loadTemplateFromURL
+        let loadTemplateFromURL: @convention(block) (String, String) -> Void =
+        { (url, presentationType) -> () in
+            self.sendRequest(url) {[unowned self] result in
+                switch result {
+                case .Success(let xmlString):
+                    openTVMLTemplateFromXMLString(
+                        xmlString,
+                        type: PresentationType(string: presentationType) ?? .Default
+                    )
+                case .Failure(let error):
+                    self.cookbook.onError?(error)
+                }
+            }
+        }
+        jsContext.setObject(unsafeBitCast(loadTemplateFromURL, AnyObject.self),
+            forKeyedSubscript: "loadTemplateFromURL")
 
         // Add the tab bar handler for the shared instance.
 

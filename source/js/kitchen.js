@@ -6,6 +6,7 @@
 var parser;
 var currentTab;
 
+/// Presenters
 function defaultPresenter(xml) {
     dismissModal();
     if(this.loadingIndicatorVisible) {
@@ -59,6 +60,7 @@ function dismissModal() {
     navigationDocument.dismissModal();
 }
 
+/// Event Handlers
 function play(event) {
     var ele = event.target,
         actionID = ele.getAttribute('playActionID');
@@ -78,7 +80,7 @@ function load(event) {
     var self = this,
         ele = event.target,
         templateURL = ele.getAttribute("template"),
-        presentation = ele.getAttribute("presentation"),
+        presentationType = ele.getAttribute("presentationType"),
         actionID = ele.getAttribute("actionID"),
         menuIndex = ele.getAttribute("menuIndex"),
         tagName = ele.tagName;
@@ -98,31 +100,11 @@ function load(event) {
     if (!templateURL) {
         return;
     }
-    self.showLoadingIndicator(presentation);
-    loadTemplateFromURL(templateURL, function(resource) {
-        present(resource, presentation, ele);
-    });
+
+    loadTemplateFromURL(templateURL, presentationType);
 }
 
-function present(resource, presentation, ele) {
-    if (!resource) {
-        return;
-    }
-    var self = this;
-    var doc = makeDocument(resource);
-    doc.addEventListener("select", self.load.bind(self));
-    doc.addEventListener("highlight", self.highlight.bind(self));
-    doc.addEventListener("holdselect", self.holdselect.bind(self));
-    doc.addEventListener("play", self.play.bind(self));
-
-
-    if (self[presentation] instanceof Function) {
-        self[presentation].call(self, doc, ele);
-    } else {
-        self.defaultPresenter.call(self, doc);
-    }
-}
-
+/// Create TVML from XML string.
 function makeDocument(resource) {
     var doc = parser.parseFromString(resource, "application/xml");
     return doc;
@@ -178,25 +160,6 @@ function loadingTemplate() {
         </document>`
 }
 
-/// load template from absolute URL
-function loadTemplateFromURL(templateURL, callback, presentationType) {
-    var self = this;
-    
-    evaluateScripts([templateURL], function(success) {
-        if (success) {
-            var resource = Template.call(self);
-            callback.call(self, resource, presentationType);
-        } else {
-            var message = `There was an error attempting to load the resource '${resource}' with URL: '${templateURL}'. \n\n Please try again later.`
-
-            removeLoadingIndicator();
-            if (kitchenErrorHandler !== undefined) {
-                kitchenErrorHandler(message);
-            }
-        }
-    });
-}
-
 function presenterForType(type) {
     switch(type) {
         case 1:
@@ -209,15 +172,7 @@ function presenterForType(type) {
 }
 
 /// load template from Main Bundle URL
-function openTemplateFromJSFile(jsFileName, presentationType) {
-    mainBundleUrl = App.options.MAIN_BUNDLE_URL
-    loadTemplateFromURL(`${mainBundleUrl}${jsFileName}`, openTemplateFromXMLString, presentationType);
-}
-
-function openTemplateFromURL(url, presentationType) {
-    loadTemplateFromURL(`${url}`, openTemplateFromXMLString, presentationType);
-}
-
+/// Expected to be called from native context.
 function openTemplateFromXMLString(xmlString, presentationType) {
     showLoadingIndicatorForType(presentationType);
     var doc = makeDocument(xmlString);

@@ -91,6 +91,23 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
     cookbook.playActionIDHandler = {actionID in
         print(actionID)
     }
+    cookbook.httpHeaders = [
+        "hello": "world"
+    ]
+
+    cookbook.responseObjectHandler = { response in
+        /// Save cookies
+        if let fields = response.allHeaderFields as? [String: String],
+            let url = response.URL
+        {
+            let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: url)
+            for c in cookies {
+                NSHTTPCookieStorage.sharedCookieStorageForGroupContainerIdentifier(
+                    "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
+            }
+        }
+        return true
+    }
     Kitchen.prepare(cookbook)
 
     return true

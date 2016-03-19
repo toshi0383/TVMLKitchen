@@ -5,44 +5,68 @@
 Loading a TVML view is in this short.
 
 ```
-Kitchen.serve(jsFile:"Catalog.xml.js")
+Kitchen.serve(xmlFile:"Catalog.xml")
 ```
 
-Kitchen automatically looks for the jsFile in your Main Bundle, parse and load it, then finally pushes it to navigationController. User can pop to previous viewcontroller with AppleTV(Remote)'s **'Menu' button**.
+Kitchen automatically looks for the xmlFile in your Main Bundle, parse it, then finally pushes it to navigationController.
 
 # Getting Started
 
 ## Showing a Template from main bundle
 
-1. Put your Sample.xml.js to your app's main bundle.
+1. Put your Sample.xml to your app's main bundle.
 
 2. Prepare your Kitchen in AppDelegate's `didFinishLaunchingWithOptions:`.
     ```
-    Kitchen.prepare(launchOptions)
+    let cookbook = Cookbook(launchOptions: launchOptions)
+    Kitchen.prepare(cookbook)
     ```
 
 3. Launch the template from anywhere.
     ```
-    Kitchen.serve(jsFile: "Sample.xml.js")
+    Kitchen.serve(xmlFile: "Sample.xml")
     ```
 
 ## Showing a Template from client-server
 
 <ol start="4">
 <li><p>Got TVML server ? Just pass the URL String and you're good to go.</p>
-    <pre><code>Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Catalog.xml.js")</code></pre>
+    <pre><code>Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Catalog.xml")</code></pre>
 
 </li></ol>
+
+## Customize URL Request
+You can set `httpHeaders` and `responseObjectHandler` to `Cookbook` configuration object. So for example you can manage custom Cookies.
+
+```
+cookbook.httpHeaders = [
+    "Cookie": "Hello;"
+]
+
+cookbook.responseObjectHandler = { response in
+    /// Save cookies
+    if let fields = response.allHeaderFields as? [String: String],
+        let url = response.URL
+    {
+        let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: url)
+        for c in cookies {
+            NSHTTPCookieStorage.sharedCookieStorageForGroupContainerIdentifier(
+                "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
+        }
+    }
+    return true
+}
+```
 
 ## Presentation Styles
 
 There are currently three presentation styles that can be used when serving views: Default, Modal and Tab. The default style acts as a "Push" and will change the current view. Modal will overlay the new view atop the existing view and is commonly used for alerts. Tab is only to be used when defining the first view in a tabcontroller.
 
 ````swift
-Kitchen.serve(jsFile: "Sample.xml.js")
-Kitchen.serve(jsFile: "Sample.xml.js", type: .Default)
-Kitchen.serve(jsFile: "Sample.xml.js", type: .Modal)
-Kitchen.serve(jsFile: "Sample.xml.js", type: .Tab)
+Kitchen.serve(xmlFile: "Sample.xml")
+Kitchen.serve(xmlFile: "Sample.xml", type: .Default)
+Kitchen.serve(xmlFile: "Sample.xml", type: .Modal)
+Kitchen.serve(xmlFile: "Sample.xml", type: .Tab)
 ````
 
 ## Tab Controller
@@ -57,7 +81,7 @@ struct Moviestab: TabItem {
     let title = "Movies"
 
     func handler() {
-        Kitchen.serve(jsFile: "Sample.xml.js", type: .Tab)
+        Kitchen.serve(xmlFile: "Sample.xml", type: .Tab)
     }
 
 }
@@ -106,20 +130,19 @@ Kitchen.prepare(launchOptions, evaluateAppJavaScriptInContext:
 ```
 
 ## Handling Actions
-In TVML, you can set `actionID` and `playActionID` attributes in your focusable elements. (e.g. `lockup` or `button` SeeAlso: https://forums.developer.apple.com/thread/17704 ) Kitchen receives Select or Play events, then fires `actionIDHandler` or `playActionHandler` if exists.
+You can set `actionID` and `playActionID` attributes in your focusable elements. (e.g. `lockup` or `button` SeeAlso: https://forums.developer.apple.com/thread/17704 ) Kitchen receives Select or Play events, then fires `actionIDHandler` or `playActionHandler` if exists.
 
 ```
 <lockup actionID="showDescription" playActionID="playContent">
 ```
 
 ```
-Kitchen.prepare ...
-...
-}, actionIDHandler: { actionID in
-    print(actionID) // "showDescription"
-}, playActionIDHandler: {actionID in
-    print(actionID) // "playContent"
-})
+cookbook.actionIDHandler = { actionID in
+    print(actionID)
+}
+cookbook.playActionIDHandler = {actionID in
+    print(actionID)
+}
 ```
 
 Handlers are currently globally shared. This is just an idea, but we can pass parameters via actions like this,
@@ -174,7 +197,7 @@ Kitchen.serve(recipe: catalog)
 and more...
 
 ## Note
-We don't know when or how to inject additional data onto already presented TVML view.
+We don't support dynamic view reloading.
 For now, if you need 100% dynamic behavior, go ahead and use UIKit.
 
 # Installation

@@ -1,11 +1,4 @@
-/*
-Copyright (C) 2015 Apple Inc. All Rights Reserved.
-See LICENSE.txt for this sample’s licensing information
-
-Abstract:
-A catalog template allows you to display groupings of related items, such as genres of movies or TV shows. View the list of groupings on the left and focus on one to see its items on the right.
-*/
-var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
   <document>
     <head>
       <style>
@@ -41,7 +34,9 @@ var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
                     <img src="${this.BASEURL}music_3.lcr" width="308" height="308" />
                     <title class="whiteText">Title 3</title>
                   </lockup>
-                  <lockup>
+                  <lockup
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Oneup.xml"
+                  >
                     <img src="${this.BASEURL}music_4.lcr" width="308" height="308" />
                     <title class="whiteText">Title 4</title>
                   </lockup>
@@ -160,5 +155,4 @@ var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
         </section>
       </list>
     </catalogTemplate>
-  </document>`
-}
+  </document>

@@ -10,4 +10,10 @@ public enum PresentationType: Int {
     case Default = 0
     case Modal = 1
     case Tab = 2
+    init?(string: String) {
+        guard let type = Int(string) else {
+            return nil
+        }
+        self.init(rawValue: type)
+    }
 }
