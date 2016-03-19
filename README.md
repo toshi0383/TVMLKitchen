@@ -167,8 +167,8 @@ cookbook.responseObjectHandler = { response in
 }
 ```
 
-## Kitchen Recipes
-Though TVML view cannot be modified programatically after presented(or is there a way?), we can at least generate TVML dynamically by defining **Recipe**. Theme is customizable.
+# Kitchen Recipes
+Though TVML is static xmls, we can generate TVML dynamically by defining **Recipe**. Theme is customizable.
 
 ```
 let banner = "Movie"
@@ -179,6 +179,9 @@ let (width, height) = (250, 376)
 let templateURL: String? = nil
 let content = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
 let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
+
+/// Create Recipe with dynamically generated data,
+/// passing theme as generic parameter.
 let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
 Kitchen.serve(recipe: catalog)
 ```
@@ -191,7 +194,7 @@ Kitchen.serve(recipe: catalog)
 
 **Note**: This feature is still in beta. APIs are subject to change.
 
-### Available Recipes
+## Available Recipes
 
 - [x] Catalog
 - [x] Catalog with select action handler
