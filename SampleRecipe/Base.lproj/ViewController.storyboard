@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="SDq-1u-6R3">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="SDq-1u-6R3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,18 +17,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="6SD-mQ-3RS">
-                                <rect key="frame" x="630" y="497" width="661" height="86"/>
+                                <rect key="frame" x="630" y="497" width="596" height="86"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iY0-bH-jNU">
-                                        <rect key="frame" x="0.0" y="0.0" width="349" height="86"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="284" height="86"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                        <state key="normal" title="Template.xml.js"/>
+                                        <state key="normal" title="Catalog.xml"/>
                                         <connections>
                                             <action selector="openCatalogTemplate" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="3yS-JO-Aqm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qn-b4-3Km">
-                                        <rect key="frame" x="399" y="0.0" width="262" height="86"/>
+                                        <rect key="frame" x="334" y="0.0" width="262" height="86"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="XMLString"/>
                                         <connections>
@@ -57,7 +57,7 @@
                         <constraints>
                             <constraint firstItem="WKM-yi-Gm5" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="AR3-oL-pqG"/>
                             <constraint firstItem="WKM-yi-Gm5" firstAttribute="top" secondItem="6SD-mQ-3RS" secondAttribute="bottom" constant="24" id="OqD-OM-OvA"/>
-                            <constraint firstItem="6SD-mQ-3RS" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="nTr-hV-7Lb"/>
+                            <constraint firstItem="6SD-mQ-3RS" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" constant="-32" id="nTr-hV-7Lb"/>
                             <constraint firstItem="6SD-mQ-3RS" firstAttribute="centerY" secondItem="vhI-78-4Yk" secondAttribute="centerY" id="wfU-QZ-eNA"/>
                         </constraints>
                     </view>
