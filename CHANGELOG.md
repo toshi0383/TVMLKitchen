@@ -1,4 +1,4 @@
-## Master
+## 0.5.0
 ##### Breaking
 * Remove Kitchen.serve(jsFile:) API  
   [Toshihiro Suzuki](https://github.com/toshi0383)
