@@ -58,6 +58,7 @@ public class AlertRecipe: RecipeType {
 
     public var template: String {
         let url = Kitchen.bundle().URLForResource(templateFile, withExtension: "xml")!
+        // swiftlint:disable:next force_try
         var xml = try! String(contentsOfURL: url)
         xml = xml.stringByReplacingOccurrencesOfString("{{TITLE}}", withString: title)
         xml = xml.stringByReplacingOccurrencesOfString("{{DESCRIPTION}}", withString: description)
