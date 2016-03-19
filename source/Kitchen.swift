@@ -10,6 +10,7 @@
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
 public typealias KitchenErrorHandler = NSError -> Void
+public typealias KitchenActionIDHandler = (String -> Void)
 
 let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
 
@@ -49,7 +50,6 @@ public class Kitchen: NSObject {
 
     private var appController: TVApplicationController!
 
-    public typealias KitchenActionIDHandler = (String -> Void)
     private var actionIDHandler: KitchenActionIDHandler?
     private var playActionIDHandler: KitchenActionIDHandler?
 
@@ -117,7 +117,35 @@ extension Kitchen {
     }
 }
 
+public class Cookbook {
+
+    /// launchOptions
+    private var launchOptions: [NSObject: AnyObject]?
+    /// inject functions or a exceptionHandler into JSContext
+    public var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
+    /// handles "select" event
+    public var actionIDHandler: KitchenActionIDHandler?
+    /// handles "play" event
+    public var playActionIDHandler: KitchenActionIDHandler?
+    /// error handler that gets called when any errors occured
+    /// in Kitchen(both JS and Swift context)
+    public var onError: KitchenErrorHandler?
+
+    /// - parameter launchOptions: launchOptions
+    public init(launchOptions: [NSObject: AnyObject]?) {
+        self.launchOptions = launchOptions
+    }
+}
+
 extension Kitchen {
+
+    public static func prepare(cookbook: Cookbook) {
+        Kitchen.prepare(cookbook.launchOptions,
+            evaluateAppJavaScriptInContext: cookbook.evaluateAppJavaScriptInContext,
+            actionIDHandler: cookbook.actionIDHandler,
+            playActionIDHandler: cookbook.playActionIDHandler,
+            onError: cookbook.onError)
+    }
 
     /**
      create TVApplicationControllerContext using launchOptions
@@ -134,6 +162,7 @@ extension Kitchen {
                  in Kitchen(both JS and Swift context)
      - returns:  If launch process was successfully or not.
      */
+    @available(*, deprecated, message="Use prepare(cookbook:) instead")
     public static func prepare(launchOptions: [NSObject: AnyObject]?,
         evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
         actionIDHandler: KitchenActionIDHandler? = nil,
