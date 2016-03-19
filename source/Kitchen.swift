@@ -97,6 +97,10 @@ extension Kitchen {
     public static func dismissModal() {
         dismissTVMLModal()
     }
+
+    public static func bundle() -> NSBundle {
+        return NSBundle(forClass: self)
+    }
 }
 
 
