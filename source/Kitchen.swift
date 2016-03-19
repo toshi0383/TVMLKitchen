@@ -139,12 +139,53 @@ public class Cookbook {
 
 extension Kitchen {
 
-    public static func prepare(cookbook: Cookbook) {
-        Kitchen.prepare(cookbook.launchOptions,
-            evaluateAppJavaScriptInContext: cookbook.evaluateAppJavaScriptInContext,
-            actionIDHandler: cookbook.actionIDHandler,
-            playActionIDHandler: cookbook.playActionIDHandler,
-            onError: cookbook.onError)
+    /**
+     create TVApplicationControllerContext using launchOptions
+
+     Supposed to be called in application:didFinishedLaunchingWithOptions:
+     in UIApplicationDelegate of your @UIApplicationMain .
+     - parameter cookbook: a Cookbook configuration object
+     - returns:  If launch process was successfully or not.
+    */
+    public static func prepare(cookbook: Cookbook) -> Bool {
+        sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        sharedKitchen.evaluateAppJavaScriptInContext = cookbook.evaluateAppJavaScriptInContext
+
+        /// Create the TVApplicationControllerContext
+        let appControllerContext = TVApplicationControllerContext()
+
+        let javaScriptURL = NSBundle(forClass: self).URLForResource("kitchen", withExtension: "js")!
+        appControllerContext.javaScriptApplicationURL = javaScriptURL
+        appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
+
+        /// Cutting `kitchen.js` off
+        let TVBaseURL = javaScriptURL.URLByDeletingLastPathComponent
+
+        /// Define framework bundle URL
+        appControllerContext.launchOptions["BASEURL"] = TVBaseURL!.absoluteString
+        let info = NSBundle(forClass: self).infoDictionary!
+        let bundleid = info[String(kCFBundleIdentifierKey)]!
+        appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
+
+        /// Define mainBundle URL
+        mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
+        appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
+
+        if let launchOptions = cookbook.launchOptions as? [String: AnyObject] {
+            for (kind, value) in launchOptions {
+                appControllerContext.launchOptions[kind] = value
+            }
+        }
+
+        sharedKitchen.appController = TVApplicationController(context: appControllerContext,
+            window: sharedKitchen.window, delegate: sharedKitchen)
+
+        /// Must be place this statement after appController is initialized
+        sharedKitchen.kitchenErrorHandler = cookbook.onError
+        sharedKitchen.actionIDHandler = cookbook.actionIDHandler
+        sharedKitchen.playActionIDHandler = cookbook.playActionIDHandler
+
+        return true
     }
 
     /**
