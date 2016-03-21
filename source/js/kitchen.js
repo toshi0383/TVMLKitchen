@@ -18,8 +18,11 @@ function defaultPresenter(xml) {
 }
 
 function searchPresenter(xml) {
-
     this.defaultPresenter.call(this, xml);
+    this.observeKeyboard.call(this, xml);
+}
+
+function observeKeyboard(xml) {
     var doc = xml;
 
     var searchField = doc.getElementsByTagName("searchField").item(0);
@@ -29,6 +32,11 @@ function searchPresenter(xml) {
         var searchText = keyboard.text;
         buildResults(doc, searchText);
     }
+}
+
+function menuBarSearchPresenter(xml) {
+    this.menuBarItemPresenter.call(this, xml);
+    this.observeKeyboard.call(this, xml);
 }
 
 /**
@@ -130,6 +138,7 @@ function showLoadingIndicator(presentation) {
 function showLoadingIndicatorForType(presentationType) {
     if (presentationType == 1 ||
         presentationType == 2 ||
+        presentationType == 4 ||
         this.loadingIndicatorVisible) {
         return;
     }
@@ -168,6 +177,8 @@ function presenterForType(type) {
             return menuBarItemPresenter;
         case 3:
             return searchPresenter;
+        case 4:
+            return menuBarSearchPresenter;
         default:
             return defaultPresenter;
     }

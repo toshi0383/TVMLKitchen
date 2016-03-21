@@ -17,7 +17,9 @@ public struct SearchRecipe: TemplateRecipeType {
     /// Presentation type is defined in the recipe to keep things consistent.
     public var presentationType = PresentationType.Search
 
-    public init() { }
+    public init(type: PresentationType = .Search) {
+        self.presentationType = type
+    }
 
     /// SearchText filtering
     internal static func filterSearchText(text: String, callback: (String -> Void)) {

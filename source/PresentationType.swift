@@ -11,6 +11,7 @@ public enum PresentationType: Int {
     case Modal = 1
     case Tab = 2
     case Search = 3
+    case TabSearch = 4
     init?(string: String) {
         switch string.lowercaseString {
         case "modal":
@@ -19,6 +20,8 @@ public enum PresentationType: Int {
             self = .Tab
         case "search":
             self = .Search
+        case "tabsearch":
+            self = .TabSearch
         default:
             self = .Default
         }

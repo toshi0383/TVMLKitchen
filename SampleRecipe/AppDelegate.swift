@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
         let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
-        Kitchen.serve(recipe: catalog)
+//        Kitchen.serve(recipe: catalog)
     }
 
 
@@ -109,8 +109,19 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         return true
     }
     Kitchen.prepare(cookbook)
+    KitchenTabBar.sharedBar.items = [
+        SearchTab()
+    ]
 
     return true
+}
+
+struct SearchTab: TabItem {
+    let title = "Search"
+    func handler() {
+        let search = SearchRecipe(type: .TabSearch)
+        Kitchen.serve(recipe: search)
+    }
 }
 
 private func openViewController(identifier: String) {
