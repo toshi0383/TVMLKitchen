@@ -28,7 +28,7 @@ public protocol TemplateRecipeType: RecipeType {
     /// e.g. ["color": "rgb(255, 255, 255)"]
     var replacementDictionary: [String: String] {get}
     /// Bundle of Template file.
-    var bundle: NSBundle {get}
+    static var bundle: NSBundle {get}
 }
 
 extension RecipeType {
@@ -43,7 +43,7 @@ extension RecipeType {
 }
 
 extension TemplateRecipeType {
-    public var bundle: NSBundle {
+    public static var bundle: NSBundle {
         return Kitchen.bundle()
     }
 }
@@ -62,7 +62,7 @@ extension TemplateRecipeType where Self.Theme: ThemeType {
     }
 
     public var template: String {
-        let url = bundle.URLForResource(templateFileName, withExtension: "xml")!
+        let url = Self.bundle.URLForResource(templateFileName, withExtension: "xml")!
         // swiftlint:disable:next force_try
         let xml = try! String(contentsOfURL: url)
         return xml
