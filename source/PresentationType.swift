@@ -14,6 +14,7 @@ public enum PresentationType: Int {
     /// Mix of `.Tab` and `.Search`.
     /// Expected to be used when presenting SearchRecipe as a TabItem.
     case TabSearch = 4
+
     init?(string: String) {
         switch string.lowercaseString {
         case "modal":
