@@ -1,1 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?> <document> <menuBarTemplate> <menuBar> <menuItem menuIndex="0"> <title>abcdef</title> </menuItem> </menuBar> </menuBarTemplate> </document>
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+<head>
+<style>
+
+</style>
+</head>
+<menuBarTemplate>
+<menuBar>
+<menuItem menuIndex="0">
+<title>abcdef</title>
+</menuItem>
+
+</menuBar>
+</menuBarTemplate>
+</document>

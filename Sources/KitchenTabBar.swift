@@ -18,7 +18,9 @@ public protocol TabItem {
 
 }
 
-public struct KitchenTabBar: RecipeType {
+public struct KitchenTabBar: TemplateRecipeType {
+
+    public let theme = EmptyTheme()
 
     /// The shared instance of the tab bar.
     /// Only one tab bar should be created per app.
@@ -38,28 +40,16 @@ public struct KitchenTabBar: RecipeType {
 
     /// Constructed string from the `items` array.
     public var template: String {
+        let url = KitchenTabBar.bundle.URLForResource(templateFileName, withExtension: "xml")!
+        // swiftlint:disable:next force_try
+        let xml = try! String(contentsOfURL: url)
         var string = ""
         for (index, item) in items.enumerate() {
-            string += "<menuItem menuIndex=\"\(index)\">"
-            string += "<title>\(item.title)</title>"
-            string += "</menuItem>"
+            string += "<menuItem menuIndex=\"\(index)\">\n"
+            string += "<title>\(item.title)</title>\n"
+            string += "</menuItem>\n"
         }
-        return string
-    }
-
-    /// The XML string of the `menuBarTemplate`.
-    public var xmlString: String {
-        get {
-            var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
-            xml += "<document>"
-            xml += "<menuBarTemplate>"
-            xml += "<menuBar>"
-            xml += template
-            xml += "</menuBar>"
-            xml += "</menuBarTemplate>"
-            xml += "</document>"
-            return xml
-        }
+        return xml.stringByReplacingOccurrencesOfString("{{menuItems}}", withString: string)
     }
 
     /**

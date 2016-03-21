@@ -1,0 +1,5 @@
+<menuBarTemplate>
+    <menuBar>
+        {{menuItems}}
+    </menuBar>
+</menuBarTemplate>
