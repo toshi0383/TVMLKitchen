@@ -33,7 +33,7 @@ public class SearchRecipe: SearchRecipeType {
         fatalError("Must be overridden.")
     }
 
-    internal var noData: String {
-        return"<list> <section> <header> <title>No Results</title> </header> </section> </list>"
+    public var noData: String {
+        return "<list> <section> <header> <title>No Results</title> </header> </section> </list>"
     }
 }
