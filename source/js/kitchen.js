@@ -187,7 +187,7 @@ function presenterForType(type) {
 
 /**
  * @description - an example implementation of search that reacts to the
- * keyboard onTextChange (see Presenter.js) to filter the lockup items based on the search text
+ * keyboard onTextChange to filter the lockup items based on the search text
  * @param {Document} doc - active xml document
  * @param {String} searchText - current text value of keyboard search input
  */
