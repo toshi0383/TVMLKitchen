@@ -32,7 +32,6 @@
 		1F3066031C31179A001E5DF0 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3066011C311110001E5DF0 /* Recipe.swift */; };
 		1F3066071C312CB8001E5DF0 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F3066061C312CB8001E5DF0 /* img.jpg */; };
 		1F32E4141C30B6EF00F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
-		1F32E4191C30B6EF00F62E88 /* TVMLKitchenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */; };
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
 		1F32E5511C30B79600F62E88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E5501C30B79600F62E88 /* ViewController.swift */; };
 		1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32E5551C30B79600F62E88 /* Assets.xcassets */; };
@@ -118,7 +117,6 @@
 		1F3066061C312CB8001E5DF0 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TVMLKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E4131C30B6EF00F62E88 /* TVMLKitchenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMLKitchenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMLKitchenTests.swift; sourceTree = "<group>"; };
 		1F32E41A1C30B6EF00F62E88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F32E54C1C30B79600F62E88 /* SampleRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F32E54E1C30B79600F62E88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 		1F32E4171C30B6EF00F62E88 /* TVMLKitchenTests */ = {
 			isa = PBXGroup;
 			children = (
-				1F32E4181C30B6EF00F62E88 /* TVMLKitchenTests.swift */,
 				1F32E41A1C30B6EF00F62E88 /* Info.plist */,
 				1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */,
 				1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplate.xml */,
@@ -579,7 +576,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F32E4191C30B6EF00F62E88 /* TVMLKitchenTests.swift in Sources */,
 				1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

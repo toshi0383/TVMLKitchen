@@ -19,25 +19,11 @@ struct SampleTemplateRecipe: TemplateRecipeType {
     }
 }
 
-
 struct EmptyTheme: ThemeType {
-
-    var backgroundColor: String {
-        return ""
-    }
-
-    var color: String {
-        return ""
-    }
-
-    var highlightBackgroundColor: String {
-        return ""
-    }
-
-    var highlightTextColor: String {
-        return ""
-    }
-    
+    let backgroundColor = ""
+    let color = ""
+    let highlightBackgroundColor = ""
+    let highlightTextColor = ""
 }
 
 extension String {
