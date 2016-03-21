@@ -14,7 +14,7 @@ struct SampleTemplateRecipe: TemplateRecipeType {
     /// Presentation type is defined in the recipe to keep things consistent.
     var presentationType = PresentationType.Search
 
-    var bundle: NSBundle {
+    static var bundle: NSBundle {
         return NSBundle(forClass: RecipeTests.self)
     }
 }

@@ -179,31 +179,6 @@ extension Kitchen {
     }
 }
 
-public typealias ResponseObjectHandler = NSHTTPURLResponse -> Bool
-
-public class Cookbook {
-
-    /// launchOptions
-    private var launchOptions: [NSObject: AnyObject]?
-    /// inject functions or a exceptionHandler into JSContext
-    public var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
-    /// handles "select" event
-    public var actionIDHandler: KitchenActionIDHandler?
-    /// handles "play" event
-    public var playActionIDHandler: KitchenActionIDHandler?
-    public var searchRecipe: SearchRecipe?
-    /// error handler that gets called when any errors occured
-    /// in Kitchen(both JS and Swift context)
-    public var onError: KitchenErrorHandler?
-    public var httpHeaders: [String: String] = [:]
-    public var responseObjectHandler: ResponseObjectHandler?
-
-    /// - parameter launchOptions: launchOptions
-    public init(launchOptions: [NSObject: AnyObject]?) {
-        self.launchOptions = launchOptions
-    }
-}
-
 extension Kitchen {
 
     /**

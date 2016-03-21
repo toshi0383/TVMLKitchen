@@ -8,6 +8,11 @@
 
 import Foundation
 
+/// SearchRecipe
+///
+/// - Subclass and override filterSearchText method.
+/// - Instantiate with preferred PresentationType.
+/// - Set to Cookbook object.
 public class SearchRecipe: SearchRecipeType {
 
     public typealias Theme = DefaultTheme
