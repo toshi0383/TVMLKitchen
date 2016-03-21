@@ -168,7 +168,7 @@ cookbook.responseObjectHandler = { response in
 ```
 
 # Kitchen Recipes
-Though TVML is static xmls, we can generate TVML dynamically by defining **Recipe**. Theme is customizable.
+Though TVML is static xmls, we can generate TVML dynamically by defining **Recipe**.
 Built-in Recipes are still middle of the way. You can send PRs!
 
 ## AlertRecipe
@@ -198,14 +198,6 @@ struct SearchTab: TabItem {
     }
 }
 ```
-
-### Default Theme
-![Catalog Recipe looks like this](image/ss.png)
-
-### Black Theme
-![Catalog Recipe looks like this](image/ss-black.png)
-
-**Note**: This feature is still in beta. APIs are subject to change.
 
 ## Available Recipes
 
