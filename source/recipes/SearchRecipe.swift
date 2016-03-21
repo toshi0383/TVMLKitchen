@@ -25,6 +25,7 @@ public class SearchRecipe: SearchRecipeType {
     }
 
     public var templateFileName: String {
+        // Always use SearchRecipe.xml unless this property is overridden.
         return "SearchRecipe"
     }
 
@@ -32,7 +33,7 @@ public class SearchRecipe: SearchRecipeType {
         fatalError("Must be overridden.")
     }
 
-    internal static var noData: String {
+    internal var noData: String {
         return"<list> <section> <header> <title>No Results</title> </header> </section> </list>"
     }
 }

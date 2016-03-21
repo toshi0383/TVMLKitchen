@@ -169,21 +169,34 @@ cookbook.responseObjectHandler = { response in
 
 # Kitchen Recipes
 Though TVML is static xmls, we can generate TVML dynamically by defining **Recipe**. Theme is customizable.
+Built-in Recipes are still middle of the way. You can send PRs!
 
+## AlertRecipe
 ```
-let banner = "Movie"
-let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
-    withExtension: "jpg")!.absoluteString
-let actionID = "/title?titleId=1234"
-let (width, height) = (250, 376)
-let templateURL: String? = nil
-let content = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
-let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
+let alert = AlertRecipe(
+    title: Sample.title,
+    description: Sample.description)
+)
+Kitchen.serve(recipe: alert)
+```
 
-/// Create Recipe with dynamically generated data,
-/// passing theme as generic parameter.
-let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
-Kitchen.serve(recipe: catalog)
+## SearchRecipe
+SearchRecipe supports dynamic view manipulation.
+
+#### Configuring SearchRecipe
+Subclass and override `filterSearchText` method.
+SeeAlso: SampleRecipe.MySearchRecipe.swift, SearchResult.xml
+
+#### SearchRecipe as TabItem
+Use `PresentationType.TabSearch`. This will create keyboard observer in addition to `.Tab` behavior.
+```
+struct SearchTab: TabItem {
+    let title = "Search"
+    func handler() {
+        let search = MySearchRecipe(type: .TabSearch)
+        Kitchen.serve(recipe: search)
+    }
+}
 ```
 
 ### Default Theme
@@ -200,6 +213,7 @@ Kitchen.serve(recipe: catalog)
 - [x] Catalog with select action handler
 - [x] Alert with button handler
 - [x] Descriptive Alert with button handler
+- [x] Search
 - [ ] Rating with handler
 - [ ] Compilation with select action handler
 - [ ] Product with select action handler
@@ -211,7 +225,7 @@ Kitchen.serve(recipe: catalog)
 and more...
 
 ## Note
-We don't support dynamic view reloading.
+We don't support dynamic view reloading in most cases.
 For now, if you need 100% dynamic behavior, go ahead and use UIKit.
 
 # Installation

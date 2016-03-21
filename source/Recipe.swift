@@ -50,7 +50,7 @@ public protocol SearchRecipeType: TemplateRecipeType {
     /// Filter text and pass the result to callback.
     /// - parameter text: keyword
     /// - parameter callback: pass the result template xmlString.
-    /// - SeeAlso: MySearchRecipe.swift, SearchResult.xml
+    /// - SeeAlso: SampleRecipe.MySearchRecipe.swift, SearchResult.xml
     func filterSearchText(text: String, callback: (String -> Void))
 }
 
