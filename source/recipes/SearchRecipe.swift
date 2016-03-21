@@ -30,7 +30,7 @@ public struct SearchRecipe: TemplateRecipeType {
         var results = ""
         for title in titles {
             results += "<lockup>"
-            results += "<img src=\"http://suptg.thisisnotatrueending.com/archive/2472537/images/1220209533502.jpg\" width=\"350\" height=\"520\" />"
+            results += "<img src=\"https://i.warosu.org/data/cgl/img/0075/02/1397765684315.png\" width=\"350\" height=\"520\" />"
             results += "<title>\(title)</title>"
             results += "</lockup>"
         }
