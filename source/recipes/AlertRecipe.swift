@@ -46,7 +46,8 @@ public class AlertRecipe: TemplateRecipeType {
     }
 
     public var replacementDictionary: [String: String] {
-        return ["TITLE": title,
+        return [
+            "TITLE": title,
             "DESCRIPTION": description,
             "BUTTONS": buttonString
         ]

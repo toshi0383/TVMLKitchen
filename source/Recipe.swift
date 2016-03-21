@@ -8,30 +8,45 @@
 
 // MARK: RecipeType
 public protocol RecipeType {
+
+    /// Theme
     typealias Theme
     var theme: Theme {get}
+
     /// Presentation type is defined in the recipe to keep things consistent.
     var presentationType: PresentationType {get}
+
     /// Template part of TVML which is used to format full page xmlString.
     /// - SeeAlso: RecipeType.xmlString
     var template: String {get}
+
     /// XML string representation of whole TVML page.
     /// Uses RecipeType.template for template part by default.
     var xmlString: String {get}
 }
 
 public protocol TemplateRecipeType: RecipeType {
+
     /// File name of this TemplateRecipe.
     /// Defaults to name of the class. (No need to implement)
     var templateFileName: String {get}
-    /// Custom pair of replacement strings.
-    /// e.g. ["color": "rgb(255, 255, 255)"]
+
+    /// Custom pairs of replacement strings.
+    ///
+    /// e.g.
+    ///
+    ///    ["title": "Sherlock Holmes: A Game of Shadows (2011)"]
+    ///     will modifies this `<title>{{title}}</title>`
+    ///     to this `<title>Sherlock Holmes: A Game of Shadows (2011)</title>`
     var replacementDictionary: [String: String] {get}
-    /// Bundle of Template file.
+
+    /// The Bundle in which the corresponding Template file.
+    /// Defaults to the bundle of this class/struct/enum.
     static var bundle: NSBundle {get}
 }
 
 public protocol SearchRecipeType: TemplateRecipeType {
+
     /// Filter text and pass the result to callback.
     /// - parameter text: keyword
     /// - parameter callback: pass the result template xmlString.
@@ -39,6 +54,7 @@ public protocol SearchRecipeType: TemplateRecipeType {
     func filterSearchText(text: String, callback: (String -> Void))
 }
 
+// MARK: - Default Implementations
 extension RecipeType {
 
     public var theme: ThemeType {
@@ -51,12 +67,10 @@ extension RecipeType {
 }
 
 extension TemplateRecipeType {
+
     public static var bundle: NSBundle {
         return Kitchen.bundle()
     }
-}
-
-extension TemplateRecipeType where Self.Theme: ThemeType {
 
     public var replacementDictionary: [String: String] {
         return [:]
@@ -81,9 +95,15 @@ extension TemplateRecipeType where Self.Theme: ThemeType {
             .componentsSeparatedByString(".")
             .last!
     }
+}
+
+extension TemplateRecipeType where Self.Theme: ThemeType {
 
     public var xmlString: String {
+
+        // Start with Base
         var result = base
+
         // Replace template part.
         result = result
             .stringByReplacingOccurrencesOfString("{{template}}", withString: template)

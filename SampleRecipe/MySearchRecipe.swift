@@ -15,12 +15,12 @@ class MySearchRecipe: SearchRecipe {
             "hello",
             "yellow"
         ]
-        let url = "https://i.warosu.org/data/cgl/img/0075/02/1397765684315.png"
+        let imageUrl = "https://i.warosu.org/data/cgl/img/0075/02/1397765684315.png"
         let width = 350, height = 520
         var results = ""
         for title in titles {
             results += "<lockup>"
-            results += "<img src=\"\(url)\" width=\"\(width)\" height=\"\(height)\" />"
+            results += "<img src=\"\(imageUrl)\" width=\"\(width)\" height=\"\(height)\" />"
             results += "<title>\(title)</title>"
             results += "</lockup>"
         }
