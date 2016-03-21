@@ -70,7 +70,7 @@ class ViewController: UIViewController {
             templateURL, width, height)
 
         let section1 = Section(title: "Hello", args: (0..<10).map{_ in content})
-        let catalog = CatalogRecipe<MyTheme>(banner: banner, sections: (0..<10).map{_ in section1})
+        let catalog = CatalogRecipe(banner: banner, sections: (0..<10).map{_ in section1})
         Kitchen.serve(recipe: catalog)
     }
 

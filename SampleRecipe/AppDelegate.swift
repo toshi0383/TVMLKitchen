@@ -17,26 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         _ = prepareMyKitchen(launchOptions)
-        openRecipe()
         return true
-    }
-
-    private func openRecipe() {
-
-        let banner = "Movie"
-        let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
-            withExtension: "jpg")!.absoluteString
-        let actionID = "/title?titleId=1234"
-        let (width, height) = (250, 376)
-        let templateURL: String? = nil
-        // let templateURL = Kitchen.mainBundlePath + "Catalog.xml.js"
-        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
-//        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, nil,
-//                templateURL, width, height)
-
-        let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
-        let catalog = CatalogRecipe<BlackTheme>(banner: banner, sections: (0...10).map{_ in section1})
-//        Kitchen.serve(recipe: catalog)
     }
 
 
@@ -110,7 +91,8 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
     }
     Kitchen.prepare(cookbook)
     KitchenTabBar.sharedBar.items = [
-        SearchTab()
+        SearchTab(),
+        CatalogTab()
     ]
 
     return true
@@ -122,6 +104,31 @@ struct SearchTab: TabItem {
         let search = SearchRecipe(type: .TabSearch)
         Kitchen.serve(recipe: search)
     }
+}
+
+struct CatalogTab: TabItem {
+    let title = "Catalog"
+    func handler() {
+        Kitchen.serve(recipe: catalog)
+    }
+    private var catalog: CatalogRecipe {
+        let banner = "Movie"
+        let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
+            withExtension: "jpg")!.absoluteString
+        let actionID = "/title?titleId=1234"
+        let (width, height) = (250, 376)
+        let templateURL: String? = nil
+        // let templateURL = Kitchen.mainBundlePath + "Catalog.xml.js"
+        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
+//        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, nil,
+//                templateURL, width, height)
+
+        let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
+        var catalog = CatalogRecipe(banner: banner, sections: (0...10).map{_ in section1})
+        catalog.presentationType = .Tab
+        return catalog
+    }
+
 }
 
 private func openViewController(identifier: String) {
