@@ -25,7 +25,8 @@ class ViewController: UIViewController {
 
     @IBAction func openCatalogTemplate() {
         print(__FUNCTION__)
-        Kitchen.serve(xmlFile: "Catalog.xml", type: .Modal)
+        let search = SearchRecipe()
+        Kitchen.serve(recipe: search)
     }
 
     @IBAction func openXMLString(sender: AnyObject!) {
@@ -69,7 +70,7 @@ class ViewController: UIViewController {
             templateURL, width, height)
 
         let section1 = Section(title: "Hello", args: (0..<10).map{_ in content})
-        let catalog = CatalogRecipe<MyTheme>(banner: banner, sections: (0..<10).map{_ in section1})
+        let catalog = CatalogRecipe(banner: banner, sections: (0..<10).map{_ in section1})
         Kitchen.serve(recipe: catalog)
     }
 

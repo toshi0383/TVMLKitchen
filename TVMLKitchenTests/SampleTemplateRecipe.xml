@@ -1,0 +1,10 @@
+    <searchTemplate>
+      <searchField>Search</searchField>
+      <collectionList>
+        <shelf>
+          <header>
+            <title>Results</title>
+          </header>
+        </shelf>
+      </collectionList>
+    </searchTemplate>

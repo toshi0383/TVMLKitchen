@@ -10,12 +10,20 @@ public enum PresentationType: Int {
     case Default = 0
     case Modal = 1
     case Tab = 2
+    case Search = 3
+    /// Mix of `.Tab` and `.Search`.
+    /// Expected to be used when presenting SearchRecipe as a TabItem.
+    case TabSearch = 4
     init?(string: String) {
-        switch string {
-        case "Modal":
+        switch string.lowercaseString {
+        case "modal":
             self = .Modal
-        case "Tab":
+        case "tab":
             self = .Tab
+        case "search":
+            self = .Search
+        case "tabsearch":
+            self = .TabSearch
         default:
             self = .Default
         }

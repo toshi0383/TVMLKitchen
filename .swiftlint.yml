@@ -1,6 +1,7 @@
 excluded: # paths to ignore during linting. overridden by `included`.
   - Carthage
   - library/
+  - SampleRecipe/
 disabled_rules:
   - opening_brace
   - statement_position

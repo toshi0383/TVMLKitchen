@@ -18,16 +18,13 @@ public struct AlertButton {
 
 }
 
-public class AlertRecipe: RecipeType {
+public class AlertRecipe: TemplateRecipeType {
 
-    public let theme = DefaultTheme()
+    public let theme = EmptyTheme()
     public let presentationType: PresentationType
     public let title: String
     public let description: String
     public let buttons: [AlertButton]
-    var templateFile: String {
-        return "AlertRecipe"
-    }
 
     public init(title: String, description: String,
         buttons: [AlertButton] = [],
@@ -36,14 +33,6 @@ public class AlertRecipe: RecipeType {
         self.description = description
         self.buttons = buttons
         self.presentationType = presentationType
-    }
-
-    public var xmlString: String {
-        var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
-        xml += "<document>"
-        xml += template
-        xml += "</document>"
-        return xml
     }
 
     private var buttonString: String {
@@ -56,13 +45,11 @@ public class AlertRecipe: RecipeType {
         return mapped.joinWithSeparator("")
     }
 
-    public var template: String {
-        let url = Kitchen.bundle().URLForResource(templateFile, withExtension: "xml")!
-        // swiftlint:disable:next force_try
-        var xml = try! String(contentsOfURL: url)
-        xml = xml.stringByReplacingOccurrencesOfString("{{TITLE}}", withString: title)
-        xml = xml.stringByReplacingOccurrencesOfString("{{DESCRIPTION}}", withString: description)
-        xml = xml.stringByReplacingOccurrencesOfString("{{BUTTONS}}", withString: buttonString)
-        return xml
+    public var replacementDictionary: [String: String] {
+        return [
+            "TITLE": title,
+            "DESCRIPTION": description,
+            "BUTTONS": buttonString
+        ]
     }
 }

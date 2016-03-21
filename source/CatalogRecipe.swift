@@ -69,12 +69,12 @@ extension Section: CustomStringConvertible {
     }
 }
 
-public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
+public struct CatalogRecipe: TemplateRecipeType {
 
     let banner: String
     let sections: [Section]
-    public let theme: Theme = Theme()
-    public let presentationType: PresentationType
+    public var theme = BlackTheme()
+    public var presentationType: PresentationType
 
     public init(banner: String, sections: [Section],
         presentationType: PresentationType = .Default) {

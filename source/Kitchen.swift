@@ -91,6 +91,9 @@ extension Kitchen {
     }
 
     public static func serve<R: RecipeType>(recipe recipe: R) {
+        if let recipe = recipe as? SearchRecipe {
+            sharedKitchen.cookbook.searchRecipe = recipe
+        }
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
@@ -176,30 +179,6 @@ extension Kitchen {
 
     public static var navigationController: UINavigationController {
         return sharedKitchen.appController.navigationController
-    }
-}
-
-public typealias ResponseObjectHandler = NSHTTPURLResponse -> Bool
-
-public class Cookbook {
-
-    /// launchOptions
-    private var launchOptions: [NSObject: AnyObject]?
-    /// inject functions or a exceptionHandler into JSContext
-    public var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
-    /// handles "select" event
-    public var actionIDHandler: KitchenActionIDHandler?
-    /// handles "play" event
-    public var playActionIDHandler: KitchenActionIDHandler?
-    /// error handler that gets called when any errors occured
-    /// in Kitchen(both JS and Swift context)
-    public var onError: KitchenErrorHandler?
-    public var httpHeaders: [String: String] = [:]
-    public var responseObjectHandler: ResponseObjectHandler?
-
-    /// - parameter launchOptions: launchOptions
-    public init(launchOptions: [NSObject: AnyObject]?) {
-        self.launchOptions = launchOptions
     }
 }
 
@@ -379,6 +358,18 @@ extension Kitchen: TVApplicationControllerDelegate {
         }
         jsContext.setObject(unsafeBitCast(loadTemplateFromURL, AnyObject.self),
             forKeyedSubscript: "loadTemplateFromURL")
+
+        let filterSearchTextBlock: @convention(block) (String, JSValue) -> () =
+        {[unowned self] (text, callback) in
+            self.cookbook.searchRecipe?.filterSearchText(text) { string in
+                if callback.isObject {
+                    callback.callWithArguments([string])
+                }
+            }
+        }
+        jsContext.setObject(unsafeBitCast(filterSearchTextBlock, AnyObject.self),
+            forKeyedSubscript: "filterSearchText")
+
 
         // Add the tab bar handler for the shared instance.
 

@@ -18,8 +18,11 @@ function defaultPresenter(xml) {
 }
 
 function searchPresenter(xml) {
-
     this.defaultPresenter.call(this, xml);
+    this.observeKeyboard.call(this, xml);
+}
+
+function observeKeyboard(xml) {
     var doc = xml;
 
     var searchField = doc.getElementsByTagName("searchField").item(0);
@@ -29,6 +32,11 @@ function searchPresenter(xml) {
         var searchText = keyboard.text;
         buildResults(doc, searchText);
     }
+}
+
+function menuBarSearchPresenter(xml) {
+    this.menuBarItemPresenter.call(this, xml);
+    this.observeKeyboard.call(this, xml);
 }
 
 /**
@@ -130,6 +138,7 @@ function showLoadingIndicator(presentation) {
 function showLoadingIndicatorForType(presentationType) {
     if (presentationType == 1 ||
         presentationType == 2 ||
+        presentationType == 4 ||
         this.loadingIndicatorVisible) {
         return;
     }
@@ -166,9 +175,36 @@ function presenterForType(type) {
             return modalDialogPresenter;
         case 2:
             return menuBarItemPresenter;
+        case 3:
+            return searchPresenter;
+        case 4:
+            return menuBarSearchPresenter;
         default:
             return defaultPresenter;
     }
+}
+
+
+/**
+ * @description - an example implementation of search that reacts to the
+ * keyboard onTextChange (see Presenter.js) to filter the lockup items based on the search text
+ * @param {Document} doc - active xml document
+ * @param {String} searchText - current text value of keyboard search input
+ */
+var buildResults = function(doc, searchText) {
+
+    //Create parser and new input element
+    var domImplementation = doc.implementation;
+    var lsParser = domImplementation.createLSParser(1, null);
+    var lsInput = domImplementation.createLSInput();
+
+    //set default template fragment to display no results
+    filterSearchText(searchText, function(stringData) {
+        lsInput.stringData = stringData
+        //add the new input element to the document by providing the newly created input, the context,
+        //and the operator integer flag (1 to append as child, 2 to overwrite existing children)
+        lsParser.parseWithContext(lsInput, doc.getElementsByTagName("collectionList").item(0), 2);
+    });
 }
 
 /// load template from Main Bundle URL

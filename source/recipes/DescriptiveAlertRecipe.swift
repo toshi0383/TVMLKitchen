@@ -7,9 +7,4 @@
 //
 
 public class DescriptiveAlertRecipe: AlertRecipe {
-
-    override var templateFile: String {
-        return "DescriptiveAlertRecipe"
-    }
-
 }

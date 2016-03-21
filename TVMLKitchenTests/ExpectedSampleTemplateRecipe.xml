@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <searchTemplate>
+        <searchField>Search</searchField>
+        <collectionList>
+            <shelf>
+              <header>
+                <title>Results</title>
+              </header>
+            </shelf>
+        </collectionList>
+    </searchTemplate>
+</document>

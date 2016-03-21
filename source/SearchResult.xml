@@ -1,0 +1,8 @@
+<shelf>
+    <header>
+        <title>Results</title>
+    </header>
+    <section id="Results">
+        {{results}}
+    </section>
+</shelf>
