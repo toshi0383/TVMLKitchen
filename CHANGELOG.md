@@ -1,4 +1,4 @@
-## Master
+## 0.6.0
 ##### New Feature
 * SearchRecipe  
   [Toshihiro Suzuki](https://github.com/toshi0383)
