@@ -274,12 +274,12 @@
 				1F32E41A1C30B6EF00F62E88 /* Info.plist */,
 				1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */,
 				1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */,
-				1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */,
-				1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */,
-				1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */,
-				1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */,
-				1F23CB981C9FBCEA00324F6F /* TestHelpers.swift */,
 				1FADCF961CA00D84009A40EA /* SearchRecipeTests.swift */,
+				1F23CB981C9FBCEA00324F6F /* TestHelpers.swift */,
+				1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */,
+				1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */,
+				1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */,
+				1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */,
 			);
 			path = TVMLKitchenTests;
 			sourceTree = "<group>";
@@ -287,16 +287,16 @@
 		1F32E54D1C30B79600F62E88 /* SampleRecipe */ = {
 			isa = PBXGroup;
 			children = (
+				1F3066061C312CB8001E5DF0 /* img.jpg */,
+				1F32E5571C30B79600F62E88 /* Info.plist */,
 				1F32E54E1C30B79600F62E88 /* AppDelegate.swift */,
 				1FADCF921C9FFE19009A40EA /* MySearchRecipe.swift */,
 				1F3065C11C30E912001E5DF0 /* SampleResource.swift */,
 				1F32E5501C30B79600F62E88 /* ViewController.swift */,
-				1FB543481C32DA6C0015CC66 /* ViewController.storyboard */,
-				1F3065BD1C30D8BD001E5DF0 /* Catalog.xml */,
 				1F32E5551C30B79600F62E88 /* Assets.xcassets */,
-				1F3066061C312CB8001E5DF0 /* img.jpg */,
-				1F32E5571C30B79600F62E88 /* Info.plist */,
+				1F3065BD1C30D8BD001E5DF0 /* Catalog.xml */,
 				1F3065BF1C30E8D0001E5DF0 /* Oneup.xml */,
+				1FB543481C32DA6C0015CC66 /* ViewController.storyboard */,
 			);
 			path = SampleRecipe;
 			sourceTree = "<group>";
@@ -321,8 +321,8 @@
 		1F8B43761C35676400C716A7 /* SampleRecipeUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */,
 				1F8B43791C35676400C716A7 /* Info.plist */,
+				1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */,
 			);
 			path = SampleRecipeUITests;
 			sourceTree = "<group>";
@@ -330,16 +330,16 @@
 		1FF011021CA024F60068CDAA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1FF011031CA024F60068CDAA /* Cookbook.swift */,
-				1FF011041CA024F60068CDAA /* Info.plist */,
+				1FF011171CA024F60068CDAA /* TVMLKitchen.h */,
 				1FF011051CA024F60068CDAA /* kitchen.js */,
+				1FF011041CA024F60068CDAA /* Info.plist */,
+				1FF011031CA024F60068CDAA /* Cookbook.swift */,
 				1FF011061CA024F60068CDAA /* Kitchen.swift */,
 				1FF011071CA024F60068CDAA /* KitchenTabBar.swift */,
 				1FF011081CA024F60068CDAA /* PresentationType.swift */,
+				1FF011161CA024F60068CDAA /* TVMLBridging.swift */,
 				1FF011091CA024F60068CDAA /* Recipes */,
 				1FF011101CA024F60068CDAA /* Templates */,
-				1FF011161CA024F60068CDAA /* TVMLBridging.swift */,
-				1FF011171CA024F60068CDAA /* TVMLKitchen.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
