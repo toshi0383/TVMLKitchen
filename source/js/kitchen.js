@@ -220,10 +220,7 @@ function openTemplateFromXMLString(xmlString, presentationType) {
     presenterForType(presentationType).call(this, doc);
 }
 
-var BASEURL;
-
 App.onLaunch = function(options) {
     App.options = options
-    this.BASEURL = options.BASEURL
     parser = new DOMParser();
 }
