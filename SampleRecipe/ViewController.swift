@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
     @IBAction func openCatalogTemplate() {
         print(__FUNCTION__)
-        let search = SearchRecipe()
+        let search = MySearchRecipe()
         Kitchen.serve(recipe: search)
     }
 
