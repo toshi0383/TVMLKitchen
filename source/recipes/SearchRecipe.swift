@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SearchRecipe: TemplateRecipeType {
+public class SearchRecipe: SearchRecipeType {
 
     public typealias Theme = DefaultTheme
 
@@ -21,25 +21,12 @@ public struct SearchRecipe: TemplateRecipeType {
         self.presentationType = type
     }
 
-    /// SearchText filtering
-    internal static func filterSearchText(text: String, callback: (String -> Void)) {
-        let titles = [
-            "hello",
-            "yellow"
-        ]
-        var results = ""
-        for title in titles {
-            results += "<lockup>"
-            results += "<img src=\"https://i.warosu.org/data/cgl/img/0075/02/1397765684315.png\" width=\"350\" height=\"520\" />"
-            results += "<title>\(title)</title>"
-            results += "</lockup>"
-        }
-        let url = bundle.URLForResource("SearchResult", withExtension: "xml")!
-        // swiftlint:disable:next force_cast
-        let resultBase = try! String(contentsOfURL: url)
-        let result = resultBase.stringByReplacingOccurrencesOfString("{{results}}", withString: results)
+    public var templateFileName: String {
+        return "SearchRecipe"
+    }
 
-        callback(result)
+    public func filterSearchText(text: String, callback: (String -> Void)) {
+        fatalError("Must be overridden.")
     }
 
     internal static var noData: String {

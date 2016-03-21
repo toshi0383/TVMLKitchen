@@ -89,6 +89,8 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         }
         return true
     }
+
+    cookbook.searchRecipe = MySearchRecipe()
     Kitchen.prepare(cookbook)
     KitchenTabBar.sharedBar.items = [
         SearchTab(),
@@ -101,7 +103,7 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 struct SearchTab: TabItem {
     let title = "Search"
     func handler() {
-        let search = SearchRecipe(type: .TabSearch)
+        let search = MySearchRecipe(type: .TabSearch)
         Kitchen.serve(recipe: search)
     }
 }

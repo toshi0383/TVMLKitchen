@@ -191,6 +191,7 @@ public class Cookbook {
     public var actionIDHandler: KitchenActionIDHandler?
     /// handles "play" event
     public var playActionIDHandler: KitchenActionIDHandler?
+    public var searchRecipe: SearchRecipe?
     /// error handler that gets called when any errors occured
     /// in Kitchen(both JS and Swift context)
     public var onError: KitchenErrorHandler?
@@ -381,8 +382,8 @@ extension Kitchen: TVApplicationControllerDelegate {
             forKeyedSubscript: "loadTemplateFromURL")
 
         let filterSearchTextBlock: @convention(block) (String, JSValue) -> () =
-        { (text, callback) in
-            SearchRecipe.filterSearchText(text) { string in
+        {[unowned self] (text, callback) in
+            self.cookbook.searchRecipe?.filterSearchText(text) { string in
                 if callback.isObject {
                     callback.callWithArguments([string])
                 }

@@ -44,6 +44,7 @@
 		1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */; };
 		1F94082B1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */; };
 		1FADCF911C9FC1C7009A40EA /* SearchResult.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FADCF901C9FC1C7009A40EA /* SearchResult.xml */; };
+		1FADCF931C9FFE19009A40EA /* MySearchRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADCF921C9FFE19009A40EA /* MySearchRecipe.swift */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 		1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */; };
 		1FD734C61C9F9C2300E76766 /* SearchRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FD734C51C9F9C2300E76766 /* SearchRecipe.xml */; };
@@ -140,6 +141,7 @@
 		1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedSampleTemplateRecipe.xml; sourceTree = "<group>"; };
 		1F94082C1C9FA44D00FD39E7 /* Base.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Base.xml; path = templates/Base.xml; sourceTree = "<group>"; };
 		1FADCF901C9FC1C7009A40EA /* SearchResult.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SearchResult.xml; sourceTree = "<group>"; };
+		1FADCF921C9FFE19009A40EA /* MySearchRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySearchRecipe.swift; sourceTree = "<group>"; };
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 		1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
 		1FD734C51C9F9C2300E76766 /* SearchRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SearchRecipe.xml; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				1F32E54E1C30B79600F62E88 /* AppDelegate.swift */,
+				1FADCF921C9FFE19009A40EA /* MySearchRecipe.swift */,
 				1F3065C11C30E912001E5DF0 /* SampleResource.swift */,
 				1F32E5501C30B79600F62E88 /* ViewController.swift */,
 				1FB543481C32DA6C0015CC66 /* ViewController.storyboard */,
@@ -603,6 +606,7 @@
 				1F32E5511C30B79600F62E88 /* ViewController.swift in Sources */,
 				1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */,
 				1F3065C21C30E912001E5DF0 /* SampleResource.swift in Sources */,
+				1FADCF931C9FFE19009A40EA /* MySearchRecipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

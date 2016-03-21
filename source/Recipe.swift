@@ -31,6 +31,14 @@ public protocol TemplateRecipeType: RecipeType {
     static var bundle: NSBundle {get}
 }
 
+public protocol SearchRecipeType: TemplateRecipeType {
+    /// Filter text and pass the result to callback.
+    /// - parameter text: keyword
+    /// - parameter callback: pass the result template xmlString.
+    /// - SeeAlso: MySearchRecipe.swift, SearchResult.xml
+    func filterSearchText(text: String, callback: (String -> Void))
+}
+
 extension RecipeType {
 
     public var theme: ThemeType {
