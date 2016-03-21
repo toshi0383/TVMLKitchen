@@ -6,7 +6,21 @@
 //  Copyright © 2016 toshi0383. All rights reserved.
 //
 
-public struct KitchenTabBar {
+public protocol TabItem {
+
+    /// The title that will be displayed on the tab bar.
+    var title: String { get }
+
+    /**
+     This handler will be called whenever the focus changes to it.
+     */
+    func handler()
+
+}
+
+public struct KitchenTabBar: TemplateRecipeType {
+
+    public let theme = EmptyTheme()
 
     /// The shared instance of the tab bar.
     /// Only one tab bar should be created per app.
@@ -20,30 +34,23 @@ public struct KitchenTabBar {
         }
     }
 
-    /// Constructed string from the `items` array.
-    var itemString: String {
-        var string = ""
-        for (index, item) in items.enumerate() {
-            string += "<menuItem menuIndex=\"\(index)\">"
-            string += "<title>\(item.title)</title>"
-            string += "</menuItem>"
-        }
-        return string
+    /// for UnitTesting use.
+    internal init(items: [TabItem]? = nil) {
+        self.items = items
     }
 
-    /// The XML string of the `menuBarTemplate`.
-    var xmlString: String {
-        get {
-            var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
-            xml += "<document>"
-            xml += "<menuBarTemplate>"
-            xml += "<menuBar>"
-            xml += itemString
-            xml += "</menuBar>"
-            xml += "</menuBarTemplate>"
-            xml += "</document>"
-            return xml
+    /// Constructed string from the `items` array.
+    public var template: String {
+        let url = KitchenTabBar.bundle.URLForResource(templateFileName, withExtension: "xml")!
+        // swiftlint:disable:next force_try
+        let xml = try! String(contentsOfURL: url)
+        var string = ""
+        for (index, item) in items.enumerate() {
+            string += "<menuItem menuIndex=\"\(index)\">\n"
+            string += "<title>\(item.title)</title>\n"
+            string += "</menuItem>\n"
         }
+        return xml.stringByReplacingOccurrencesOfString("{{menuItems}}", withString: string)
     }
 
     /**
