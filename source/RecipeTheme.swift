@@ -15,6 +15,7 @@ public protocol ThemeType {
     var highlightBackgroundColor: String {get}
     var highlightTextColor: String {get}
     init()
+    func parse(xml: String) -> String
 }
 
 extension ThemeType {
@@ -33,6 +34,23 @@ extension ThemeType {
 
     public var highlightTextColor: String {
         return "rgb(0, 0, 0)"
+    }
+
+    public func parse(xml: String) -> String {
+        var result = xml
+        result = result.stringByReplacingOccurrencesOfString(
+            "{{__kitchenBackgroundColor}}",    withString: backgroundColor
+        )
+        result = result.stringByReplacingOccurrencesOfString(
+            "{{__kitchenHighlightBackgroundColor}}", withString: highlightBackgroundColor
+        )
+        result = result.stringByReplacingOccurrencesOfString(
+            "{{__kitchenHighlightTextColor}}", withString: highlightTextColor
+        )
+        result = result.stringByReplacingOccurrencesOfString(
+            "{{__kitchenColor}}",              withString: color
+        )
+        return result
     }
 
 }

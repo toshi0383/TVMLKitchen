@@ -20,24 +20,80 @@ public protocol RecipeType {
     var xmlString: String {get}
 }
 
+public protocol TemplateRecipeType: RecipeType {
+    var templateFileName: String {get}
+    var replacementDictionary: [String: String] {get}
+    var bundle: NSBundle {get}
+    func parse(xml: String) -> String
+}
+
+extension RecipeType {
+    public var presentationType: PresentationType {
+        return .Default
+    }
+}
+
 extension RecipeType where Self.Theme: ThemeType {
     public var xmlString: String {
-        var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
-        xml += "<document>"
-        xml += "<head>"
-        xml += "<style>"
-        xml += "* { background-color: \(theme.backgroundColor);"
-        xml += "color: \(theme.color);"
-        xml += "tv-highlight-color:\(theme.highlightBackgroundColor);"
-        xml += "}"
-        xml += ".kitchen_highlight_bg { background-color:transparent;"
-        xml += "tv-highlight-color:\(theme.highlightTextColor); }"
-        xml += ".kitchen_no_highlight_bg { background-color:transparent;"
-        xml += "tv-highlight-color:\(theme.highlightBackgroundColor); }"
-        xml += "</style>"
-        xml += "</head>"
-        xml += template
-        xml += "</document>"
+        let url = Kitchen.bundle().URLForResource("Base", withExtension: "xml")!
+        // swiftlint:disable:next force_try
+        var xml = try! String(contentsOfURL: url)
+        xml = theme.parse(xml)
+        return xml
+    }
+}
+
+extension TemplateRecipeType {
+    public var bundle: NSBundle {
+        return Kitchen.bundle()
+    }
+}
+
+extension TemplateRecipeType where Self.Theme: ThemeType {
+
+    public var replacementDictionary: [String: String] {
+        return [:]
+    }
+
+    public var base: String {
+        let url = Kitchen.bundle().URLForResource("Base", withExtension: "xml")!
+        // swiftlint:disable:next force_try
+        let xml = try! String(contentsOfURL: url)
+        return xml
+    }
+
+    public var template: String {
+        let url = bundle.URLForResource(templateFileName, withExtension: "xml")!
+        // swiftlint:disable:next force_try
+        let xml = try! String(contentsOfURL: url)
+        return xml
+    }
+
+    public var templateFileName: String {
+        return "\(_stdlib_getDemangledTypeName(self))"
+            .componentsSeparatedByString(".")
+            .last!
+    }
+
+    public func parse(xml: String) -> String {
+        var result = xml
+        // Replace template part.
+        result = result.stringByReplacingOccurrencesOfString(
+            "{{template}}",    withString: template
+        )
+
+        // Replace user-defined variables.
+        for (k, v) in replacementDictionary {
+            result = result.stringByReplacingOccurrencesOfString(
+                "{{\(k)}}",    withString: v
+            )
+        }
+        result = theme.parse(result)
+        return result
+    }
+
+    public var xmlString: String {
+        let xml = parse(base)
         return xml
     }
 }

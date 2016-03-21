@@ -166,9 +166,72 @@ function presenterForType(type) {
             return modalDialogPresenter;
         case 2:
             return menuBarItemPresenter;
+        case 3:
+            return searchPresenter;
         default:
             return defaultPresenter;
     }
+}
+
+
+/**
+ * @description - an example implementation of search that reacts to the
+ * keyboard onTextChange (see Presenter.js) to filter the lockup items based on the search text
+ * @param {Document} doc - active xml document
+ * @param {String} searchText - current text value of keyboard search input
+ */
+var buildResults = function(doc, searchText) {
+
+    //simple filter and helper function
+    var regExp = new RegExp(searchText, "i");
+    var matchesText = function(value) {
+        return regExp.test(value);
+    }
+
+    //sample data for search example
+    var movies = {
+        "The Puffin": 1,
+        "Lola and Max": 2,
+        "Road to Firenze": 3,
+        "Three Developers and a Baby": 4,
+        "Santa Cruz Surf": 5,
+        "Cinque Terre": 6,
+        "Creatures of the Rainforest": 7
+    };
+    var titles = Object.keys(movies);
+
+    //Create parser and new input element
+    var domImplementation = doc.implementation;
+    var lsParser = domImplementation.createLSParser(1, null);
+    var lsInput = domImplementation.createLSInput();
+
+    //set default template fragment to display no results
+    lsInput.stringData = `<list>
+    <section>
+    <header>
+    <title>No Results</title>
+    </header>
+    </section>
+    </list>`;
+
+    //Apply filter to titles array using matchesText helper function
+    titles = (searchText) ? titles.filter(matchesText) : titles;
+    debug("searchText: " + searchText);
+    //overwrite stringData for new input element if search results exist by dynamically constructing shelf template fragment
+    if (titles.length > 0) {
+        lsInput.stringData = `<shelf><header><title>Results</title></header><section id="Results">`;
+        for (var i = 0; i < titles.length; i++) {
+            lsInput.stringData += `<lockup>
+            <img src="http://suptg.thisisnotatrueending.com/archive/2472537/images/1220209533502.jpg" width="350" height="520" />
+            <title>${titles[i]}</title>
+            </lockup>`;
+        }
+        lsInput.stringData += `</section></shelf>`;
+    }
+
+    //add the new input element to the document by providing the newly created input, the context,
+    //and the operator integer flag (1 to append as child, 2 to overwrite existing children)
+    lsParser.parseWithContext(lsInput, doc.getElementsByTagName("collectionList").item(0), 2);
 }
 
 /// load template from Main Bundle URL
@@ -184,7 +247,10 @@ function openTemplateFromXMLString(xmlString, presentationType) {
     presenterForType(presentationType).call(this, doc);
 }
 
+var BASEURL;
+
 App.onLaunch = function(options) {
     App.options = options
+    this.BASEURL = options.BASEURL
     parser = new DOMParser();
 }

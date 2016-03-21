@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+    <head>
+        <style>
+            * { background-color: ;
+            color: ;
+            tv-highlight-color:;
+            }
+            .kitchen_highlight_bg { background-color:transparent;
+            tv-highlight-color:; }
+            .kitchen_no_highlight_bg { background-color:transparent;
+            tv-highlight-color:; }
+        </style>
+    </head>
+    <searchTemplate>
+        <searchField>Search</searchField>
+        <collectionList>
+            <shelf>
+              <header>
+                <title>Results</title>
+              </header>
+            </shelf>
+        </collectionList>
+    </searchTemplate>
+</document>

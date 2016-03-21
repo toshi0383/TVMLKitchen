@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+<head>
+<style>
+* { background-color: {{__kitchenBackgroundColor}};
+color: {{__kitchenColor}};
+tv-highlight-color:{{__kitchenHighlightBackgroundColor}};
+}
+.kitchen_highlight_bg { background-color:transparent;
+tv-highlight-color:{{__kitchenHighlightTextColor}}; }
+.kitchen_no_highlight_bg { background-color:transparent;
+tv-highlight-color:{{__kitchenHighlightBackgroundColor}}; }
+</style>
+</head>
+{{template}}
+</document>

@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
     @IBAction func openCatalogTemplate() {
         print(__FUNCTION__)
-        Kitchen.serve(xmlFile: "Catalog.xml", type: .Modal)
+        Kitchen.serve(xmlFile: "Search.xml", type: .Search)
     }
 
     @IBAction func openXMLString(sender: AnyObject!) {
