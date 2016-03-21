@@ -54,7 +54,7 @@ extension ThemeType {
     private func parse(xml: String) -> String {
         var result = xml
         result = result.stringByReplacingOccurrencesOfString(
-            "{{__kitchenBackgroundColor}}",    withString: backgroundColor
+            "{{__kitchenBackgroundColor}}", withString: backgroundColor
         )
         result = result.stringByReplacingOccurrencesOfString(
             "{{__kitchenHighlightBackgroundColor}}", withString: highlightBackgroundColor
@@ -63,7 +63,7 @@ extension ThemeType {
             "{{__kitchenHighlightTextColor}}", withString: highlightTextColor
         )
         result = result.stringByReplacingOccurrencesOfString(
-            "{{__kitchenColor}}",              withString: color
+            "{{__kitchenColor}}", withString: color
         )
         return result
     }

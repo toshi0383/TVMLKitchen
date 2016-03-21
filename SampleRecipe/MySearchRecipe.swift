@@ -15,15 +15,16 @@ class MySearchRecipe: SearchRecipe {
             "hello",
             "yellow"
         ]
+        let url = "https://i.warosu.org/data/cgl/img/0075/02/1397765684315.png"
+        let width = 350, height = 520
         var results = ""
         for title in titles {
             results += "<lockup>"
-            results += "<img src=\"https://i.warosu.org/data/cgl/img/0075/02/1397765684315.png\" width=\"350\" height=\"520\" />"
+            results += "<img src=\"\(url)\" width=\"\(width)\" height=\"\(height)\" />"
             results += "<title>\(title)</title>"
             results += "</lockup>"
         }
         let url = SearchRecipe.bundle.URLForResource("SearchResult", withExtension: "xml")!
-        // swiftlint:disable:next force_cast
         let resultBase = try! String(contentsOfURL: url)
         let result = resultBase.stringByReplacingOccurrencesOfString("{{results}}", withString: results)
 

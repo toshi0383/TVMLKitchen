@@ -92,7 +92,7 @@ extension TemplateRecipeType where Self.Theme: ThemeType {
         // Replace user-defined variables.
         for (k, v) in replacementDictionary {
             result = result.stringByReplacingOccurrencesOfString(
-                "{{\(k)}}",    withString: v
+                "{{\(k)}}", withString: v
             )
         }
         return result

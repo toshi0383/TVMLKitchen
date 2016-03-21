@@ -200,7 +200,6 @@ var buildResults = function(doc, searchText) {
 
     //set default template fragment to display no results
     filterSearchText(searchText, function(stringData) {
-        console.log(stringData);
         lsInput.stringData = stringData
         //add the new input element to the document by providing the newly created input, the context,
         //and the operator integer flag (1 to append as child, 2 to overwrite existing children)
