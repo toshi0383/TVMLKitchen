@@ -17,4 +17,6 @@ public struct SearchRecipe: TemplateRecipeType {
     /// Presentation type is defined in the recipe to keep things consistent.
     public var presentationType = PresentationType.Search
 
+    public init() { }
+
 }

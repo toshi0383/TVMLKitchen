@@ -216,7 +216,6 @@ var buildResults = function(doc, searchText) {
 
     //Apply filter to titles array using matchesText helper function
     titles = (searchText) ? titles.filter(matchesText) : titles;
-    debug("searchText: " + searchText);
     //overwrite stringData for new input element if search results exist by dynamically constructing shelf template fragment
     if (titles.length > 0) {
         lsInput.stringData = `<shelf><header><title>Results</title></header><section id="Results">`;
