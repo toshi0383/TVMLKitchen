@@ -58,7 +58,7 @@
 		1FF011271CA024F70068CDAA /* SearchRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FF011141CA024F60068CDAA /* SearchRecipe.xml */; };
 		1FF011281CA024F70068CDAA /* SearchResult.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FF011151CA024F60068CDAA /* SearchResult.xml */; };
 		1FF011291CA024F70068CDAA /* TVMLBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF011161CA024F60068CDAA /* TVMLBridging.swift */; };
-		1FF0112A1CA024F70068CDAA /* TVMLKitchen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF011171CA024F60068CDAA /* TVMLKitchen.h */; };
+		1FF0112A1CA024F70068CDAA /* TVMLKitchen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF011171CA024F60068CDAA /* TVMLKitchen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -741,7 +741,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.TVMLKitchen;
@@ -760,7 +759,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.TVMLKitchen;

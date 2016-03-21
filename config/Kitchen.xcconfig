@@ -6,4 +6,4 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 TVOS_DEPLOYMENT_TARGET=9.0
-
+INFOPLIST_FILE = Sources/Info.plist
