@@ -1,10 +1,10 @@
-## 0.6.0
+## 0.6.0: Sommelier
 ##### New Feature
 * SearchRecipe  
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#56](https://github.com/toshi0383/TVMLKitchen/issues/56)
 
-## 0.5.0
+## 0.5.0: HTTP Kitchen
 ##### Breaking
 * Remove Kitchen.serve(jsFile:) API  
   [Toshihiro Suzuki](https://github.com/toshi0383)
@@ -29,13 +29,13 @@
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#52](https://github.com/toshi0383/TVMLKitchen/pull/52)
 
-## 0.4.1
+## 0.4.1: Easter Egg
 ##### Enhancements
 * @exported import TVMLKit  
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#39](https://github.com/toshi0383/TVMLKitchen/pull/39)
 
-## 0.4.0
+## 0.4.0: Chef Stephen Radford
 ##### New Feature
 
 * Add Tab Bar Support  
@@ -56,30 +56,30 @@
   [Stephen Radford](https://github.com/steve228uk)
   [#29](https://github.com/toshi0383/TVMLKitchen/pull/29)
 
-## 0.3.0
-##### Enhancements
-* Remove debug function injection  
-  [Toshihiro Suzuki](https://github.com/toshi0383)
-  [#3](https://github.com/toshi0383/TVMLKitchen/issues/3)
-
+## 0.3.0: Player
 ##### New Feature
 * Introduce playActionIDHandler  
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#23](https://github.com/toshi0383/TVMLKitchen/issues/23)
 
-## 0.2.2
+##### Enhancements
+* Remove debug function injection  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#3](https://github.com/toshi0383/TVMLKitchen/issues/3)
+
+## 0.2.2: Zuppa di SwiftLint
 ##### Bugfix
 * Fix unwanted SwiftLint Error on `carthage update`  
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#16](https://github.com/toshi0383/TVMLKitchen/pull/16)
 
-## 0.2.1
+## 0.2.1: SwiftLint Burger
 ##### Bugfix
 * Fix SwiftLint Error on `carthage update`  
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#12](https://github.com/toshi0383/TVMLKitchen/issues/12)
 
-## 0.2.0
+## 0.2.0: URL Kitchen
 ##### Enhancements
 * Open template from URL String  
   [Toshihiro Suzuki](https://github.com/toshi0383)
@@ -90,7 +90,7 @@
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#9](https://github.com/toshi0383/TVMLKitchen/issues/9)
 
-## 0.1.2
+## 0.1.2: Hot chili pepper
 ##### Breaking Change
 * Improve error handling  
   [Toshihiro Suzuki](https://github.com/toshi0383)
@@ -100,10 +100,10 @@
 * Fixed kitchen.js runtime error  
   [Toshihiro Suzuki](https://github.com/toshi0383)
 
-## 0.1.1
+## 0.1.1: Recipe
 * DefaultTheme and BlackTheme
 * Customizable Recipe Theme Interface  
   [Toshihiro Suzuki](https://github.com/toshi0383)
 
-## 0.1.0
+## 0.1.0: Bonapetit
 First Version
