@@ -16,9 +16,7 @@ import Foundation
 /// 3. Set to Cookbook object.
 public class SearchRecipe: SearchRecipeType {
 
-    public typealias Theme = DefaultTheme
-
-    public let theme: Theme = DefaultTheme()
+    public let theme = EmptyTheme()
 
     /// Presentation type is defined in the recipe to keep things consistent.
     public var presentationType = PresentationType.Search
