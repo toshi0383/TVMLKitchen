@@ -21,25 +21,24 @@ public protocol RecipeType {
 }
 
 public protocol TemplateRecipeType: RecipeType {
+    /// File name of this TemplateRecipe.
+    /// Defaults to name of the class. (No need to implement)
     var templateFileName: String {get}
+    /// Custom pair of replacement strings.
+    /// e.g. ["color": "rgb(255, 255, 255)"]
     var replacementDictionary: [String: String] {get}
+    /// Bundle of Template file.
     var bundle: NSBundle {get}
-    func parse(xml: String) -> String
 }
 
 extension RecipeType {
+
+    public var theme: ThemeType {
+        return EmptyTheme()
+    }
+
     public var presentationType: PresentationType {
         return .Default
-    }
-}
-
-extension RecipeType where Self.Theme: ThemeType {
-    public var xmlString: String {
-        let url = Kitchen.bundle().URLForResource("Base", withExtension: "xml")!
-        // swiftlint:disable:next force_try
-        var xml = try! String(contentsOfURL: url)
-        xml = theme.parse(xml)
-        return xml
     }
 }
 
@@ -75,12 +74,12 @@ extension TemplateRecipeType where Self.Theme: ThemeType {
             .last!
     }
 
-    public func parse(xml: String) -> String {
-        var result = xml
+    public var xmlString: String {
+        var result = base
         // Replace template part.
-        result = result.stringByReplacingOccurrencesOfString(
-            "{{template}}",    withString: template
-        )
+        result = result
+            .stringByReplacingOccurrencesOfString("{{template}}", withString: template)
+            .stringByReplacingOccurrencesOfString("{{style}}", withString: theme.style)
 
         // Replace user-defined variables.
         for (k, v) in replacementDictionary {
@@ -88,12 +87,6 @@ extension TemplateRecipeType where Self.Theme: ThemeType {
                 "{{\(k)}}",    withString: v
             )
         }
-        result = theme.parse(result)
         return result
-    }
-
-    public var xmlString: String {
-        let xml = parse(base)
-        return xml
     }
 }

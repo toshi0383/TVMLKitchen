@@ -69,7 +69,7 @@ extension Section: CustomStringConvertible {
     }
 }
 
-public struct CatalogRecipe<Theme:ThemeType>: RecipeType {
+public struct CatalogRecipe<Theme:ThemeType>: TemplateRecipeType {
 
     let banner: String
     let sections: [Section]

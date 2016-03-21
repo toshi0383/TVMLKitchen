@@ -19,32 +19,9 @@ struct SampleTemplateRecipe: TemplateRecipeType {
     }
 }
 
-struct EmptyTheme: ThemeType {
-    let backgroundColor = ""
-    let color = ""
-    let highlightBackgroundColor = ""
-    let highlightTextColor = ""
-}
-
-extension String {
-    var trim: String {
-        return self.stringByReplacingOccurrencesOfString(" ", withString: "")
-    }
-}
-
 class RecipeTests: XCTestCase {
     func testTemplateRecipeType() {
         let recipe = SampleTemplateRecipe()
-        XCTAssert(recipe.templateFileName == "SampleTemplateRecipe")
-        let target = recipe.xmlString.trim
-        let expected = expectedXML.trim
-        XCTAssert(target == expected, "\(target)\n\(expected)")
-    }
-
-    var expectedXML: String {
-        let bundle = NSBundle(forClass: RecipeTests.self)
-        let url = bundle.URLForResource("ExpectedSampleTemplate", withExtension: "xml")!
-        // swiftlint:disable:next force_try
-        return try! String(contentsOfURL: url)
+        testTemplateRecipe(recipe, expectedFileName: "ExpectedSampleTemplateRecipe")
     }
 }

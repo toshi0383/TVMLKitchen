@@ -14,8 +14,8 @@ public protocol ThemeType {
     var color: String {get}
     var highlightBackgroundColor: String {get}
     var highlightTextColor: String {get}
+    var style: String {get}
     init()
-    func parse(xml: String) -> String
 }
 
 extension ThemeType {
@@ -36,7 +36,22 @@ extension ThemeType {
         return "rgb(0, 0, 0)"
     }
 
-    public func parse(xml: String) -> String {
+    public var style: String {
+        return parse(styleTemplate)
+    }
+
+    private var styleTemplate: String {
+        return "* { background-color: {{__kitchenBackgroundColor}};"
+            + "    color: {{__kitchenColor}};"
+            + "    tv-highlight-color:{{__kitchenHighlightBackgroundColor}};"
+            + "}"
+            + ".kitchen_highlight_bg { background-color:transparent;"
+            + "    tv-highlight-color:{{__kitchenHighlightTextColor}}; }"
+            + ".kitchen_no_highlight_bg { background-color:transparent;"
+            + "    tv-highlight-color:{{__kitchenHighlightBackgroundColor}}; }"
+    }
+
+    private func parse(xml: String) -> String {
         var result = xml
         result = result.stringByReplacingOccurrencesOfString(
             "{{__kitchenBackgroundColor}}",    withString: backgroundColor
@@ -53,6 +68,11 @@ extension ThemeType {
         return result
     }
 
+}
+
+public struct EmptyTheme: ThemeType {
+    public let style: String = ""
+    public init() {}
 }
 
 public struct DefaultTheme: ThemeType {

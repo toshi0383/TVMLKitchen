@@ -2,14 +2,7 @@
 <document>
     <head>
         <style>
-            * { background-color: ;
-            color: ;
-            tv-highlight-color:;
-            }
-            .kitchen_highlight_bg { background-color:transparent;
-            tv-highlight-color:; }
-            .kitchen_no_highlight_bg { background-color:transparent;
-            tv-highlight-color:; }
+
         </style>
     </head>
     <searchTemplate>

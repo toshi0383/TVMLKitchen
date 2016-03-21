@@ -10,6 +10,9 @@
 		1F21D5D51C37A60900E8FEA9 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21D5D41C37A60900E8FEA9 /* Async.swift */; };
 		1F23CB911C9FAB6000324F6F /* Base.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F94082C1C9FA44D00FD39E7 /* Base.xml */; };
 		1F23CB931C9FB2B800324F6F /* SampleTemplateRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */; };
+		1F23CB951C9FB4FE00324F6F /* AlertRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */; };
+		1F23CB971C9FBBD800324F6F /* ExpectedAlertRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */; };
+		1F23CB991C9FBCEA00324F6F /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23CB981C9FBCEA00324F6F /* TestHelpers.swift */; };
 		1F2B8FB71C9D9EF7001BB883 /* CatalogRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8FB61C9D9EF7001BB883 /* CatalogRecipe.swift */; };
 		1F2B8FB91C9D9F2E001BB883 /* RecipeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8FB81C9D9F2E001BB883 /* RecipeTheme.swift */; };
 		1F3065B81C30D634001E5DF0 /* kitchen.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065B51C30D634001E5DF0 /* kitchen.js */; };
@@ -39,7 +42,7 @@
 		1F32E6871C30B81E00F62E88 /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E6861C30B81E00F62E88 /* Kitchen.swift */; };
 		1F5ABB981C356B3100785DEB /* TVMLKitchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */; };
-		1F94082B1C9FA2A500FD39E7 /* ExpectedSampleTemplate.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplate.xml */; };
+		1F94082B1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 		1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */; };
 		1FD734C61C9F9C2300E76766 /* SearchRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FD734C51C9F9C2300E76766 /* SearchRecipe.xml */; };
@@ -94,6 +97,9 @@
 /* Begin PBXFileReference section */
 		1F21D5D41C37A60900E8FEA9 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SampleTemplateRecipe.xml; sourceTree = "<group>"; };
+		1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRecipeTests.swift; sourceTree = "<group>"; };
+		1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedAlertRecipe.xml; sourceTree = "<group>"; };
+		1F23CB981C9FBCEA00324F6F /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		1F2B8FB61C9D9EF7001BB883 /* CatalogRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogRecipe.swift; sourceTree = "<group>"; };
 		1F2B8FB81C9D9F2E001BB883 /* RecipeTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTheme.swift; sourceTree = "<group>"; };
 		1F3065B51C30D634001E5DF0 /* kitchen.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kitchen.js; sourceTree = "<group>"; };
@@ -130,7 +136,7 @@
 		1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleRecipeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRecipeUITests.swift; sourceTree = "<group>"; };
 		1F8B43791C35676400C716A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplate.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedSampleTemplate.xml; sourceTree = "<group>"; };
+		1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedSampleTemplateRecipe.xml; sourceTree = "<group>"; };
 		1F94082C1C9FA44D00FD39E7 /* Base.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Base.xml; path = templates/Base.xml; sourceTree = "<group>"; };
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 		1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
@@ -266,9 +272,12 @@
 			isa = PBXGroup;
 			children = (
 				1F32E41A1C30B6EF00F62E88 /* Info.plist */,
+				1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */,
 				1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */,
-				1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplate.xml */,
+				1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */,
+				1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */,
 				1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */,
+				1F23CB981C9FBCEA00324F6F /* TestHelpers.swift */,
 			);
 			path = TVMLKitchenTests;
 			sourceTree = "<group>";
@@ -514,8 +523,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F23CB971C9FBBD800324F6F /* ExpectedAlertRecipe.xml in Resources */,
 				1F23CB931C9FB2B800324F6F /* SampleTemplateRecipe.xml in Resources */,
-				1F94082B1C9FA2A500FD39E7 /* ExpectedSampleTemplate.xml in Resources */,
+				1F94082B1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +586,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F23CB951C9FB4FE00324F6F /* AlertRecipeTests.swift in Sources */,
 				1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */,
+				1F23CB991C9FBCEA00324F6F /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
