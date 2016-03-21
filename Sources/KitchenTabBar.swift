@@ -18,7 +18,7 @@ public protocol TabItem {
 
 }
 
-public struct KitchenTabBar {
+public struct KitchenTabBar: RecipeType {
 
     /// The shared instance of the tab bar.
     /// Only one tab bar should be created per app.
@@ -32,8 +32,12 @@ public struct KitchenTabBar {
         }
     }
 
+    init(items: [TabItem]? = nil) {
+        self.items = items
+    }
+
     /// Constructed string from the `items` array.
-    var itemString: String {
+    public var template: String {
         var string = ""
         for (index, item) in items.enumerate() {
             string += "<menuItem menuIndex=\"\(index)\">"
@@ -44,13 +48,13 @@ public struct KitchenTabBar {
     }
 
     /// The XML string of the `menuBarTemplate`.
-    var xmlString: String {
+    public var xmlString: String {
         get {
             var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"
             xml += "<document>"
             xml += "<menuBarTemplate>"
             xml += "<menuBar>"
-            xml += itemString
+            xml += template
             xml += "</menuBar>"
             xml += "</menuBarTemplate>"
             xml += "</document>"
