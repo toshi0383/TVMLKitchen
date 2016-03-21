@@ -1,3 +1,9 @@
+## Master
+##### New Feature
+* SearchRecipe  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#56](https://github.com/toshi0383/TVMLKitchen/issues/56)
+
 ## 0.5.0
 ##### Breaking
 * Remove Kitchen.serve(jsFile:) API  
