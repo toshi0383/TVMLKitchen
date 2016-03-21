@@ -184,8 +184,8 @@ Kitchen.serve(recipe: alert)
 SearchRecipe supports dynamic view manipulation.
 
 #### Configuring SearchRecipe
-Subclass and override `filterSearchText` method.
-SeeAlso: SampleRecipe.MySearchRecipe.swift, SearchResult.xml
+Subclass `SearchRecipe` and override `filterSearchText` method.
+SeeAlso: [SampleRecipe/MySearchRecipe.swift](https://github.com/toshi0383/TVMLKitchen/blob/master/SampleRecipe/MySearchRecipe.swift), [SearchResult.xml](https://github.com/toshi0383/TVMLKitchen/blob/master/Sources/Templates/SearchResult.xml)
 
 #### SearchRecipe as TabItem
 Use `PresentationType.TabSearch`. This will create keyboard observer in addition to `.Tab` behavior.
