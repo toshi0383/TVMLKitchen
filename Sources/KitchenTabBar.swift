@@ -34,7 +34,8 @@ public struct KitchenTabBar: TemplateRecipeType {
         }
     }
 
-    init(items: [TabItem]? = nil) {
+    /// for UnitTesting use.
+    internal init(items: [TabItem]? = nil) {
         self.items = items
     }
 
