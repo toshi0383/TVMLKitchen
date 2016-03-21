@@ -90,7 +90,6 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
         return true
     }
 
-    cookbook.searchRecipe = MySearchRecipe()
     Kitchen.prepare(cookbook)
     KitchenTabBar.sharedBar.items = [
         SearchTab(),

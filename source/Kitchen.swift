@@ -91,6 +91,9 @@ extension Kitchen {
     }
 
     public static func serve<R: RecipeType>(recipe recipe: R) {
+        if let recipe = recipe as? SearchRecipe {
+            sharedKitchen.cookbook.searchRecipe = recipe
+        }
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 

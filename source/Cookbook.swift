@@ -23,7 +23,7 @@ public class Cookbook {
 
     /// Subclass object of SearchRecipe.
     /// Required when presenting SearchRecipe somewhere.
-    public var searchRecipe: SearchRecipe? {
+    internal var searchRecipe: SearchRecipe? {
         didSet {
             if let recipe = searchRecipe where recipe.dynamicType == SearchRecipe.self {
                 fatalError("searchRecipe must be subclassed.")

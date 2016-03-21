@@ -13,7 +13,6 @@ import Foundation
 /// Usage:
 /// 1. Subclass and override filterSearchText method.
 /// 2. Instantiate with preferred PresentationType.
-/// 3. Set to Cookbook object.
 public class SearchRecipe: SearchRecipeType {
 
     public let theme = EmptyTheme()
