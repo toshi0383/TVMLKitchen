@@ -15,18 +15,6 @@
 		1F3065BE1C30D8BD001E5DF0 /* Catalog.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BD1C30D8BD001E5DF0 /* Catalog.xml */; };
 		1F3065C01C30E8D0001E5DF0 /* Oneup.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BF1C30E8D0001E5DF0 /* Oneup.xml */; };
 		1F3065C21C30E912001E5DF0 /* SampleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3065C11C30E912001E5DF0 /* SampleResource.swift */; };
-		1F3065E71C30EE1A001E5DF0 /* Common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065C61C30EE19001E5DF0 /* Common.xcconfig */; };
-		1F3065E81C30EE1A001E5DF0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065C81C30EE19001E5DF0 /* Debug.xcconfig */; };
-		1F3065E91C30EE1A001E5DF0 /* Profile.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065C91C30EE19001E5DF0 /* Profile.xcconfig */; };
-		1F3065EA1C30EE1A001E5DF0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CA1C30EE19001E5DF0 /* Release.xcconfig */; };
-		1F3065EB1C30EE1A001E5DF0 /* Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CB1C30EE19001E5DF0 /* Test.xcconfig */; };
-		1F3065EC1C30EE1A001E5DF0 /* Application.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CD1C30EE19001E5DF0 /* Application.xcconfig */; };
-		1F3065ED1C30EE1A001E5DF0 /* Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CE1C30EE19001E5DF0 /* Framework.xcconfig */; };
-		1F3065EE1C30EE1A001E5DF0 /* StaticLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065CF1C30EE19001E5DF0 /* StaticLibrary.xcconfig */; };
-		1F3065F91C30EE1A001E5DF0 /* tvOS-Application.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065DD1C30EE1A001E5DF0 /* tvOS-Application.xcconfig */; };
-		1F3065FA1C30EE1A001E5DF0 /* tvOS-Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065DE1C30EE1A001E5DF0 /* tvOS-Base.xcconfig */; };
-		1F3065FB1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065DF1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig */; };
-		1F3065FC1C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065E01C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig */; };
 		1F3066071C312CB8001E5DF0 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F3066061C312CB8001E5DF0 /* img.jpg */; };
 		1F32E4141C30B6EF00F62E88 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
@@ -42,7 +30,6 @@
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 		1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */; };
 		1FF011181CA024F60068CDAA /* Cookbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF011031CA024F60068CDAA /* Cookbook.swift */; };
-		1FF011191CA024F60068CDAA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FF011041CA024F60068CDAA /* Info.plist */; };
 		1FF0111A1CA024F60068CDAA /* kitchen.js in Resources */ = {isa = PBXBuildFile; fileRef = 1FF011051CA024F60068CDAA /* kitchen.js */; };
 		1FF0111B1CA024F60068CDAA /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF011061CA024F60068CDAA /* Kitchen.swift */; };
 		1FF0111C1CA024F60068CDAA /* KitchenTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF011071CA024F60068CDAA /* KitchenTabBar.swift */; };
@@ -472,7 +459,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = toshi0383;
 				TargetAttributes = {
 					1F32E4081C30B6EF00F62E88 = {
@@ -517,7 +504,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF011241CA024F70068CDAA /* AlertRecipe.xml in Resources */,
-				1FF011191CA024F60068CDAA /* Info.plist in Resources */,
 				1FF011281CA024F70068CDAA /* SearchResult.xml in Resources */,
 				1F92AB0C1CA02A180098F87F /* KitchenTabBar.xml in Resources */,
 				1FF011251CA024F70068CDAA /* Base.xml in Resources */,
@@ -543,22 +529,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F3065EA1C30EE1A001E5DF0 /* Release.xcconfig in Resources */,
-				1F3065EC1C30EE1A001E5DF0 /* Application.xcconfig in Resources */,
-				1F3065ED1C30EE1A001E5DF0 /* Framework.xcconfig in Resources */,
-				1F3065FC1C30EE1A001E5DF0 /* tvOS-StaticLibrary.xcconfig in Resources */,
-				1F3065E71C30EE1A001E5DF0 /* Common.xcconfig in Resources */,
-				1F3065E91C30EE1A001E5DF0 /* Profile.xcconfig in Resources */,
-				1F3065E81C30EE1A001E5DF0 /* Debug.xcconfig in Resources */,
 				1F3066071C312CB8001E5DF0 /* img.jpg in Resources */,
 				1F3065C01C30E8D0001E5DF0 /* Oneup.xml in Resources */,
-				1F3065FB1C30EE1A001E5DF0 /* tvOS-Framework.xcconfig in Resources */,
-				1F3065F91C30EE1A001E5DF0 /* tvOS-Application.xcconfig in Resources */,
 				1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */,
 				1F3065BE1C30D8BD001E5DF0 /* Catalog.xml in Resources */,
-				1F3065EE1C30EE1A001E5DF0 /* StaticLibrary.xcconfig in Resources */,
-				1F3065FA1C30EE1A001E5DF0 /* tvOS-Base.xcconfig in Resources */,
-				1F3065EB1C30EE1A001E5DF0 /* Test.xcconfig in Resources */,
 				1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,7 +6,7 @@
 //  Copyright © 2015 toshi0383. All rights reserved.
 //
 
-@exported import TVMLKit
+@_exported import TVMLKit
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
 public typealias KitchenErrorHandler = NSError -> Void

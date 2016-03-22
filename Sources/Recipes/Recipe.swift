@@ -10,7 +10,7 @@
 public protocol RecipeType {
 
     /// Theme
-    typealias Theme
+    associatedtype Theme
     var theme: Theme {get}
 
     /// Presentation type is defined in the recipe to keep things consistent.
@@ -91,7 +91,7 @@ extension TemplateRecipeType {
     }
 
     public var templateFileName: String {
-        return "\(_stdlib_getDemangledTypeName(self))"
+        return String(self.dynamicType)
             .componentsSeparatedByString(".")
             .last!
     }
