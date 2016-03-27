@@ -24,18 +24,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openCatalogTemplate() {
-        print(__FUNCTION__)
         let search = MySearchRecipe()
         Kitchen.serve(recipe: search)
     }
 
     @IBAction func openXMLString(sender: AnyObject!) {
-        print(__FUNCTION__)
         Kitchen.serve(xmlString:XMLString.Catalog.description, type: .ModalWithLoadingIndicator)
     }
 
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
-        print(__FUNCTION__)
         Kitchen.serve(urlString: Sample.tvmlUrl, type: .ModalWithLoadingIndicator)
     }
 
