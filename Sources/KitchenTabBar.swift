@@ -68,10 +68,8 @@ public struct KitchenTabBar: TemplateRecipeType {
 
      - parameter index: The new selected index
      */
-    func tabChanged(index: String) {
-        if let i = Int(index) {
-            items[i].handler()
-        }
+    func tabChanged(index: Int) {
+        items[index].handler()
     }
 
 }

@@ -20,6 +20,8 @@ public class Cookbook {
     public var actionIDHandler: KitchenActionIDHandler?
     /// handles "play" event
     public var playActionIDHandler: KitchenActionIDHandler?
+    /// handles "tabChanged" event
+    public var tabChangedHandler: KitchenTabItemHandler?
 
     /// Subclass object of SearchRecipe.
     /// Required when presenting SearchRecipe somewhere.
