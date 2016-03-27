@@ -11,6 +11,7 @@
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
 public typealias KitchenErrorHandler = NSError -> Void
 public typealias KitchenActionIDHandler = (String -> Void)
+public typealias KitchenTabItemHandler = (Int -> Void)
 
 let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
 
@@ -98,6 +99,9 @@ extension Kitchen {
     public static func serve<R: RecipeType>(recipe recipe: R) {
         if let recipe = recipe as? SearchRecipe {
             sharedKitchen.cookbook.searchRecipe = recipe
+        }
+        if let recipe = recipe as? KitchenTabBar {
+            sharedKitchen.cookbook.tabChangedHandler = recipe.tabChanged
         }
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
@@ -383,15 +387,21 @@ extension Kitchen: TVApplicationControllerDelegate {
             forKeyedSubscript: "loadingTemplate")
 
 
-        // Add the tab bar handler for the shared instance.
-
-        let tabBarHandler: @convention(block) String -> Void = { index in
-            KitchenTabBar.sharedBar.tabChanged(index)
+        // Add the tab bar handler
+        let tabBarHandler: @convention(block) Int -> Void = {
+            index in
+            self.cookbook.tabChangedHandler?(index)
         }
-
         jsContext.setObject(unsafeBitCast(tabBarHandler, AnyObject.self),
             forKeyedSubscript: "tabBarHandler")
 
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
+    }
+}
+
+extension Kitchen {
+    @available(*, deprecated, message="Added for backward compatibility. Will be removed in next release.")
+    internal static func setTabBarHandler(handler: KitchenTabItemHandler) {
+        sharedKitchen.cookbook.tabChangedHandler = handler
     }
 }

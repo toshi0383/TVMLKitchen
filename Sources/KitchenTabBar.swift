@@ -25,7 +25,11 @@ public struct KitchenTabBar: TemplateRecipeType {
     /// The shared instance of the tab bar.
     /// Only one tab bar should be created per app.
     @available(*, deprecated, message="TabBar is not singleton anymore. Will be removed in next release.")
-    public static var sharedBar = KitchenTabBar()
+    public static var sharedBar = KitchenTabBar() {
+        didSet {
+            Kitchen.setTabBarHandler(sharedBar.tabChanged)
+        }
+    }
 
     /// The items that are displayed in the tab bar.
     /// The `displayTabBar` method will automatically be called.
@@ -68,10 +72,8 @@ public struct KitchenTabBar: TemplateRecipeType {
 
      - parameter index: The new selected index
      */
-    func tabChanged(index: String) {
-        if let i = Int(index) {
-            items[i].handler()
-        }
+    func tabChanged(index: Int) {
+        items[index].handler()
     }
 
 }
