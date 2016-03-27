@@ -104,8 +104,6 @@ struct CatalogTab: TabItem {
 }
 
 private func openViewController(identifier: String) {
-    print(__FUNCTION__)
-    print(identifier)
     let sb = UIStoryboard(name: "ViewController", bundle: NSBundle.mainBundle())
     let vc = sb.instantiateInitialViewController()!
     Kitchen.navigationController.pushViewController(vc, animated: true)
