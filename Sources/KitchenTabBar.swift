@@ -24,6 +24,7 @@ public struct KitchenTabBar: TemplateRecipeType {
 
     /// The shared instance of the tab bar.
     /// Only one tab bar should be created per app.
+    @available(*, deprecated, message="TabBar is not singleton anymore. Will be removed in next release.")
     public static var sharedBar = KitchenTabBar()
 
     /// The items that are displayed in the tab bar.

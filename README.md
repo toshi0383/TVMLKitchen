@@ -59,12 +59,12 @@ Kitchen.serve(xmlFile: "Sample.xml", type: .Tab)
 
 ## Tab Controller
 
-Should you wish to use tabs within your application you can use `KitchenTabBar`. First, create a `TabItem` struct with a title and a `handler` method. The `handler` method will be called every time the tab becomes active.
+Should you wish to use tabs within your application you can use `KitchenTabBar` recipe. First, create a `TabItem` struct with a title and a `handler` method. The `handler` method will be called every time the tab becomes active.
 
 **Note:** The `PresentationType` for initial view should always be set to `.Tab`.
 
 ````swift
-struct Moviestab: TabItem {
+struct MoviesTab: TabItem {
 
     let title = "Movies"
 
@@ -75,12 +75,14 @@ struct Moviestab: TabItem {
 }
 ````
 
-The following should then be included in your `AppDelegate` directly below the `Kitchen.prepare()` method.
+Present tabbar using `serve(recipe:)` method.
 
 ````swift
-KitchenTabBar.sharedBar.items = [
-    MoviesTab()
-]
+let tabbar = KitchenTabBar(items:[
+    MoviesTab(),
+    MusicsTab()
+])
+Kitchen.serve(recipe: tabbar)
 ````
 
 # Advanced setup
