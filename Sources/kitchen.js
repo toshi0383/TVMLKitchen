@@ -118,20 +118,6 @@ function makeDocument(resource) {
     return doc;
 }
 
-function showLoadingIndicator(presentation) {
-    if (!this.loadingIndicator) {
-        this.loadingIndicator = this.makeDocument(loadingTemplate());
-    }
-
-    if (!this.loadingIndicatorVisible &&
-        presentation != "modalDialogPresenter" &&
-        presentation != "menuBarItemPresenter")
-    {
-        navigationDocument.pushDocument(this.loadingIndicator);
-        this.loadingIndicatorVisible = true;
-    }
-}
-
 /**
  Show the loading indicator for the presentation type passed from UIKit
  */
