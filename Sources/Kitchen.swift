@@ -80,6 +80,11 @@ extension Kitchen {
     }
 
     public static func serve(urlString urlString: String, type: PresentationType = .Default) {
+        Kitchen.appController.evaluateInJavaScriptContext({
+            context in
+            let js = "showLoadingIndicatorForType(\(type.rawValue))"
+            context.evaluateScript(js)
+        }, completion: nil)
         sharedKitchen.sendRequest(urlString) { result in
             switch result {
             case .Success(let xmlString):
@@ -369,6 +374,13 @@ extension Kitchen: TVApplicationControllerDelegate {
         }
         jsContext.setObject(unsafeBitCast(filterSearchTextBlock, AnyObject.self),
             forKeyedSubscript: "filterSearchText")
+
+        let loadingTemplate: @convention(block) Void -> String =
+        {
+            return LoadingRecipe().xmlString
+        }
+        jsContext.setObject(unsafeBitCast(loadingTemplate, AnyObject.self),
+            forKeyedSubscript: "loadingTemplate")
 
 
         // Add the tab bar handler for the shared instance.

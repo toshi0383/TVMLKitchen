@@ -118,29 +118,15 @@ function makeDocument(resource) {
     return doc;
 }
 
-function showLoadingIndicator(presentation) {
-    if (!this.loadingIndicator) {
-        this.loadingIndicator = this.makeDocument(loadingTemplate());
-    }
-
-    if (!this.loadingIndicatorVisible &&
-        presentation != "modalDialogPresenter" &&
-        presentation != "menuBarItemPresenter")
-    {
-        navigationDocument.pushDocument(this.loadingIndicator);
-        this.loadingIndicatorVisible = true;
-    }
-}
-
 /**
  Show the loading indicator for the presentation type passed from UIKit
  */
 function showLoadingIndicatorForType(presentationType) {
-    if (presentationType == 1 ||
-        presentationType == 2 ||
-        presentationType == 4 ||
-        this.loadingIndicatorVisible) {
-        return;
+    // guard
+    if ((presentationType == 5 || presentationType == 6) &&
+        !this.loadingIndicatorVisible) {
+    } else {
+        return
     }
 
     if (!this.loadingIndicator) {
@@ -156,17 +142,6 @@ function removeLoadingIndicator() {
         navigationDocument.removeDocument(this.loadingIndicator);
         this.loadingIndicatorVisible = false;
     }
-}
-
-function loadingTemplate() {
-    return `<?xml version="1.0" encoding="UTF-8" ?>
-        <document>
-          <loadingTemplate>
-            <activityIndicator>
-              <text>Loading...</text>
-            </activityIndicator>
-          </loadingTemplate>
-        </document>`
 }
 
 function presenterForType(type) {
