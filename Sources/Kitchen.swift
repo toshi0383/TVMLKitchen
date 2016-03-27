@@ -398,3 +398,10 @@ extension Kitchen: TVApplicationControllerDelegate {
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
     }
 }
+
+extension Kitchen {
+    @available(*, deprecated, message="Added for backward compatibility. Will be removed in next release.")
+    internal static func setTabBarHandler(handler: KitchenTabItemHandler) {
+        sharedKitchen.cookbook.tabChangedHandler = handler
+    }
+}
