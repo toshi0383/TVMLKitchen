@@ -26,6 +26,8 @@
 		1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */; };
 		1F92AB0C1CA02A180098F87F /* KitchenTabBar.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F92AB0B1CA02A180098F87F /* KitchenTabBar.xml */; };
 		1F94082B1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */; };
+		1FA7F4EA1CA7625600780D5B /* LoadingRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F4E91CA7625600780D5B /* LoadingRecipeTests.swift */; };
+		1FA7F4EC1CA7627000780D5B /* ExpectedLoadingRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7F4EB1CA7627000780D5B /* ExpectedLoadingRecipe.xml */; };
 		1FADCF931C9FFE19009A40EA /* MySearchRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADCF921C9FFE19009A40EA /* MySearchRecipe.swift */; };
 		1FADCF971CA00D84009A40EA /* SearchRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADCF961CA00D84009A40EA /* SearchRecipeTests.swift */; };
 		1FADCF991CA00DC4009A40EA /* ExpectedSearchRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */; };
@@ -129,6 +131,8 @@
 		1F8B43791C35676400C716A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F92AB0B1CA02A180098F87F /* KitchenTabBar.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = KitchenTabBar.xml; sourceTree = "<group>"; };
 		1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedSampleTemplateRecipe.xml; sourceTree = "<group>"; };
+		1FA7F4E91CA7625600780D5B /* LoadingRecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingRecipeTests.swift; sourceTree = "<group>"; };
+		1FA7F4EB1CA7627000780D5B /* ExpectedLoadingRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedLoadingRecipe.xml; sourceTree = "<group>"; };
 		1FADCF921C9FFE19009A40EA /* MySearchRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySearchRecipe.swift; sourceTree = "<group>"; };
 		1FADCF961CA00D84009A40EA /* SearchRecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRecipeTests.swift; sourceTree = "<group>"; };
 		1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedSearchRecipe.xml; sourceTree = "<group>"; };
@@ -270,11 +274,13 @@
 			children = (
 				1F32E41A1C30B6EF00F62E88 /* Info.plist */,
 				1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */,
+				1FA7F4E91CA7625600780D5B /* LoadingRecipeTests.swift */,
 				1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */,
 				1FADCF961CA00D84009A40EA /* SearchRecipeTests.swift */,
 				1FF0112B1CA026450068CDAA /* TabBarTests.swift */,
 				1F23CB981C9FBCEA00324F6F /* TestHelpers.swift */,
 				1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */,
+				1FA7F4EB1CA7627000780D5B /* ExpectedLoadingRecipe.xml */,
 				1F94082A1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml */,
 				1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */,
 				1FF0112D1CA0293E0068CDAA /* ExpectedTabBar.xml */,
@@ -526,6 +532,7 @@
 			files = (
 				1FF0112E1CA0293E0068CDAA /* ExpectedTabBar.xml in Resources */,
 				1F23CB971C9FBBD800324F6F /* ExpectedAlertRecipe.xml in Resources */,
+				1FA7F4EC1CA7627000780D5B /* ExpectedLoadingRecipe.xml in Resources */,
 				1F23CB931C9FB2B800324F6F /* SampleTemplateRecipe.xml in Resources */,
 				1F94082B1C9FA2A500FD39E7 /* ExpectedSampleTemplateRecipe.xml in Resources */,
 				1FADCF991CA00DC4009A40EA /* ExpectedSearchRecipe.xml in Resources */,
@@ -578,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FA7F4EA1CA7625600780D5B /* LoadingRecipeTests.swift in Sources */,
 				1F23CB951C9FB4FE00324F6F /* AlertRecipeTests.swift in Sources */,
 				1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */,
 				1F23CB991C9FBCEA00324F6F /* TestHelpers.swift in Sources */,
