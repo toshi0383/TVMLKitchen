@@ -1,0 +1,5 @@
+    <loadingTemplate>
+        <activityIndicator>
+            <text>{{LOADING}}</text>
+        </activityIndicator>
+    </loadingTemplate>

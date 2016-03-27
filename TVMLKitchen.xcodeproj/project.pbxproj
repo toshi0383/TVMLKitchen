@@ -20,6 +20,8 @@
 		1F32E54F1C30B79600F62E88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E54E1C30B79600F62E88 /* AppDelegate.swift */; };
 		1F32E5511C30B79600F62E88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32E5501C30B79600F62E88 /* ViewController.swift */; };
 		1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F32E5551C30B79600F62E88 /* Assets.xcassets */; };
+		1F47EE7A1CA61F4F00227E73 /* LoadingRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EE791CA61F4F00227E73 /* LoadingRecipe.xml */; };
+		1F47EE7C1CA61FA600227E73 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47EE7B1CA61FA600227E73 /* Loading.swift */; };
 		1F5ABB981C356B3100785DEB /* TVMLKitchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F8B43781C35676400C716A7 /* SampleRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */; };
 		1F92AB0C1CA02A180098F87F /* KitchenTabBar.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F92AB0B1CA02A180098F87F /* KitchenTabBar.xml */; };
@@ -120,6 +122,8 @@
 		1F32E5551C30B79600F62E88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F32E5571C30B79600F62E88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F32E68B1C30B9D100F62E88 /* Kitchen.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Kitchen.xcconfig; sourceTree = "<group>"; };
+		1F47EE791CA61F4F00227E73 /* LoadingRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LoadingRecipe.xml; sourceTree = "<group>"; };
+		1F47EE7B1CA61FA600227E73 /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleRecipeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRecipeUITests.swift; sourceTree = "<group>"; };
 		1F8B43791C35676400C716A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -348,6 +352,7 @@
 				1FF0110D1CA024F60068CDAA /* Recipe.swift */,
 				1FF0110E1CA024F60068CDAA /* RecipeTheme.swift */,
 				1FF0110F1CA024F60068CDAA /* SearchRecipe.swift */,
+				1F47EE7B1CA61FA600227E73 /* Loading.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				1FF011141CA024F60068CDAA /* SearchRecipe.xml */,
 				1FF011151CA024F60068CDAA /* SearchResult.xml */,
 				1F92AB0B1CA02A180098F87F /* KitchenTabBar.xml */,
+				1F47EE791CA61F4F00227E73 /* LoadingRecipe.xml */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F47EE7A1CA61F4F00227E73 /* LoadingRecipe.xml in Resources */,
 				1FF011241CA024F70068CDAA /* AlertRecipe.xml in Resources */,
 				1FF011281CA024F70068CDAA /* SearchResult.xml in Resources */,
 				1F92AB0C1CA02A180098F87F /* KitchenTabBar.xml in Resources */,
@@ -553,6 +560,7 @@
 			files = (
 				1FF0111E1CA024F60068CDAA /* AlertRecipe.swift in Sources */,
 				1FF011231CA024F70068CDAA /* SearchRecipe.swift in Sources */,
+				1F47EE7C1CA61FA600227E73 /* Loading.swift in Sources */,
 				1FF011201CA024F70068CDAA /* DescriptiveAlertRecipe.swift in Sources */,
 				1FF0111C1CA024F60068CDAA /* KitchenTabBar.swift in Sources */,
 				1FF0111F1CA024F70068CDAA /* CatalogRecipe.swift in Sources */,
