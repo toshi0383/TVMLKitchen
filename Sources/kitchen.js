@@ -122,11 +122,11 @@ function makeDocument(resource) {
  Show the loading indicator for the presentation type passed from UIKit
  */
 function showLoadingIndicatorForType(presentationType) {
-    if (presentationType == 1 ||
-        presentationType == 2 ||
-        presentationType == 4 ||
-        this.loadingIndicatorVisible) {
-        return;
+    // guard
+    if ((presentationType == 5 || presentationType == 6) &&
+        !this.loadingIndicatorVisible) {
+    } else {
+        return
     }
 
     if (!this.loadingIndicator) {
