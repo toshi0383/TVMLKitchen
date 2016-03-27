@@ -144,17 +144,6 @@ function removeLoadingIndicator() {
     }
 }
 
-function loadingTemplate() {
-    return `<?xml version="1.0" encoding="UTF-8" ?>
-        <document>
-          <loadingTemplate>
-            <activityIndicator>
-              <text>Loading...</text>
-            </activityIndicator>
-          </loadingTemplate>
-        </document>`
-}
-
 function presenterForType(type) {
     switch(type) {
         case 1:

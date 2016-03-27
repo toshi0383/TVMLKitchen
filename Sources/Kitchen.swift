@@ -370,6 +370,13 @@ extension Kitchen: TVApplicationControllerDelegate {
         jsContext.setObject(unsafeBitCast(filterSearchTextBlock, AnyObject.self),
             forKeyedSubscript: "filterSearchText")
 
+        let loadingTemplate: @convention(block) Void -> String =
+        {
+            return LoadingRecipe().xmlString
+        }
+        jsContext.setObject(unsafeBitCast(loadingTemplate, AnyObject.self),
+            forKeyedSubscript: "loadingTemplate")
+
 
         // Add the tab bar handler for the shared instance.
 

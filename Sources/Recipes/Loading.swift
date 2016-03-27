@@ -15,7 +15,7 @@ class LoadingRecipe: TemplateRecipeType {
 
     let message: String
 
-    init(message: String = "Loading") {
+    init(message: String = "Loading...") {
         self.message = message
     }
 
