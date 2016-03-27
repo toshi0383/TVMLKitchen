@@ -1,3 +1,27 @@
+## Master
+##### Breaking
+* Add PresentationTypes with Loading Indicators  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#67](https://github.com/toshi0383/TVMLKitchen/issues/67)  
+  Note: Loading indicator will not be shown unless presentationType is set to either `ModalWithLoadingIndicator` or `DefaultWithLoadingIndicator`.
+
+##### Enhancements
+* Presenting the tabBar from an Action  
+  [Anthony](https://github.com/anthonycastelli)
+  [#68](https://github.com/toshi0383/TVMLKitchen/pull/68)
+
+## 0.6.2
+##### Enhancements
+* Add support for Swift 2.2  
+  [Anthony](https://github.com/anthonycastelli)
+  [#64](https://github.com/toshi0383/TVMLKitchen/pull/64)
+
+## 0.6.1
+##### Bugfix
+* Fix CocoaPods Podspec
+  [Stephen Radford](https://github.com/steve228uk)
+  [#63](https://github.com/toshi0383/TVMLKitchen/pull/63)
+
 ## 0.6.0: Sommelier
 ##### New Feature
 * SearchRecipe  
