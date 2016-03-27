@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="SDq-1u-6R3">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="SDq-1u-6R3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -67,6 +67,14 @@
                                 <state key="normal" title="DescriptiveAlertRecipe"/>
                                 <connections>
                                     <action selector="descriptiveAlertRecipe:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="vmi-k2-z01"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLa-qs-drM">
+                                <rect key="frame" x="627" y="387" width="202" height="86"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="TabBar"/>
+                                <connections>
+                                    <action selector="tabbarRecipe" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="mt4-zp-uOg"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -17,10 +17,36 @@ struct Sample {
 import UIKit
 import TVMLKitchen
 
+class MusicsTab: TabItem {
+    var title: String {
+        return "Musics"
+    }
+    func handler() {
+        Kitchen.serve(xmlFile: "Oneup.xml", type: .Tab)
+    }
+}
+
+class MoviesTab: TabItem {
+    var title: String {
+        return "Movies"
+    }
+    func handler() {
+        Kitchen.serve(xmlFile: "Catalog.xml", type: .Tab)
+    }
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    @IBAction func tabbarRecipe() {
+        let tabbar = KitchenTabBar(items: [
+            MoviesTab(),
+            MusicsTab()
+        ])
+        Kitchen.serve(recipe: tabbar)
     }
 
     @IBAction func openCatalogTemplate() {
