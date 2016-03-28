@@ -14,7 +14,6 @@ public enum PresentationType: Int {
     /// Mix of `.Tab` and `.Search`.
     /// Expected to be used when presenting SearchRecipe as a TabItem.
     case TabSearch = 4
-    case ModalWithLoadingIndicator = 5
     case DefaultWithLoadingIndicator = 6
 
     init(string: String) {
@@ -27,8 +26,6 @@ public enum PresentationType: Int {
             self = .Search
         case "tabsearch":
             self = .TabSearch
-        case "modalwithloadingindicator":
-            self = .ModalWithLoadingIndicator
         case "defaultwithloadingindicator":
             self = .DefaultWithLoadingIndicator
         default:

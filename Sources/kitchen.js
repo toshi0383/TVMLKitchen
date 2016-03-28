@@ -123,10 +123,10 @@ function makeDocument(resource) {
  */
 function showLoadingIndicatorForType(presentationType) {
     // guard
-    if ((presentationType == 5 || presentationType == 6) &&
+    if (presentationType == 6 &&
         !this.loadingIndicatorVisible) {
     } else {
-        return
+        return;
     }
 
     if (!this.loadingIndicator) {

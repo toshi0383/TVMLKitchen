@@ -55,18 +55,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openXMLString(sender: AnyObject!) {
-        Kitchen.serve(xmlString:XMLString.Catalog.description, type: .ModalWithLoadingIndicator)
+        Kitchen.serve(xmlString:XMLString.Catalog.description, type: .DefaultWithLoadingIndicator)
     }
 
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
-        Kitchen.serve(urlString: Sample.tvmlUrl, type: .ModalWithLoadingIndicator)
+        Kitchen.serve(urlString: Sample.tvmlUrl, type: .DefaultWithLoadingIndicator)
     }
 
     @IBAction func descriptiveAlertRecipe(sender: AnyObject) {
         let alert = DescriptiveAlertRecipe(
             title: Sample.title,
             description: Sample.description,
-            presentationType: .ModalWithLoadingIndicator
+            presentationType: .Modal
         )
         Kitchen.serve(recipe: alert)
     }
