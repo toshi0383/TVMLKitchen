@@ -23,28 +23,28 @@
               <grid>
                 <section>
                   <lockup
-                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/swift2.2/SampleRecipe/Catalog.xml"
                     presentationType="Default"
                   >
                     <img src="${this.BASEURL}music_1.lcr" width="308" height="308" />
                     <title class="whiteText">Title 1</title>
                   </lockup>
                   <lockup
-                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/swift2.2/SampleRecipe/Catalog.xml"
                     presentationType="DefaultWithLoadingIndicator"
                   >
                     <img src="${this.BASEURL}music_2.lcr" width="308" height="308" />
                     <title class="whiteText">Title 2</title>
                   </lockup>
                   <lockup
-                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/swift2.2/SampleRecipe/Catalog.xml"
                     presentationType="Modal"
                   >
                     <img src="${this.BASEURL}music_3.lcr" width="308" height="308" />
                     <title class="whiteText">Title 3</title>
                   </lockup>
                   <lockup
-                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/swift2.2/SampleRecipe/Catalog.xml"
                   >
                     <img src="${this.BASEURL}music_4.lcr" width="308" height="308" />
                     <title class="whiteText">Title 4</title>
