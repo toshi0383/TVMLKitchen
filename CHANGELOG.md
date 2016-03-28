@@ -1,4 +1,4 @@
-## Master
+## 0.7.0
 ##### Breaking
 * Add PresentationTypes with Loading Indicators  
   [Toshihiro Suzuki](https://github.com/toshi0383)
