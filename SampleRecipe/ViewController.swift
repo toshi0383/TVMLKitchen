@@ -10,7 +10,7 @@
 struct Sample {
     static let title = "TVMLKitchen"
     static let description = "Swift is a high-performance system programming language. It has a clean and modern syntax, offers seamless access to existing C and Objective-C code and frameworks, and is memory safe by default."
-    static let tvmlUrl = "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/swift2.2/SampleRecipe/Oneup.xml"
+    static let tvmlUrl = "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
 }
 // swiftlint:enable line_length
 
@@ -55,18 +55,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openXMLString(sender: AnyObject!) {
-        Kitchen.serve(xmlString:XMLString.Catalog.description, type: .ModalWithLoadingIndicator)
+        Kitchen.serve(xmlString:XMLString.Catalog.description, type: .DefaultWithLoadingIndicator)
     }
 
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
-        Kitchen.serve(urlString: Sample.tvmlUrl, type: .ModalWithLoadingIndicator)
+        Kitchen.serve(urlString: Sample.tvmlUrl, type: .DefaultWithLoadingIndicator)
     }
 
     @IBAction func descriptiveAlertRecipe(sender: AnyObject) {
         let alert = DescriptiveAlertRecipe(
             title: Sample.title,
             description: Sample.description,
-            presentationType: .ModalWithLoadingIndicator
+            presentationType: .Modal
         )
         Kitchen.serve(recipe: alert)
     }

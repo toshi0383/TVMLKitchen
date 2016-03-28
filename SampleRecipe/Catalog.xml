@@ -22,21 +22,29 @@
             <relatedContent>
               <grid>
                 <section>
-                  <lockup actionID="hello action A" playActionID="playActionIDhello">
+                  <lockup
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
+                    presentationType="Default"
+                  >
                     <img src="${this.BASEURL}music_1.lcr" width="308" height="308" />
                     <title class="whiteText">Title 1</title>
                   </lockup>
-                  <lockup actionID="hello action B">
+                  <lockup
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
+                    presentationType="DefaultWithLoadingIndicator"
+                  >
                     <img src="${this.BASEURL}music_2.lcr" width="308" height="308" />
                     <title class="whiteText">Title 2</title>
                   </lockup>
-                  <lockup actionID="hello action C">
+                  <lockup
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
+                    presentationType="Modal"
+                  >
                     <img src="${this.BASEURL}music_3.lcr" width="308" height="308" />
                     <title class="whiteText">Title 3</title>
                   </lockup>
                   <lockup
-                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Oneup.xml"
-                    presentationType="Modal"
+                    template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/navcon/SampleRecipe/Catalog.xml"
                   >
                     <img src="${this.BASEURL}music_4.lcr" width="308" height="308" />
                     <title class="whiteText">Title 4</title>
