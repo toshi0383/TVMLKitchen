@@ -77,6 +77,14 @@
                                     <action selector="tabbarRecipe" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="mt4-zp-uOg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BK-RC-Qjr">
+                                <rect key="frame" x="627" y="277" width="535" height="86"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="XML File from main bundle"/>
+                                <connections>
+                                    <action selector="openXMLFileFromMainBundle:" destination="SDq-1u-6R3" eventType="primaryActionTriggered" id="Z5y-MQ-UxJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="WKM-yi-Gm5" firstAttribute="centerX" secondItem="vhI-78-4Yk" secondAttribute="centerX" id="AR3-oL-pqG"/>

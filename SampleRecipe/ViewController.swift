@@ -58,6 +58,10 @@ class ViewController: UIViewController {
         Kitchen.serve(xmlString:XMLString.Catalog.description, type: .DefaultWithLoadingIndicator)
     }
 
+    @IBAction func openXMLFileFromMainBundle(sender: AnyObject!) {
+        Kitchen.serve(xmlFile: "Catalog.xml")
+    }
+
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
         Kitchen.serve(urlString: Sample.tvmlUrl, type: .DefaultWithLoadingIndicator)
     }
