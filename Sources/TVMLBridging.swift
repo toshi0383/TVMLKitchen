@@ -14,9 +14,13 @@ internal func openTVMLTemplateFromXMLString(xmlString: String, type: Presentatio
 internal func openTVMLTemplateFromXMLFile(xmlFile: String,
     type: PresentationType = .Default) throws
 {
-    let path = NSBundle.mainBundle().pathForResource(xmlFile, ofType: nil)!
+    let mainBundle = NSBundle.mainBundle()
+    let path = mainBundle.pathForResource(xmlFile, ofType: nil)!
     let xmlString = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
-    openTVMLTemplateFromXMLString(xmlString, type: type)
+    let mainBundlePath = mainBundle.bundleURL.absoluteString
+    let replaced = xmlString
+        .stringByReplacingOccurrencesOfString("((MAIN_BUNDLE_URL))", withString: mainBundlePath)
+    openTVMLTemplateFromXMLString(replaced, type: type)
 }
 
 internal func dismissTVMLModal() {

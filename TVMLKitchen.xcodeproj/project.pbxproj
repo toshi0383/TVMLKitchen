@@ -32,6 +32,7 @@
 		1FADCF971CA00D84009A40EA /* SearchRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADCF961CA00D84009A40EA /* SearchRecipeTests.swift */; };
 		1FADCF991CA00DC4009A40EA /* ExpectedSearchRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
+		1FB7EDAF1CE786010072E426 /* music_1.lcr in Resources */ = {isa = PBXBuildFile; fileRef = 1FB7EDAE1CE786010072E426 /* music_1.lcr */; };
 		1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */; };
 		1FF011181CA024F60068CDAA /* Cookbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF011031CA024F60068CDAA /* Cookbook.swift */; };
 		1FF0111A1CA024F60068CDAA /* kitchen.js in Resources */ = {isa = PBXBuildFile; fileRef = 1FF011051CA024F60068CDAA /* kitchen.js */; };
@@ -137,6 +138,7 @@
 		1FADCF961CA00D84009A40EA /* SearchRecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRecipeTests.swift; sourceTree = "<group>"; };
 		1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedSearchRecipe.xml; sourceTree = "<group>"; };
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
+		1FB7EDAE1CE786010072E426 /* music_1.lcr */ = {isa = PBXFileReference; lastKnownFileType = file; path = music_1.lcr; sourceTree = "<group>"; };
 		1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
 		1FF011031CA024F60068CDAA /* Cookbook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cookbook.swift; sourceTree = "<group>"; };
 		1FF011041CA024F60068CDAA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		1F32E54D1C30B79600F62E88 /* SampleRecipe */ = {
 			isa = PBXGroup;
 			children = (
+				1FB7EDAE1CE786010072E426 /* music_1.lcr */,
 				1F3066061C312CB8001E5DF0 /* img.jpg */,
 				1F32E5571C30B79600F62E88 /* Info.plist */,
 				1F32E54E1C30B79600F62E88 /* AppDelegate.swift */,
@@ -548,6 +551,7 @@
 				1F32E5561C30B79600F62E88 /* Assets.xcassets in Resources */,
 				1F3065BE1C30D8BD001E5DF0 /* Catalog.xml in Resources */,
 				1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */,
+				1FB7EDAF1CE786010072E426 /* music_1.lcr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

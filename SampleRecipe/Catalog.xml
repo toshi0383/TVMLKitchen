@@ -26,7 +26,7 @@
                     template="https://raw.githubusercontent.com/toshi0383/TVMLKitchen/swift2.2/SampleRecipe/Catalog.xml"
                     presentationType="Default"
                   >
-                    <img src="${this.BASEURL}music_1.lcr" width="308" height="308" />
+                    <img src="((MAIN_BUNDLE_URL))music_1.lcr" width="308" height="308" />
                     <title class="whiteText">Title 1</title>
                   </lockup>
                   <lockup

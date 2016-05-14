@@ -1,3 +1,9 @@
+## upcoming next
+##### New Feature
+* Replace ((MAIN_BUNDLE_URL)) with main bundle path on Kitchen.serve(xmlFile:)  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#83](https://github.com/toshi0383/TVMLKitchen/pull/83)
+
 ## 0.7.0
 ##### Breaking
 * Add PresentationTypes with Loading Indicators  
