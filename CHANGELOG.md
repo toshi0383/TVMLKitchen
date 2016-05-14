@@ -1,4 +1,4 @@
-## upcoming next
+## 0.7.1
 ##### New Feature
 * Replace ((MAIN_BUNDLE_URL)) with main bundle path on Kitchen.serve(xmlFile:)  
   [Toshihiro Suzuki](https://github.com/toshi0383)
