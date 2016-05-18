@@ -8,18 +8,18 @@
 
 import Foundation
 
-class LoadingRecipe: TemplateRecipeType {
+public class LoadingRecipe: TemplateRecipeType {
 
-    typealias Theme = EmptyTheme
-    var theme: Theme = EmptyTheme()
+    public typealias Theme = EmptyTheme
+    public var theme: Theme = EmptyTheme()
 
     let message: String
 
-    init(message: String = "Loading...") {
+    public init(message: String = "Loading...") {
         self.message = message
     }
 
-    var replacementDictionary: [String : String] {
+    public var replacementDictionary: [String : String] {
         return ["LOADING": message]
     }
 }
