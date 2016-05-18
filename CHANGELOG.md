@@ -1,3 +1,9 @@
+## 0.7.2
+##### New Feature
+* Make LoadingRecipe public  
+  [Lukas Kuster](https://github.com/lukaskuster)
+  [#88](https://github.com/toshi0383/TVMLKitchen/pull/88)
+
 ## 0.7.1
 ##### New Feature
 * Replace ((MAIN_BUNDLE_URL)) with main bundle path on Kitchen.serve(xmlFile:)  
