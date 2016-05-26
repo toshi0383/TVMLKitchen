@@ -22,15 +22,6 @@ public struct KitchenTabBar: TemplateRecipeType {
 
     public let theme = EmptyTheme()
 
-    /// The shared instance of the tab bar.
-    /// Only one tab bar should be created per app.
-    @available(*, deprecated, message="TabBar is not singleton anymore. Will be removed in next release.")
-    public static var sharedBar = KitchenTabBar() {
-        didSet {
-            Kitchen.setTabBarHandler(sharedBar.tabChanged)
-        }
-    }
-
     /// The items that are displayed in the tab bar.
     /// The `displayTabBar` method will automatically be called.
     public var items: [TabItem]! {

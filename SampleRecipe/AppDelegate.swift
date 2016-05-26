@@ -66,10 +66,11 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
     }
 
     Kitchen.prepare(cookbook)
-    KitchenTabBar.sharedBar.items = [
-        SearchTab(),
-        CatalogTab()
-    ]
+    let tabbar = KitchenTabBar(items:
+        [SearchTab(), CatalogTab()]
+    )
+
+    Kitchen.serve(recipe: tabbar)
 
     return true
 }

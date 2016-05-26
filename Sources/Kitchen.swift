@@ -271,68 +271,6 @@ extension Kitchen {
         return true
     }
 
-    /**
-     create TVApplicationControllerContext using launchOptions
-
-     Supposed to be called in application:didFinishedLaunchingWithOptions:
-     in UIApplicationDelegate of your @UIApplicationMain .
-
-     - parameter launchOptions: launchOptions
-     - parameter evaluateAppJavaScriptInContext:
-                 the closure to inject functions or a exceptionHandler into JSContext
-     - parameter actionIDHandler: a handler for "select" event
-     - parameter playActionIDHandler: a handler fo "play" event
-     - parameter onError: the Error handler that gets called when any errors occured
-                 in Kitchen(both JS and Swift context)
-     - returns:  If launch process was successfully or not.
-     */
-    @available(*, deprecated, message="Use prepare(cookbook:) instead")
-    public static func prepare(launchOptions: [NSObject: AnyObject]?,
-        evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler? = nil,
-        actionIDHandler: KitchenActionIDHandler? = nil,
-        playActionIDHandler: KitchenActionIDHandler? = nil,
-        onError kitchenErrorHandler: KitchenErrorHandler? = defaultErrorHandler) -> Bool
-    {
-        sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        sharedKitchen.evaluateAppJavaScriptInContext = evaluateAppJavaScriptInContext
-
-        /// Create the TVApplicationControllerContext
-        let appControllerContext = TVApplicationControllerContext()
-
-        let javaScriptURL = NSBundle(forClass: self).URLForResource("kitchen", withExtension: "js")!
-        appControllerContext.javaScriptApplicationURL = javaScriptURL
-        appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
-
-        /// Cutting `kitchen.js` off
-        let TVBaseURL = javaScriptURL.URLByDeletingLastPathComponent
-
-        /// Define framework bundle URL
-        appControllerContext.launchOptions["BASEURL"] = TVBaseURL!.absoluteString
-        let info = NSBundle(forClass: self).infoDictionary!
-        let bundleid = info[String(kCFBundleIdentifierKey)]!
-        appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
-
-        /// Define mainBundle URL
-        mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
-        appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
-
-        if let launchOptions = launchOptions as? [String: AnyObject] {
-            for (kind, value) in launchOptions {
-                appControllerContext.launchOptions[kind] = value
-            }
-        }
-
-        sharedKitchen.appController = TVApplicationController(context: appControllerContext,
-            window: sharedKitchen.window, delegate: sharedKitchen)
-
-        /// Must be place this statement after appController is initialized
-        sharedKitchen.kitchenErrorHandler = kitchenErrorHandler
-        sharedKitchen.actionIDHandler = actionIDHandler
-        sharedKitchen.playActionIDHandler = playActionIDHandler
-
-        return true
-    }
-
     /// Calls TVApplicationController.stop()
     public static func stop() {
         sharedKitchen.appController.stop()
@@ -424,12 +362,5 @@ extension Kitchen: TVApplicationControllerDelegate {
             forKeyedSubscript: "tabBarHandler")
 
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
-    }
-}
-
-extension Kitchen {
-    @available(*, deprecated, message="Added for backward compatibility. Will be removed in next release.")
-    internal static func setTabBarHandler(handler: KitchenTabItemHandler) {
-        sharedKitchen.cookbook.tabChangedHandler = handler
     }
 }
