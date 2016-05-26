@@ -23,6 +23,11 @@ internal func openTVMLTemplateFromXMLFile(xmlFile: String,
     openTVMLTemplateFromXMLString(replaced, type: type)
 }
 
+internal func _reloadTab(index: Int) {
+    let js = "reloadTab(\(index))"
+    evaluateInTVMLContext(js)
+}
+
 internal func dismissTVMLModal() {
     let js = "dismissModal()"
     evaluateInTVMLContext(js)

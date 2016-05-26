@@ -106,6 +106,10 @@ extension Kitchen {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
+    public static func reloadTab(atIndex index: Int) {
+        _reloadTab(index)
+    }
+
     public static func dismissModal() {
         dismissTVMLModal()
     }
