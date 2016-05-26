@@ -106,7 +106,11 @@ extension Kitchen {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
-    public static func reloadTab(atIndex index: Int, withXmlFile xmlFile: String) {
+    public static func reloadTab<R: RecipeType>(atIndex index: Int, recipe: R) {
+        _reloadTab(atIndex: index, xmlString: recipe.xmlString)
+    }
+
+    public static func reloadTab(atIndex index: Int, xmlFile: String) {
         do {
             _reloadTab(atIndex: index, xmlString: try xmlStringFromMainBundle(xmlFile))
         } catch let error as NSError {
