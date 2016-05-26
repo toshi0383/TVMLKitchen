@@ -23,11 +23,11 @@ class MusicsTab: TabItem {
         return "Musics"
     }
     func handler() {
+        Kitchen.serve(xmlFile: "Catalog.xml", type: .Tab)
         if !presented {
-            Kitchen.serve(xmlFile: "Catalog.xml", type: .Tab)
             presented = true
         } else {
-            Kitchen.reloadTab(atIndex: 1)
+            Kitchen.reloadTab(atIndex: 0, withXmlFile: "Oneup.xml")
         }
     }
 }
