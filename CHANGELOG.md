@@ -1,8 +1,13 @@
-## master
+## 0.8.0
 ##### New Feature
 * Tab Reloading  
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#90](https://github.com/toshi0383/TVMLKitchen/pull/90)
+
+##### Breaking
+* Remove deprecated APIs  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#91](https://github.com/toshi0383/TVMLKitchen/pull/91)
 
 ## 0.7.2
 ##### New Feature
