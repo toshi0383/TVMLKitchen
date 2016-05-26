@@ -18,11 +18,17 @@ import UIKit
 import TVMLKitchen
 
 class MusicsTab: TabItem {
+    private var presented = false
     var title: String {
         return "Musics"
     }
     func handler() {
-        Kitchen.serve(xmlFile: "Oneup.xml", type: .Tab)
+        if !presented {
+            Kitchen.serve(xmlFile: "Catalog.xml", type: .Tab)
+            presented = true
+        } else {
+            Kitchen.reloadTab(atIndex: 1)
+        }
     }
 }
 
