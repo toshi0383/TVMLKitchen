@@ -106,6 +106,34 @@ extension Kitchen {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
+    public static func reloadTab<R: RecipeType>(atIndex index: Int, recipe: R) {
+        _reloadTab(atIndex: index, xmlString: recipe.xmlString)
+    }
+
+    public static func reloadTab(atIndex index: Int, xmlFile: String) {
+        do {
+            _reloadTab(atIndex: index, xmlString: try xmlStringFromMainBundle(xmlFile))
+        } catch let error as NSError {
+            sharedKitchen.kitchenErrorHandler?(error)
+        }
+    }
+
+    public static func reloadTab(atIndex index: Int, urlString: String) {
+        sharedKitchen.sendRequest(urlString) {
+            result in
+            switch result {
+            case .Success(let xmlString):
+                _reloadTab(atIndex: index, xmlString: xmlString)
+            case .Failure(let error):
+                sharedKitchen.kitchenErrorHandler?(error)
+            }
+        }
+    }
+
+    public static func reloadTab(atIndex index: Int, xmlString: String) {
+        _reloadTab(atIndex: index, xmlString: xmlString)
+    }
+
     public static func dismissModal() {
         dismissTVMLModal()
     }

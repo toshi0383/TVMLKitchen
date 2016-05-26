@@ -85,6 +85,20 @@ let tabbar = KitchenTabBar(items:[
 Kitchen.serve(recipe: tabbar)
 ````
 
+Reload tab using `reloadTab(atIndex:_:)` method.
+
+```swift
+// reload with xmlFile
+Kitchen.reloadTab(atIndex: 0, xmlFile: "Oneup.xml")
+
+// reload with xmlString
+Kitchen.reloadTab(atIndex: 0, urlString: Sample.tvmlUrl)
+
+// reload with Recipe
+let search = MySearchRecipe()
+Kitchen.reloadTab(atIndex: 0, recipe: search)
+```
+
 # Advanced setup
 
 ## Add error handlers

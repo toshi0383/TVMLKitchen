@@ -5,6 +5,7 @@
 
 var parser;
 var currentTab;
+var tabItemDictionary;
 
 /// Presenters
 function defaultPresenter(xml) {
@@ -97,6 +98,7 @@ function load(event) {
     // If this is a menu item then trigger the relevent handler
     if(menuIndex){
         currentTab = ele;
+        tabItemDictionary[menuIndex] = ele;
         tabBarHandler(menuIndex);
     }
     
@@ -195,7 +197,17 @@ function openTemplateFromXMLString(xmlString, presentationType) {
     presenterForType(presentationType).call(this, doc);
 }
 
+function reloadTab(atIndex, xmlString) {
+    var tabItemToReload = tabItemDictionary[atIndex];
+    var feature = currentTab.parentNode.getFeature("MenuBarDocument");
+    if (feature) {
+        var doc = makeDocument(xmlString);
+        feature.setDocument(doc, tabItemToReload);
+    }
+}
+
 App.onLaunch = function(options) {
     App.options = options
     parser = new DOMParser();
+    tabItemDictionary = {};
 }

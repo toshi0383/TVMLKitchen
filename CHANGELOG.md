@@ -1,3 +1,9 @@
+## master
+##### New Feature
+* Tab Reloading  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#90](https://github.com/toshi0383/TVMLKitchen/pull/90)
+
 ## 0.7.2
 ##### New Feature
 * Make LoadingRecipe public  
