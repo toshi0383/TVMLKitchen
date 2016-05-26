@@ -118,7 +118,7 @@ extension Kitchen {
         }
     }
 
-    public static func reloadTab(atIndex index: Int, withUrlString urlString: String) {
+    public static func reloadTab(atIndex index: Int, urlString: String) {
         sharedKitchen.sendRequest(urlString) {
             result in
             switch result {
@@ -130,7 +130,7 @@ extension Kitchen {
         }
     }
 
-    public static func reloadTab(atIndex index: Int, withXmlString xmlString: String) {
+    public static func reloadTab(atIndex index: Int, xmlString: String) {
         _reloadTab(atIndex: index, xmlString: xmlString)
     }
 

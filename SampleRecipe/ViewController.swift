@@ -27,7 +27,10 @@ class MusicsTab: TabItem {
         if !presented {
             presented = true
         } else {
-            Kitchen.reloadTab(atIndex: 0, withXmlFile: "Oneup.xml")
+//            Kitchen.reloadTab(atIndex: 0, xmlFile: "Oneup.xml")
+//            Kitchen.reloadTab(atIndex: 0, urlString: Sample.tvmlUrl)
+            let search = MySearchRecipe()
+            Kitchen.reloadTab(atIndex: 0, recipe: search)
         }
     }
 }
