@@ -11,20 +11,25 @@ internal func openTVMLTemplateFromXMLString(xmlString: String, type: Presentatio
     evaluateInTVMLContext(js)
 }
 
-internal func openTVMLTemplateFromXMLFile(xmlFile: String,
-    type: PresentationType = .Default) throws
-{
+internal func xmlStringFromMainBundle(xmlFile: String) throws -> String {
     let mainBundle = NSBundle.mainBundle()
     let path = mainBundle.pathForResource(xmlFile, ofType: nil)!
     let xmlString = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
     let mainBundlePath = mainBundle.bundleURL.absoluteString
     let replaced = xmlString
         .stringByReplacingOccurrencesOfString("((MAIN_BUNDLE_URL))", withString: mainBundlePath)
-    openTVMLTemplateFromXMLString(replaced, type: type)
+    return replaced
 }
 
-internal func _reloadTab(index: Int) {
-    let js = "reloadTab(\(index))"
+internal func openTVMLTemplateFromXMLFile(xmlFile: String,
+    type: PresentationType = .Default) throws
+{
+    let xmlString = try xmlStringFromMainBundle(xmlFile)
+    openTVMLTemplateFromXMLString(xmlString, type: type)
+}
+
+internal func _reloadTab(atIndex index: Int, xmlString: String) {
+    let js = "reloadTab(\(index), `\(xmlString)`);"
     evaluateInTVMLContext(js)
 }
 

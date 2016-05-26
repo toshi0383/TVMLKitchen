@@ -197,12 +197,12 @@ function openTemplateFromXMLString(xmlString, presentationType) {
     presenterForType(presentationType).call(this, doc);
 }
 
-function reloadTab(atIndex) {
+function reloadTab(atIndex, withXmlString) {
     var tabItemToReload = tabItemDictionary[atIndex];
     var feature = currentTab.parentNode.getFeature("MenuBarDocument");
     if (feature) {
-        var docToReload = feature.getDocument(tabItemToReload);
-        feature.setDocument(docToReload, tabItemToReload);
+        var doc = makeDocument(withXmlString);
+        feature.setDocument(doc, tabItemToReload);
     }
 }
 
