@@ -1,3 +1,9 @@
+## 0.8.1
+##### Bugfix
+* Reloaded documents now respond with actions.  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#93](https://github.com/toshi0383/TVMLKitchen/pull/93)
+
 ## 0.8.0
 ##### New Feature
 * Tab Reloading  
