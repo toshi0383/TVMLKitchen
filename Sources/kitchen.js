@@ -202,6 +202,10 @@ function reloadTab(atIndex, xmlString) {
     var feature = currentTab.parentNode.getFeature("MenuBarDocument");
     if (feature) {
         var doc = makeDocument(xmlString);
+        doc.addEventListener("select", load.bind(this));
+        doc.addEventListener("highlight", highlight.bind(this));
+        doc.addEventListener("holdselect", holdselect.bind(this));
+        doc.addEventListener("play", play.bind(this));
         feature.setDocument(doc, tabItemToReload);
     }
 }
