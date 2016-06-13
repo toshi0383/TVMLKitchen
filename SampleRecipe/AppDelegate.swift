@@ -13,7 +13,7 @@ import JavaScriptCore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func application(application: UIApplication,
+    func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         _ = prepareMyKitchen(launchOptions)
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
+private func prepareMyKitchen(_ launchOptions: [NSObject: AnyObject]?) -> Bool
 {
     let cookbook = Cookbook(launchOptions: launchOptions)
     cookbook.evaluateAppJavaScriptInContext = {appController, jsContext in
@@ -40,7 +40,7 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
     }
     cookbook.actionIDHandler = { actionID in
         let identifier = actionID // parse action ID here
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             openViewController(identifier)
         }
     }
@@ -54,12 +54,12 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
     cookbook.responseObjectHandler = { response in
         /// Save cookies
         if let fields = response.allHeaderFields as? [String: String],
-            let url = response.URL
+            let url = response.url
         {
-            let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: url)
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: url)
             for c in cookies {
-                NSHTTPCookieStorage.sharedCookieStorageForGroupContainerIdentifier(
-                    "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
+                HTTPCookieStorage.sharedCookieStorage(
+                    forGroupContainerIdentifier: "group.jp.toshi0383.tvmlkitchen.samplerecipe").setCookie(c)
             }
         }
         return true
@@ -78,7 +78,7 @@ private func prepareMyKitchen(launchOptions: [NSObject: AnyObject]?) -> Bool
 struct SearchTab: TabItem {
     let title = "Search"
     func handler() {
-        let search = MySearchRecipe(type: .TabSearch)
+        let search = MySearchRecipe(type: .tabSearch)
         Kitchen.serve(recipe: search)
     }
 }
@@ -90,22 +90,22 @@ struct CatalogTab: TabItem {
     }
     private var catalog: CatalogRecipe {
         let banner = "Movie"
-        let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
+        let thumbnailUrl = Bundle.main().urlForResource("img",
             withExtension: "jpg")!.absoluteString
         let actionID = "/title?titleId=1234"
         let (width, height) = (250, 376)
         let templateURL: String? = nil
-        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
+        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl!, actionID, templateURL, width, height)
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
         var catalog = CatalogRecipe(banner: banner, sections: (0...10).map{_ in section1})
-        catalog.presentationType = .Tab
+        catalog.presentationType = .tab
         return catalog
     }
 
 }
 
-private func openViewController(identifier: String) {
-    let sb = UIStoryboard(name: "ViewController", bundle: NSBundle.mainBundle())
+private func openViewController(_ identifier: String) {
+    let sb = UIStoryboard(name: "ViewController", bundle: Bundle.main())
     let vc = sb.instantiateInitialViewController()!
     Kitchen.navigationController.pushViewController(vc, animated: true)
 }

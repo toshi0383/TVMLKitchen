@@ -38,16 +38,16 @@ public struct KitchenTabBar: TemplateRecipeType {
 
     /// Constructed string from the `items` array.
     public var template: String {
-        let url = KitchenTabBar.bundle.URLForResource(templateFileName, withExtension: "xml")!
+        let url = KitchenTabBar.bundle.urlForResource(templateFileName, withExtension: "xml")!
         // swiftlint:disable:next force_try
-        let xml = try! String(contentsOfURL: url)
+        let xml = try! String(contentsOf: url)
         var string = ""
-        for (index, item) in items.enumerate() {
+        for (index, item) in items.enumerated() {
             string += "<menuItem menuIndex=\"\(index)\">\n"
             string += "<title>\(item.title)</title>\n"
             string += "</menuItem>\n"
         }
-        return xml.stringByReplacingOccurrencesOfString("{{menuItems}}", withString: string)
+        return xml.replacingOccurrences(of: "{{menuItems}}", with: string)
     }
 
     /**
@@ -63,7 +63,7 @@ public struct KitchenTabBar: TemplateRecipeType {
 
      - parameter index: The new selected index
      */
-    func tabChanged(index: Int) {
+    func tabChanged(_ index: Int) {
         items[index].handler()
     }
 

@@ -18,9 +18,9 @@ public class SearchRecipe: SearchRecipeType {
     public let theme = EmptyTheme()
 
     /// Presentation type is defined in the recipe to keep things consistent.
-    public var presentationType = PresentationType.Search
+    public var presentationType = PresentationType.search
 
-    public init(type: PresentationType = .Search) {
+    public init(type: PresentationType = .search) {
         self.presentationType = type
     }
 
@@ -29,7 +29,7 @@ public class SearchRecipe: SearchRecipeType {
         return "SearchRecipe"
     }
 
-    public func filterSearchText(text: String, callback: (String -> Void)) {
+    public func filterSearchText(_ text: String, callback: ((String) -> Void)) {
         fatalError("Must be overridden.")
     }
 

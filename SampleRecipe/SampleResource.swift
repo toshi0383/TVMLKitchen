@@ -16,9 +16,9 @@ extension XMLString: CustomStringConvertible {
     var description: String {
         switch self {
         case .Catalog:
-            let path = NSBundle.mainBundle().pathForResource("Oneup", ofType: "xml")!
+            let path = Bundle.main().pathForResource("Oneup", ofType: "xml")!
             // swiftlint:disable force_try
-            return try! NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
+            return try! NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue) as String
             // swiftlint:enable force_try
         }
     }

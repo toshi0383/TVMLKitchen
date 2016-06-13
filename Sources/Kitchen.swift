@@ -9,9 +9,9 @@
 @_exported import TVMLKit
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
-public typealias KitchenErrorHandler = NSError -> Void
-public typealias KitchenActionIDHandler = (String -> Void)
-public typealias KitchenTabItemHandler = (Int -> Void)
+public typealias KitchenErrorHandler = (NSError) -> Void
+public typealias KitchenActionIDHandler = ((String) -> Void)
+public typealias KitchenTabItemHandler = ((Int) -> Void)
 
 let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
 
@@ -23,14 +23,14 @@ public class Kitchen: NSObject {
 
     private var kitchenErrorHandler: KitchenErrorHandler? {
         didSet {
-            Kitchen.appController.evaluateInJavaScriptContext({jsContext in
-                let errorHandler: @convention(block) String -> Void =
+            Kitchen.appController.evaluate(inJavaScriptContext: {jsContext in
+                let errorHandler: @convention(block) (String) -> Void =
                 { [unowned self] (message: String) in
                     let error = NSError(domain: kitchenErrorDomain,
                         code: 1, userInfo: [NSLocalizedDescriptionKey:message])
                     self.kitchenErrorHandler?(error)
                 }
-                jsContext.setObject(unsafeBitCast(errorHandler, AnyObject.self),
+                jsContext.setObject(unsafeBitCast(errorHandler, to: AnyObject.self),
                     forKeyedSubscript: "kitchenErrorHandler")
             }, completion: nil)
         }
@@ -39,11 +39,11 @@ public class Kitchen: NSObject {
     private static let defaultErrorHandler: KitchenErrorHandler = { error in
         let alert = UIAlertController(title: "Oops, something's wrong.",
             message: "\(error.localizedDescription)",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+            preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(ok)
         main {
-            Kitchen.navigationController.presentViewController(alert, animated: true, completion: nil)
+            Kitchen.navigationController.present(alert, animated: true, completion: nil)
         }
     }
 
@@ -58,7 +58,7 @@ public class Kitchen: NSObject {
     public static var mainBundlePath: String!
 
     override init() {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window = UIWindow(frame: UIScreen.main().bounds)
         super.init()
     }
 
@@ -68,11 +68,11 @@ public class Kitchen: NSObject {
 // MARK: Public API (serve)
 extension Kitchen {
 
-    public static func serve(xmlString xmlString: String, type: PresentationType = .Default) {
+    public static func serve(xmlString: String, type: PresentationType = .default) {
         openTVMLTemplateFromXMLString(xmlString, type: type)
     }
 
-    public static func serve(xmlFile xmlFile: String, type: PresentationType = .Default) {
+    public static func serve(xmlFile: String, type: PresentationType = .default) {
         do {
             try openTVMLTemplateFromXMLFile(xmlFile, type: type)
         } catch let error as NSError {
@@ -80,23 +80,23 @@ extension Kitchen {
         }
     }
 
-    public static func serve(urlString urlString: String, type: PresentationType = .Default) {
-        Kitchen.appController.evaluateInJavaScriptContext({
+    public static func serve(urlString: String, type: PresentationType = .default) {
+        Kitchen.appController.evaluate(inJavaScriptContext: {
             context in
             let js = "showLoadingIndicatorForType(\(type.rawValue))"
             context.evaluateScript(js)
         }, completion: nil)
         sharedKitchen.sendRequest(urlString) { result in
             switch result {
-            case .Success(let xmlString):
+            case .success(let xmlString):
                 openTVMLTemplateFromXMLString(xmlString, type: type)
-            case .Failure(let error):
+            case .failure(let error):
                 sharedKitchen.kitchenErrorHandler?(error)
             }
         }
     }
 
-    public static func serve<R: RecipeType>(recipe recipe: R) {
+    public static func serve<R: RecipeType>(recipe: R) {
         if let recipe = recipe as? SearchRecipe {
             sharedKitchen.cookbook.searchRecipe = recipe
         }
@@ -122,9 +122,9 @@ extension Kitchen {
         sharedKitchen.sendRequest(urlString) {
             result in
             switch result {
-            case .Success(let xmlString):
+            case .success(let xmlString):
                 _reloadTab(atIndex: index, xmlString: xmlString)
-            case .Failure(let error):
+            case .failure(let error):
                 sharedKitchen.kitchenErrorHandler?(error)
             }
         }
@@ -138,8 +138,8 @@ extension Kitchen {
         dismissTVMLModal()
     }
 
-    public static func bundle() -> NSBundle {
-        return NSBundle(forClass: self)
+    public static func bundle() -> Bundle {
+        return Bundle(for: self)
     }
 }
 
@@ -147,22 +147,22 @@ extension Kitchen {
 // MARK: Network Request
 
 internal enum Result<T, E> {
-    case Success(T)
-    case Failure(E)
+    case success(T)
+    case failure(E)
 }
 
 extension Kitchen {
-    internal func sendRequest(urlString: String, responseHandler: Result<String, NSError> -> ()) {
-        guard let url = NSURL(string: urlString) else {
+    internal func sendRequest(_ urlString: String, responseHandler: (Result<String, NSError>) -> ()) {
+        guard let url = URL(string: urlString) else {
             print("Invalid URL")
-            responseHandler(.Failure(
+            responseHandler(.failure(
                 NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
             ))
             return
         }
 
         /// Create Request
-        let req = NSMutableURLRequest(URL: url)
+        let req = NSMutableURLRequest(url: url)
 
         /// Custom Headers
         for (k, v) in cookbook.httpHeaders {
@@ -170,14 +170,17 @@ extension Kitchen {
         }
 
         /// Session Handler
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let task = session.dataTaskWithRequest(req) {[unowned self] data, res, error in
+        let session = URLSession(configuration: URLSessionConfiguration.default())
+
+        let request: URLRequest = req as URLRequest
+        let task = session.dataTask(with: request) {
+            [unowned self] data, res, error in
             if let error = error {
-                responseHandler(.Failure(error))
+                responseHandler(.failure(error))
             }
 
             /// Call user-defined responseObjectHander if no errors.
-            if let res = res as? NSHTTPURLResponse,
+            if let res = res as? HTTPURLResponse,
                 let resume = self.cookbook.responseObjectHandler?(res)
                 where resume == false
             {
@@ -185,11 +188,11 @@ extension Kitchen {
             }
 
             if let data = data,
-                let xml = NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+                let xml = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
             {
-                responseHandler(Result.Success(xml))
+                responseHandler(Result.success(xml))
             } else {
-                responseHandler(Result.Failure(
+                responseHandler(Result.failure(
                     NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
                 ))
             }
@@ -229,29 +232,29 @@ extension Kitchen {
      - parameter cookbook: a Cookbook configuration object
      - returns:  If launch process was successfully or not.
     */
-    public static func prepare(cookbook: Cookbook) -> Bool {
+    public static func prepare(_ cookbook: Cookbook) -> Bool {
         sharedKitchen.cookbook = cookbook
-        sharedKitchen.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        sharedKitchen.window = UIWindow(frame: UIScreen.main().bounds)
         sharedKitchen.evaluateAppJavaScriptInContext = cookbook.evaluateAppJavaScriptInContext
 
         /// Create the TVApplicationControllerContext
         let appControllerContext = TVApplicationControllerContext()
 
-        let javaScriptURL = NSBundle(forClass: self).URLForResource("kitchen", withExtension: "js")!
+        let javaScriptURL = Bundle(for: self).urlForResource("kitchen", withExtension: "js")!
         appControllerContext.javaScriptApplicationURL = javaScriptURL
         appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
 
         /// Cutting `kitchen.js` off
-        let TVBaseURL = javaScriptURL.URLByDeletingLastPathComponent
+        let TVBaseURL = try! javaScriptURL.deletingLastPathComponent()
 
         /// Define framework bundle URL
-        appControllerContext.launchOptions["BASEURL"] = TVBaseURL!.absoluteString
-        let info = NSBundle(forClass: self).infoDictionary!
+        appControllerContext.launchOptions["BASEURL"] = TVBaseURL.absoluteString
+        let info = Bundle(for: self).infoDictionary!
         let bundleid = info[String(kCFBundleIdentifierKey)]!
         appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
 
         /// Define mainBundle URL
-        mainBundlePath = NSBundle.mainBundle().bundleURL.absoluteString
+        mainBundlePath = Bundle.main().bundleURL.absoluteString
         appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
 
         if let launchOptions = cookbook.launchOptions as? [String: AnyObject] {
@@ -281,38 +284,38 @@ extension Kitchen {
 // MARK: TVApplicationControllerDelegate
 extension Kitchen: TVApplicationControllerDelegate {
 
-    public func appController(appController: TVApplicationController,
-        didFinishLaunchingWithOptions options: [String: AnyObject]?)
+    public func appController(_ appController: TVApplicationController,
+        didFinishLaunching options: [String: AnyObject]?)
     {
     }
 
-    public func appController(appController: TVApplicationController,
-        didFailWithError error: NSError)
+    public func appController(_ appController: TVApplicationController,
+        didFail error: NSError)
     {
         self.kitchenErrorHandler?(error)
     }
 
-    public func appController(appController: TVApplicationController,
-        didStopWithOptions options: [String: AnyObject]?)
+    public func appController(_ appController: TVApplicationController,
+        didStop options: [String: AnyObject]?)
     {
     }
 
-    public func appController(appController: TVApplicationController,
-        evaluateAppJavaScriptInContext jsContext: JSContext)
+    public func appController(_ appController: TVApplicationController,
+        evaluateAppJavaScriptIn jsContext: JSContext)
     {
         if let playActionIDHandler = playActionIDHandler {
-            let playActionIDHandler: @convention(block) String -> Void = { actionID in
+            let playActionIDHandler: @convention(block) (String) -> Void = { actionID in
                 playActionIDHandler(actionID)
             }
-            jsContext.setObject(unsafeBitCast(playActionIDHandler, AnyObject.self),
+            jsContext.setObject(unsafeBitCast(playActionIDHandler, to: AnyObject.self),
                 forKeyedSubscript: "playActionIDHandler")
         }
 
         if let actionIDHandler = actionIDHandler {
-            let actionIDHandler: @convention(block) String -> Void = { actionID in
+            let actionIDHandler: @convention(block) (String) -> Void = { actionID in
                 actionIDHandler(actionID)
             }
-            jsContext.setObject(unsafeBitCast(actionIDHandler, AnyObject.self),
+            jsContext.setObject(unsafeBitCast(actionIDHandler, to: AnyObject.self),
                 forKeyedSubscript: "actionIDHandler")
         }
 
@@ -321,44 +324,44 @@ extension Kitchen: TVApplicationControllerDelegate {
         { (url, presentationType) -> () in
             self.sendRequest(url) {[unowned self] result in
                 switch result {
-                case .Success(let xmlString):
+                case .success(let xmlString):
                     openTVMLTemplateFromXMLString(
                         xmlString,
-                        type: PresentationType(string: presentationType) ?? .Default
+                        type: PresentationType(string: presentationType) ?? .default
                     )
-                case .Failure(let error):
+                case .failure(let error):
                     self.cookbook.onError?(error)
                 }
             }
         }
-        jsContext.setObject(unsafeBitCast(loadTemplateFromURL, AnyObject.self),
+        jsContext.setObject(unsafeBitCast(loadTemplateFromURL, to: AnyObject.self),
             forKeyedSubscript: "loadTemplateFromURL")
 
         let filterSearchTextBlock: @convention(block) (String, JSValue) -> () =
         {[unowned self] (text, callback) in
             self.cookbook.searchRecipe?.filterSearchText(text) { string in
                 if callback.isObject {
-                    callback.callWithArguments([string])
+                    callback.call(withArguments: [string])
                 }
             }
         }
-        jsContext.setObject(unsafeBitCast(filterSearchTextBlock, AnyObject.self),
+        jsContext.setObject(unsafeBitCast(filterSearchTextBlock, to: AnyObject.self),
             forKeyedSubscript: "filterSearchText")
 
-        let loadingTemplate: @convention(block) Void -> String =
+        let loadingTemplate: @convention(block) (Void) -> String =
         {
             return LoadingRecipe().xmlString
         }
-        jsContext.setObject(unsafeBitCast(loadingTemplate, AnyObject.self),
+        jsContext.setObject(unsafeBitCast(loadingTemplate, to: AnyObject.self),
             forKeyedSubscript: "loadingTemplate")
 
 
         // Add the tab bar handler
-        let tabBarHandler: @convention(block) Int -> Void = {
+        let tabBarHandler: @convention(block) (Int) -> Void = {
             index in
             self.cookbook.tabChangedHandler?(index)
         }
-        jsContext.setObject(unsafeBitCast(tabBarHandler, AnyObject.self),
+        jsContext.setObject(unsafeBitCast(tabBarHandler, to: AnyObject.self),
             forKeyedSubscript: "tabBarHandler")
 
         self.evaluateAppJavaScriptInContext?(appController, jsContext)

@@ -28,7 +28,7 @@ public class AlertRecipe: TemplateRecipeType {
 
     public init(title: String, description: String,
         buttons: [AlertButton] = [],
-        presentationType: PresentationType = .Modal) {
+        presentationType: PresentationType = .modal) {
         self.title = title
         self.description = description
         self.buttons = buttons
@@ -42,7 +42,7 @@ public class AlertRecipe: TemplateRecipeType {
             string += "</button>"
             return string
         }
-        return mapped.joinWithSeparator("")
+        return mapped.joined(separator: "")
     }
 
     public var replacementDictionary: [String: String] {

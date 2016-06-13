@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias ResponseObjectHandler = NSHTTPURLResponse -> Bool
+public typealias ResponseObjectHandler = (HTTPURLResponse) -> Bool
 
 public class Cookbook {
 

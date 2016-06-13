@@ -42,7 +42,7 @@ public protocol TemplateRecipeType: RecipeType {
 
     /// The Bundle in which the corresponding Template file.
     /// Defaults to the bundle of this class/struct/enum.
-    static var bundle: NSBundle {get}
+    static var bundle: Bundle {get}
 }
 
 public protocol SearchRecipeType: TemplateRecipeType {
@@ -51,7 +51,7 @@ public protocol SearchRecipeType: TemplateRecipeType {
     /// - parameter text: keyword
     /// - parameter callback: pass the result template xmlString.
     /// - SeeAlso: SampleRecipe.MySearchRecipe.swift, SearchResult.xml
-    func filterSearchText(text: String, callback: (String -> Void))
+    func filterSearchText(_ text: String, callback: ((String) -> Void))
 }
 
 // MARK: - Default Implementations
@@ -62,13 +62,13 @@ extension RecipeType {
     }
 
     public var presentationType: PresentationType {
-        return .Default
+        return .default
     }
 }
 
 extension TemplateRecipeType {
 
-    public static var bundle: NSBundle {
+    public static var bundle: Bundle {
         return Kitchen.bundle()
     }
 
@@ -77,22 +77,22 @@ extension TemplateRecipeType {
     }
 
     public var base: String {
-        let url = Kitchen.bundle().URLForResource("Base", withExtension: "xml")!
+        let url = Kitchen.bundle().urlForResource("Base", withExtension: "xml")!
         // swiftlint:disable:next force_try
-        let xml = try! String(contentsOfURL: url)
+        let xml = try! String(contentsOf: url)
         return xml
     }
 
     public var template: String {
-        let url = Self.bundle.URLForResource(templateFileName, withExtension: "xml")!
+        let url = Self.bundle.urlForResource(templateFileName, withExtension: "xml")!
         // swiftlint:disable:next force_try
-        let xml = try! String(contentsOfURL: url)
+        let xml = try! String(contentsOf: url)
         return xml
     }
 
     public var templateFileName: String {
         return String(self.dynamicType)
-            .componentsSeparatedByString(".")
+            .components(separatedBy: ".")
             .last!
     }
 }
@@ -106,13 +106,13 @@ extension TemplateRecipeType where Self.Theme: ThemeType {
 
         // Replace template part.
         result = result
-            .stringByReplacingOccurrencesOfString("{{template}}", withString: template)
-            .stringByReplacingOccurrencesOfString("{{style}}", withString: theme.style)
+            .replacingOccurrences(of: "{{template}}", with: template)
+            .replacingOccurrences(of: "{{style}}", with: theme.style)
 
         // Replace user-defined variables.
         for (k, v) in replacementDictionary {
-            result = result.stringByReplacingOccurrencesOfString(
-                "{{\(k)}}", withString: v
+            result = result.replacingOccurrences(
+                of: "{{\(k)}}", with: v
             )
         }
         return result
