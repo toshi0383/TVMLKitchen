@@ -250,7 +250,7 @@ extension Kitchen {
         /// Define framework bundle URL
         appControllerContext.launchOptions["BASEURL"] = TVBaseURL.absoluteString
         let info = Bundle(for: self).infoDictionary!
-        let bundleid = info[String(kCFBundleIdentifierKey)]!
+        let bundleid = info[kCFBundleIdentifierKey as String]!
         appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
 
         /// Define mainBundle URL
