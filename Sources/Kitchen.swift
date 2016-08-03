@@ -232,6 +232,7 @@ extension Kitchen {
      - parameter cookbook: a Cookbook configuration object
      - returns:  If launch process was successfully or not.
     */
+    @discardableResult
     public static func prepare(_ cookbook: Cookbook) -> Bool {
         sharedKitchen.cookbook = cookbook
         sharedKitchen.window = UIWindow(frame: UIScreen.main.bounds)
