@@ -77,14 +77,14 @@ extension TemplateRecipeType {
     }
 
     public var base: String {
-        let url = Kitchen.bundle().urlForResource("Base", withExtension: "xml")!
+        let url = Kitchen.bundle().url(forResource: "Base", withExtension: "xml")!
         // swiftlint:disable:next force_try
         let xml = try! String(contentsOf: url)
         return xml
     }
 
     public var template: String {
-        let url = Self.bundle.urlForResource(templateFileName, withExtension: "xml")!
+        let url = Self.bundle.url(forResource: templateFileName, withExtension: "xml")!
         // swiftlint:disable:next force_try
         let xml = try! String(contentsOf: url)
         return xml

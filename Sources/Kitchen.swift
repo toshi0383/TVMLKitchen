@@ -58,7 +58,7 @@ public class Kitchen: NSObject {
     public static var mainBundlePath: String!
 
     override init() {
-        window = UIWindow(frame: UIScreen.main().bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         super.init()
     }
 
@@ -170,7 +170,7 @@ extension Kitchen {
         }
 
         /// Session Handler
-        let session = URLSession(configuration: URLSessionConfiguration.default())
+        let session = URLSession(configuration: URLSessionConfiguration.default)
 
         let request: URLRequest = req as URLRequest
         let task = session.dataTask(with: request) {
@@ -182,7 +182,7 @@ extension Kitchen {
             /// Call user-defined responseObjectHander if no errors.
             if let res = res as? HTTPURLResponse,
                 let resume = self.cookbook.responseObjectHandler?(res)
-                where resume == false
+                , resume == false
             {
                 return
             }
@@ -234,18 +234,18 @@ extension Kitchen {
     */
     public static func prepare(_ cookbook: Cookbook) -> Bool {
         sharedKitchen.cookbook = cookbook
-        sharedKitchen.window = UIWindow(frame: UIScreen.main().bounds)
+        sharedKitchen.window = UIWindow(frame: UIScreen.main.bounds)
         sharedKitchen.evaluateAppJavaScriptInContext = cookbook.evaluateAppJavaScriptInContext
 
         /// Create the TVApplicationControllerContext
         let appControllerContext = TVApplicationControllerContext()
 
-        let javaScriptURL = Bundle(for: self).urlForResource("kitchen", withExtension: "js")!
+        let javaScriptURL = Bundle(for: self).url(forResource: "kitchen", withExtension: "js")!
         appControllerContext.javaScriptApplicationURL = javaScriptURL
         appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
 
         /// Cutting `kitchen.js` off
-        let TVBaseURL = try! javaScriptURL.deletingLastPathComponent()
+        let TVBaseURL = javaScriptURL.deletingLastPathComponent()
 
         /// Define framework bundle URL
         appControllerContext.launchOptions["BASEURL"] = TVBaseURL.absoluteString
@@ -254,7 +254,7 @@ extension Kitchen {
         appControllerContext.launchOptions[UIApplicationLaunchOptionsSourceApplicationKey] = bundleid
 
         /// Define mainBundle URL
-        mainBundlePath = Bundle.main().bundleURL.absoluteString
+        mainBundlePath = Bundle.main.bundleURL.absoluteString
         appControllerContext.launchOptions["MAIN_BUNDLE_URL"] = mainBundlePath
 
         if let launchOptions = cookbook.launchOptions as? [String: AnyObject] {
@@ -290,7 +290,7 @@ extension Kitchen: TVApplicationControllerDelegate {
     }
 
     public func appController(_ appController: TVApplicationController,
-        didFail error: NSError)
+        didFail error: Error)
     {
         self.kitchenErrorHandler?(error)
     }

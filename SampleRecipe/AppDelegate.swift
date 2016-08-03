@@ -65,7 +65,7 @@ private func prepareMyKitchen(_ launchOptions: [NSObject: AnyObject]?) -> Bool
         return true
     }
 
-    Kitchen.prepare(cookbook)
+    _ = Kitchen.prepare(cookbook)
     let tabbar = KitchenTabBar(items:
         [SearchTab(), CatalogTab()]
     )
@@ -90,12 +90,12 @@ struct CatalogTab: TabItem {
     }
     private var catalog: CatalogRecipe {
         let banner = "Movie"
-        let thumbnailUrl = Bundle.main().urlForResource("img",
+        let thumbnailUrl = Bundle.main.url(forResource: "img",
             withExtension: "jpg")!.absoluteString
         let actionID = "/title?titleId=1234"
         let (width, height) = (250, 376)
         let templateURL: String? = nil
-        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl!, actionID, templateURL, width, height)
+        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
         let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
         var catalog = CatalogRecipe(banner: banner, sections: (0...10).map{_ in section1})
         catalog.presentationType = .tab
@@ -105,7 +105,7 @@ struct CatalogTab: TabItem {
 }
 
 private func openViewController(_ identifier: String) {
-    let sb = UIStoryboard(name: "ViewController", bundle: Bundle.main())
+    let sb = UIStoryboard(name: "ViewController", bundle: Bundle.main)
     let vc = sb.instantiateInitialViewController()!
     Kitchen.navigationController.pushViewController(vc, animated: true)
 }
