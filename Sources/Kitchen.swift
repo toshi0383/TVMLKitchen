@@ -182,7 +182,7 @@ extension Kitchen {
             /// Call user-defined responseObjectHander if no errors.
             if let res = res as? HTTPURLResponse,
                 let resume = self.cookbook.responseObjectHandler?(res)
-                where resume == false
+                , resume == false
             {
                 return
             }
@@ -245,7 +245,7 @@ extension Kitchen {
         appControllerContext.launchOptions[UIApplicationLaunchOptionsURLKey] = javaScriptURL
 
         /// Cutting `kitchen.js` off
-        let TVBaseURL = try! javaScriptURL.deletingLastPathComponent()
+        let TVBaseURL = javaScriptURL.deletingLastPathComponent()
 
         /// Define framework bundle URL
         appControllerContext.launchOptions["BASEURL"] = TVBaseURL.absoluteString
@@ -290,7 +290,7 @@ extension Kitchen: TVApplicationControllerDelegate {
     }
 
     public func appController(_ appController: TVApplicationController,
-        didFail error: NSError)
+        didFail error: Error)
     {
         self.kitchenErrorHandler?(error)
     }

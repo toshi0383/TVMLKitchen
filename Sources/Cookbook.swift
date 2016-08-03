@@ -27,7 +27,7 @@ public class Cookbook {
     /// Required when presenting SearchRecipe somewhere.
     internal var searchRecipe: SearchRecipe? {
         didSet {
-            if let recipe = searchRecipe where recipe.dynamicType == SearchRecipe.self {
+            if let recipe = searchRecipe , recipe.dynamicType == SearchRecipe.self {
                 fatalError("searchRecipe must be subclassed.")
             }
         }

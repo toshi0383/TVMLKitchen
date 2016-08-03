@@ -65,7 +65,7 @@ private func prepareMyKitchen(_ launchOptions: [NSObject: AnyObject]?) -> Bool
         return true
     }
 
-    Kitchen.prepare(cookbook)
+    _ = Kitchen.prepare(cookbook)
     let tabbar = KitchenTabBar(items:
         [SearchTab(), CatalogTab()]
     )
