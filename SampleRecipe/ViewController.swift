@@ -99,12 +99,12 @@ class ViewController: UIViewController {
 
     @IBAction func openCustomTheme() {
         let banner = "Music"
-        let thumbnailUrl = Bundle.main().urlForResource("img",
+        let thumbnailUrl = Bundle.main.url(forResource: "img",
             withExtension: "jpg")!.absoluteString
         let actionID = "/title?titleId=1234"
         let (width, height) = (250, 376)
         let templateURL: String? = nil
-        let content: Section.ContentTuple = ("Mission Impossible Ghost Protocol", thumbnailUrl!, actionID,
+        let content: Section.ContentTuple = ("Mission Impossible Ghost Protocol", thumbnailUrl, actionID,
             templateURL, width, height)
 
         let section1 = Section(title: "Hello", args: (0..<10).map{_ in content})

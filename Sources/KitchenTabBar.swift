@@ -38,7 +38,7 @@ public struct KitchenTabBar: TemplateRecipeType {
 
     /// Constructed string from the `items` array.
     public var template: String {
-        let url = KitchenTabBar.bundle.urlForResource(templateFileName, withExtension: "xml")!
+        let url = KitchenTabBar.bundle.url(forResource: templateFileName, withExtension: "xml")!
         // swiftlint:disable:next force_try
         let xml = try! String(contentsOf: url)
         var string = ""

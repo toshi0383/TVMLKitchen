@@ -24,7 +24,7 @@ class MySearchRecipe: SearchRecipe {
             results += "<title>\(title)</title>"
             results += "</lockup>"
         }
-        let url = SearchRecipe.bundle.urlForResource("SearchResult", withExtension: "xml")!
+        let url = SearchRecipe.bundle.url(forResource: "SearchResult", withExtension: "xml")!
         let resultBase = try! String(contentsOf: url)
         let result = resultBase.replacingOccurrences(of: "{{results}}", with: results)
 

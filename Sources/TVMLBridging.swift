@@ -12,12 +12,12 @@ internal func openTVMLTemplateFromXMLString(_ xmlString: String, type: Presentat
 }
 
 internal func xmlStringFromMainBundle(_ xmlFile: String) throws -> String {
-    let mainBundle = Bundle.main()
-    let path = mainBundle.pathForResource(xmlFile, ofType: nil)!
+    let mainBundle = Bundle.main
+    let path = mainBundle.path(forResource: xmlFile, ofType: nil)!
     let xmlString = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue) as String
     let mainBundlePath = mainBundle.bundleURL.absoluteString
     let replaced = xmlString
-        .replacingOccurrences(of: "((MAIN_BUNDLE_URL))", with: mainBundlePath!)
+        .replacingOccurrences(of: "((MAIN_BUNDLE_URL))", with: mainBundlePath)
     return replaced
 }
 

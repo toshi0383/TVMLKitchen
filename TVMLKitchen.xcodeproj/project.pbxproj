@@ -486,6 +486,7 @@
 					};
 					1F32E54B1C30B79600F62E88 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = T47KPZ35V7;
 						LastSwiftMigration = 0800;
 					};
 					1F8B43741C35676400C716A7 = {
@@ -804,6 +805,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = T47KPZ35V7;
 				INFOPLIST_FILE = SampleRecipe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipe;
@@ -818,6 +820,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = T47KPZ35V7;
 				INFOPLIST_FILE = SampleRecipe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipe;
