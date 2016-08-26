@@ -34,6 +34,13 @@
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 		1FB7EDAF1CE786010072E426 /* music_1.lcr in Resources */ = {isa = PBXBuildFile; fileRef = 1FB7EDAE1CE786010072E426 /* music_1.lcr */; };
 		1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */; };
+		1FCC00F81D702EFE00F60DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC00F71D702EFE00F60DD5 /* AppDelegate.swift */; };
+		1FCC00FA1D702EFE00F60DD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC00F91D702EFE00F60DD5 /* ViewController.swift */; };
+		1FCC00FD1D702EFE00F60DD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCC00FB1D702EFE00F60DD5 /* Main.storyboard */; };
+		1FCC00FF1D702EFE00F60DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FCC00FE1D702EFE00F60DD5 /* Assets.xcassets */; };
+		1FCC01041D702F1300F60DD5 /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
+		1FCC01051D702F1300F60DD5 /* TVMLKitchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1FCC01091D702FCC00F60DD5 /* SampleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3065C11C30E912001E5DF0 /* SampleResource.swift */; };
 		1FF011181CA024F60068CDAA /* Cookbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF011031CA024F60068CDAA /* Cookbook.swift */; };
 		1FF0111A1CA024F60068CDAA /* kitchen.js in Resources */ = {isa = PBXBuildFile; fileRef = 1FF011051CA024F60068CDAA /* kitchen.js */; };
 		1FF0111B1CA024F60068CDAA /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF011061CA024F60068CDAA /* Kitchen.swift */; };
@@ -78,6 +85,13 @@
 			remoteGlobalIDString = 1F32E54B1C30B79600F62E88;
 			remoteInfo = SampleRecipe;
 		};
+		1FCC01061D702F1300F60DD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32E4001C30B6EF00F62E88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32E4081C30B6EF00F62E88;
+			remoteInfo = TVMLKitchen;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,6 +102,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1F5ABB981C356B3100785DEB /* TVMLKitchen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCC01081D702F1300F60DD5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1FCC01051D702F1300F60DD5 /* TVMLKitchen.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +165,12 @@
 		1FB543491C32DA6C0015CC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 		1FB7EDAE1CE786010072E426 /* music_1.lcr */ = {isa = PBXFileReference; lastKnownFileType = file; path = music_1.lcr; sourceTree = "<group>"; };
 		1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
+		1FCC00F51D702EFE00F60DD5 /* NativeBaseSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativeBaseSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FCC00F71D702EFE00F60DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1FCC00F91D702EFE00F60DD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FCC00FC1D702EFE00F60DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1FCC00FE1D702EFE00F60DD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1FCC01001D702EFE00F60DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF011031CA024F60068CDAA /* Cookbook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cookbook.swift; sourceTree = "<group>"; };
 		1FF011041CA024F60068CDAA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF011051CA024F60068CDAA /* kitchen.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kitchen.js; sourceTree = "<group>"; };
@@ -190,6 +221,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCC00F21D702EFE00F60DD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCC01041D702F1300F60DD5 /* TVMLKitchen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +291,7 @@
 			children = (
 				1F32E6881C30B9B900F62E88 /* config */,
 				1F32E68C1C30BC3000F62E88 /* library */,
+				1FCC00F61D702EFE00F60DD5 /* NativeBaseSample */,
 				1F32E40A1C30B6EF00F62E88 /* Products */,
 				1F32E54D1C30B79600F62E88 /* SampleRecipe */,
 				1F8B43761C35676400C716A7 /* SampleRecipeUITests */,
@@ -267,6 +307,7 @@
 				1F32E4131C30B6EF00F62E88 /* TVMLKitchenTests.xctest */,
 				1F32E54C1C30B79600F62E88 /* SampleRecipe.app */,
 				1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */,
+				1FCC00F51D702EFE00F60DD5 /* NativeBaseSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -333,6 +374,18 @@
 				1F8B43771C35676400C716A7 /* SampleRecipeUITests.swift */,
 			);
 			path = SampleRecipeUITests;
+			sourceTree = "<group>";
+		};
+		1FCC00F61D702EFE00F60DD5 /* NativeBaseSample */ = {
+			isa = PBXGroup;
+			children = (
+				1FCC00F71D702EFE00F60DD5 /* AppDelegate.swift */,
+				1FCC00F91D702EFE00F60DD5 /* ViewController.swift */,
+				1FCC00FB1D702EFE00F60DD5 /* Main.storyboard */,
+				1FCC00FE1D702EFE00F60DD5 /* Assets.xcassets */,
+				1FCC01001D702EFE00F60DD5 /* Info.plist */,
+			);
+			path = NativeBaseSample;
 			sourceTree = "<group>";
 		};
 		1FF011021CA024F60068CDAA /* Sources */ = {
@@ -467,13 +520,32 @@
 			productReference = 1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		1FCC00F41D702EFE00F60DD5 /* NativeBaseSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FCC01031D702EFE00F60DD5 /* Build configuration list for PBXNativeTarget "NativeBaseSample" */;
+			buildPhases = (
+				1FCC00F11D702EFE00F60DD5 /* Sources */,
+				1FCC00F21D702EFE00F60DD5 /* Frameworks */,
+				1FCC00F31D702EFE00F60DD5 /* Resources */,
+				1FCC01081D702F1300F60DD5 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1FCC01071D702F1300F60DD5 /* PBXTargetDependency */,
+			);
+			name = NativeBaseSample;
+			productName = NativeBaseSample;
+			productReference = 1FCC00F51D702EFE00F60DD5 /* NativeBaseSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1F32E4001C30B6EF00F62E88 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = toshi0383;
 				TargetAttributes = {
@@ -489,6 +561,9 @@
 					1F8B43741C35676400C716A7 = {
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 1F32E54B1C30B79600F62E88;
+					};
+					1FCC00F41D702EFE00F60DD5 = {
+						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
 			};
@@ -509,6 +584,7 @@
 				1F32E4121C30B6EF00F62E88 /* TVMLKitchenTests */,
 				1F32E54B1C30B79600F62E88 /* SampleRecipe */,
 				1F8B43741C35676400C716A7 /* SampleRecipeUITests */,
+				1FCC00F41D702EFE00F60DD5 /* NativeBaseSample */,
 			);
 		};
 /* End PBXProject section */
@@ -559,6 +635,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FCC00F31D702EFE00F60DD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCC00FF1D702EFE00F60DD5 /* Assets.xcassets in Resources */,
+				1FCC00FD1D702EFE00F60DD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +702,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FCC00F11D702EFE00F60DD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FCC00FA1D702EFE00F60DD5 /* ViewController.swift in Sources */,
+				1FCC00F81D702EFE00F60DD5 /* AppDelegate.swift in Sources */,
+				1FCC01091D702FCC00F60DD5 /* SampleResource.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -635,6 +730,11 @@
 			target = 1F32E54B1C30B79600F62E88 /* SampleRecipe */;
 			targetProxy = 1F8B437A1C35676400C716A7 /* PBXContainerItemProxy */;
 		};
+		1FCC01071D702F1300F60DD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32E4081C30B6EF00F62E88 /* TVMLKitchen */;
+			targetProxy = 1FCC01061D702F1300F60DD5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -644,6 +744,14 @@
 				1FB543491C32DA6C0015CC66 /* Base */,
 			);
 			name = ViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		1FCC00FB1D702EFE00F60DD5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FCC00FC1D702EFE00F60DD5 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -844,6 +952,36 @@
 			};
 			name = Release;
 		};
+		1FCC01011D702EFE00F60DD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = NativeBaseSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.nextscape.NativeBaseSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		1FCC01021D702EFE00F60DD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = NativeBaseSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.nextscape.NativeBaseSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -891,6 +1029,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1FCC01031D702EFE00F60DD5 /* Build configuration list for PBXNativeTarget "NativeBaseSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FCC01011D702EFE00F60DD5 /* Debug */,
+				1FCC01021D702EFE00F60DD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
