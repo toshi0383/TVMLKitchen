@@ -1,3 +1,9 @@
+## 0.9.0
+##### New Feature
+* Multiple UIWindow Support  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#98](https://github.com/toshi0383/TVMLKitchen/pull/98)
+
 ## 0.8.1
 ##### Bugfix
 * Reloaded documents now respond with actions.  

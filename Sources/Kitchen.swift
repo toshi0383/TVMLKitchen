@@ -18,6 +18,10 @@ let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
 public class Kitchen: NSObject {
     /// singleton instance
     private static let sharedKitchen = Kitchen()
+    private static weak var redirectWindow: UIWindow?
+    private static var temporaryWindow: UIWindow?
+    private static var _navigationControllerDelegateWillShowCount = 0
+    private static var didRedirectToWindow: (UIWindow -> ())?
 
     private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
@@ -78,6 +82,27 @@ extension Kitchen {
         } catch let error as NSError {
             sharedKitchen.kitchenErrorHandler?(error)
         }
+    }
+
+    /// Serve TVML
+    /// Calls `redirectWindow.makeKeyAndVisible()` when the TVML is dismissing.
+    /// - parameter urlString:
+    /// - parameter type:
+    /// - parameter redirectWindow: UIWindow.
+    ///     Expected to be the parent window of Native Views(not Kitchen.window)
+    /// - parameter didRedirectToWindow: Redirect Callback
+    /// - Note: **BETA API** This API is subject to change.
+    public static func serve(urlString urlString: String,
+       type: PresentationType = .Default, redirectWindow: UIWindow,
+       didRedirectToWindow: (UIWindow -> ())? = nil)
+    {
+        Kitchen._navigationControllerDelegateWillShowCount = 0
+        Kitchen.navigationController.setViewControllers([UIViewController()], animated: true)
+        Kitchen.navigationController.delegate = sharedKitchen
+        Kitchen.didRedirectToWindow = didRedirectToWindow
+        Kitchen.redirectWindow = redirectWindow
+        Kitchen.serve(urlString: urlString, type: type)
+        Kitchen.window.makeKeyAndVisible()
     }
 
     public static func serve(urlString urlString: String, type: PresentationType = .Default) {
@@ -207,6 +232,30 @@ extension Kitchen {
 
 }
 
+// MARK: UINavigationControllerDelegate
+extension Kitchen: UINavigationControllerDelegate {
+    public func navigationController(
+        navigationController: UINavigationController,
+        willShowViewController viewController: UIViewController, animated: Bool)
+    {
+        /// Workaround: This delegate is called on presenting, too..
+        ///     We want to handle this only on dismissing.
+        guard Kitchen._navigationControllerDelegateWillShowCount == 1 else {
+            Kitchen._navigationControllerDelegateWillShowCount = 1
+            return
+        }
+        if viewController == Kitchen.navigationController.viewControllers[0] {
+            Kitchen.temporaryWindow?.resignKeyWindow()
+            Kitchen.redirectWindow?.makeKeyAndVisible()
+            if let redirectWindow = Kitchen.redirectWindow {
+                Kitchen.didRedirectToWindow?(redirectWindow)
+                Kitchen.didRedirectToWindow = nil
+            }
+            Kitchen.temporaryWindow?.removeFromSuperview()
+            Kitchen.temporaryWindow = nil
+        }
+    }
+}
 // MARK: TVApplicationControllerDelegate
 extension Kitchen {
 
