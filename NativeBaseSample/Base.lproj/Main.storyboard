@@ -16,31 +16,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Native View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P59-LA-w1U">
-                                <rect key="frame" x="133" y="223" width="234" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEE-2r-yGS">
-                                <rect key="frame" x="153" y="288" width="195" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="BOf-pC-TM7"/>
-                                    <constraint firstAttribute="width" constant="195" id="WHO-dS-m4u"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="button:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="CEi-ih-P6c"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="izy-Ad-eTx">
+                                <rect key="frame" x="36" y="127" width="429" height="246"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Native View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P59-LA-w1U">
+                                        <rect key="frame" x="98" y="0.0" width="234" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEE-2r-yGS">
+                                        <rect key="frame" x="8" y="64" width="413" height="86"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="serve with urlString"/>
+                                        <connections>
+                                            <action selector="urlString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="HlB-LY-Mcn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhp-fe-ZM1">
+                                        <rect key="frame" x="0.0" y="160" width="429" height="86"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="serve with xmlString"/>
+                                        <connections>
+                                            <action selector="xmlString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="QBq-3t-EWm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="P59-LA-w1U" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jbe-qt-AiZ"/>
-                            <constraint firstItem="SEE-2r-yGS" firstAttribute="centerX" secondItem="P59-LA-w1U" secondAttribute="centerX" id="Pic-3l-UT2"/>
-                            <constraint firstItem="P59-LA-w1U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yx0-x5-QAn"/>
-                            <constraint firstItem="SEE-2r-yGS" firstAttribute="top" secondItem="P59-LA-w1U" secondAttribute="bottom" constant="11" id="zlT-Zh-egs"/>
+                            <constraint firstItem="izy-Ad-eTx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CmX-dz-Fqm"/>
+                            <constraint firstItem="izy-Ad-eTx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GM5-GL-YQI"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
