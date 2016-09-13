@@ -33,6 +33,7 @@
 		1FADCF991CA00DC4009A40EA /* ExpectedSearchRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FADCF981CA00DC4009A40EA /* ExpectedSearchRecipe.xml */; };
 		1FB5434A1C32DA6C0015CC66 /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB543481C32DA6C0015CC66 /* ViewController.storyboard */; };
 		1FB7EDAF1CE786010072E426 /* music_1.lcr in Resources */ = {isa = PBXBuildFile; fileRef = 1FB7EDAE1CE786010072E426 /* music_1.lcr */; };
+		1FC59A9B1D88A68700ED1CBD /* Oneup.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F3065BF1C30E8D0001E5DF0 /* Oneup.xml */; };
 		1FCAF72E1C9F9FDF005C3CBF /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAF72D1C9F9FDF005C3CBF /* RecipeTests.swift */; };
 		1FCC00F81D702EFE00F60DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC00F71D702EFE00F60DD5 /* AppDelegate.swift */; };
 		1FCC00FA1D702EFE00F60DD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC00F91D702EFE00F60DD5 /* ViewController.swift */; };
@@ -644,6 +645,7 @@
 			files = (
 				1FCC00FF1D702EFE00F60DD5 /* Assets.xcassets in Resources */,
 				1FCC00FD1D702EFE00F60DD5 /* Main.storyboard in Resources */,
+				1FC59A9B1D88A68700ED1CBD /* Oneup.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,6 +1039,7 @@
 				1FCC01021D702EFE00F60DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

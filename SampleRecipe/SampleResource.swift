@@ -13,6 +13,9 @@ struct Sample {
     static let title = "TVMLKitchen"
     static let description = "Swift is a high-performance system programming language. It has a clean and modern syntax, offers seamless access to existing C and Objective-C code and frameworks, and is memory safe by default."
     static let tvmlUrl = "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/swift2.2/SampleRecipe/Catalog.xml"
+    static var tvmlString: String {
+        return XMLString.Catalog.description
+    }
 }
 // swiftlint:enable line_length
 

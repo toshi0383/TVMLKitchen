@@ -14,13 +14,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func button(sender: AnyObject!) {
+
+    @IBAction func urlString(sender: AnyObject!) {
         let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
         appdelegateWindow.alpha = 0.0
         Kitchen.serve(urlString: Sample.tvmlUrl, redirectWindow: appdelegateWindow) {
             $0.alpha = 1.0
         }
-
+    }
+    @IBAction func xmlString(sender: AnyObject!) {
+        let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
+        appdelegateWindow.alpha = 0.0
+        Kitchen.serve(xmlString: Sample.tvmlString, redirectWindow: appdelegateWindow) {
+            $0.alpha = 1.0
+        }
     }
 }
 
