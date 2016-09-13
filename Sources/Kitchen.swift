@@ -84,7 +84,28 @@ extension Kitchen {
         }
     }
 
-    /// Serve TVML
+    /// Serve TVML with xmlString
+    /// Calls `redirectWindow.makeKeyAndVisible()` when the TVML is dismissing.
+    /// - parameter urlString:
+    /// - parameter type:
+    /// - parameter redirectWindow: UIWindow.
+    ///     Expected to be the parent window of Native Views(not Kitchen.window)
+    /// - parameter didRedirectToWindow: Redirect Callback
+    /// - Note: **BETA API** This API is subject to change.
+    public static func serve(xmlString xmlString: String,
+       type: PresentationType = .Default, redirectWindow: UIWindow,
+       didRedirectToWindow: (UIWindow -> ())? = nil)
+    {
+        Kitchen._navigationControllerDelegateWillShowCount = 0
+        Kitchen.navigationController.setViewControllers([UIViewController()], animated: true)
+        Kitchen.navigationController.delegate = sharedKitchen
+        Kitchen.didRedirectToWindow = didRedirectToWindow
+        Kitchen.redirectWindow = redirectWindow
+        Kitchen.serve(xmlString: xmlString, type: type)
+        Kitchen.window.makeKeyAndVisible()
+    }
+
+    /// Serve TVML with urlString
     /// Calls `redirectWindow.makeKeyAndVisible()` when the TVML is dismissing.
     /// - parameter urlString:
     /// - parameter type:
