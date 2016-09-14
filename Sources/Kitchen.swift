@@ -76,6 +76,11 @@ public enum KitchenError: ErrorType {
 extension Kitchen {
 
     // MARK: verify
+
+    /// Verify xmlString syntax.
+    /// This function actually calls `DOMParser#parseFromString` to verify syntax.
+    /// - parameter xmlString:
+    /// - throws: KitchenError.TVMLDecodeError
     public static func verify(xmlString: String) throws {
         try verifyXMLString(xmlString) {
             throw KitchenError.TVMLDecodeError

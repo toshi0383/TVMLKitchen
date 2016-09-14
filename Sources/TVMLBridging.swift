@@ -31,6 +31,9 @@ internal func verifyXMLString(xmlString: String, @noescape onError:() throws -> 
     verifyMediator = VerifyMediator()
     let js = "verifyXMLString(`\(xmlString)`);"
     evaluateInTVMLContext(js)
+    // - Note: `evaluateInTVMLContext(_:)` escapes from current scrope.
+    //     It has completion callback, but we cannot use it here
+    //     because it's not marked as rethrows.
     verifyMediator.waitForVerifyComplete()
     if verifyMediator.error {
         try onError()
