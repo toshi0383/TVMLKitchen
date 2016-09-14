@@ -19,7 +19,6 @@ public class Kitchen: NSObject {
     /// singleton instance
     private static let sharedKitchen = Kitchen()
     private static weak var redirectWindow: UIWindow?
-    private static var temporaryWindow: UIWindow?
     private static var _navigationControllerDelegateWillShowCount = 0
     private static var didRedirectToWindow: (UIWindow -> ())?
 
@@ -259,21 +258,18 @@ extension Kitchen: UINavigationControllerDelegate {
         navigationController: UINavigationController,
         willShowViewController viewController: UIViewController, animated: Bool)
     {
-        /// Workaround: This delegate is called on presenting, too..
-        ///     We want to handle this only on dismissing.
+        // Workaround: This delegate is called on presenting, too..
+        //     We want to handle this only on dismissing.
         guard Kitchen._navigationControllerDelegateWillShowCount == 1 else {
             Kitchen._navigationControllerDelegateWillShowCount = 1
             return
         }
         if viewController == Kitchen.navigationController.viewControllers[0] {
-            Kitchen.temporaryWindow?.resignKeyWindow()
             Kitchen.redirectWindow?.makeKeyAndVisible()
             if let redirectWindow = Kitchen.redirectWindow {
                 Kitchen.didRedirectToWindow?(redirectWindow)
                 Kitchen.didRedirectToWindow = nil
             }
-            Kitchen.temporaryWindow?.removeFromSuperview()
-            Kitchen.temporaryWindow = nil
         }
     }
 }
