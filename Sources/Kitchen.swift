@@ -20,7 +20,7 @@ public class Kitchen: NSObject {
     private static let sharedKitchen = Kitchen()
     private static weak var redirectWindow: UIWindow?
     private static var _navigationControllerDelegateWillShowCount = 0
-    private static var didRedirectToWindow: (UIWindow -> ())?
+    private static var didRedirectToWindow: (() -> ())?
 
     private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
@@ -93,7 +93,7 @@ extension Kitchen {
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(xmlString xmlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
-       didRedirectToWindow: (UIWindow -> ())? = nil)
+       didRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
         Kitchen.navigationController.setViewControllers([UIViewController()], animated: true)
@@ -114,7 +114,7 @@ extension Kitchen {
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(urlString urlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
-       didRedirectToWindow: (UIWindow -> ())? = nil)
+       didRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
         Kitchen.navigationController.setViewControllers([UIViewController()], animated: true)
@@ -266,8 +266,8 @@ extension Kitchen: UINavigationControllerDelegate {
         }
         if viewController == Kitchen.navigationController.viewControllers[0] {
             Kitchen.redirectWindow?.makeKeyAndVisible()
-            if let redirectWindow = Kitchen.redirectWindow {
-                Kitchen.didRedirectToWindow?(redirectWindow)
+            if let _ = Kitchen.redirectWindow {
+                Kitchen.didRedirectToWindow?()
                 Kitchen.didRedirectToWindow = nil
             }
         }
