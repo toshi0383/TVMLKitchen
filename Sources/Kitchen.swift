@@ -93,6 +93,7 @@ extension Kitchen {
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(xmlString xmlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
+       kitchenWindowWillBecomeVisible: (() -> ())? = nil,
        didRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
@@ -100,6 +101,7 @@ extension Kitchen {
         Kitchen.navigationController.delegate = sharedKitchen
         Kitchen.didRedirectToWindow = didRedirectToWindow
         Kitchen.redirectWindow = redirectWindow
+        kitchenWindowWillBecomeVisible?()
         Kitchen.serve(xmlString: xmlString, type: type)
         Kitchen.window.makeKeyAndVisible()
     }
@@ -114,6 +116,7 @@ extension Kitchen {
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(urlString urlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
+       kitchenWindowWillBecomeVisible: (() -> ())? = nil,
        didRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
@@ -121,6 +124,7 @@ extension Kitchen {
         Kitchen.navigationController.delegate = sharedKitchen
         Kitchen.didRedirectToWindow = didRedirectToWindow
         Kitchen.redirectWindow = redirectWindow
+        kitchenWindowWillBecomeVisible?()
         Kitchen.serve(urlString: urlString, type: type)
         Kitchen.window.makeKeyAndVisible()
     }
