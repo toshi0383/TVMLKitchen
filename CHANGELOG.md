@@ -1,3 +1,14 @@
+## swift2.2
+##### New Feature
+* Multiple UIWindow Support: Add kitchenWindowWillBecomeVisible callback  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#105](https://github.com/toshi0383/TVMLKitchen/pull/105)
+
+##### Breaking
+* Multiple UIWindow Support: Remove UIWindow parameter from didRedirectToWindow callback  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#104](https://github.com/toshi0383/TVMLKitchen/pull/104)
+
 ## 0.9.1
 ##### New Feature
 * Multiple UIWindow Support for Kitchen.serve(urlString:)  

@@ -17,17 +17,42 @@ class ViewController: UIViewController {
 
     @IBAction func urlString(sender: AnyObject!) {
         let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
-        appdelegateWindow.alpha = 0.0
-        Kitchen.serve(urlString: Sample.tvmlUrl, redirectWindow: appdelegateWindow) {
-            $0.alpha = 1.0
-        }
+        Kitchen.window.alpha = 0.0
+        Kitchen.serve(
+            urlString: Sample.tvmlUrl,
+            redirectWindow: appdelegateWindow,
+            kitchenWindowWillBecomeVisible: {
+                UIView.animateWithDuration(0.3) {
+                    Kitchen.window.alpha = 1.0
+                    appdelegateWindow.alpha = 0.0
+                }
+            },
+            didRedirectToWindow: {
+                UIView.animateWithDuration(0.3) {
+                    Kitchen.window.alpha = 0.0
+                    appdelegateWindow.alpha = 1.0
+                }
+            }
+        )
     }
     @IBAction func xmlString(sender: AnyObject!) {
         let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
-        appdelegateWindow.alpha = 0.0
-        Kitchen.serve(xmlString: Sample.tvmlString, redirectWindow: appdelegateWindow) {
-            $0.alpha = 1.0
-        }
+        Kitchen.window.alpha = 0.0
+        Kitchen.serve(
+            xmlString: Sample.tvmlString,
+            redirectWindow: appdelegateWindow,
+            kitchenWindowWillBecomeVisible: {
+                UIView.animateWithDuration(0.3) {
+                    Kitchen.window.alpha = 1.0
+                    appdelegateWindow.alpha = 0.0
+                }
+            },
+            didRedirectToWindow: {
+                UIView.animateWithDuration(0.3) {
+                    Kitchen.window.alpha = 0.0
+                    appdelegateWindow.alpha = 1.0
+                }
+            }
+        )
     }
 }
-
