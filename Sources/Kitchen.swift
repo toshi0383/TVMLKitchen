@@ -69,7 +69,18 @@ public class Kitchen: NSObject {
 
 
 // MARK: - Public API
+public enum KitchenError: ErrorType {
+    case TVMLDecodeError
+}
+
 extension Kitchen {
+
+    // MARK: verify
+    public static func verify(xmlString: String) throws {
+        try verifyXMLString(xmlString) {
+            throw KitchenError.TVMLDecodeError
+        }
+    }
 
     // MARK: serve
     public static func serve(xmlString xmlString: String, type: PresentationType = .Default) {
@@ -435,6 +446,15 @@ extension Kitchen: TVApplicationControllerDelegate {
         jsContext.setObject(unsafeBitCast(tabBarHandler, AnyObject.self),
             forKeyedSubscript: "tabBarHandler")
 
+        // Verify Error
+        let verifyXMLStringComplete: @convention(block) (Bool) -> () = {
+            success in
+            verifyMediator.error = !success
+        }
+        jsContext.setObject(unsafeBitCast(verifyXMLStringComplete, AnyObject.self),
+            forKeyedSubscript: "verifyXMLStringComplete")
+
+        // Done
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
     }
 }

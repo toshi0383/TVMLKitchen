@@ -184,6 +184,15 @@ var buildResults = function(doc, searchText) {
     });
 }
 
+function verifyXMLString(xmlString) {
+    try {
+        var doc = makeDocument(xmlString);
+        verifyXMLStringComplete(true);
+    } catch(error) {
+        verifyXMLStringComplete(false);
+    }
+}
+
 /// load template from Main Bundle URL
 /// Expected to be called from native context.
 function openTemplateFromXMLString(xmlString, presentationType) {
