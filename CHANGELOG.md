@@ -1,4 +1,4 @@
-## swift2.2
+## 0.9.4
 ##### Breaking
 * [Multi Window Support] Improve Window Transition Animation  
   [Toshihiro Suzuki](https://github.com/toshi0383)
