@@ -68,9 +68,10 @@ public class Kitchen: NSObject {
 }
 
 
-// MARK: Public API (serve)
+// MARK: - Public API
 extension Kitchen {
 
+    // MARK: serve
     public static func serve(xmlString xmlString: String, type: PresentationType = .Default) {
         openTVMLTemplateFromXMLString(xmlString, type: type)
     }
@@ -155,6 +156,7 @@ extension Kitchen {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
+    // MARK: reloadTab
     public static func reloadTab<R: RecipeType>(atIndex index: Int, recipe: R) {
         _reloadTab(atIndex: index, xmlString: recipe.xmlString)
     }
@@ -183,10 +185,12 @@ extension Kitchen {
         _reloadTab(atIndex: index, xmlString: xmlString)
     }
 
+    // MARK: dismissModal
     public static func dismissModal() {
         dismissTVMLModal()
     }
 
+    // MARK: bundle
     public static func bundle() -> NSBundle {
         return NSBundle(forClass: self)
     }
