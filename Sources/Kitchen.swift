@@ -75,6 +75,12 @@ public enum KitchenError: ErrorType {
 
 extension Kitchen {
 
+    private static var _rootViewController: UIViewController = {
+        let vc = UIViewController()
+        vc.view.alpha = 0.0
+        return vc
+    }()
+
     // MARK: verify
 
     /// Verify xmlString syntax.
@@ -114,7 +120,8 @@ extension Kitchen {
        didRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
-        Kitchen.navigationController.setViewControllers([UIViewController()], animated: true)
+        let vc = _rootViewController
+        Kitchen.navigationController.setViewControllers([vc], animated: true)
         Kitchen.navigationController.delegate = sharedKitchen
         Kitchen.didRedirectToWindow = didRedirectToWindow
         Kitchen.redirectWindow = redirectWindow
@@ -137,7 +144,8 @@ extension Kitchen {
        didRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
-        Kitchen.navigationController.setViewControllers([UIViewController()], animated: true)
+        let vc = _rootViewController
+        Kitchen.navigationController.setViewControllers([vc], animated: true)
         Kitchen.navigationController.delegate = sharedKitchen
         Kitchen.didRedirectToWindow = didRedirectToWindow
         Kitchen.redirectWindow = redirectWindow
