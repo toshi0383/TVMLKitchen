@@ -1,5 +1,9 @@
-## swift2.2
+## 0.9.2
 ##### New Feature
+* XML Validate API  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#106](https://github.com/toshi0383/TVMLKitchen/pull/106)
+
 * Multiple UIWindow Support: Add kitchenWindowWillBecomeVisible callback  
   [Toshihiro Suzuki](https://github.com/toshi0383)
   [#105](https://github.com/toshi0383/TVMLKitchen/pull/105)
