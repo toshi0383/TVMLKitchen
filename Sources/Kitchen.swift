@@ -68,9 +68,26 @@ public class Kitchen: NSObject {
 }
 
 
-// MARK: Public API (serve)
+// MARK: - Public API
+public enum KitchenError: ErrorType {
+    case TVMLDecodeError
+}
+
 extension Kitchen {
 
+    // MARK: verify
+
+    /// Verify xmlString syntax.
+    /// This function actually calls `DOMParser#parseFromString` to verify syntax.
+    /// - parameter xmlString:
+    /// - throws: KitchenError.TVMLDecodeError
+    public static func verify(xmlString: String) throws {
+        try verifyXMLString(xmlString) {
+            throw KitchenError.TVMLDecodeError
+        }
+    }
+
+    // MARK: serve
     public static func serve(xmlString xmlString: String, type: PresentationType = .Default) {
         openTVMLTemplateFromXMLString(xmlString, type: type)
     }
@@ -155,6 +172,7 @@ extension Kitchen {
         openTVMLTemplateFromXMLString(recipe.xmlString, type: recipe.presentationType)
     }
 
+    // MARK: reloadTab
     public static func reloadTab<R: RecipeType>(atIndex index: Int, recipe: R) {
         _reloadTab(atIndex: index, xmlString: recipe.xmlString)
     }
@@ -183,10 +201,12 @@ extension Kitchen {
         _reloadTab(atIndex: index, xmlString: xmlString)
     }
 
+    // MARK: dismissModal
     public static func dismissModal() {
         dismissTVMLModal()
     }
 
+    // MARK: bundle
     public static func bundle() -> NSBundle {
         return NSBundle(forClass: self)
     }
@@ -431,6 +451,15 @@ extension Kitchen: TVApplicationControllerDelegate {
         jsContext.setObject(unsafeBitCast(tabBarHandler, AnyObject.self),
             forKeyedSubscript: "tabBarHandler")
 
+        // Verify Error
+        let verifyXMLStringComplete: @convention(block) (Bool) -> () = {
+            success in
+            verifyMediator.error = !success
+        }
+        jsContext.setObject(unsafeBitCast(verifyXMLStringComplete, AnyObject.self),
+            forKeyedSubscript: "verifyXMLStringComplete")
+
+        // Done
         self.evaluateAppJavaScriptInContext?(appController, jsContext)
     }
 }
