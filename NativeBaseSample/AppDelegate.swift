@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Kitchen.prepare(Cookbook(launchOptions: launchOptions))
+        window?.backgroundColor = .blackColor()
+        Kitchen.window.backgroundColor = .blackColor()
+        Kitchen.navigationController.view.backgroundColor = .blackColor()
         return true
     }
 

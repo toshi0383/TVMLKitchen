@@ -19,8 +19,9 @@ public class Kitchen: NSObject {
     /// singleton instance
     private static let sharedKitchen = Kitchen()
     private static weak var redirectWindow: UIWindow?
+    private static var animatedWindowTransition: Bool = false
     private static var _navigationControllerDelegateWillShowCount = 0
-    private static var didRedirectToWindow: (() -> ())?
+    private static var willRedirectToWindow: (() -> ())?
 
     private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
@@ -106,26 +107,62 @@ extension Kitchen {
         }
     }
 
+    static func _kitchenWindowWillBecomeVisible(redirectWindow: UIWindow) {
+        window.alpha = 0.0
+        UIView.animateWithDuration(
+            0.3,
+            animations: {
+                window.alpha = 1.0
+            },
+            completion: {
+                _ in
+                redirectWindow.alpha = 0.0
+            }
+        )
+    }
+
+    static func _willRedirectToWindow(redirectWindow: UIWindow) {
+        redirectWindow.alpha = 0.0
+        UIView.animateWithDuration(
+            0.3,
+            animations: {
+                redirectWindow.alpha = 1.0
+            },
+            completion: {
+                _ in
+                window.alpha = 0.0
+            }
+        )
+    }
+
     /// Serve TVML with xmlString
     /// Calls `redirectWindow.makeKeyAndVisible()` when the TVML is dismissing.
     /// - parameter urlString:
     /// - parameter type:
     /// - parameter redirectWindow: UIWindow.
     ///     Expected to be the parent window of Native Views(not Kitchen.window)
-    /// - parameter didRedirectToWindow: Redirect Callback
+    /// - parameter animatedWindowTransition: If true, ignores Redirect callbacks.
+    /// - parameter kitchenWindowWillBecomeVisible: Redirect Callback
+    /// - parameter willRedirectToWindow: Redirect Callback
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(xmlString xmlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
+       animatedWindowTransition: Bool = false,
        kitchenWindowWillBecomeVisible: (() -> ())? = nil,
-       didRedirectToWindow: (() -> ())? = nil)
+       willRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
         let vc = _rootViewController
         Kitchen.navigationController.setViewControllers([vc], animated: true)
         Kitchen.navigationController.delegate = sharedKitchen
-        Kitchen.didRedirectToWindow = didRedirectToWindow
+        Kitchen.willRedirectToWindow = willRedirectToWindow
         Kitchen.redirectWindow = redirectWindow
-        kitchenWindowWillBecomeVisible?()
+        Kitchen.animatedWindowTransition = animatedWindowTransition
+        if animatedWindowTransition {
+            _kitchenWindowWillBecomeVisible(redirectWindow)
+        } else {
+            kitchenWindowWillBecomeVisible?()
+        }
         Kitchen.serve(xmlString: xmlString, type: type)
         Kitchen.window.makeKeyAndVisible()
     }
@@ -136,20 +173,28 @@ extension Kitchen {
     /// - parameter type:
     /// - parameter redirectWindow: UIWindow.
     ///     Expected to be the parent window of Native Views(not Kitchen.window)
-    /// - parameter didRedirectToWindow: Redirect Callback
+    /// - parameter animatedWindowTransition: If true, ignores Redirect callbacks.
+    /// - parameter kitchenWindowWillBecomeVisible: Redirect Callback
+    /// - parameter willRedirectToWindow: Redirect Callback
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(urlString urlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
+       animatedWindowTransition: Bool = false,
        kitchenWindowWillBecomeVisible: (() -> ())? = nil,
-       didRedirectToWindow: (() -> ())? = nil)
+       willRedirectToWindow: (() -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
         let vc = _rootViewController
         Kitchen.navigationController.setViewControllers([vc], animated: true)
         Kitchen.navigationController.delegate = sharedKitchen
-        Kitchen.didRedirectToWindow = didRedirectToWindow
+        Kitchen.willRedirectToWindow = willRedirectToWindow
         Kitchen.redirectWindow = redirectWindow
-        kitchenWindowWillBecomeVisible?()
+        Kitchen.animatedWindowTransition = animatedWindowTransition
+        if animatedWindowTransition {
+            _kitchenWindowWillBecomeVisible(redirectWindow)
+        } else {
+            kitchenWindowWillBecomeVisible?()
+        }
         Kitchen.serve(urlString: urlString, type: type)
         Kitchen.window.makeKeyAndVisible()
     }
@@ -297,10 +342,14 @@ extension Kitchen: UINavigationControllerDelegate {
             return
         }
         if viewController == Kitchen.navigationController.viewControllers[0] {
-            Kitchen.redirectWindow?.makeKeyAndVisible()
-            if let _ = Kitchen.redirectWindow {
-                Kitchen.didRedirectToWindow?()
-                Kitchen.didRedirectToWindow = nil
+            if let redirectWindow = Kitchen.redirectWindow {
+                if Kitchen.animatedWindowTransition {
+                    Kitchen._willRedirectToWindow(redirectWindow)
+                } else {
+                    Kitchen.willRedirectToWindow?()
+                }
+                Kitchen.willRedirectToWindow = nil
+                redirectWindow.makeKeyAndVisible()
             }
         }
     }

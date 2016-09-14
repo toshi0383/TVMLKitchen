@@ -1,3 +1,9 @@
+## swift2.2
+##### Breaking
+* [Multi Window Support] Improve Window Transition Animation  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#108](https://github.com/toshi0383/TVMLKitchen/pull/108)
+
 ## 0.9.3
 ##### Enhancement
 * [Multi Window Support] Reuse UIViewController  
