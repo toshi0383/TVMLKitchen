@@ -64,7 +64,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openTemplateFromURL(sender: AnyObject!) {
-        Kitchen.serveInNewWindow(urlString: Sample.tvmlUrl)
     }
 
     @IBAction func descriptiveAlertRecipe(sender: AnyObject) {
@@ -102,6 +101,27 @@ class ViewController: UIViewController {
         let section1 = Section(title: "Hello", args: (0..<10).map{_ in content})
         let catalog = CatalogRecipe(banner: banner, sections: (0..<10).map{_ in section1})
         Kitchen.serve(recipe: catalog)
+    }
+
+    @IBAction func verify() {
+        let valid = Sample.tvmlString
+        let invalid = "<><<<<>>aaaa"
+        do {
+            try Kitchen.verify(valid)
+            print("Verify success!!")
+        } catch _ as KitchenError {
+            fatalError()
+        } catch {
+            fatalError()
+        }
+        do {
+            try Kitchen.verify(invalid)
+            fatalError()
+        } catch _ as KitchenError {
+            print("Verify success!!")
+        } catch {
+            fatalError()
+        }
     }
 
 }
