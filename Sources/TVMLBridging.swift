@@ -8,12 +8,33 @@
 
 // MARK: - Verify
 class VerifyMediator {
-    var error = false {
-        didSet {
+    var _error = false
+    var __verifyComplete = false
+    var error: Bool {
+        set(newValue) {
+            _mediatorLock.lock()
+            defer {_mediatorLock.unlock()}
+            _error = newValue
             _verifyComplete = true
         }
+        get {
+            _mediatorLock.lock()
+            defer {_mediatorLock.unlock()}
+            return _error
+        }
     }
-    private var _verifyComplete = false
+    private var _verifyComplete: Bool {
+        set(newValue) {
+            _mediatorLock.lock()
+            defer {_mediatorLock.unlock()}
+            __verifyComplete = newValue
+        }
+        get {
+            _mediatorLock.lock()
+            defer {_mediatorLock.unlock()}
+            return __verifyComplete
+        }
+    }
     func waitForVerifyComplete() {
         while !_verifyComplete {
             if _verifyComplete {
@@ -24,6 +45,7 @@ class VerifyMediator {
 }
 var verifyMediator = VerifyMediator()
 private let _verifyLock = NSRecursiveLock()
+private let _mediatorLock = NSRecursiveLock()
 
 internal func verifyXMLString(xmlString: String, @noescape onError:() throws -> ()) rethrows {
     _verifyLock.lock()
