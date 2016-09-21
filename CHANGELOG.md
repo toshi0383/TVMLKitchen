@@ -1,3 +1,9 @@
+## 0.9.5
+##### Bugfix
+* [Multi Window] Fixed crashing bug when emptying Kitchen.navigationController during Kitchen.window's presentation  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#111](https://github.com/toshi0383/TVMLKitchen/pull/111)
+
 ## 0.9.4
 ##### Breaking
 * [Multi Window Support] Improve Window Transition Animation  
