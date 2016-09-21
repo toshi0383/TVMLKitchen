@@ -341,7 +341,8 @@ extension Kitchen: UINavigationControllerDelegate {
             Kitchen._navigationControllerDelegateWillShowCount = 1
             return
         }
-        if viewController == Kitchen.navigationController.viewControllers[0] {
+        if Kitchen.navigationController.viewControllers.count == 0 ||
+            viewController == Kitchen.navigationController.viewControllers[0] {
             if let redirectWindow = Kitchen.redirectWindow {
                 if Kitchen.animatedWindowTransition {
                     Kitchen._willRedirectToWindow(redirectWindow)
