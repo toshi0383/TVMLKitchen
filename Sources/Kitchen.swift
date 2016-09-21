@@ -8,6 +8,11 @@
 
 @_exported import TVMLKit
 
+public enum Result<T, E: ErrorType> {
+    case Success(T)
+    case Failure(E)
+}
+
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
 public typealias KitchenErrorHandler = NSError -> Void
 public typealias KitchenActionIDHandler = (String -> Void)
@@ -25,20 +30,7 @@ public class Kitchen: NSObject {
 
     private var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
 
-    private var kitchenErrorHandler: KitchenErrorHandler? {
-        didSet {
-            Kitchen.appController.evaluateInJavaScriptContext({jsContext in
-                let errorHandler: @convention(block) String -> Void =
-                { [unowned self] (message: String) in
-                    let error = NSError(domain: kitchenErrorDomain,
-                        code: 1, userInfo: [NSLocalizedDescriptionKey:message])
-                    self.kitchenErrorHandler?(error)
-                }
-                jsContext.setObject(unsafeBitCast(errorHandler, AnyObject.self),
-                    forKeyedSubscript: "kitchenErrorHandler")
-            }, completion: nil)
-        }
-    }
+    private var kitchenErrorHandler: KitchenErrorHandler?
 
     private static let defaultErrorHandler: KitchenErrorHandler = { error in
         let alert = UIAlertController(title: "Oops, something's wrong.",
@@ -71,7 +63,8 @@ public class Kitchen: NSObject {
 
 // MARK: - Public API
 public enum KitchenError: ErrorType {
-    case TVMLDecodeError
+    case TVMLDecodeError, TVMLURLNetworkError(NSError?)
+    case InvalidTVMLURL
 }
 
 extension Kitchen {
@@ -169,6 +162,10 @@ extension Kitchen {
 
     /// Serve TVML with urlString
     /// Calls `redirectWindow.makeKeyAndVisible()` when the TVML is dismissing.
+    ///
+    /// Redirects to redirectWindow on error by default.
+    /// You can overwrite that behavior by setting resultHandler parameter.
+    ///
     /// - parameter urlString:
     /// - parameter type:
     /// - parameter redirectWindow: UIWindow.
@@ -176,12 +173,14 @@ extension Kitchen {
     /// - parameter animatedWindowTransition: If true, ignores Redirect callbacks.
     /// - parameter kitchenWindowWillBecomeVisible: Redirect Callback
     /// - parameter willRedirectToWindow: Redirect Callback
+    /// - parameter resultHandler: Result Handler
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(urlString urlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
        animatedWindowTransition: Bool = false,
        kitchenWindowWillBecomeVisible: (() -> ())? = nil,
-       willRedirectToWindow: (() -> ())? = nil)
+       willRedirectToWindow: (() -> ())? = nil,
+       resultHandler: (Result<String, KitchenError> -> String?)? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
         let vc = _rootViewController
@@ -190,27 +189,71 @@ extension Kitchen {
         Kitchen.willRedirectToWindow = willRedirectToWindow
         Kitchen.redirectWindow = redirectWindow
         Kitchen.animatedWindowTransition = animatedWindowTransition
-        if animatedWindowTransition {
-            _kitchenWindowWillBecomeVisible(redirectWindow)
-        } else {
-            kitchenWindowWillBecomeVisible?()
+
+
+        func transitionToKitchen() {
+            dispatch_async(dispatch_get_main_queue()) {
+                if animatedWindowTransition {
+                    _kitchenWindowWillBecomeVisible(redirectWindow)
+                } else {
+                    kitchenWindowWillBecomeVisible?()
+                }
+                Kitchen.window.makeKeyAndVisible()
+            }
         }
-        Kitchen.serve(urlString: urlString, type: type)
-        Kitchen.window.makeKeyAndVisible()
+        func redirectBack() {
+            dispatch_async(dispatch_get_main_queue()) {
+                redirectWindow.makeKeyAndVisible()
+            }
+        }
+        if let resultHandler = resultHandler {
+            Kitchen.serve(urlString: urlString, type: type, resultHandler: resultHandler)
+        } else {
+            Kitchen.serve(urlString: urlString, type: type) {
+                result in
+                switch result {
+                case .Success(let xmlString):
+                    do {
+                        try Kitchen.verify(xmlString)
+                        transitionToKitchen()
+                        return xmlString
+                    } catch {
+                        redirectBack()
+                        return nil
+                    }
+                case .Failure:
+                    redirectBack()
+                    return nil
+                }
+            }
+        }
     }
 
-    public static func serve(urlString urlString: String, type: PresentationType = .Default) {
+    public static func serve
+        (urlString urlString: String, type: PresentationType = .Default,
+         resultHandler: (Result<String, KitchenError> -> String?)? = nil) {
         Kitchen.appController.evaluateInJavaScriptContext({
             context in
             let js = "showLoadingIndicatorForType(\(type.rawValue))"
             context.evaluateScript(js)
         }, completion: nil)
-        sharedKitchen.sendRequest(urlString) { result in
-            switch result {
-            case .Success(let xmlString):
-                openTVMLTemplateFromXMLString(xmlString, type: type)
-            case .Failure(let error):
-                sharedKitchen.kitchenErrorHandler?(error)
+        sharedKitchen.sendRequest(urlString) {
+            result in
+            if let resultHandler = resultHandler {
+                if let xmlString = resultHandler(result) {
+                    openTVMLTemplateFromXMLString(xmlString, type: type)
+                }
+            } else {
+                switch result {
+                case .Success(let xmlString):
+                    openTVMLTemplateFromXMLString(xmlString, type: type)
+                case .Failure(let error):
+                    if case KitchenError.TVMLURLNetworkError(let e) = error {
+                        if let e = e {
+                            sharedKitchen.kitchenErrorHandler?(e)
+                        }
+                    }
+                }
             }
         }
     }
@@ -245,7 +288,11 @@ extension Kitchen {
             case .Success(let xmlString):
                 _reloadTab(atIndex: index, xmlString: xmlString)
             case .Failure(let error):
-                sharedKitchen.kitchenErrorHandler?(error)
+                if case KitchenError.TVMLURLNetworkError(let e) = error {
+                    if let e = e {
+                        sharedKitchen.kitchenErrorHandler?(e)
+                    }
+                }
             }
         }
     }
@@ -268,17 +315,12 @@ extension Kitchen {
 
 // MARK: Network Request
 
-internal enum Result<T, E> {
-    case Success(T)
-    case Failure(E)
-}
-
 extension Kitchen {
-    internal func sendRequest(urlString: String, responseHandler: Result<String, NSError> -> ()) {
+    internal func sendRequest(urlString: String, responseHandler: Result<String, KitchenError> -> ()) {
         guard let url = NSURL(string: urlString) else {
             print("Invalid URL")
             responseHandler(.Failure(
-                NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
+                KitchenError.InvalidTVMLURL
             ))
             return
         }
@@ -295,7 +337,7 @@ extension Kitchen {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let task = session.dataTaskWithRequest(req) {[unowned self] data, res, error in
             if let error = error {
-                responseHandler(.Failure(error))
+                responseHandler(.Failure(KitchenError.TVMLURLNetworkError(error)))
             }
 
             /// Call user-defined responseObjectHander if no errors.
@@ -312,7 +354,7 @@ extension Kitchen {
                 responseHandler(Result.Success(xml))
             } else {
                 responseHandler(Result.Failure(
-                    NSError(domain: kitchenErrorDomain, code: 0, userInfo: nil)
+                    KitchenError.TVMLURLNetworkError(nil)
                 ))
             }
         }
@@ -475,7 +517,11 @@ extension Kitchen: TVApplicationControllerDelegate {
                         type: PresentationType(string: presentationType) ?? .Default
                     )
                 case .Failure(let error):
-                    self.cookbook.onError?(error)
+                    if case KitchenError.TVMLURLNetworkError(let e) = error {
+                        if let e = e {
+                            self.cookbook.onError?(e)
+                        }
+                    }
                 }
             }
         }
