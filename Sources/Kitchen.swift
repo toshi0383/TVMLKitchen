@@ -169,6 +169,10 @@ extension Kitchen {
 
     /// Serve TVML with urlString
     /// Calls `redirectWindow.makeKeyAndVisible()` when the TVML is dismissing.
+    ///
+    /// Redirects to redirectWindow on error by default.
+    /// You can overwrite that behavior by setting onError parameter.
+    ///
     /// - parameter urlString:
     /// - parameter type:
     /// - parameter redirectWindow: UIWindow.
@@ -176,12 +180,14 @@ extension Kitchen {
     /// - parameter animatedWindowTransition: If true, ignores Redirect callbacks.
     /// - parameter kitchenWindowWillBecomeVisible: Redirect Callback
     /// - parameter willRedirectToWindow: Redirect Callback
+    /// - parameter onError: Error Handler
     /// - Note: **BETA API** This API is subject to change.
     public static func serve(urlString urlString: String,
        type: PresentationType = .Default, redirectWindow: UIWindow,
        animatedWindowTransition: Bool = false,
        kitchenWindowWillBecomeVisible: (() -> ())? = nil,
-       willRedirectToWindow: (() -> ())? = nil)
+       willRedirectToWindow: (() -> ())? = nil,
+       onError: (ErrorType -> ())? = nil)
     {
         Kitchen._navigationControllerDelegateWillShowCount = 0
         let vc = _rootViewController
@@ -195,11 +201,21 @@ extension Kitchen {
         } else {
             kitchenWindowWillBecomeVisible?()
         }
-        Kitchen.serve(urlString: urlString, type: type)
+
+        if let onError = onError {
+            Kitchen.serve(urlString: urlString, type: type, onError: onError)
+        } else {
+            Kitchen.serve(urlString: urlString, type: type) {
+                _ in
+                redirectWindow.makeKeyAndVisible()
+            }
+        }
         Kitchen.window.makeKeyAndVisible()
     }
 
-    public static func serve(urlString urlString: String, type: PresentationType = .Default) {
+    public static func serve
+        (urlString urlString: String, type: PresentationType = .Default,
+         onError: (ErrorType -> ())? = nil) {
         Kitchen.appController.evaluateInJavaScriptContext({
             context in
             let js = "showLoadingIndicatorForType(\(type.rawValue))"
@@ -208,9 +224,21 @@ extension Kitchen {
         sharedKitchen.sendRequest(urlString) { result in
             switch result {
             case .Success(let xmlString):
+                if let onError = onError {
+                    do {
+                        try Kitchen.verify(xmlString)
+                    } catch {
+                        onError(error)
+                        return
+                    }
+                }
                 openTVMLTemplateFromXMLString(xmlString, type: type)
             case .Failure(let error):
-                sharedKitchen.kitchenErrorHandler?(error)
+                if let onError = onError {
+                    onError(error)
+                } else {
+                    sharedKitchen.kitchenErrorHandler?(error)
+                }
             }
         }
     }
