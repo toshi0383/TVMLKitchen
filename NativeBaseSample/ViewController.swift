@@ -68,6 +68,13 @@ class ViewController: UIViewController {
             self.reset()
         }
     }
+    @IBAction func urlStringError() {
+        let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
+        Kitchen.serve(
+            urlString: "tvmlkitchen://helloworld.com/helloworld",
+            redirectWindow: appdelegateWindow
+        )
+    }
     @IBAction func reset() {
         Kitchen.navigationController.popToRootViewControllerAnimated(false)
         Kitchen.navigationController.setViewControllers([], animated: false)
