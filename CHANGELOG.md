@@ -1,3 +1,9 @@
+## 0.9.6
+##### Enhancement
+* Add Result Handler to serve(urlString:...)  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#114](https://github.com/toshi0383/TVMLKitchen/pull/114)
+
 ## 0.9.5
 ##### Bugfix
 * [Multi Window] Fixed crashing bug when emptying Kitchen.navigationController during Kitchen.window's presentation  
