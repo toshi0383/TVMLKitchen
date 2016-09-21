@@ -47,7 +47,7 @@ var verifyMediator = VerifyMediator()
 private let _verifyLock = NSRecursiveLock()
 private let _mediatorLock = NSRecursiveLock()
 
-internal func verifyXMLString(xmlString: String, @noescape onError:() throws -> ()) rethrows {
+internal func isValidXMLString(xmlString: String) -> Bool {
     _verifyLock.lock()
     defer {_verifyLock.unlock()}
     verifyMediator = VerifyMediator()
@@ -57,9 +57,7 @@ internal func verifyXMLString(xmlString: String, @noescape onError:() throws -> 
     //     It has completion callback, but we cannot use it here
     //     because it's not marked as rethrows.
     verifyMediator.waitForVerifyComplete()
-    if verifyMediator.error {
-        try onError()
-    }
+    return !verifyMediator.error
 }
 
 // MARK: - Open TMVL Templates
