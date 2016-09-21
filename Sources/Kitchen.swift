@@ -82,7 +82,7 @@ extension Kitchen {
     /// - parameter xmlString:
     /// - throws: KitchenError.TVMLDecodeError
     public static func verify(xmlString: String) throws {
-        try verifyXMLString(xmlString) {
+        if !isValidXMLString(xmlString) {
             throw KitchenError.TVMLDecodeError
         }
     }
