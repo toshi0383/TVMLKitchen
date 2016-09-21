@@ -60,5 +60,16 @@ class ViewController: UIViewController {
             redirectWindow: appdelegateWindow,
             animatedWindowTransition: true
         )
+
+        let seconds: Double = 2.0
+        let nanoSeconds = Int64(seconds * Double(NSEC_PER_SEC))
+        let time = dispatch_time(DISPATCH_TIME_NOW, nanoSeconds)
+        dispatch_after(time, dispatch_get_main_queue()) {
+            self.reset()
+        }
+    }
+    @IBAction func reset() {
+        Kitchen.navigationController.popToRootViewControllerAnimated(false)
+        Kitchen.navigationController.setViewControllers([], animated: false)
     }
 }
