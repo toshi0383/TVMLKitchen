@@ -1,4 +1,9 @@
 ## 0.9.6
+##### Bugfix
+* Improve verify reliability  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#116](https://github.com/toshi0383/TVMLKitchen/pull/116)
+
 ##### Enhancement
 * Add Result Handler to serve(urlString:...)  
   [Toshihiro Suzuki](https://github.com/toshi0383)
