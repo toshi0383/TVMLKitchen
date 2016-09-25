@@ -13,8 +13,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.view.backgroundColor = .black()
-        view.backgroundColor = .black()
+        navigationController?.view.backgroundColor = .black
+        view.backgroundColor = .black
     }
 
     @IBAction func urlString(_ sender: AnyObject!) {
@@ -26,8 +26,8 @@ class ViewController: UIViewController {
             // - Note: This is what Kitchen would do when animatedWindowTransition is true.
             kitchenWindowWillBecomeVisible: {
                 Kitchen.window.alpha = 0.0
-                UIView.animateWithDuration(
-                    0.3,
+                UIView.animate(
+                    withDuration: 0.3,
                     animations: {
                         Kitchen.window.alpha = 1.0
                     },
@@ -39,8 +39,8 @@ class ViewController: UIViewController {
             },
             willRedirectToWindow: {
                 appdelegateWindow.alpha = 0.0
-                UIView.animateWithDuration(
-                    0.3,
+                UIView.animate(
+                    withDuration: 0.3,
                     animations: {
                         appdelegateWindow.alpha = 1.0
                     },
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         )
     }
     @IBAction func reset() {
-        Kitchen.navigationController.popToRootViewControllerAnimated(false)
+        Kitchen.navigationController.popToRootViewController(animated: false)
         Kitchen.navigationController.setViewControllers([], animated: false)
     }
 }
