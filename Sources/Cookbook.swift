@@ -8,26 +8,26 @@
 
 import Foundation
 
-public typealias ResponseObjectHandler = NSHTTPURLResponse -> Bool
+public typealias ResponseObjectHandler = (HTTPURLResponse) -> Bool
 
-public class Cookbook {
+open class Cookbook {
 
     /// launchOptions
-    internal var launchOptions: [NSObject: AnyObject]?
+    internal var launchOptions: [AnyHashable: Any]?
     /// inject functions or a exceptionHandler into JSContext
-    public var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
+    open var evaluateAppJavaScriptInContext: JavaScriptEvaluationHandler?
     /// handles "select" event
-    public var actionIDHandler: KitchenActionIDHandler?
+    open var actionIDHandler: KitchenActionIDHandler?
     /// handles "play" event
-    public var playActionIDHandler: KitchenActionIDHandler?
+    open var playActionIDHandler: KitchenActionIDHandler?
     /// handles "tabChanged" event
-    public var tabChangedHandler: KitchenTabItemHandler?
+    open var tabChangedHandler: KitchenTabItemHandler?
 
     /// Subclass object of SearchRecipe.
     /// Required when presenting SearchRecipe somewhere.
     internal var searchRecipe: SearchRecipe? {
         didSet {
-            if let recipe = searchRecipe where recipe.dynamicType == SearchRecipe.self {
+            if let recipe = searchRecipe , type(of: recipe) == SearchRecipe.self {
                 fatalError("searchRecipe must be subclassed.")
             }
         }
@@ -35,12 +35,12 @@ public class Cookbook {
 
     /// error handler that gets called when any errors occured
     /// in Kitchen(both JS and Swift context)
-    public var onError: KitchenErrorHandler?
-    public var httpHeaders: [String: String] = [:]
-    public var responseObjectHandler: ResponseObjectHandler?
+    open var onError: KitchenErrorHandler?
+    open var httpHeaders: [String: String] = [:]
+    open var responseObjectHandler: ResponseObjectHandler?
 
     /// - parameter launchOptions: launchOptions
-    public init(launchOptions: [NSObject: AnyObject]?) {
+    public init(launchOptions: [AnyHashable: Any]?) {
         self.launchOptions = launchOptions
     }
 }

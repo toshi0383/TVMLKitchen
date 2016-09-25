@@ -13,12 +13,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.view.backgroundColor = .blackColor()
-        view.backgroundColor = .blackColor()
+        navigationController?.view.backgroundColor = .black()
+        view.backgroundColor = .black()
     }
 
-    @IBAction func urlString(sender: AnyObject!) {
-        let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
+    @IBAction func urlString(_ sender: AnyObject!) {
+        let appdelegateWindow = (UIApplication.shared.delegate as! AppDelegate).window!
         Kitchen.serve(
             urlString: Sample.tvmlUrl,
             redirectWindow: appdelegateWindow,
@@ -52,8 +52,8 @@ class ViewController: UIViewController {
             }
         )
     }
-    @IBAction func xmlString(sender: AnyObject!) {
-        let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
+    @IBAction func xmlString(_ sender: AnyObject!) {
+        let appdelegateWindow = (UIApplication.shared.delegate as! AppDelegate).window!
         Kitchen.window.alpha = 1.0
         Kitchen.serve(
             xmlString: Sample.tvmlString,
@@ -63,13 +63,13 @@ class ViewController: UIViewController {
 
         let seconds: Double = 2.0
         let nanoSeconds = Int64(seconds * Double(NSEC_PER_SEC))
-        let time = dispatch_time(DISPATCH_TIME_NOW, nanoSeconds)
-        dispatch_after(time, dispatch_get_main_queue()) {
+        let time = DispatchTime.now() + Double(nanoSeconds) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: time) {
             self.reset()
         }
     }
     @IBAction func urlStringError() {
-        let appdelegateWindow = (UIApplication.sharedApplication().delegate as! AppDelegate).window!
+        let appdelegateWindow = (UIApplication.shared.delegate as! AppDelegate).window!
         Kitchen.serve(
             urlString: "tvmlkitchen://helloworld.com/helloworld",
             redirectWindow: appdelegateWindow

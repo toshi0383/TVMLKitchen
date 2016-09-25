@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class LoadingRecipe: TemplateRecipeType {
+open class LoadingRecipe: TemplateRecipeType {
 
     public typealias Theme = EmptyTheme
-    public var theme: Theme = EmptyTheme()
+    open var theme: Theme = EmptyTheme()
 
     let message: String
 
@@ -19,7 +19,7 @@ public class LoadingRecipe: TemplateRecipeType {
         self.message = message
     }
 
-    public var replacementDictionary: [String : String] {
+    open var replacementDictionary: [String : String] {
         return ["LOADING": message]
     }
 }

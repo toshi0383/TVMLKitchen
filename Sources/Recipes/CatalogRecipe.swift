@@ -60,7 +60,7 @@ extension Section: CustomStringConvertible {
             xml += "<title class=\"kitchen_no_highlight_bg\">\(content.title)</title>"
             xml += "</lockup>"
             return xml
-        }.joinWithSeparator("")
+        }.joined(separator: "")
         xml += "</section>"
         xml += "</grid>"
         xml += "</relatedContent>"
@@ -77,7 +77,7 @@ public struct CatalogRecipe: TemplateRecipeType {
     public var presentationType: PresentationType
 
     public init(banner: String, sections: [Section],
-        presentationType: PresentationType = .Default) {
+        presentationType: PresentationType = .default) {
         self.banner = banner
         self.sections = sections
         self.presentationType = presentationType
@@ -98,7 +98,7 @@ public struct CatalogRecipe: TemplateRecipeType {
         xml += "<header>"
         xml += "<title></title>"
         xml += "</header>"
-        xml += sections.map{"\($0)"}.joinWithSeparator("")
+        xml += sections.map{"\($0)"}.joined(separator: "")
         xml += "</section>"
         xml += "</list>"
         xml += "</catalogTemplate>"

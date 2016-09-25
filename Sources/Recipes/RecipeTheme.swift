@@ -40,7 +40,7 @@ extension ThemeType {
         return parse(styleTemplate)
     }
 
-    private var styleTemplate: String {
+    fileprivate var styleTemplate: String {
         return "* { background-color: {{__kitchenBackgroundColor}};"
             + "    color: {{__kitchenColor}};"
             + "    tv-highlight-color:{{__kitchenHighlightBackgroundColor}};"
@@ -51,19 +51,19 @@ extension ThemeType {
             + "    tv-highlight-color:{{__kitchenHighlightBackgroundColor}}; }"
     }
 
-    private func parse(xml: String) -> String {
+    fileprivate func parse(_ xml: String) -> String {
         var result = xml
-        result = result.stringByReplacingOccurrencesOfString(
-            "{{__kitchenBackgroundColor}}", withString: backgroundColor
+        result = result.replacingOccurrences(
+            of: "{{__kitchenBackgroundColor}}", with: backgroundColor
         )
-        result = result.stringByReplacingOccurrencesOfString(
-            "{{__kitchenHighlightBackgroundColor}}", withString: highlightBackgroundColor
+        result = result.replacingOccurrences(
+            of: "{{__kitchenHighlightBackgroundColor}}", with: highlightBackgroundColor
         )
-        result = result.stringByReplacingOccurrencesOfString(
-            "{{__kitchenHighlightTextColor}}", withString: highlightTextColor
+        result = result.replacingOccurrences(
+            of: "{{__kitchenHighlightTextColor}}", with: highlightTextColor
         )
-        result = result.stringByReplacingOccurrencesOfString(
-            "{{__kitchenColor}}", withString: color
+        result = result.replacingOccurrences(
+            of: "{{__kitchenColor}}", with: color
         )
         return result
     }
