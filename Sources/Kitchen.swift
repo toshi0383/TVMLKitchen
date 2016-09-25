@@ -14,7 +14,7 @@ public enum Result<T, E: Error> {
 }
 
 public typealias JavaScriptEvaluationHandler = (TVApplicationController, JSContext) -> Void
-public typealias KitchenErrorHandler = (NSError) -> Void
+public typealias KitchenErrorHandler = (Error) -> Void
 public typealias KitchenActionIDHandler = ((String) -> Void)
 public typealias KitchenTabItemHandler = ((Int) -> Void)
 
@@ -63,7 +63,7 @@ open class Kitchen: NSObject {
 
 // MARK: - Public API
 public enum KitchenError: Error {
-    case tvmlDecodeError, tvmlurlNetworkError(NSError?)
+    case tvmlDecodeError, tvmlurlNetworkError(Error?)
     case invalidTVMLURL
 }
 
@@ -335,7 +335,8 @@ extension Kitchen {
 
         /// Session Handler
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        let task = session.dataTask(with: req, completionHandler: {[unowned self] data, res, error in
+        let task = session.dataTask(with: req as URLRequest, completionHandler: {
+            [unowned self] data, res, error in
             if let error = error {
                 responseHandler(.failure(KitchenError.tvmlurlNetworkError(error)))
             }
@@ -349,7 +350,7 @@ extension Kitchen {
             }
 
             if let data = data,
-                let xml = NSString(data: data, encoding: String.Encoding.utf8) as? String
+                let xml = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
             {
                 responseHandler(Result.success(xml))
             } else {
@@ -429,7 +430,7 @@ extension Kitchen {
 
         let javaScriptURL = Bundle(for: self).url(forResource: "kitchen", withExtension: "js")!
         appControllerContext.javaScriptApplicationURL = javaScriptURL
-        appControllerContext.launchOptions[UIApplicationLaunchOptionsKey.url] = javaScriptURL
+        appControllerContext.launchOptions[UIApplicationLaunchOptionsKey.url.rawValue] = javaScriptURL
 
         /// Cutting `kitchen.js` off
         let TVBaseURL = javaScriptURL.deletingLastPathComponent()
@@ -438,7 +439,7 @@ extension Kitchen {
         appControllerContext.launchOptions["BASEURL"] = TVBaseURL.absoluteString
         let info = Bundle(for: self).infoDictionary!
         let bundleid = info[String(kCFBundleIdentifierKey)]!
-        appControllerContext.launchOptions[UIApplicationLaunchOptionsKey.sourceApplication] = bundleid
+        appControllerContext.launchOptions[UIApplicationLaunchOptionsKey.sourceApplication.rawValue] = bundleid
 
         /// Define mainBundle URL
         mainBundlePath = Bundle.main.bundleURL.absoluteString
