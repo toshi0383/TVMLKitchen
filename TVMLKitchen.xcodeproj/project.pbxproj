@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F21D5D51C37A60900E8FEA9 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21D5D41C37A60900E8FEA9 /* Async.swift */; };
 		1F23CB931C9FB2B800324F6F /* SampleTemplateRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */; };
 		1F23CB951C9FB4FE00324F6F /* AlertRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */; };
 		1F23CB971C9FBBD800324F6F /* ExpectedAlertRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */; };
@@ -121,7 +120,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F21D5D41C37A60900E8FEA9 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SampleTemplateRecipe.xml; sourceTree = "<group>"; };
 		1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRecipeTests.swift; sourceTree = "<group>"; };
 		1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedAlertRecipe.xml; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				1F32E6881C30B9B900F62E88 /* config */,
-				1F32E68C1C30BC3000F62E88 /* library */,
 				1FCC00F61D702EFE00F60DD5 /* NativeBaseSample */,
 				1F32E40A1C30B6EF00F62E88 /* Products */,
 				1F32E54D1C30B79600F62E88 /* SampleRecipe */,
@@ -359,14 +356,6 @@
 			);
 			path = config;
 			sourceTree = SOURCE_ROOT;
-		};
-		1F32E68C1C30BC3000F62E88 /* library */ = {
-			isa = PBXGroup;
-			children = (
-				1F21D5D41C37A60900E8FEA9 /* Async.swift */,
-			);
-			path = library;
-			sourceTree = "<group>";
 		};
 		1F8B43761C35676400C716A7 /* SampleRecipeUITests */ = {
 			isa = PBXGroup;
@@ -670,7 +659,6 @@
 				1FF011221CA024F70068CDAA /* RecipeTheme.swift in Sources */,
 				1FF0111B1CA024F60068CDAA /* Kitchen.swift in Sources */,
 				1FF011211CA024F70068CDAA /* Recipe.swift in Sources */,
-				1F21D5D51C37A60900E8FEA9 /* Async.swift in Sources */,
 				1FF0111D1CA024F60068CDAA /* PresentationType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

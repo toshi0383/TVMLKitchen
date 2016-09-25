@@ -38,7 +38,7 @@ open class Kitchen: NSObject {
             preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(ok)
-        main {
+        DispatchQueue.main.async {
             Kitchen.navigationController.present(alert, animated: true, completion: nil)
         }
     }
@@ -515,7 +515,7 @@ extension Kitchen: TVApplicationControllerDelegate {
                 case .success(let xmlString):
                     openTVMLTemplateFromXMLString(
                         xmlString,
-                        type: PresentationType(string: presentationType) ?? .default
+                        type: PresentationType(string: presentationType) 
                     )
                 case .failure(let error):
                     if case KitchenError.tvmlurlNetworkError(let e) = error {
