@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = "0.9.6"
   s.summary          = "Swifty TVML template manager with or without client-server"
   s.description      = <<-DESC
-  TVML is a good choice, when you prefer simplicity over dynamic UIKit implementation. TVMLKitchen helps to manage your TVML with or without additional client-server. Put TVML templates in Main Bundle, then you're ready to go.
+  TVMLKitchen helps to manage your TVML with or without additional client-server.
                        DESC
 
   s.homepage         = "https://github.com/toshi0383/TVMLKitchen"

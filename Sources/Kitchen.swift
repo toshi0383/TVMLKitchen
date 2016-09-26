@@ -137,7 +137,6 @@ extension Kitchen {
     /// - parameter animatedWindowTransition: If true, ignores Redirect callbacks.
     /// - parameter kitchenWindowWillBecomeVisible: Redirect Callback
     /// - parameter willRedirectToWindow: Redirect Callback
-    /// - Note: **BETA API** This API is subject to change.
     public static func serve(xmlString: String,
        type: PresentationType = .default, redirectWindow: UIWindow,
        animatedWindowTransition: Bool = false,
@@ -174,7 +173,6 @@ extension Kitchen {
     /// - parameter kitchenWindowWillBecomeVisible: Redirect Callback
     /// - parameter willRedirectToWindow: Redirect Callback
     /// - parameter resultHandler: Result Handler
-    /// - Note: **BETA API** This API is subject to change.
     public static func serve(urlString: String,
        type: PresentationType = .default, redirectWindow: UIWindow,
        animatedWindowTransition: Bool = false,

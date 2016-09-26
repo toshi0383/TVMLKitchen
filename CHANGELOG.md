@@ -1,3 +1,13 @@
+## swift3.0
+##### Breaking & Enhancement
+* Swift3 Support  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#119](https://github.com/toshi0383/TVMLKitchen/pull/119)
+
+* Add @discardableResult to Kitchen.prepare(_:)  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#97](https://github.com/toshi0383/TVMLKitchen/pull/97)
+
 ## 0.9.6
 ##### Bugfix
 * Improve verify reliability  
