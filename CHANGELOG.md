@@ -1,4 +1,4 @@
-## swift3.0
+## 1.0.0
 ##### Breaking & Enhancement
 * Swift3 Support  
   [Toshihiro Suzuki](https://github.com/toshi0383)
