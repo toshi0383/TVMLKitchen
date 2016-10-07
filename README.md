@@ -3,8 +3,11 @@
 TVMLKitchen helps to manage your TVML **with or without additional client-server**.
 
 # Requirements
-- Swift2.2
+- Swift3.0
 - tvOS 9.0+
+
+Use 0.9.6 for Swift2.2.  
+Swift2.3 is not supported. Feel free to send PR.
 
 # What's TVML?
 Please refer to [Apple's Documentation](https://developer.apple.com/library/tvos/documentation/LanguagesUtilities/Conceptual/ATV_Template_Guide/).

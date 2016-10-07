@@ -10,12 +10,12 @@ import UIKit
 import TVMLKitchen
 
 class MusicsTab: TabItem {
-    private var presented = false
+    fileprivate var presented = false
     var title: String {
         return "Musics"
     }
     func handler() {
-        Kitchen.serve(xmlFile: "Catalog.xml", type: .Tab)
+        Kitchen.serve(xmlFile: "Catalog.xml", type: .tab)
         if !presented {
             presented = true
         } else {
@@ -32,7 +32,7 @@ class MoviesTab: TabItem {
         return "Movies"
     }
     func handler() {
-        Kitchen.serve(xmlFile: "Catalog.xml", type: .Tab)
+        Kitchen.serve(xmlFile: "Catalog.xml", type: .tab)
     }
 }
 
@@ -55,27 +55,27 @@ class ViewController: UIViewController {
         Kitchen.serve(recipe: search)
     }
 
-    @IBAction func openXMLString(sender: AnyObject!) {
-        Kitchen.serve(xmlString:XMLString.Catalog.description, type: .DefaultWithLoadingIndicator)
+    @IBAction func openXMLString(_ sender: AnyObject!) {
+        Kitchen.serve(xmlString:XMLString.Catalog.description, type: .defaultWithLoadingIndicator)
     }
 
-    @IBAction func openXMLFileFromMainBundle(sender: AnyObject!) {
+    @IBAction func openXMLFileFromMainBundle(_ sender: AnyObject!) {
         Kitchen.serve(xmlFile: "Catalog.xml")
     }
 
-    @IBAction func openTemplateFromURL(sender: AnyObject!) {
+    @IBAction func openTemplateFromURL(_ sender: AnyObject!) {
     }
 
-    @IBAction func descriptiveAlertRecipe(sender: AnyObject) {
+    @IBAction func descriptiveAlertRecipe(_ sender: AnyObject) {
         let alert = DescriptiveAlertRecipe(
             title: Sample.title,
             description: Sample.description,
-            presentationType: .Modal
+            presentationType: .modal
         )
         Kitchen.serve(recipe: alert)
     }
 
-    @IBAction func alertRecipe(sender: AnyObject) {
+    @IBAction func alertRecipe(_ sender: AnyObject) {
         Kitchen.serve(recipe: AlertRecipe(
             title: Sample.title,
             description: Sample.description)
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
 
     @IBAction func openCustomTheme() {
         let banner = "Music"
-        let thumbnailUrl = NSBundle.mainBundle().URLForResource("img",
+        let thumbnailUrl = Bundle.main.url(forResource: "img",
             withExtension: "jpg")!.absoluteString
         let actionID = "/title?titleId=1234"
         let (width, height) = (250, 376)

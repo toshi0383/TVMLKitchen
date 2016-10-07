@@ -10,7 +10,7 @@ import Foundation
 import TVMLKitchen
 
 class MySearchRecipe: SearchRecipe {
-    override func filterSearchText(text: String, callback: (String -> Void)) {
+    override func filterSearchText(_ text: String, callback: ((String) -> Void)) {
         let titles = [
             "hello",
             "yellow"
@@ -24,9 +24,9 @@ class MySearchRecipe: SearchRecipe {
             results += "<title>\(title)</title>"
             results += "</lockup>"
         }
-        let url = SearchRecipe.bundle.URLForResource("SearchResult", withExtension: "xml")!
-        let resultBase = try! String(contentsOfURL: url)
-        let result = resultBase.stringByReplacingOccurrencesOfString("{{results}}", withString: results)
+        let url = SearchRecipe.bundle.url(forResource: "SearchResult", withExtension: "xml")!
+        let resultBase = try! String(contentsOf: url)
+        let result = resultBase.replacingOccurrences(of: "{{results}}", with: results)
 
         callback(result)
     }

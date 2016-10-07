@@ -6,5 +6,5 @@
 //  Copyright © 2016 toshi0383. All rights reserved.
 //
 
-public class DescriptiveAlertRecipe: AlertRecipe {
+open class DescriptiveAlertRecipe: AlertRecipe {
 }

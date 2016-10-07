@@ -7,29 +7,29 @@
 //
 
 public enum PresentationType: Int {
-    case Default = 0
-    case Modal = 1
-    case Tab = 2
-    case Search = 3
+    case `default` = 0
+    case modal = 1
+    case tab = 2
+    case search = 3
     /// Mix of `.Tab` and `.Search`.
     /// Expected to be used when presenting SearchRecipe as a TabItem.
-    case TabSearch = 4
-    case DefaultWithLoadingIndicator = 6
+    case tabSearch = 4
+    case defaultWithLoadingIndicator = 6
 
     init(string: String) {
-        switch string.lowercaseString {
+        switch string.lowercased() {
         case "modal":
-            self = .Modal
+            self = .modal
         case "tab":
-            self = .Tab
+            self = .tab
         case "search":
-            self = .Search
+            self = .search
         case "tabsearch":
-            self = .TabSearch
+            self = .tabSearch
         case "defaultwithloadingindicator":
-            self = .DefaultWithLoadingIndicator
+            self = .defaultWithLoadingIndicator
         default:
-            self = .Default
+            self = .default
         }
     }
 }

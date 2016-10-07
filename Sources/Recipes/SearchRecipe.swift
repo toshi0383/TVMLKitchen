@@ -13,27 +13,27 @@ import Foundation
 /// Usage:
 /// 1. Subclass and override filterSearchText method.
 /// 2. Instantiate with preferred PresentationType.
-public class SearchRecipe: SearchRecipeType {
+open class SearchRecipe: SearchRecipeType {
 
-    public let theme = EmptyTheme()
+    open let theme = EmptyTheme()
 
     /// Presentation type is defined in the recipe to keep things consistent.
-    public var presentationType = PresentationType.Search
+    open var presentationType = PresentationType.search
 
-    public init(type: PresentationType = .Search) {
+    public init(type: PresentationType = .search) {
         self.presentationType = type
     }
 
-    public var templateFileName: String {
+    open var templateFileName: String {
         // Always use SearchRecipe.xml unless this property is overridden.
         return "SearchRecipe"
     }
 
-    public func filterSearchText(text: String, callback: (String -> Void)) {
+    open func filterSearchText(_ text: String, callback: ((String) -> Void)) {
         fatalError("Must be overridden.")
     }
 
-    public var noData: String {
+    open var noData: String {
         return "<list> <section> <header> <title>No Results</title> </header> </section> </list>"
     }
 }
