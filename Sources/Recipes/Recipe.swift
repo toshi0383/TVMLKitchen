@@ -51,7 +51,7 @@ public protocol SearchRecipeType: TemplateRecipeType {
     /// - parameter text: keyword
     /// - parameter callback: pass the result template xmlString.
     /// - SeeAlso: SampleRecipe.MySearchRecipe.swift, SearchResult.xml
-    func filterSearchText(_ text: String, callback: ((String) -> Void))
+    func filterSearchText(_ text: String, callback: @escaping ((String) -> Void))
 }
 
 // MARK: - Default Implementations
