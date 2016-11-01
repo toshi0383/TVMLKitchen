@@ -1,3 +1,9 @@
+## 1.0.1
+#####  Enhancement
+* Add @escaping to SearchRecipe.filterSearchText(_:) 
+  [Flavia Bond](https://github.com/FlaviaBondJamesBondsHusband)
+  [#125](https://github.com/toshi0383/TVMLKitchen/pull/125)
+  
 ## 1.0.0
 ##### Breaking & Enhancement
 * Swift3 Support  
