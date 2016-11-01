@@ -10,7 +10,7 @@ import Foundation
 import TVMLKitchen
 
 class MySearchRecipe: SearchRecipe {
-    override func filterSearchText(_ text: String, callback: ((String) -> Void)) {
+    override func filterSearchText(_ text: String, callback: @escaping ((String) -> Void)) {
         let titles = [
             "hello",
             "yellow"

@@ -29,7 +29,7 @@ open class SearchRecipe: SearchRecipeType {
         return "SearchRecipe"
     }
 
-    open func filterSearchText(_ text: String, callback: ((String) -> Void)) {
+    open func filterSearchText(_ text: String, callback: @escaping ((String) -> Void)) {
         fatalError("Must be overridden.")
     }
 
