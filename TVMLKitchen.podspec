@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "TVMLKitchen"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Swifty TVML template manager with or without client-server"
   s.description      = <<-DESC
   TVMLKitchen helps to manage your TVML with or without additional client-server.
