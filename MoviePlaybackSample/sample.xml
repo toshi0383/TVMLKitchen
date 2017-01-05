@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+    <head>
+        <style>
+            .badge {
+            tv-tint-color: rgb(255,255,255);
+            }
+            .button {
+            font-size: 100px;
+            }
+        </style>
+    </head>
+    <compilationTemplate theme="dark">
+        <list>
+            <relatedContent>
+                <itemBanner>
+                    <!--heroImg src="((MAIN_BUNDLE_URL))home.jpg" width="800" height="800" /-->
+                </itemBanner>
+            </relatedContent>
+            <header>
+                <title>Title</title>
+                <subtitle>Series</subtitle>
+                <row  class="subtitle">
+                    <text>39 minutes</text>
+                    <badge src="resource://hd" class="badge"/>
+                </row>
+            </header>
+            <section>
+                <description allowsZooming="true">This is a description</description>
+            </section>
+            <section>
+                <listItemLockup actionID="playbackURL,https://wolverine.raywenderlich.com/rwdevcon.com/2015/videos/Ray-Wenderlich-Teamwork.mp4">
+                    <ordinal minLength="4">1</ordinal>
+                    <title>Title</title>
+                    <decorationLabel>04:10</decorationLabel>
+                </listItemLockup>
+            </section>
+        </list>
+    </compilationTemplate>
+</document>
