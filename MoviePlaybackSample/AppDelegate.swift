@@ -10,11 +10,15 @@ import AVKit
 import UIKit
 import TVMLKitchen
 
+/// Custom Action struct
 struct Action {
-    private var f: (()->())?
+    private let f: (()->())
     func run() {
-        f?()
+        f()
     }
+    /// Parse string to a function.
+    /// Returns nil if the parameter does not match expectation.
+    /// - parameter string: comma separated string
     init?(string: String) {
         let ss = string.components(separatedBy: ",")
         guard ss.count == 2 else {
@@ -26,11 +30,7 @@ struct Action {
                 return nil
             }
             self.f = {
-                let vc = AVPlayerViewController()
-                vc.player = AVPlayer(url: url)
-                DispatchQueue.main.async {
-                    Kitchen.navigationController.pushViewController(vc, animated: true)
-                }
+                startPlayback(url: url)
             }
         default:
             return nil
@@ -38,7 +38,31 @@ struct Action {
     }
 }
 
-func xmlString() -> String {
+func startPlayback(url: URL) {
+    DispatchQueue.global().async {
+
+        let vc = AVPlayerViewController()
+
+        /*
+        This is extremely expensive if url points at monolithic mp4.
+        So we're doing this in background.
+        You should do like this if you need to handle error case.
+        ```
+        let asset = AVURLAsset(url: url)
+        asset.loadValuesAsynchronously(forKeys: [playableKey, statusKey]) {
+        // start playback
+        }
+        ```
+        */
+        vc.player = AVPlayer(url: url)
+        DispatchQueue.main.async {
+            // Navigation should be in main thread.
+            Kitchen.navigationController.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+private func xmlString() -> String {
     guard let url = Bundle.main.url(forResource: "sample", withExtension: "xml"),
         let data = try? Data(contentsOf: url) else {
         fatalError()
@@ -53,6 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let cookbook = Cookbook(launchOptions: launchOptions)
         cookbook.actionIDHandler = {
             actionID in
+            // actionID can be any string.
+            // In this sample, we're expecting comma separated string.
             if let action = Action(string: actionID) {
                 action.run()
             }
@@ -62,4 +88,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
