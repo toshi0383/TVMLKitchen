@@ -29,7 +29,7 @@
                 <description allowsZooming="true">This is a description</description>
             </section>
             <section>
-                <listItemLockup actionID="playbackURL,http://www.rwdevcon.com/videos/Ray-Wenderlich-Teamwork.mp4">
+                <listItemLockup actionID="playbackURL,https://wolverine.raywenderlich.com/rwdevcon.com/2015/videos/Ray-Wenderlich-Teamwork.mp4">
                     <ordinal minLength="4">1</ordinal>
                     <title>Title</title>
                     <decorationLabel>04:10</decorationLabel>
