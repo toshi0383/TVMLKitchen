@@ -83,6 +83,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 action.run()
             }
         }
+
+        // This callback is triggered by `play/pause` button.
+        cookbook.playActionIDHandler = {
+            playActionID in
+            if let action = Action(string: playActionID) {
+                action.run()
+            }
+        }
         Kitchen.prepare(cookbook)
         Kitchen.serve(xmlString: xmlString())
         return true
