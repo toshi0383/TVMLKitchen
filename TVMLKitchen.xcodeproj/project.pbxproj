@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1343C01E1E1189004F065A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1343BF1E1E1189004F065A /* AppDelegate.swift */; };
+		1F1343C71E1E1189004F065A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1343C61E1E1189004F065A /* Assets.xcassets */; };
+		1F1343CC1E1E11C3004F065A /* TVMLKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; };
+		1F1343CD1E1E11C3004F065A /* TVMLKitchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32E4091C30B6EF00F62E88 /* TVMLKitchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1F1343D21E1E1489004F065A /* sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F1343D11E1E1489004F065A /* sample.xml */; };
 		1F23CB931C9FB2B800324F6F /* SampleTemplateRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */; };
 		1F23CB951C9FB4FE00324F6F /* AlertRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */; };
 		1F23CB971C9FBBD800324F6F /* ExpectedAlertRecipe.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */; };
@@ -64,6 +69,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F1343CE1E1E11C3004F065A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F32E4001C30B6EF00F62E88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F32E4081C30B6EF00F62E88;
+			remoteInfo = TVMLKitchen;
+		};
 		1F32E4151C30B6EF00F62E88 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F32E4001C30B6EF00F62E88 /* Project object */;
@@ -95,6 +107,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1F1343D01E1E11C4004F065A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1F1343CD1E1E11C3004F065A /* TVMLKitchen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F5ABB9B1C356B3100785DEB /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,6 +143,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F1343BD1E1E1189004F065A /* MoviePlaybackSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlaybackSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F1343BF1E1E1189004F065A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F1343C61E1E1189004F065A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F1343C81E1E1189004F065A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F1343D11E1E1489004F065A /* sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.xml; sourceTree = "<group>"; };
 		1F23CB921C9FB2B800324F6F /* SampleTemplateRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SampleTemplateRecipe.xml; sourceTree = "<group>"; };
 		1F23CB941C9FB4FE00324F6F /* AlertRecipeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRecipeTests.swift; sourceTree = "<group>"; };
 		1F23CB961C9FBBD800324F6F /* ExpectedAlertRecipe.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedAlertRecipe.xml; sourceTree = "<group>"; };
@@ -194,6 +222,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F1343BA1E1E1189004F065A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F1343CC1E1E11C3004F065A /* TVMLKitchen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F32E4051C30B6EF00F62E88 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +270,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1343BE1E1E1189004F065A /* MoviePlaybackSample */ = {
+			isa = PBXGroup;
+			children = (
+				1F1343BF1E1E1189004F065A /* AppDelegate.swift */,
+				1F1343C61E1E1189004F065A /* Assets.xcassets */,
+				1F1343C81E1E1189004F065A /* Info.plist */,
+				1F1343D11E1E1489004F065A /* sample.xml */,
+			);
+			path = MoviePlaybackSample;
+			sourceTree = "<group>";
+		};
 		1F3065C31C30EE19001E5DF0 /* xcconfigs */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +337,7 @@
 			children = (
 				1F32E6881C30B9B900F62E88 /* config */,
 				1FCC00F61D702EFE00F60DD5 /* NativeBaseSample */,
+				1F1343BE1E1E1189004F065A /* MoviePlaybackSample */,
 				1F32E40A1C30B6EF00F62E88 /* Products */,
 				1F32E54D1C30B79600F62E88 /* SampleRecipe */,
 				1F8B43761C35676400C716A7 /* SampleRecipeUITests */,
@@ -306,6 +354,7 @@
 				1F32E54C1C30B79600F62E88 /* SampleRecipe.app */,
 				1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */,
 				1FCC00F51D702EFE00F60DD5 /* NativeBaseSample.app */,
+				1F1343BD1E1E1189004F065A /* MoviePlaybackSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -437,6 +486,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1F1343BC1E1E1189004F065A /* MoviePlaybackSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F1343CB1E1E1189004F065A /* Build configuration list for PBXNativeTarget "MoviePlaybackSample" */;
+			buildPhases = (
+				1F1343B91E1E1189004F065A /* Sources */,
+				1F1343BA1E1E1189004F065A /* Frameworks */,
+				1F1343BB1E1E1189004F065A /* Resources */,
+				1F1343D01E1E11C4004F065A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F1343CF1E1E11C3004F065A /* PBXTargetDependency */,
+			);
+			name = MoviePlaybackSample;
+			productName = MoviePlaybackSample;
+			productReference = 1F1343BD1E1E1189004F065A /* MoviePlaybackSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1F32E4081C30B6EF00F62E88 /* TVMLKitchen */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F32E41D1C30B6EF00F62E88 /* Build configuration list for PBXNativeTarget "TVMLKitchen" */;
@@ -535,10 +603,14 @@
 		1F32E4001C30B6EF00F62E88 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = toshi0383;
 				TargetAttributes = {
+					1F1343BC1E1E1189004F065A = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
 					1F32E4081C30B6EF00F62E88 = {
 						CreatedOnToolsVersion = 7.2;
 						LastSwiftMigration = 0800;
@@ -578,11 +650,21 @@
 				1F32E54B1C30B79600F62E88 /* SampleRecipe */,
 				1F8B43741C35676400C716A7 /* SampleRecipeUITests */,
 				1FCC00F41D702EFE00F60DD5 /* NativeBaseSample */,
+				1F1343BC1E1E1189004F065A /* MoviePlaybackSample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1F1343BB1E1E1189004F065A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F1343C71E1E1189004F065A /* Assets.xcassets in Resources */,
+				1F1343D21E1E1489004F065A /* sample.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F32E4071C30B6EF00F62E88 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -644,6 +726,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F1343B91E1E1189004F065A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F1343C01E1E1189004F065A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F32E4041C30B6EF00F62E88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -708,6 +798,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F1343CF1E1E11C3004F065A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F32E4081C30B6EF00F62E88 /* TVMLKitchen */;
+			targetProxy = 1F1343CE1E1E11C3004F065A /* PBXContainerItemProxy */;
+		};
 		1F32E4161C30B6EF00F62E88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F32E4081C30B6EF00F62E88 /* TVMLKitchen */;
@@ -750,6 +845,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1F1343C91E1E1189004F065A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = MoviePlaybackSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.MoviePlaybackSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		1F1343CA1E1E1189004F065A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = MoviePlaybackSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.MoviePlaybackSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
 		1F32E41B1C30B6EF00F62E88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F3065C81C30EE19001E5DF0 /* Debug.xcconfig */;
@@ -990,6 +1121,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F1343CB1E1E1189004F065A /* Build configuration list for PBXNativeTarget "MoviePlaybackSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F1343C91E1E1189004F065A /* Debug */,
+				1F1343CA1E1E1189004F065A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1F32E4031C30B6EF00F62E88 /* Build configuration list for PBXProject "TVMLKitchen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
