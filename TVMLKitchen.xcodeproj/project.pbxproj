@@ -62,6 +62,10 @@
 		1FF0112A1CA024F70068CDAA /* TVMLKitchen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF011171CA024F60068CDAA /* TVMLKitchen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FF0112C1CA026450068CDAA /* TabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0112B1CA026450068CDAA /* TabBarTests.swift */; };
 		1FF0112E1CA0293E0068CDAA /* ExpectedTabBar.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0112D1CA0293E0068CDAA /* ExpectedTabBar.xml */; };
+		BDF2D93D1E20022600289E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF2D93C1E20022600289E67 /* AppDelegate.swift */; };
+		BDF2D9441E20022600289E67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF2D9421E20022600289E67 /* Main.storyboard */; };
+		BDF2D9461E20022600289E67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF2D9451E20022600289E67 /* Assets.xcassets */; };
+		BDF2D94C1E20032900289E67 /* sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = BDF2D94B1E20032900289E67 /* sample.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +197,12 @@
 		1FF011171CA024F60068CDAA /* TVMLKitchen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVMLKitchen.h; sourceTree = "<group>"; };
 		1FF0112B1CA026450068CDAA /* TabBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarTests.swift; sourceTree = "<group>"; };
 		1FF0112D1CA0293E0068CDAA /* ExpectedTabBar.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedTabBar.xml; sourceTree = "<group>"; };
+		BDF2D93A1E20022600289E67 /* MoviePlaybackSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlaybackSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF2D93C1E20022600289E67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BDF2D9431E20022600289E67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BDF2D9451E20022600289E67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BDF2D9471E20022600289E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDF2D94B1E20032900289E67 /* sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +240,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FCC01041D702F1300F60DD5 /* TVMLKitchen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDF2D9371E20022600289E67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +310,7 @@
 				1F32E6881C30B9B900F62E88 /* config */,
 				1F32E68C1C30BC3000F62E88 /* library */,
 				1FCC00F61D702EFE00F60DD5 /* NativeBaseSample */,
+				BDF2D93B1E20022600289E67 /* MoviePlaybackSample */,
 				1F32E40A1C30B6EF00F62E88 /* Products */,
 				1F32E54D1C30B79600F62E88 /* SampleRecipe */,
 				1F8B43761C35676400C716A7 /* SampleRecipeUITests */,
@@ -309,6 +327,7 @@
 				1F32E54C1C30B79600F62E88 /* SampleRecipe.app */,
 				1F8B43751C35676400C716A7 /* SampleRecipeUITests.xctest */,
 				1FCC00F51D702EFE00F60DD5 /* NativeBaseSample.app */,
+				BDF2D93A1E20022600289E67 /* MoviePlaybackSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -434,6 +453,18 @@
 			path = Templates;
 			sourceTree = "<group>";
 		};
+		BDF2D93B1E20022600289E67 /* MoviePlaybackSample */ = {
+			isa = PBXGroup;
+			children = (
+				BDF2D93C1E20022600289E67 /* AppDelegate.swift */,
+				BDF2D9421E20022600289E67 /* Main.storyboard */,
+				BDF2D9451E20022600289E67 /* Assets.xcassets */,
+				BDF2D9471E20022600289E67 /* Info.plist */,
+				BDF2D94B1E20032900289E67 /* sample.xml */,
+			);
+			path = MoviePlaybackSample;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -540,6 +571,23 @@
 			productReference = 1FCC00F51D702EFE00F60DD5 /* NativeBaseSample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BDF2D9391E20022600289E67 /* MoviePlaybackSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDF2D9481E20022600289E67 /* Build configuration list for PBXNativeTarget "MoviePlaybackSample" */;
+			buildPhases = (
+				BDF2D9361E20022600289E67 /* Sources */,
+				BDF2D9371E20022600289E67 /* Frameworks */,
+				BDF2D9381E20022600289E67 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoviePlaybackSample;
+			productName = MoviePlaybackSample;
+			productReference = BDF2D93A1E20022600289E67 /* MoviePlaybackSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -566,6 +614,9 @@
 					1FCC00F41D702EFE00F60DD5 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
+					BDF2D9391E20022600289E67 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 1F32E4031C30B6EF00F62E88 /* Build configuration list for PBXProject "TVMLKitchen" */;
@@ -586,6 +637,7 @@
 				1F32E54B1C30B79600F62E88 /* SampleRecipe */,
 				1F8B43741C35676400C716A7 /* SampleRecipeUITests */,
 				1FCC00F41D702EFE00F60DD5 /* NativeBaseSample */,
+				BDF2D9391E20022600289E67 /* MoviePlaybackSample */,
 			);
 		};
 /* End PBXProject section */
@@ -646,6 +698,16 @@
 				1FCC00FF1D702EFE00F60DD5 /* Assets.xcassets in Resources */,
 				1FCC00FD1D702EFE00F60DD5 /* Main.storyboard in Resources */,
 				1FC59A9B1D88A68700ED1CBD /* Oneup.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDF2D9381E20022600289E67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF2D94C1E20032900289E67 /* sample.xml in Resources */,
+				BDF2D9461E20022600289E67 /* Assets.xcassets in Resources */,
+				BDF2D9441E20022600289E67 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +776,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BDF2D9361E20022600289E67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF2D93D1E20022600289E67 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -752,6 +822,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				1FCC00FC1D702EFE00F60DD5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BDF2D9421E20022600289E67 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDF2D9431E20022600289E67 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -984,6 +1062,34 @@
 			};
 			name = Release;
 		};
+		BDF2D9491E20022600289E67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = MoviePlaybackSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = info.weixia.be.MoviePlaybackSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		BDF2D94A1E20022600289E67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = MoviePlaybackSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = info.weixia.be.MoviePlaybackSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1040,6 +1146,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		BDF2D9481E20022600289E67 /* Build configuration list for PBXNativeTarget "MoviePlaybackSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF2D9491E20022600289E67 /* Debug */,
+				BDF2D94A1E20022600289E67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
