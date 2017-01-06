@@ -63,9 +63,8 @@
 		1FF0112C1CA026450068CDAA /* TabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0112B1CA026450068CDAA /* TabBarTests.swift */; };
 		1FF0112E1CA0293E0068CDAA /* ExpectedTabBar.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0112D1CA0293E0068CDAA /* ExpectedTabBar.xml */; };
 		BDF2D93D1E20022600289E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF2D93C1E20022600289E67 /* AppDelegate.swift */; };
-		BDF2D9441E20022600289E67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF2D9421E20022600289E67 /* Main.storyboard */; };
 		BDF2D9461E20022600289E67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF2D9451E20022600289E67 /* Assets.xcassets */; };
-		BDF2D94C1E20032900289E67 /* sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = BDF2D94B1E20032900289E67 /* sample.xml */; };
+		BDF2D94C1E20032900289E67 /* Sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = BDF2D94B1E20032900289E67 /* Sample.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,10 +198,9 @@
 		1FF0112D1CA0293E0068CDAA /* ExpectedTabBar.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExpectedTabBar.xml; sourceTree = "<group>"; };
 		BDF2D93A1E20022600289E67 /* MoviePlaybackSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlaybackSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF2D93C1E20022600289E67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BDF2D9431E20022600289E67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDF2D9451E20022600289E67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDF2D9471E20022600289E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BDF2D94B1E20032900289E67 /* sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.xml; sourceTree = "<group>"; };
+		BDF2D94B1E20032900289E67 /* Sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Sample.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,10 +455,9 @@
 			isa = PBXGroup;
 			children = (
 				BDF2D93C1E20022600289E67 /* AppDelegate.swift */,
-				BDF2D9421E20022600289E67 /* Main.storyboard */,
 				BDF2D9451E20022600289E67 /* Assets.xcassets */,
 				BDF2D9471E20022600289E67 /* Info.plist */,
-				BDF2D94B1E20032900289E67 /* sample.xml */,
+				BDF2D94B1E20032900289E67 /* Sample.xml */,
 			);
 			path = MoviePlaybackSample;
 			sourceTree = "<group>";
@@ -705,9 +702,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDF2D94C1E20032900289E67 /* sample.xml in Resources */,
+				BDF2D94C1E20032900289E67 /* Sample.xml in Resources */,
 				BDF2D9461E20022600289E67 /* Assets.xcassets in Resources */,
-				BDF2D9441E20022600289E67 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,14 +818,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				1FCC00FC1D702EFE00F60DD5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BDF2D9421E20022600289E67 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BDF2D9431E20022600289E67 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1154,6 +1142,7 @@
 				BDF2D94A1E20022600289E67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
