@@ -14,7 +14,7 @@
         <list>
             <relatedContent>
                 <itemBanner>
-                    <!--heroImg src="((MAIN_BUNDLE_URL))home.jpg" width="800" height="800" /-->
+                    <heroImg src="http://www.mrwallpaper.com/wallpapers/2013-pacific-rim-movie-1920x1080.jpg" width="800" height="800" />
                 </itemBanner>
             </relatedContent>
             <header>
@@ -26,7 +26,7 @@
                 </row>
             </header>
             <section>
-                <description allowsZooming="true">This is a description</description>
+                <description allowsZooming="true">This is a long description.This is a long description.This is a long description.This is a long description.This is a long description.This is a long description.</description>
             </section>
             <section>
                 <listItemLockup actionID="playbackURL,https://wolverine.raywenderlich.com/rwdevcon.com/2015/videos/Ray-Wenderlich-Teamwork.mp4" playActionID="playbackURL,https://wolverine.raywenderlich.com/rwdevcon.com/2015/videos/Ray-Wenderlich-Teamwork.mp4">
