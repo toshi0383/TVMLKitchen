@@ -52,7 +52,7 @@ private func xmlString() -> String {
     
     let data = NSData(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Sample", ofType: "xml")!))
     
-    return String(data)
+    return NSString(data: data!, encoding: NSUTF8StringEncoding)! as String
 }
 
 @UIApplicationMain
