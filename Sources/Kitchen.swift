@@ -332,7 +332,9 @@ extension Kitchen {
         }
 
         /// Session Handler
-        let session = URLSession(configuration: URLSessionConfiguration.default)
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        let session = URLSession(configuration: config)
         let task = session.dataTask(with: req as URLRequest, completionHandler: {
             [unowned self] data, res, error in
             if let error = error {
