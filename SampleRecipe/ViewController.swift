@@ -64,6 +64,26 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openTemplateFromURL(_ sender: AnyObject!) {
+        Kitchen.serve(urlString: "https://raw.githubusercontent.com/toshi0383/TVMLKitchen/master/SampleRecipe/Oneup.xml") {
+            result in
+            switch result {
+            case .success(let xml):
+                // Return the xml if you think it's valid xml.
+                // You don't have to use `Kitchen.verify`.
+                // the `xml` is just a utf8 String representation of HTTP response body.
+                // It can be arbitrary data (e.g. a JSON representing error).
+                do {
+                    try Kitchen.verify(xml)
+                } catch {
+                    fatalError("error: \(error)")
+                }
+                return xml
+            case .failure(let error):
+                // Handle Network error
+                fatalError("error: \(error)")
+            }
+            return nil
+        }
     }
 
     @IBAction func descriptiveAlertRecipe(_ sender: AnyObject) {
