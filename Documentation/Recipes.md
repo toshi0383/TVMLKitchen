@@ -1,18 +1,16 @@
 # Kitchen Recipes
 Though TVML is static xmls, we can generate TVML dynamically by defining **Recipe**.
-Built-in Recipes are still middle of the way. You can send PRs!
 
 ## Available Recipes
 
-- [x] Catalog
-- [x] Catalog with select action handler
 - [x] Alert with button handler
 - [x] Descriptive Alert with button handler
 - [x] Search
 - [x] TabBar
+- [x] ~~Catalog~~ => Deprecated
+- [x] ~~Catalog with select action handler~~ => Deprecated
 
 You can create your own Recipe by conforming to `RecipeType` protocol.
-PRs are of-course welcomed.
 
 ## AlertRecipe
 ```
