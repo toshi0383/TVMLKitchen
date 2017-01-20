@@ -7,8 +7,6 @@ Though TVML is static xmls, we can generate TVML dynamically by defining **Recip
 - [x] Descriptive Alert with button handler
 - [x] Search
 - [x] TabBar
-- [x] ~~Catalog~~ => Deprecated
-- [x] ~~Catalog with select action handler~~ => Deprecated
 
 You can create your own Recipe by conforming to `RecipeType` protocol.
 
