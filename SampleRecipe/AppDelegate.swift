@@ -38,14 +38,13 @@ private func prepareMyKitchen(_ launchOptions: [AnyHashable: Any]?) -> Bool
         // - SeeAlso: http://nshipster.com/javascriptcore/
 
     }
-    cookbook.actionIDHandler = { actionID in
-        let identifier = actionID // parse action ID here
-        DispatchQueue.main.async {
-            openViewController(identifier)
-        }
+    cookbook.actionIDHandler = {
+        actionID in
+        print("actionID: \(actionID)")
     }
-    cookbook.playActionIDHandler = {actionID in
-        print(actionID)
+    cookbook.playActionIDHandler = {
+        playActionID in
+        print("playActionID: \(playActionID)")
     }
     cookbook.httpHeaders = [
         "hello": "world"
@@ -66,11 +65,7 @@ private func prepareMyKitchen(_ launchOptions: [AnyHashable: Any]?) -> Bool
     }
 
     Kitchen.prepare(cookbook)
-    let tabbar = KitchenTabBar(items:
-        [SearchTab(), CatalogTab()]
-    )
-
-    Kitchen.serve(recipe: tabbar)
+    openViewController()
 
     return true
 }
@@ -83,28 +78,7 @@ struct SearchTab: TabItem {
     }
 }
 
-struct CatalogTab: TabItem {
-    let title = "Catalog"
-    func handler() {
-        Kitchen.serve(recipe: catalog)
-    }
-    fileprivate var catalog: CatalogRecipe {
-        let banner = "Movie"
-        let thumbnailUrl = Bundle.main.url(forResource: "img",
-            withExtension: "jpg")!.absoluteString
-        let actionID = "/title?titleId=1234"
-        let (width, height) = (250, 376)
-        let templateURL: String? = nil
-        let content: Section.ContentTuple = ("Star Wars", thumbnailUrl, actionID, templateURL, width, height)
-        let section1 = Section(title: "Section 1", args: (0...100).map{_ in content})
-        var catalog = CatalogRecipe(banner: banner, sections: (0...10).map{_ in section1})
-        catalog.presentationType = .tab
-        return catalog
-    }
-
-}
-
-private func openViewController(_ identifier: String) {
+private func openViewController() {
     let sb = UIStoryboard(name: "ViewController", bundle: Bundle.main)
     let vc = sb.instantiateInitialViewController()!
     Kitchen.navigationController.pushViewController(vc, animated: true)

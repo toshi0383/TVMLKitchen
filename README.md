@@ -33,7 +33,7 @@ Please refer to the [Documentation](./Documentation) for more information.
 - [x] Load TVML from raw XML String.
 - [x] XML syntax validation API
 - [x] Multi UIWindow Support
-- [x] TVML *Recipe* Support <= Will be separated into another module in future releases.
+- [x] TVML *Recipe* Protocol
 
 # Examples
 - TVJS Base Hybrid App  (Demo: [SampleRecipe](./SampleRecipe))

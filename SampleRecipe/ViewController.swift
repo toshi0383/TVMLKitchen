@@ -45,7 +45,8 @@ class ViewController: UIViewController {
     @IBAction func tabbarRecipe() {
         let tabbar = KitchenTabBar(items: [
             MoviesTab(),
-            MusicsTab()
+            MusicsTab(),
+            SearchTab()
         ])
         Kitchen.serve(recipe: tabbar)
     }
@@ -106,21 +107,6 @@ class ViewController: UIViewController {
         let backgroundColor: String = "rgb(0, 20, 70)"
         let color: String = "rgb(237, 237, 255)"
         init() {}
-    }
-
-    @IBAction func openCustomTheme() {
-        let banner = "Music"
-        let thumbnailUrl = Bundle.main.url(forResource: "img",
-            withExtension: "jpg")!.absoluteString
-        let actionID = "/title?titleId=1234"
-        let (width, height) = (250, 376)
-        let templateURL: String? = nil
-        let content: Section.ContentTuple = ("Mission Impossible Ghost Protocol", thumbnailUrl, actionID,
-            templateURL, width, height)
-
-        let section1 = Section(title: "Hello", args: (0..<10).map{_ in content})
-        let catalog = CatalogRecipe(banner: banner, sections: (0..<10).map{_ in section1})
-        Kitchen.serve(recipe: catalog)
     }
 
     @IBAction func verify() {

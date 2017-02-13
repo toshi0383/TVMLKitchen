@@ -1,3 +1,9 @@
+## master
+##### Breaking
+* Remove CatalogRecipe  
+  [Toshihiro Suzuki](https://github.com/toshi0383)
+  [#138](https://github.com/toshi0383/TVMLKitchen/pull/138)
+
 ## 1.0.1
 ##### Enhancement
 * Add @escaping to SearchRecipe.filterSearchText(_:)  
