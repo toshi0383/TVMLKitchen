@@ -12,10 +12,10 @@ import XCTest
 struct SampleTemplateRecipe: TemplateRecipeType {
     let theme = EmptyTheme()
     /// Presentation type is defined in the recipe to keep things consistent.
-    var presentationType = PresentationType.Search
+    var presentationType = PresentationType.search
 
-    static var bundle: NSBundle {
-        return NSBundle(forClass: RecipeTests.self)
+    static var bundle: Bundle {
+        return Bundle(for: RecipeTests.self)
     }
 }
 
