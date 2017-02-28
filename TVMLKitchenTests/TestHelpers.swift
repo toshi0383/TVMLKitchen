@@ -11,15 +11,15 @@ import XCTest
 
 extension String {
     var trim: String {
-        return self.stringByReplacingOccurrencesOfString(" ", withString: "")
+        return self.replacingOccurrences(of: " ", with: "")
     }
 }
 
-func testTemplateRecipe<R: RecipeType>(recipe: R, expectedFileName name: String) {
+func testTemplateRecipe<R: RecipeType>(_ recipe: R, expectedFileName name: String) {
     let target = recipe.xmlString.trim
-        let bundle = NSBundle(forClass: RecipeTests.self)
-        let url = bundle.URLForResource(name, withExtension: "xml")!
+        let bundle = Bundle(for: RecipeTests.self)
+        let url = bundle.url(forResource: name, withExtension: "xml")!
         // swiftlint:disable:next force_try
-    let expected = try! String(contentsOfURL: url).trim
+    let expected = try! String(contentsOf: url).trim
     XCTAssert(target == expected, "\n===result===:\n\(target)\n\n===expected===:\n\(expected)\n\n=======")
 }
