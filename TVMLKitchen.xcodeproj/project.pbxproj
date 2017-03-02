@@ -618,10 +618,11 @@
 					};
 					1F32E54B1C30B79600F62E88 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					1F8B43741C35676400C716A7 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = 1F32E54B1C30B79600F62E88;
 					};
 					1FCC00F41D702EFE00F60DD5 = {
@@ -1068,6 +1069,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = SampleRecipe;
 				USES_XCTRUNNER = YES;
 			};
@@ -1080,6 +1082,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.SampleRecipeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = SampleRecipe;
 				USES_XCTRUNNER = YES;
 			};
