@@ -23,6 +23,7 @@ let kitchenErrorDomain = "jp.toshi0383.TVMLKitchen.error"
 open class Kitchen: NSObject {
     /// singleton instance
     fileprivate static let sharedKitchen = Kitchen()
+    fileprivate weak var _delegate: TVApplicationControllerDelegate?
     fileprivate static weak var redirectWindow: UIWindow?
     fileprivate static var animatedWindowTransition: Bool = false
     fileprivate static var _navigationControllerDelegateWillShowCount = 0
@@ -416,10 +417,12 @@ extension Kitchen {
      Supposed to be called in application:didFinishedLaunchingWithOptions:
      in UIApplicationDelegate of your @UIApplicationMain .
      - parameter cookbook: a Cookbook configuration object
+     - parameter delegate: TVApplicationControllerDelegate
      - returns:  If launch process was successfully or not.
     */
     @discardableResult
-    public static func prepare(_ cookbook: Cookbook) -> Bool {
+    public static func prepare(_ cookbook: Cookbook, delegate: TVApplicationControllerDelegate? = nil) -> Bool {
+        sharedKitchen._delegate = delegate
         sharedKitchen.cookbook = cookbook
         sharedKitchen.window = UIWindow(frame: UIScreen.main.bounds)
         sharedKitchen.evaluateAppJavaScriptInContext = cookbook.evaluateAppJavaScriptInContext
@@ -474,22 +477,31 @@ extension Kitchen: TVApplicationControllerDelegate {
     public func appController(_ appController: TVApplicationController,
         didFinishLaunching options: [String: Any]?)
     {
+        // Call user's delegate
+        _delegate?.appController?(appController, didFinishLaunching: options)
     }
 
     public func appController(_ appController: TVApplicationController,
         didFail error: Error)
     {
+        // Call user's delegate
+        _delegate?.appController?(appController, didFail: error)
         self.kitchenErrorHandler?(error as NSError)
     }
 
     public func appController(_ appController: TVApplicationController,
         didStop options: [String: Any]?)
     {
+        // Call user's delegate
+        _delegate?.appController?(appController, didStop: options)
     }
 
     public func appController(_ appController: TVApplicationController,
         evaluateAppJavaScriptIn jsContext: JSContext)
     {
+        // Call user's delegate
+        _delegate?.appController?(appController, evaluateAppJavaScriptIn: jsContext)
+
         if let playActionIDHandler = playActionIDHandler {
             let playActionIDHandler: @convention(block) (String) -> Void = { actionID in
                 playActionIDHandler(actionID)

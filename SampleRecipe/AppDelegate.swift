@@ -11,17 +11,23 @@ import TVMLKitchen
 import JavaScriptCore
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDelegate {
 
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-        _ = prepareMyKitchen(launchOptions)
+        _ = prepareMyKitchen(launchOptions, delegate: self)
         return true
     }
+
+    // Custom TVApplicationControllerDelegate
+    func appController(_ appController: TVApplicationController, evaluateAppJavaScriptIn jsContext: JSContext) {
+        print("\(#function): hello")
+    }
+
 }
 
-private func prepareMyKitchen(_ launchOptions: [AnyHashable: Any]?) -> Bool
+private func prepareMyKitchen(_ launchOptions: [AnyHashable: Any]?, delegate: TVApplicationControllerDelegate) -> Bool
 {
     let cookbook = Cookbook(launchOptions: launchOptions)
     cookbook.evaluateAppJavaScriptInContext = {appController, jsContext in
@@ -64,7 +70,7 @@ private func prepareMyKitchen(_ launchOptions: [AnyHashable: Any]?) -> Bool
         return true
     }
 
-    Kitchen.prepare(cookbook)
+    Kitchen.prepare(cookbook, delegate: delegate)
     openViewController()
 
     return true
